@@ -8,4 +8,5 @@ mvn package
 mvn wildfly-swarm:package
 
 
-java -Dswarm.ds.connection.url="jdbc:mysql://localhost:3306/IMP?useSSL=false" -jar target/pm-core-swarm.jar
+java -Dswarm.ds.connection.url="jdbc:mysql://localhost:3306/IMP?useSSL=false" -Dswarm.http.port="9090" -jar target/pm-core-swarm.jar
+-Dswarm.option.... pour propriétés
