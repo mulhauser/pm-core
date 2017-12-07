@@ -16,3 +16,9 @@ pm-core.iml
 hs_err_pid*
 
 password.txt
+
+ # OS generated files #
+######################
+*/.DS_Store
+.DS_Store
+.DS_Store?
