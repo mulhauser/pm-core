@@ -1,4 +1,4 @@
-package org.profilematch.rest;
+package org.profilematch.pmcore.rest;
 
 /**
  * @author remy

@@ -1,4 +1,4 @@
-package org.profilematch.ejbs;
+package org.profilematch.pmcore.ejbs;
 
 import java.util.List;
 import javax.ejb.Stateless;
@@ -6,7 +6,7 @@ import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.profilematch.entities.Users;
+import org.profilematch.pmcore.entities.Users;
 
 
 /**

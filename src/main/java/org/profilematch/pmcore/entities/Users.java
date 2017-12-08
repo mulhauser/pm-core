@@ -1,5 +1,4 @@
-package org.profilematch.entities;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package org.profilematch.pmcore.entities;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
