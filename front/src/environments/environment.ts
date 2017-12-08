@@ -10,8 +10,7 @@ export const environment = {
     host: '127.0.0.1',
     port: '9090',
     endpoints: {
-      test: '/api/user',
-
+      test: '/rest/utilisateur'
     }
   }
 };

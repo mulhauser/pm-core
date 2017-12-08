@@ -8,6 +8,9 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {AppRoutingModule} from './app.routing';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
+import { TestComponent } from './test/test.component';
+import {TestService} from './shared/test.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -16,14 +19,16 @@ import { FooterComponent } from './footer/footer.component';
     NavComponent,
     HomeComponent,
     FooterComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
     NgbModule.forRoot(),
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [TestService],
   bootstrap: [AppComponent],
   entryComponents: []
 })
