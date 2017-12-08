@@ -15,7 +15,7 @@ import org.profilematch.pmcore.entities.Users;
  */
 @Stateless
 @LocalBean
-public class UsersBean {
+public class UtilisateursBean {
 
     @PersistenceContext(unitName = "IMP_PU")
     EntityManager em;
