@@ -11,12 +11,6 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "offres")
-@NamedQueries({
-        @NamedQuery(name = "Offres.findAll", query = "SELECT o FROM Offres o"),
-        @NamedQuery(name = "Offres.findByNiveauRequis", query = "SELECT o FROM Offres o WHERE o.niveau_requis = :niveau_requis"),
-        @NamedQuery(name = "Offres.findByTypeContrat", query = "SELECT o FROM Offres o WHERE o.type_contrat = :type_contrat"),
-        @NamedQuery(name = "Offres.findBySalaireMin", query = "SELECT p FROM Offres o WHERE o.salaire_min = :salaire_min")
-})
 public class Offres implements Serializable{
 
     private static final long serialVersionUID = 1L;

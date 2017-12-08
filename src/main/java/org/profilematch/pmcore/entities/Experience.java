@@ -20,6 +20,7 @@ public class Experience implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "type_contrat")

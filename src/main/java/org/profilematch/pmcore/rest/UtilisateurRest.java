@@ -3,10 +3,12 @@ package org.profilematch.pmcore.rest;
 /**
  * @author remy
  */
+import org.profilematch.pmcore.ejbs.UtilisateursBean;
+
+import javax.ejb.EJB;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.Produces;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
 
 /**
  * REST Web Service
@@ -16,11 +18,22 @@ import javax.ws.rs.Path;
 @Path("utilisateur")
 public class UtilisateurRest {
 
+    @EJB
+    private UtilisateursBean ue;
+
     @GET
     @Produces("text/plain")
     public Response doGet() {
-        return Response.ok("Hello from wildfly swarm!").build();
+        return Response.ok("hello world").build();
     }
+
+    @GET
+    @Path("get/{email}")
+    @Produces("application/json")
+    public Response GetUtilisateur(@PathParam("email") String email) {
+        return Response.ok(ue.getUtilisateur(email)).build();
+    }
+
 
 }
 
