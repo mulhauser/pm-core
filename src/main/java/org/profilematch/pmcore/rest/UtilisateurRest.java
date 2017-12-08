@@ -14,7 +14,7 @@ import javax.ws.rs.Path;
  * @author Remy
  */
 @Path("utilisateur")
-public class UserRest {
+public class UtilisateurRest {
 
     @GET
     @Produces("text/plain")
