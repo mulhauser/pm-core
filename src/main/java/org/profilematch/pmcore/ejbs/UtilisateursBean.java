@@ -6,7 +6,7 @@ import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.profilematch.pmcore.entities.Users;
+import org.profilematch.pmcore.entities.Utilisateur;
 
 
 /**
@@ -26,7 +26,7 @@ public class UtilisateursBean {
      * @param u
      * @return the persisted Utilisateur
      */
-    public boolean inscrireUtilisateur(Users u) {
+    public boolean inscrireUtilisateur(Utilisateur u) {
         em.persist(u);
         return true;
     }
@@ -37,8 +37,8 @@ public class UtilisateursBean {
      * @param u
      * @return the updated Utilisateur
      */
-    public boolean modifierUtilisateur(Users u) {
-        Users nouveauU = em.find(Users.class, u.getEmail());
+    public boolean modifierUtilisateur(Utilisateur u) {
+        Utilisateur nouveauU = em.find(Utilisateur.class, u.getEmail());
         if (nouveauU != null) {
             em.merge(u);
             return true;
@@ -52,12 +52,12 @@ public class UtilisateursBean {
      * @param id
      * @return the Utilisateur corresponding to the given id
      */
-    public Users getUtilisateur(String id){
-        Users u = em.find(Users.class, id);
+    public Utilisateur getUtilisateur(String id){
+        Utilisateur u = em.find(Utilisateur.class, id);
         if (u != null) {
             return u;
         } else {
-            return new Users((long)-1, "", "", "");
+            return new Utilisateur((long)-1, "", "", "");
         }
     }
 
@@ -66,11 +66,11 @@ public class UtilisateursBean {
      * @param email
      * @return the Utilisateur corresponding to the given email
      */
-    public Users getUtilisateurByEmail(String email){
-        Users rep = new Users((long)-1, "", "", "");
+    public Utilisateur getUtilisateurByEmail(String email){
+        Utilisateur rep = new Utilisateur((long)-1, "", "", "");
 
-        Users u = em.find(Users.class, email);
-        //  u = (Users) em.createQuery("Users.findByEmail")
+        Utilisateur u = em.find(Utilisateur.class, email);
+        //  u = (Utilisateur) em.createQuery("Utilisateur.findByEmail")
         //      .setParameter("email", email).getSingleResult();
         if (u != null) {
             rep = u;
@@ -82,19 +82,19 @@ public class UtilisateursBean {
      *
      * @return all the Utilisateurs
      */
-    public List<Users> getUtilisateurs(){
-        return em.createNamedQuery("Users.findAll").getResultList();
+    public List<Utilisateur> getUtilisateurs(){
+        return em.createNamedQuery("Utilisateur.findAll").getResultList();
     }
 
-    public Users connexion(String email, String hache){
-        Users user = getUtilisateurByEmail(email);
-        Users u = new Users((long)-1, "", "", "");
+    public Utilisateur connexion(String email, String hache){
+        Utilisateur user = getUtilisateurByEmail(email);
+        Utilisateur u = new Utilisateur((long)-1, "", "", "");
         if(user.getId() != -1){
             if(user.getMotdepasse() != null){
                 if(!user.getMotdepasse().equals(hache)){
-                    user = new Users((long)-1, "", "", "");
+                    user = new Utilisateur((long)-1, "", "", "");
                 }else{
-                    u = new Users(user);
+                    u = new Utilisateur(user);
                     u.setMotdepasse("");
                 }
             }

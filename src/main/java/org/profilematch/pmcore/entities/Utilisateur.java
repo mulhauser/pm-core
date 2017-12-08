@@ -19,12 +19,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "users")
 @XmlRootElement
 @NamedQueries({
-        @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
-        @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"),
-        @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
-        @NamedQuery(name = "Users.findByMotdepasse", query = "SELECT u FROM Users u WHERE u.motdepasse = :motdepasse"),
-        @NamedQuery(name = "Users.findByType", query = "SELECT u FROM Users u WHERE u.type = :type")})
-public class Users implements Serializable {
+        @NamedQuery(name = "Utilisateur.findAll", query = "SELECT u FROM Utilisateur u"),
+        @NamedQuery(name = "Utilisateur.findByEmail", query = "SELECT u FROM Utilisateur u WHERE u.email = :email"),
+        @NamedQuery(name = "Utilisateur.findById", query = "SELECT u FROM Utilisateur u WHERE u.id = :id"),
+        @NamedQuery(name = "Utilisateur.findByMotdepasse", query = "SELECT u FROM Utilisateur u WHERE u.motdepasse = :motdepasse"),
+        @NamedQuery(name = "Utilisateur.findByType", query = "SELECT u FROM Utilisateur u WHERE u.type = :type")})
+public class Utilisateur implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -56,21 +56,21 @@ public class Users implements Serializable {
 
     private int safe;
 
-    public Users() {
+    public Utilisateur() {
     }
 
-    public Users(String email) {
+    public Utilisateur(String email) {
         this.email = email;
         this.safe = 1000;
     }
 
-    public Users(String email, String tokenacces) {
+    public Utilisateur(String email, String tokenacces) {
         this.email = email;
         this.tokenacces = tokenacces;
         this.safe = 1000;
     }
 
-    public Users(Long id, String email, String motdepasse, String type) {
+    public Utilisateur(Long id, String email, String motdepasse, String type) {
         this.email = email;
         this.id = id;
         this.motdepasse = motdepasse;
@@ -78,7 +78,7 @@ public class Users implements Serializable {
         this.safe = 1000;
     }
 
-    public Users(Users u) {
+    public Utilisateur(Utilisateur u) {
         this.email = u.getEmail();
         this.id = u.getId();
         this.motdepasse = u.getMotdepasse();
@@ -137,10 +137,10 @@ public class Users implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Users)) {
+        if (!(object instanceof Utilisateur)) {
             return false;
         }
-        Users other = (Users) object;
+        Utilisateur other = (Utilisateur) object;
         if ((this.email == null && other.email != null) || (this.email != null && !this.email.equals(other.email))) {
             return false;
         }
@@ -149,7 +149,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "org.profilematch.pmcore.entities.Users[ email=" + email + " ]";
+        return "org.profilematch.pmcore.entities.Utilisateur[ email=" + email + " ]";
     }
 
 }
