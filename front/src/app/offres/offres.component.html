@@ -1,0 +1,120 @@
+<h1 class="text-center my-lg-4">
+  Liste des offres
+</h1>
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <input placeholder="poste" />
+    <input placeholder="société" />
+    <input placeholder="lieu" />
+  </div>
+</div>
+<div class="row">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <tbody><!--*ngFor="let offre of offres"-->
+        <tr>
+          <td>
+            <div class="row">
+              <div class="col-10">
+                <a class="col-12" [routerLink]="['/offre/']">
+                  Ingénieur électronique débutant H/F
+                </a>
+                <div class="col-12">
+                  Ceci est une légère description de l'offre
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="col-12">
+                  Nom de société
+                </div>
+                <div class="col-12">
+                  <img class="img-fluid" src="../../assets/societe_anonyme.jpg" alt="logo">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-10">
+                <span class="glyphicon glyphicon-map-marker"></span> Lieu de l'offre
+              </div>
+              <div class="col-2">
+                Il y a 2 jours
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row">
+              <div class="col-10">
+                <a class="col-12" [routerLink]="['/offre/']">
+                  Administrateur systèmes réseaux
+                </a>
+                <div class="col-12">
+                  C'est pour ceux qui bossent pas de l'année
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="col-12">
+                  Société anonyme
+                </div>
+                <div class="col-12">
+                  <img class="img-fluid" src="../../assets/societe_anonyme.jpg" alt="logo">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-10">
+                <span class="glyphicon glyphicon-map-marker"></span> Lieu inconnu
+              </div>
+              <div class="col-2">
+                Il y a 5 jours
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row">
+              <div class="col-10">
+                <a class="col-12" [routerLink]="['/offre/']">
+                  Concepteur Vendeur H/F
+                </a>
+                <div class="col-12">
+                  On s'est jamais si tu veux te faire de la tune !
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="col-12">
+                  Société qui veut de la tune
+                </div>
+                <div class="col-12">
+                  <img class="img-fluid" src="../../assets/societe_anonyme.jpg" alt="logo">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-10">
+                <span class="glyphicon glyphicon-map-marker"></span> Dans ta banque
+              </div>
+              <div class="col-2">
+                Il y a 20$
+              </div>
+            </div>
+          </td>
+        </tr>
+          <!--
+          <td>
+            <a [routerLink]="['/offre/'+option.id]">
+              {{ option.nom }}
+            </a>
+          </td>
+          <td>
+            {{ option.prof }}
+          </td>
+          <td>
+            {{ option.description }}
+          </td>-->
+        </tbody>
+      </table>
+    </div>
+</div>

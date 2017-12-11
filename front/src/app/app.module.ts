@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { TestComponent } from './test/test.component';
 import {TestService} from './shared/test.service';
 import {HttpClientModule} from '@angular/common/http';
+import { OffresComponent } from './offres/offres.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
     HomeComponent,
     FooterComponent,
     TestComponent,
+    OffresComponent,
   ],
   imports: [
     BrowserModule,
