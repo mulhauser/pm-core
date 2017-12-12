@@ -4,33 +4,27 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 /**
  * @author remy
  */
 @Entity
-@Table(name = "offres")
-public class Offres implements Serializable{
+public class Offre implements Serializable{
 
-    private static final long serialVersionUID = 1L;
 
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "intitule")
-    private String intitule;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "niveau_requis")
+
+    private String intitule;
     private String niveauRequis;
 
     @Column(name = "date_emission")
     private Date dateEmission;
 
-    @Size(max = 30)
     @Column(name = "type_contrat")
     private String typeContrat;
 
@@ -40,18 +34,60 @@ public class Offres implements Serializable{
     @Column(name = "salaire_max")
     private int salaireMax;
 
-    @Size(min = 20)
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "mission")
     private String mission;
 
     @Column(name = "date_limite")
     private Date dateLimite;
 
+    @ManyToMany(mappedBy = "offres")
+    private Collection<Candidat> candidats;
 
-    public Offres(String intitule, String niveauRequis, String typeContrat, int salaireMin, int salaireMax, String description, String mission) {
+    @ManyToMany(mappedBy = "offres")
+    private Collection<Competence> competences;
+
+    /*@ManyToOne
+    @JoinColumn(name="id_employeur")
+    private Employeur employeur;
+
+    @ManyToOne
+    @JoinColumn(name="id_recruteur")
+    private Recruteur recruteur;
+
+    @OneToMany(mappedBy = "offre", fetch = FetchType.LAZY)
+    private Collection<Commentaire> commentaires;
+
+    public Employeur getEmployeur() {
+        return employeur;
+    }
+
+    public void setEmployeur(Employeur employeur) {
+        this.employeur = employeur;
+    }
+
+    public Recruteur getRecruteur() {
+        return recruteur;
+    }
+
+    public void setRecruteur(Recruteur recruteur) {
+        this.recruteur = recruteur;
+    }
+
+    public Collection<Commentaire> getCommentaires() {
+        return commentaires;
+    }
+
+    public void setCommentaires(Collection<Commentaire> commentaires) {
+        this.commentaires = commentaires;
+    }
+
+    */
+
+    public Offre() {
+    }
+
+    public Offre(String intitule, String niveauRequis, String typeContrat, int salaireMin, int salaireMax, String description, String mission) {
         this.intitule = intitule;
         this.niveauRequis = niveauRequis;
         this.typeContrat = typeContrat;
@@ -126,23 +162,55 @@ public class Offres implements Serializable{
     }
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getIntitule() {
+        return intitule;
+    }
+
+    public void setIntitule(String intitule) {
+        this.intitule = intitule;
+    }
+
+
+
+    public Collection<Candidat> getCandidats() {
+        return candidats;
+    }
+
+    public void setCandidats(Collection<Candidat> candidats) {
+        this.candidats = candidats;
+    }
+
+    public Collection<Competence> getCompetences() {
+        return competences;
+    }
+
+    public void setCompetences(Collection<Competence> competences) {
+        this.competences = competences;
+    }
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Offres offres = (Offres) o;
+        Offre offre = (Offre) o;
 
-        if (salaireMin != offres.salaireMin) return false;
-        if (salaireMax != offres.salaireMax) return false;
-        if (!intitule.equals(offres.intitule)) return false;
-        if (!niveauRequis.equals(offres.niveauRequis)) return false;
-        if (dateEmission != null ? !dateEmission.equals(offres.dateEmission) : offres.dateEmission != null)
+        if (salaireMin != offre.salaireMin) return false;
+        if (salaireMax != offre.salaireMax) return false;
+        if (!intitule.equals(offre.intitule)) return false;
+        if (!niveauRequis.equals(offre.niveauRequis)) return false;
+        if (dateEmission != null ? !dateEmission.equals(offre.dateEmission) : offre.dateEmission != null)
             return false;
-        if (!typeContrat.equals(offres.typeContrat)) return false;
-        if (!description.equals(offres.description)) return false;
-        if (!mission.equals(offres.mission)) return false;
-        return dateLimite != null ? dateLimite.equals(offres.dateLimite) : offres.dateLimite == null;
+        if (!typeContrat.equals(offre.typeContrat)) return false;
+        if (!description.equals(offre.description)) return false;
+        if (!mission.equals(offre.mission)) return false;
+        return dateLimite != null ? dateLimite.equals(offre.dateLimite) : offre.dateLimite == null;
     }
 
     @Override

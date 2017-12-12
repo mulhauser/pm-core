@@ -11,6 +11,7 @@ import org.profilematch.pmcore.entities.Utilisateur;
 
 /**
  * Exemple
+ *
  * @author Flavien
  */
 @Stateless

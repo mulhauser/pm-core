@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/defaultIfEmpty';
 import 'rxjs/add/operator/filter';
+import {User} from '../_models/user';
+import {UserService} from '../_services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +13,23 @@ import 'rxjs/add/operator/filter';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  currentUser: User;
+  users: User[] = [];
 
-  ngOnInit() {
+  constructor(private userService: UserService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
+  ngOnInit() {
+    this.loadAllUsers();
+  }
+
+  deleteUser(id: number) {
+    this.userService.delete(id).subscribe(() => { this.loadAllUsers()});
+  }
+
+  private loadAllUsers() {
+    this.userService.getAll().subscribe(users => { this.users = users; });
+  }
 
 }

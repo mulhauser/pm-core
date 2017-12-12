@@ -1,0 +1,54 @@
+<section class="bg-faded container-fluid">
+  <div class="row py-3 flex-items-sm-center">
+    <!--
+User Card
+-->
+    <div class="col-xs-12 col-sm-3 py-2 clearfix">
+      <div class="card profile-card">
+        <!--
+        <figure>
+
+          <input id="fab" type="checkbox" (click)="modeModification=!modeModificationOn" class="fab"><label for="fab" class="toggle">+</label>
+          <img src="{{ candidatDetail.photo }}" class="img-fluid img-profile" alt="Card image">
+        </figure>
+        <div class="card-block text-xs-center">
+          <p class="h4 card-title font-weight-bold">{{candidatDetail.prenom}} <br>{{candidatDetail.nom}}</p>
+          <p class="h6 card-subtitle text-muted">  apropos:{{candidatDetail.apropos}}<br>email:{{candidatDetail.email}}
+            pays: {{candidatDetail.pays}}<br>
+            ville:{{candidatDetail.ville}}<br>
+            codePostal:{{candidatDetail.codePostal}}
+            dateNaissance: {{candidatDetail.dateNaissance}}<br>
+            telephone: {{candidatDetail.telephone}}<br>
+            titre: {{candidatDetail.titre}}<br>
+            status:  {{candidatDetail.status}}<br>
+            statusActuel:{{candidatDetail.statusActuel}}<br>
+            experiences:{{candidatDetail.experiences}}<br>
+            competences:{{candidatDetail.competences}}<br>
+            offre:{{candidatDetail.offre}}<br></p><br>
+        </div>
+        -->
+
+        <figure>
+          <input id="fab" type="checkbox" (click)="modeModification=!modeModificationOn" class="fab"><label for="fab" class="toggle">+</label>
+          <img src="{{ candidatDetail.photo }}" class="img-fluid img-profile" alt="Card image">
+        </figure>
+        <div class="card-block text-xs-center">
+          <p class="h4 card-title font-weight-bold">{{candidatDetail.firstName}} <br>{{candidatDetail.lastName}}</p>
+          <p class="h6 card-subtitle text-muted">  <br>email:{{candidatDetail.email}}<br>
+            type: {{candidatDetail.type}}<br>
+            login:{{candidatDetail.login}}<br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+
+<div *ngIf="modeModification === true">
+  <app-candidat-modification  [candidatDetail]="candidatDetail"> </app-candidat-modification>
+</div>
+
+-->
+<br>
+<br><br><br><br><br><br><br><br><br>

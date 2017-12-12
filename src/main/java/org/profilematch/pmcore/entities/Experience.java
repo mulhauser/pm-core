@@ -1,6 +1,9 @@
 package org.profilematch.pmcore.entities;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,43 +11,53 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "experience")
-@XmlRootElement
+@NamedQueries({
+        @NamedQuery(name = "Experience.findAll", query = "SELECT u FROM Experience u")
+})
 public class Experience implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
-    @Basic(optional = false)
-    @NotNull
+
     @Column(name = "type_contrat")
     private String typeContrat;
 
-    @Basic(optional = false)
-    @NotNull
+
     @Column(name = "date_debut")
     private Date dateDebut;
 
-    @Basic(optional = false)
-    @NotNull
+
     @Column(name = "date_fin")
     private Date dateFin;
 
-    @Basic(optional = false)
-    @NotNull
+
     @Column(name = "description")
     private String description;
 
-    @NotNull
     @Column(name ="poste_occuper")
     private String posteOccuper;
 
+    @ManyToOne
+    @JoinColumn(name = "id_candidat")
+    private Candidat candidat;
+
+    /*
+    @ManyToOne
+    @JoinColumn(name = "id_employeur")
+    private Employeur employeur;
+
+     public Employeur getEmployeur() {
+        return employeur;
+    }
+
+    public void setEmployeur(Employeur employeur) {
+        this.employeur = employeur;
+    }
+
+    */
 
     public Experience(String typeContrat, Date dateDebut, Date dateFin, String description, String posteOccuper){
         this.typeContrat = typeContrat;
@@ -54,8 +67,7 @@ public class Experience implements Serializable {
         this.posteOccuper = posteOccuper;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public Experience() {
     }
 
     public Long getId() {
@@ -105,6 +117,17 @@ public class Experience implements Serializable {
     public void setPosteOccuper(String posteOccuper) {
         this.posteOccuper = posteOccuper;
     }
+
+
+    public Candidat getCandidat() {
+        return candidat;
+    }
+
+    public void setCandidat(Candidat candidat) {
+        this.candidat = candidat;
+    }
+
+
 
     @Override
     public boolean equals(Object object) {

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {OffreService} from '../shared/offre.service';
 
 @Component({
   selector: 'app-offres',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OffresComponent implements OnInit {
 
-  constructor() { }
+  private _offres: any[];
 
-  ngOnInit() {
+  constructor(private _offreService: OffreService) {
+    this._offres = [];
   }
 
+
+  get offres (): any[] {
+    return this._offres;
+  }
+
+  @Input()
+  set offres (offres: any[]){
+    this._offres = offres;
+  }
+
+  private _getAll(): Observable<any[]> {
+    return this._offreService.getOffres()
+      .filter(_ => !!_)
+      .defaultIfEmpty([]);
+  }
+
+  ngOnInit() {
+    this._getAll().subscribe((offres: any[]) => this._offres = offres);
+  }
 }

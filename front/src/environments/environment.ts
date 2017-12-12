@@ -5,12 +5,24 @@
 
 export const environment = {
   production: false,
+
+   // SI ON VEUR RELIER AU BACKEND
+
   backend: {
     protocol: 'http',
-    host: '127.0.0.1',
+    host: 'localhost',
     port: '9090',
     endpoints: {
-      test: '/rest/utilisateur'
+
+      allCompetences: '/rest/competence',
+      specificCompetence: '/rest/competence/:id',
+      addCompetence: '/rest/competence',
+      modifyCompetence: '/rest/competence',
+      login: '/rest/users/login',
+      register: '/rest/utilisateur/register',
+      getUserById: '/rest/users/:id',
+      allExperiences: '/rest/experience',
+      createUser: '/rest/users',
     }
   }
 };

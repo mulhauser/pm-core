@@ -1,5 +1,5 @@
 <h1 class="text-center my-lg-4">
-  About MatchProfil
+  About iMatchProfil
 </h1>
 <div class="row">
   <div class="col-sm-12">
@@ -44,4 +44,15 @@
       </h3>
     </div>
   </div>
+</div>
+<div class="col-md-6 col-md-offset-3">
+  <h1 *ngIf="currentUser != null" >Hi {{currentUser.firstName}}!</h1>
+  <h3>All registered users:</h3>
+  <ul>
+    <li *ngFor="let user of users">
+      {{user.email}} ({{user.firstName}} {{user.lastName}})
+      - <a (click)="deleteUser(user.id)">Delete</a>
+    </li>
+  </ul>
+  <p><a [routerLink]="['/login']">Logout</a></p>
 </div>

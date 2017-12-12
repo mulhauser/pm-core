@@ -5,15 +5,19 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name = "profil")
-public class Profil {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE_PROFIL", discriminatorType = DiscriminatorType.STRING, length = 1)
+public abstract class Profil implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nom;
@@ -28,7 +32,48 @@ public class Profil {
     private Calendar dateNaissance;
     private String titre;
     private String apropos;
-    private String type;
+    private String status;
+
+    /*
+    @OneToMany(mappedBy = "profil", fetch = FetchType.LAZY)
+    private Collection<Cursus> cursus;
+
+    @ManyToOne
+    @JoinColumn(name="id_employeur")
+    private Employeur employeur;
+
+    @OneToMany(mappedBy = "profil", fetch = FetchType.LAZY)
+    private Collection<Notification> notifications;
+
+
+    public Collection<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(Collection<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public Collection<Cursus> getCursus() {
+        return cursus;
+    }
+
+    public void setCursus(Collection<Cursus> cursus) {
+        this.cursus = cursus;
+    }
+
+    public Employeur getEmployeur() {
+        return employeur;
+    }
+
+    public void setEmployeur(Employeur employeur) {
+        this.employeur = employeur;
+    }
+
+*/
+
+    public Profil() {
+    }
 
     public Long getId() {
         return id;
@@ -118,7 +163,7 @@ public class Profil {
         this.apropos = apropos;
     }
 
-    public Profil(String nom, String prenom, String pays, String ville, String codePostal, String email, String telephone, Calendar dateNaissance, String titre, String apropos) {
+    public Profil(String nom, String prenom, String pays, String ville, String codePostal, String email, String telephone, Calendar dateNaissance, String titre, String apropos, String status) {
         this.nom = nom;
         this.prenom = prenom;
         this.pays = pays;
@@ -129,7 +174,15 @@ public class Profil {
         this.dateNaissance = dateNaissance;
         this.titre = titre;
         this.apropos = apropos;
+        this.status = status;
+    }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
