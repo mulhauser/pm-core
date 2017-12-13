@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card">
+    <div class="hovereffect">
+      <img class="img-responsive" name="imageEvent"
+           *ngIf="offreDetail"
+           src="{{ offreDetail.photo }}"
+           style="height: 220px; width: 100%">
+      <div class="overlay">
+      </div>
+    </div>
+    <div class="card-block">
+      <h4 class="card-title">{{offreDetail.title}}</h4>
+      <h3 class="card-title">{{offreDetail.societe}}</h3>
+      <p class="card-text"><i class="ng-icon fa fa-calendar" aria-hidden="true"></i> {{offreDetail.date}}</p>
+      <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> {{offreDetail.location}}</p>
+      <p> {{offreDetail.description}}</p>
+    </div>
+  </div>
+</div>

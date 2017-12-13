@@ -34,8 +34,7 @@ export class AppDataService implements InMemoryDbService {
         location: 'Nancy',
         date: '2017-09-10',
         societe: 'nonoon Company',
-        photo: 'https://pepseo.fr/wp-content/uploads/2015/03/Live-Events-01-1024x643.jpg'
-      },
+        photo: '../../assets/societe_anonyme.jpg'      },
       {
         id: 3,
         title: 'this is a title 3',

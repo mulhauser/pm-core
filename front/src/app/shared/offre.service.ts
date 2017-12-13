@@ -33,6 +33,7 @@ export class OffreService {
     const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList));
     return { headers };
   }
+
   /** Getter function who return an observable of the offres
    *
    * @returns {Observable<any>}
@@ -43,6 +44,13 @@ export class OffreService {
       .filter( _ => !!_)
       .defaultIfEmpty([]);
   }
+
+
+   getOffreDetails(id: string): Observable<any> {
+    return this.http.get(this._backendURL.onePeople.replace(':id', id), this._backendURL)
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
+      }
 */
 
   getOffres(): Observable<any> {
@@ -50,4 +58,14 @@ export class OffreService {
       .filter( _ => !!_)
       .defaultIfEmpty([]);
   }
+
+
+
+  getOffreDetails(id: string): Observable<any> {
+        const url = `${this.offresUrl}/${id}`;
+        return this.http.get<OffreModel>(url)
+           .filter( _ => !!_)
+          .defaultIfEmpty([]);
+      }
+
 }

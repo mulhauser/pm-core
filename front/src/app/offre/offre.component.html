@@ -2,7 +2,7 @@
   <td>
     <div class="row">
       <div class="col-10">
-        <a class="col-12" [routerLink]="['/offre/']">
+        <a class="col-12" [routerLink]="['/offre/', offreObj.id]">
           <h3>{{offreObj.title}}</h3>
         </a>
         <div class="col-12">
@@ -14,7 +14,7 @@
           {{offreObj.societe}}
         </div>
         <div class="col-12">
-          <img class="img-fluid"  [src]="offreObj.photo" alt="logo">
+          <img class="img-fluid"  *ngIf="offreObj" src="{{ offreObj.photo }}" alt="logo">
         </div>
       </div>
     </div>

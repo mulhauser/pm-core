@@ -16,6 +16,7 @@ import {AppDataService} from './shared/app-data';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { OffreComponent } from './offre/offre.component';
 import {OffreService} from './shared/offre.service';
+import { OffreDetailComponent } from './shared/offre-detail/offre-detail.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {OffreService} from './shared/offre.service';
     TestComponent,
     OffresComponent,
     OffreComponent,
+    OffreDetailComponent,
   ],
   imports: [
     BrowserModule,
