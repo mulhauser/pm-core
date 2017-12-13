@@ -1,0 +1,118 @@
+<!--
+<form #f="ngForm">
+  <div class="modal-header header">
+    <h3>Modify your informations</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="container">
+      <div >
+
+
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <input type="text" class="form-control" id="firstname"
+                 required
+                 minlength="1"
+                 [(ngModel)]="model.firstname"
+                 name="firstname"
+                 #firstname="ngModel">
+          <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+               class="alert alert-danger">
+            <div *ngIf="firstname.errors.required">
+              firstname is required.
+            </div>
+            <div *ngIf="firstname.errors.minlength">
+              firstname must be at least 1 character long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastname">Lastname</label>
+          <input type="text" class="form-control" id="lastname"
+                 required
+                 minlength="2"
+                 [(ngModel)]="model.lastname"
+                 name="lastname"
+                 #lastname="ngModel">
+          <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+               class="alert alert-danger">
+            <div *ngIf="lastname.errors.required">
+              Description is required.
+            </div>
+            <div *ngIf="lastname.errors.minlength">
+              title must be at least 2 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="photo">URL of your picture</label>
+          <input class="form-control" required type="url" value="" id="photo" name="photo"
+                 [(ngModel)]="model.photo" #photo="ngModel">
+
+          <div  *ngIf="photo.invalid && (photo.dirty || photo.touched)"
+                class="alert alert-danger">
+            <div *ngIf="photo.errors.required">
+              Photo is required.
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" id="phone"
+                 required
+                 minlength="1"
+                 [(ngModel)]="model.phone"
+                 name="phone"
+                 #phone="ngModel">
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+               class="alert alert-danger">
+            <div *ngIf="phone.errors.required">
+              phone is required.
+            </div>
+            <div *ngIf="phone.errors.minlength">
+              phone must be at least 1 character long.
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div>
+            <input class="form-control"
+                   type="email"
+                   value=""
+                   name="email"
+                   required
+                   email
+                   placeholder="email"
+                   id="email"
+                   [(ngModel)]="model.email"
+                   #email="ngModel"
+            >
+          </div>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"
+               class="alert alert-danger">
+            <div *ngIf="email.errors.required">
+              email is required.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="!f.form.valid" (click)="submit()">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+  </div>
+</form>
+
+-->
+
+<p>coucou</p>

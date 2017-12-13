@@ -17,6 +17,12 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { OffreComponent } from './offre/offre.component';
 import {OffreService} from './shared/offre.service';
 import { OffreDetailComponent } from './shared/offre-detail/offre-detail.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { ModalInscriptionCandidatComponent } from './shared/modal-inscription-candidat/modal-inscription-candidat.component';
+import { FormInscriptionCandidatComponent } from './shared/form-inscription-candidat/form-inscription-candidat.component';
+import { CandidatComponent } from './candidat/candidat.component';
+import {CandidatService} from './shared/candidat.service';
+import {RecruteurService} from './shared/recruteur.service';
 
 
 @NgModule({
@@ -29,6 +35,10 @@ import { OffreDetailComponent } from './shared/offre-detail/offre-detail.compone
     OffresComponent,
     OffreComponent,
     OffreDetailComponent,
+    InscriptionComponent,
+    ModalInscriptionCandidatComponent,
+    FormInscriptionCandidatComponent,
+    CandidatComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,8 +48,8 @@ import { OffreDetailComponent } from './shared/offre-detail/offre-detail.compone
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],
-  providers: [OffreService],
+  providers: [OffreService, CandidatService, RecruteurService],
   bootstrap: [AppComponent],
-  entryComponents: []
+  entryComponents: [ModalInscriptionCandidatComponent]
 })
 export class AppModule { }
