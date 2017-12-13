@@ -12,6 +12,10 @@ import { TestComponent } from './test/test.component';
 import {TestService} from './shared/test.service';
 import {HttpClientModule} from '@angular/common/http';
 import { OffresComponent } from './offres/offres.component';
+import {AppDataService} from './shared/app-data';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import { OffreComponent } from './offre/offre.component';
+import {OffreService} from './shared/offre.service';
 
 
 @NgModule({
@@ -22,6 +26,7 @@ import { OffresComponent } from './offres/offres.component';
     FooterComponent,
     TestComponent,
     OffresComponent,
+    OffreComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,8 +34,9 @@ import { OffresComponent } from './offres/offres.component';
     AngularFontAwesomeModule,
     NgbModule.forRoot(),
     HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],
-  providers: [TestService],
+  providers: [OffreService],
   bootstrap: [AppComponent],
   entryComponents: []
 })
