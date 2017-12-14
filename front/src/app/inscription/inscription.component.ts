@@ -34,7 +34,6 @@ export class InscriptionComponent implements OnInit {
    */
   showDialogInscriptionCandidat() {
 // set dialog status
-    console.log('show dialog');
     this._dialogStatus = 'active';
     // open modal
     const dialogRef = this._eventsDialog.open(ModalInscriptionCandidatComponent, {

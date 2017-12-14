@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import {isNullOrUndefined} from 'util';
+import {CandidatModel} from '../../candidat/candidat.model';
 
 @Component({
   selector: 'app-modal-inscription-candidat',
@@ -15,6 +17,9 @@ export class ModalInscriptionCandidatComponent implements OnInit {
   constructor(private _activeModal: NgbActiveModal) { }
 
   ngOnInit() {
+    if ( isNullOrUndefined(this._data)) {
+      this._data = new CandidatModel('', '', '', '', '', '');
+    }
   }
 
   /**

@@ -1,7 +1,7 @@
-<!--
+
 <form #f="ngForm">
   <div class="modal-header header">
-    <h3>Modify your informations</h3>
+    <h3>Inscris toi :)</h3>
   </div>
 
   <div class="modal-body">
@@ -10,47 +10,87 @@
 
 
         <div class="form-group">
-          <label for="firstname">Firstname</label>
-          <input type="text" class="form-control" id="firstname"
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom"
                  required
                  minlength="1"
-                 [(ngModel)]="model.firstname"
-                 name="firstname"
-                 #firstname="ngModel">
-          <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+                 [(ngModel)]="model.nom"
+                 name="nom"
+                 placeholder="Your lastname"
+                 #nom="ngModel">
+          <div *ngIf="nom.invalid && (nom.dirty || nom.touched)"
                class="alert alert-danger">
-            <div *ngIf="firstname.errors.required">
-              firstname is required.
+            <div *ngIf="nom.errors.required">
+              nom is required.
             </div>
-            <div *ngIf="firstname.errors.minlength">
-              firstname must be at least 1 character long.
+            <div *ngIf="nom.errors.minlength">
+              nom must be at least 1 character long.
             </div>
           </div>
         </div>
 
+
+
+
         <div class="form-group">
-          <label for="lastname">Lastname</label>
-          <input type="text" class="form-control" id="lastname"
+          <label for="prenom">Prenom</label>
+          <input type="text" class="form-control" id="prenom"
                  required
-                 minlength="2"
-                 [(ngModel)]="model.lastname"
-                 name="lastname"
-                 #lastname="ngModel">
-          <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+                 minlength="1"
+                 [(ngModel)]="model.prenom"
+                 name="prenom"
+                 placeholder="Your firstname"
+                 #prenom="ngModel">
+          <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)"
                class="alert alert-danger">
-            <div *ngIf="lastname.errors.required">
-              Description is required.
+            <div *ngIf="prenom.errors.required">
+              prenom is required.
             </div>
-            <div *ngIf="lastname.errors.minlength">
-              title must be at least 2 characters long.
+            <div *ngIf="prenom.errors.minlength">
+              prenom must be at least 1 character long.
             </div>
           </div>
         </div>
+
+
+
+
+
+        <div class="form-group">
+          <label for="date_naissance">Date de naissance</label>
+          <div>
+            <input class="form-control"
+                   required
+                   type="date"
+                   value=""
+                   id="date_naissance"
+                   name="date_naissance"
+                   [ngModel]="model.date_naissance | date:'yyyy-MM-dd':'':'fr'"
+                   #date_naissance="ngModel"
+            >
+          </div>
+          <div *ngIf="date_naissance.invalid && (date_naissance.dirty || date_naissance.touched)"
+               class="alert alert-danger">
+            <div *ngIf="date_naissance.errors.required">
+              Date de naissance is required.
+            </div>
+          </div>
+        </div>
+
+
+
+
 
         <div class="form-group">
           <label for="photo">URL of your picture</label>
-          <input class="form-control" required type="url" value="" id="photo" name="photo"
-                 [(ngModel)]="model.photo" #photo="ngModel">
+          <input class="form-control" required
+                 type="url"
+                 value=""
+                 id="photo"
+                 name="photo"
+                 placeholder="The URL of your picture"
+                 [(ngModel)]="model.photo"
+                 #photo="ngModel">
 
           <div  *ngIf="photo.invalid && (photo.dirty || photo.touched)"
                 class="alert alert-danger">
@@ -60,25 +100,6 @@
           </div>
         </div>
 
-
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="text" class="form-control" id="phone"
-                 required
-                 minlength="1"
-                 [(ngModel)]="model.phone"
-                 name="phone"
-                 #phone="ngModel">
-          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
-               class="alert alert-danger">
-            <div *ngIf="phone.errors.required">
-              phone is required.
-            </div>
-            <div *ngIf="phone.errors.minlength">
-              phone must be at least 1 character long.
-            </div>
-          </div>
-        </div>
 
 
         <div class="form-group">
@@ -90,7 +111,7 @@
                    name="email"
                    required
                    email
-                   placeholder="email"
+                   placeholder="Email"
                    id="email"
                    [(ngModel)]="model.email"
                    #email="ngModel"
@@ -103,6 +124,83 @@
             </div>
           </div>
         </div>
+
+
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div>
+            <input class="form-control"
+                   type="password"
+                   value=""
+                   name="password"
+                   required
+                   password
+                   minlength="3"
+                   placeholder="password"
+                   id="password"
+                   [(ngModel)]="model.password"
+                   #password="ngModel"
+            >
+          </div>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)"
+               class="alert alert-danger">
+            <div *ngIf="password.errors.required">
+              password is required.
+            </div>
+            <div *ngIf="password.errors.minlength">
+              prenom must be at least 1 character long.
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="location">Localisation</label>
+          <input type="text" class="form-control" id="location"
+                 required
+                 minlength="1"
+                 [(ngModel)]="model.location"
+                 name="location"
+                 placeholder="Where do you live"
+                 #location="ngModel">
+          <div *ngIf="location.invalid && (location.dirty || location.touched)"
+               class="alert alert-danger">
+            <div *ngIf="location.errors.required">
+              location is required.
+            </div>
+            <div *ngIf="location.errors.minlength">
+              location must be at least 1 character long.
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <input type="text" class="form-control" id="bio"
+                 required
+                 minlength="20"
+                 [(ngModel)]="model.bio"
+                 placeholder="Tell us more about you"
+                 name="bio"
+                 #bio="ngModel">
+          <div *ngIf="bio.invalid && (bio.dirty || bio.touched)"
+               class="alert alert-danger">
+            <div *ngIf="bio.errors.required">
+              bio is required.
+            </div>
+            <div *ngIf="bio.errors.minlength">
+              bio must be at least 20 character long.
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
     </div>
   </div>
@@ -113,6 +211,4 @@
   </div>
 </form>
 
--->
 
-<p>coucou</p>

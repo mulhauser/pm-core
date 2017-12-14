@@ -1,19 +1,14 @@
 export class CandidatModel {
-  /**
-   * constructor for the model component
-   * @param {string} firstname
-   * @param {string} lastname
-   * @param {string} email
-   * @param {string} phone
-   * @param {Event[]} events
-   * @param {string} id
-   * @param {string} photo
-   */
+
   constructor(
-    public firstname: string,
-    public lastname: string,
+    public nom: string,
+    public location: string,
+    public date_naissance: string,
+    public prenom: string,
     public email: string,
-    public phone: string,
+    public password: string,
+    public statusActuel?: string,
+    public bio?: string,
     public id?: string,
     public photo?: string
   ) {}

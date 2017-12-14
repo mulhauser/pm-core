@@ -23,6 +23,9 @@ import { FormInscriptionCandidatComponent } from './shared/form-inscription-cand
 import { CandidatComponent } from './candidat/candidat.component';
 import {CandidatService} from './shared/candidat.service';
 import {RecruteurService} from './shared/recruteur.service';
+import { CandidatsComponent } from './candidats/candidats.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -39,12 +42,14 @@ import {RecruteurService} from './shared/recruteur.service';
     ModalInscriptionCandidatComponent,
     FormInscriptionCandidatComponent,
     CandidatComponent,
+    CandidatsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
     NgbModule.forRoot(),
+    FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],

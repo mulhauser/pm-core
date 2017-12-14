@@ -48,7 +48,41 @@ export class AppDataService implements InMemoryDbService {
         photo: '../../assets/societe_anonyme.jpg'
       }
     ];
-    return { offres };
+    let candidats = [
+      {
+        id: 1,
+        nom: 'nom1',
+        prenom: 'prenom1',
+        bio: 'this is the full descriptionb lablabla' +
+        'blab labla' +
+        'blablabla' +
+        'blablabla' +
+        'blab labla' +
+        'blablab lablablabl ablab lablabla blabla' +
+        'blablablablablabla',
+        location: 'Nancy',
+        date_naissance: '2017-09-10',
+        statusActuel: 'etudiant',
+        password: 'admin',
+        photo: '../../assets/candidat.jpg',
+        email: 'aze@gmail.com'
+      },
+      {
+        id: 2,
+        nom: 'nom2',
+        prenom: 'prenom2',
+        bio: 'this is the full descriptionb lablabla' +
+        'blab labla',
+        location: 'Paris',
+        date_naissance: '2017-09-10',
+        statusActuel: 'Chômeur',
+        password: 'admin',
+        photo: '../../assets/candidat.jpg',
+        email: 'azazaza@gmail.com'
+
+      }
+    ];
+    return { offres, candidats };
   }
 }
 

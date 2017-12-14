@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-candidat',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidatComponent implements OnInit {
 
+  private candidatObj: any;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  @Input('candidatObj')
+  set candidat (candidatObj: any){
+    this.candidatObj = candidatObj;
+  }
 }
