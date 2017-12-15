@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {CandidatModel} from '../candidat/candidat.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {forEach} from '@angular/router/src/utils/collection';
 
 const jSonOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
@@ -14,6 +15,7 @@ export class CandidatService {
    * @type {string}
    */
   private candidatUrl = 'api/candidats';
+  private emailPotentiel: any;
 
   constructor(private http: HttpClient) { }
 
@@ -46,6 +48,33 @@ export class CandidatService {
       .filter( _ => !!_)
       .defaultIfEmpty([]);
   }
+
+  getEmail(infosMail: string): boolean {
+    // this.http.get<CandidatModel[]>(this.candidatUrl)
+    //  .filter( _ => !!_)
+   //   .defaultIfEmpty([])
+  //    .subscribe((candidats: any) => this.emailPotentiel = candidats)
+      // .forEach(email => {
+ //   if (this.emailPotentiel === infosMail) {
+//      console.log('BINGO');
+
+   //   return true;
+ //   }
+    //    console.log('email: ' + this.emailPotentiel);
+
+     //   if (this.emailPotentiel === infosMail) {
+     //     return true;
+     //   }
+    //  });
+    return false;
+  }
+
+
+
+
+
+
+
 
 
 }

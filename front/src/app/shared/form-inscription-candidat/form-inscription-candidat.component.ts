@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CandidatService} from '../candidat.service';
 
 @Component({
   selector: 'app-form-inscription-candidat',
@@ -13,7 +14,7 @@ export class FormInscriptionCandidatComponent implements OnInit {
   private _isUpdateMode: boolean;
   private _model: any = {};
 
-  constructor() {
+  constructor(private _candidatService: CandidatService) {
     this._submit$ = new EventEmitter();
     this._cancel$ = new EventEmitter();
   }
@@ -58,6 +59,14 @@ export class FormInscriptionCandidatComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+
+  verificationEmailExists(email) {
+    console.log(email);
+    if (this._candidatService.getEmail(email)) {
+      console.log('match fount');
+    }
   }
 
 }

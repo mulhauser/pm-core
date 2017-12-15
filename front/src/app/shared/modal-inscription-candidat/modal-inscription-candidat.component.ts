@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {isNullOrUndefined} from 'util';
 import {CandidatModel} from '../../candidat/candidat.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-modal-inscription-candidat',
@@ -14,7 +15,7 @@ export class ModalInscriptionCandidatComponent implements OnInit {
 
   private _data: any;
 
-  constructor(private _activeModal: NgbActiveModal) { }
+  constructor(private _activeModal: NgbActiveModal, private _router: Router) { }
 
   ngOnInit() {
     if ( isNullOrUndefined(this._data)) {
@@ -52,5 +53,6 @@ export class ModalInscriptionCandidatComponent implements OnInit {
    */
   onSave(event: any) {
     this._activeModal.close(Observable.of(event));
+    this._router.navigate(['candidats']);
   }
 }
