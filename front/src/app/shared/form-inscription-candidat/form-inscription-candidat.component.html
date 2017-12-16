@@ -115,6 +115,7 @@
                    id="email"
                    [(ngModel)]="model.email"
                    #email="ngModel"
+                   (ngModelChange)="verificationEmailExists($event)"
             >
           </div>
           <div *ngIf="email.invalid && (email.dirty || email.touched)"
