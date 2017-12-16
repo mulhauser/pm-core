@@ -25,6 +25,9 @@ import {CandidatService} from './shared/candidat.service';
 import {RecruteurService} from './shared/recruteur.service';
 import { CandidatsComponent } from './candidats/candidats.component';
 import { FormsModule } from '@angular/forms';
+import { ModalConnexionCandidatComponent } from './shared/modal-connexion-candidat/modal-connexion-candidat.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { FormConnexionCandidatComponent } from './shared/form-connexion-candidat/form-connexion-candidat.component';
 
 
 
@@ -41,8 +44,14 @@ import { FormsModule } from '@angular/forms';
     InscriptionComponent,
     ModalInscriptionCandidatComponent,
     FormInscriptionCandidatComponent,
+    ConnexionComponent,
+    ModalConnexionCandidatComponent,
+    FormConnexionCandidatComponent,
     CandidatComponent,
     CandidatsComponent,
+    ModalConnexionCandidatComponent,
+    ConnexionComponent,
+    FormConnexionCandidatComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +64,6 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [OffreService, CandidatService, RecruteurService],
   bootstrap: [AppComponent],
-  entryComponents: [ModalInscriptionCandidatComponent]
+  entryComponents: [ModalInscriptionCandidatComponent, ModalConnexionCandidatComponent]
 })
 export class AppModule { }
