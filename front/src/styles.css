@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 .loader {
   position: relative;
   margin: 0 auto;
