@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {CandidatModel} from '../candidat/candidat.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {forEach} from '@angular/router/src/utils/collection';
+import {CandidatComponent} from '../candidat/candidat.component';
 
 const jSonOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
@@ -15,9 +16,12 @@ export class CandidatService {
    * @type {string}
    */
   private candidatUrl = 'api/candidats';
-  private candidatsAll: any;
+  private emailPotentiel: any;
+  private _candidats: any[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this._candidats = [];
+  }
 
   addCandidat(candidat: CandidatModel): Observable<any> {
     return this.http.post<CandidatModel>(this.candidatUrl, candidat, jSonOptions);
@@ -49,35 +53,15 @@ export class CandidatService {
       .defaultIfEmpty([]);
   }
 
-  getEmail(infosMail: string): boolean {
-
-
-      if(this.http.get<CandidatModel>(this.candidatUrl
-        .replace('email', infosMail), jSonOptions)) {
-        console.log('oui');
-      }else {
-        console.log('non');
+  getEmailPourVerification(infosMail: string): boolean {
+    this.getCandidats()
+      .subscribe((candidats: any[]) => this._candidats = candidats);
+    for (let i = 0; i < this._candidats.length; i++) {
+      if (this._candidats[i].email === infosMail) {
+        // console.log('Match fond email not valid');
+        return true;
       }
-      
-
-
-    //   //.subscribe((candidats: any) => this.candidatsAll = candidats)
-    //   .forEach(email => {
-    //     console.log('azeaze' + email);
-    //     infosMail = this.candidatsAll.email
-    // });
-      // .forEach(email => {
- //   if (this.emailPotentiel === infosMail) {
-//      console.log('BINGO');
-
-   //   return true;
- //   }
-    //    console.log('email: ' + this.emailPotentiel);
-
-     //   if (this.emailPotentiel === infosMail) {
-     //     return true;
-     //   }
-    //  });
+    }
     return false;
   }
 }

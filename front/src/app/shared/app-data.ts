@@ -78,7 +78,7 @@ export class AppDataService implements InMemoryDbService {
         statusActuel: 'Chômeur',
         password: 'admin',
         photo: '../../assets/candidat.jpg',
-        email: 'azazaza@gmail.com'
+        email: 'aqw@gmail.com'
 
       }
     ];
