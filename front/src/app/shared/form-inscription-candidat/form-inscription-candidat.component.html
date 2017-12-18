@@ -124,6 +124,9 @@
               email is required.
             </div>
           </div>
+          <div *ngIf="verificationEmailExists(email.value) && (email.dirty || email.touched)"
+               class="alert alert-danger"
+          >Email exists in db, choose another one</div>
         </div>
 
 

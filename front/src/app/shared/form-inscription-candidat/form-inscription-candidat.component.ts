@@ -57,16 +57,17 @@ export class FormInscriptionCandidatComponent implements OnInit {
     this._submit$.emit(this._model);
   }
 
-
   ngOnInit() {
   }
 
 
-  verificationEmailExists(email) {
-    console.log(email);
-    if (this._candidatService.getEmail(email)) {
-      console.log('match fount');
+  verificationEmailExists(email): boolean {
+   // console.log(email);
+    if (this._candidatService.getEmailPourVerification(email)) {
+     // console.log('match fount');
+      return true;
     }
+    return false;
   }
 
 }
