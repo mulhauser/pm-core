@@ -65,7 +65,7 @@ export class FormInscriptionCandidatComponent implements OnInit {
   verificationEmailExists(email) {
     console.log(email);
     if (this._candidatService.getEmail(email)) {
-      console.log('match fount');
+      console.log('match found');
     }
   }
 

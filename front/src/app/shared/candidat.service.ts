@@ -15,7 +15,7 @@ export class CandidatService {
    * @type {string}
    */
   private candidatUrl = 'api/candidats';
-  private emailPotentiel: any;
+  private candidatsAll: any;
 
   constructor(private http: HttpClient) { }
 
@@ -39,7 +39,7 @@ export class CandidatService {
       .defaultIfEmpty([]);
   }
 
-  updateEvent (candidat: CandidatModel): Observable<any> {
+  updateCandidat (candidat: CandidatModel): Observable<any> {
     return this.http.put(this.candidatUrl, event, jSonOptions);
   }
 
@@ -50,10 +50,22 @@ export class CandidatService {
   }
 
   getEmail(infosMail: string): boolean {
-    // this.http.get<CandidatModel[]>(this.candidatUrl)
-    //  .filter( _ => !!_)
-   //   .defaultIfEmpty([])
-  //    .subscribe((candidats: any) => this.emailPotentiel = candidats)
+
+
+      if(this.http.get<CandidatModel>(this.candidatUrl
+        .replace('email', infosMail), jSonOptions)) {
+        console.log('oui');
+      }else {
+        console.log('non');
+      }
+      
+
+
+    //   //.subscribe((candidats: any) => this.candidatsAll = candidats)
+    //   .forEach(email => {
+    //     console.log('azeaze' + email);
+    //     infosMail = this.candidatsAll.email
+    // });
       // .forEach(email => {
  //   if (this.emailPotentiel === infosMail) {
 //      console.log('BINGO');
@@ -68,13 +80,5 @@ export class CandidatService {
     //  });
     return false;
   }
-
-
-
-
-
-
-
-
-
 }
+
