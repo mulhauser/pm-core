@@ -28,6 +28,12 @@ java -jar target/back-swarm.jar
 
 Après il faut aller sur [[Localhost]](http://localhost:8080/pm/rest/user) pour voir la réponse du serveur.
 Les dépendances jboss sont supprimées sinon on peut pas accéder aux routes, il faut voir si on en a vraiment besoin
+
+### Présentation live de l'évolution du projet
+Installer Gource pour taper la commande suivante :
+```
+gource --logo .\front\src\assets\logo_small.png --title "iMatchProfil - Croissants" --background 565656 --font-size 20 --font-colour 000000 --hide filenames --bloom-intensity 0.6 --camera-mode overview --background-image bg_pres.jpg
+```
  
 ### Emails des étudiants : :+1:
 thomas2.denis@gmail.com (Principal)
