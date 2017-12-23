@@ -5,12 +5,15 @@
 
 export const environment = {
   production: false,
+  /** SI ON VEUR RELIER AU BACKEND
   backend: {
     protocol: 'http',
     host: '127.0.0.1',
     port: '9090',
     endpoints: {
-      test: '/rest/utilisateur'
+      test: '/rest/utilisateur',
+      allOffres: 'rest/offres'
     }
   }
+   **/
 };

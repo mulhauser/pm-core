@@ -14,7 +14,7 @@ export class TestService {
 
 
   constructor(private http: HttpClient) {
-    this._backendURL = {};
+   /** this._backendURL = {};
     // build backend base url
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
     if (environment.backend.port) {
@@ -22,6 +22,7 @@ export class TestService {
     }
     // build all backend urls
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
+    */
   }
   getTest(): Observable<any> {
     return this.http.get(this._backendURL.test, this._options())

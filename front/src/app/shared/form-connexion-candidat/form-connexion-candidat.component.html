@@ -1,0 +1,75 @@
+
+<form #f="ngForm">
+  <div class="modal-header header">
+    <h3>Connecte toi pour passer à la suite</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="container">
+      <div >
+
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div>
+            <input class="form-control"
+                   type="email"
+                   value=""
+                   name="email"
+                   required
+                   email
+                   placeholder="Votre email c'est..."
+                   id="email"
+                   [(ngModel)]="model.email"
+                   #email="ngModel"
+            >
+          </div>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"
+               class="alert alert-danger">
+            <div *ngIf="email.errors.required">
+              L'email est requis
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <div>
+            <input class="form-control"
+                   type="password"
+                   value=""
+                   name="password"
+                   required
+                   password
+                   minlength="3"
+                   placeholder="Votre mot de passe c'est..."
+                   id="password"
+                   [(ngModel)]="model.password"
+                   #password="ngModel"
+            >
+          </div>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)"
+               class="alert alert-danger">
+            <div *ngIf="password.errors.required">
+              Le mot de passe est requis
+            </div>
+            <div *ngIf="password.errors.minlength">
+              Le mot de passe est de longueur 3 au moins
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="!f.form.valid" (click)="submit()">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+  </div>
+</form>
+
+
