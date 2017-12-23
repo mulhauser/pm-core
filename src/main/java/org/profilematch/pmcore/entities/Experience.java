@@ -8,43 +8,50 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "experience")
-@XmlRootElement
 public class Experience implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
-    @Basic(optional = false)
-    @NotNull
+
     @Column(name = "type_contrat")
     private String typeContrat;
 
-    @Basic(optional = false)
-    @NotNull
+
     @Column(name = "date_debut")
     private Date dateDebut;
 
-    @Basic(optional = false)
-    @NotNull
+
     @Column(name = "date_fin")
     private Date dateFin;
 
-    @Basic(optional = false)
-    @NotNull
+
     @Column(name = "description")
     private String description;
 
-    @NotNull
     @Column(name ="poste_occuper")
     private String posteOccuper;
 
+    @ManyToOne
+    @JoinColumn(name = "id_candidat")
+    private Candidat candidat;
+
+    /*
+    @ManyToOne
+    @JoinColumn(name = "id_employeur")
+    private Employeur employeur;
+
+     public Employeur getEmployeur() {
+        return employeur;
+    }
+
+    public void setEmployeur(Employeur employeur) {
+        this.employeur = employeur;
+    }
+
+    */
 
     public Experience(String typeContrat, Date dateDebut, Date dateFin, String description, String posteOccuper){
         this.typeContrat = typeContrat;
@@ -54,9 +61,6 @@ public class Experience implements Serializable {
         this.posteOccuper = posteOccuper;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public Long getId() {
         return id;
@@ -105,6 +109,17 @@ public class Experience implements Serializable {
     public void setPosteOccuper(String posteOccuper) {
         this.posteOccuper = posteOccuper;
     }
+
+
+    public Candidat getCandidat() {
+        return candidat;
+    }
+
+    public void setCandidat(Candidat candidat) {
+        this.candidat = candidat;
+    }
+
+
 
     @Override
     public boolean equals(Object object) {
