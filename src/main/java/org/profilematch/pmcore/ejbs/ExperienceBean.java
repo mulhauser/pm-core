@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Stateless
 @LocalBean
@@ -19,6 +20,14 @@ public class ExperienceBean {
 
     public void ajouterExperience(Experience e){
         em.persist(e);
+    }
+
+    public Experience getExperience(String id){
+        return em.find(Experience.class, id);
+    }
+
+    public List<Experience> getExperiences(){
+        return em.createNamedQuery("Experience.findAll", Experience.class).getResultList();
     }
 
     public void updateExperience(Experience e){

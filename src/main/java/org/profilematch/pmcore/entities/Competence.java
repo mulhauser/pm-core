@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Competence.findAll", query = "SELECT u FROM Competence u")
+})
 public class Competence implements Serializable {
 
 
