@@ -150,5 +150,12 @@
             <artifactId>json</artifactId>
             <version>20160810</version>
         </dependency>
+
+        <!-- TEST SWAGGER -->
+        <dependency>
+            <groupId>com.github.phillip-kruger</groupId>
+            <artifactId>apiee-core</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
 </project>

@@ -1,5 +1,6 @@
 package org.profilematch.pmcore.config;
 
+
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
@@ -26,6 +27,8 @@ public class ApplicationConfig extends Application {
         resources.add(CorsFeature.class);
         resources.add(org.profilematch.pmcore.rest.UtilisateurRest.class);
         resources.add(org.profilematch.pmcore.rest.CompetenceRest.class);
+
+        resources.add(com.github.phillipkruger.apiee.ApieeService.class);
     }
     
 }
