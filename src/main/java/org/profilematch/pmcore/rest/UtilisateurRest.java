@@ -3,7 +3,9 @@ package org.profilematch.pmcore.rest;
 /**
  * @author remy
  */
+import io.swagger.annotations.Api;
 import org.profilematch.pmcore.ejbs.UtilisateursBean;
+import org.profilematch.pmcore.entities.Utilisateur;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -15,17 +17,12 @@ import javax.ws.rs.core.Response;
  *
  * @author Remy
  */
-@Path("utilisateur")
+@Path("utilisateur/")
+@Api(value = "Utilisateur service")
 public class UtilisateurRest {
 
     @EJB
     private UtilisateursBean ue;
-
-    @GET
-    @Produces("text/plain")
-    public Response doGet() {
-        return Response.ok("hello world").build();
-    }
 
     @GET
     @Path("get/{email}")
@@ -34,6 +31,43 @@ public class UtilisateurRest {
         return Response.ok(ue.getUtilisateur(email)).build();
     }
 
+    @POST
+    @Consumes("application/json")
+    @Path("inscrire")
+    public Response InscrireUtilisateur(Utilisateur u) {
+
+        ue.inscrireUtilisateur(u);
+        return Response.ok().build();
+    }
+
+
+    @PUT
+    @Consumes("application/json")
+    @Path("modifier/")
+    public Response ModifierUtilisateur(Utilisateur u) {
+        ue.modifierUtilisateur(u);
+        return Response.ok().build();
+    }
+
+    @GET
+    @Path("get")
+    @Produces("application/json")
+    public Response GetUtilisateurs() {
+        return Response.ok(ue.getUtilisateurs()).build();
+    }
+
+    @PUT
+    @Path("getUtilisateur")
+    @Produces("application/json")
+    public Response GetUtilisateur(Utilisateur u) {
+        return Response.ok(ue.getUtilisateurByEmail(u.getEmail())).build();
+    }
+
+    @GET
+    @Path("connexion/{email}/{hache}")
+    @Produces("application/json")
+    public Response connexion(@PathParam("email") String email, @PathParam("hache") String hache) {
+        return Response.ok(ue.connexion(email, hache)).build();
+    }
 
 }
-

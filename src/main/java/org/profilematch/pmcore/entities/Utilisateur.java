@@ -44,7 +44,7 @@ public class Utilisateur implements Serializable {
     @Column(name = "type")
     private String type;
     @Column(name = "tokenacces")
-    private String tokenacces;
+        private String tokenacces;
 
     public String getTokenacces() {
         return tokenacces;

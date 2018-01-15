@@ -67,7 +67,7 @@ export class ConnexionComponent implements OnInit {
    * @private
    */
   private _connexionCandidat(candidat): Observable<any[]> {
-    return this._candidatService.addCandidat(candidat).flatMap(_ => this._candidatService.getCandidatDetails(candidat.id));
+    return null;
   }
 
 }
