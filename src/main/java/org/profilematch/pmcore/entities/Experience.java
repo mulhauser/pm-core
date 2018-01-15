@@ -1,6 +1,9 @@
 package org.profilematch.pmcore.entities;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,6 +11,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Experience.findAll", query = "SELECT u FROM Experience u")
+})
 public class Experience implements Serializable {
 
     @Id
@@ -61,6 +67,8 @@ public class Experience implements Serializable {
         this.posteOccuper = posteOccuper;
     }
 
+    public Experience() {
+    }
 
     public Long getId() {
         return id;

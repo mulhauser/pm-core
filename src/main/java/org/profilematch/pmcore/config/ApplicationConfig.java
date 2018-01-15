@@ -27,7 +27,7 @@ public class ApplicationConfig extends Application {
         resources.add(CorsFeature.class);
         resources.add(org.profilematch.pmcore.rest.UtilisateurRest.class);
         resources.add(org.profilematch.pmcore.rest.CompetenceRest.class);
-
+        resources.add(org.profilematch.pmcore.rest.ExperienceRest.class);
         resources.add(com.github.phillipkruger.apiee.ApieeService.class);
     }
     

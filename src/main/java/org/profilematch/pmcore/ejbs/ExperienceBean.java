@@ -22,7 +22,7 @@ public class ExperienceBean {
         em.persist(e);
     }
 
-    public Experience getExperience(String id){
+    public Experience getExperience(Long id){
         return em.find(Experience.class, id);
     }
 

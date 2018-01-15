@@ -14,14 +14,14 @@ import javax.ws.rs.core.Response;
  * @author remy
  */
 @Path("competence")
-@Api(value = "Competence service")
+@Api(value = "Competence")
 public class CompetenceRest {
 
     @EJB
     private CompetenceBean competenceBean;
 
     @GET
-    @ApiOperation(value = "Retrieve some competence content", notes= "Return some json to the client")
+    @ApiOperation(value = "Retourne toutes les compétences", notes= "Retourne du json au client")
     @Produces("application/json")
     public Response getAll(){
         // PROBLEME RETOUR AVEC ok(competenceBean.getCompetences())
@@ -30,6 +30,7 @@ public class CompetenceRest {
     }
 
     @GET
+    @ApiOperation(value = "Retourne la compétence demandée", notes="Retourne du json au client")
     @Produces("application/json")
     @Path("{id}")
     public Response getOne(@PathParam("id") String id){
@@ -37,6 +38,7 @@ public class CompetenceRest {
     }
 
     @POST
+    @ApiOperation(value="Permet d'ajouter une compétence selon certains paramètres", notes="Le client envoie du json et le serveur renvoie du json")
     @Consumes("application/json")
     public Response addCompetence(Competence competence){
         /*
@@ -51,6 +53,7 @@ public class CompetenceRest {
     }
 
     @PUT
+    @ApiOperation(value="Modifie la compétence demandée", notes="Retourne une réponse au client")
     @Consumes("application/json")
     public Response modifierCompetence(Competence competence){
         competenceBean.modifierCompetence(competence);
