@@ -30,6 +30,9 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { FormConnexionCandidatComponent } from './shared/form-connexion-candidat/form-connexion-candidat.component';
 import { CandidatDetailComponent } from './candidat-detail/candidat-detail.component';
 import { CandidatModificationComponent } from './candidat-modification/candidat-modification.component';
+import {CompetencesService} from './shared/competences.service';
+import { CompetenceComponent } from './competence/competence.component';
+import { ExperienceComponent } from './experience/experience.component';
 
 
 
@@ -56,6 +59,8 @@ import { CandidatModificationComponent } from './candidat-modification/candidat-
     FormConnexionCandidatComponent,
     CandidatDetailComponent,
     CandidatModificationComponent,
+    CompetenceComponent,
+    ExperienceComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,7 @@ import { CandidatModificationComponent } from './candidat-modification/candidat-
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],
-  providers: [OffreService, CandidatService, RecruteurService],
+  providers: [OffreService, CandidatService, RecruteurService, CompetencesService],
   bootstrap: [AppComponent],
   entryComponents: [ModalInscriptionCandidatComponent, ModalConnexionCandidatComponent]
 })

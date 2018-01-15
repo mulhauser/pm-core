@@ -18,7 +18,7 @@ export class ModalConnexionCandidatComponent implements OnInit {
 
   ngOnInit() {
     if ( isNullOrUndefined(this._data)) {
-      this._data = new CandidatModel('', '', '', '', '', '');
+      this._data = new CandidatModel('', '', +'');
     }
   }
 

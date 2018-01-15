@@ -7,6 +7,7 @@ import {OffreDetailComponent} from './shared/offre-detail/offre-detail.component
 import {InscriptionComponent} from './inscription/inscription.component';
 import {CandidatsComponent} from './candidats/candidats.component';
 import {ConnexionComponent} from "./connexion/connexion.component";
+import {CandidatModificationComponent} from './candidat-modification/candidat-modification.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {ConnexionComponent} from "./connexion/connexion.component";
       { path: 'offres', component: OffresComponent , pathMatch: 'full'},
       { path: 'offre/:id', component: OffreDetailComponent, pathMatch: 'full'},
       { path: 'candidats', component: CandidatsComponent, pathMatch: 'full'},
-//      { path: 'candidat/:id', component: CandidatsComponent, pathMatch: 'full'},
+      { path: 'candidat/:id', component: CandidatsComponent, pathMatch: 'full'},
+      { path: 'candidat/:id/modification', component: CandidatModificationComponent, pathMatch: 'full'},
       { path: 'inscription', component: InscriptionComponent, pathMatch: 'full'},
       { path: 'connexion', component: ConnexionComponent, pathMatch: 'full'},
       { path: 'test', component: TestComponent , pathMatch: 'full'},
