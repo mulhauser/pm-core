@@ -5,24 +5,21 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
+
    // SI ON VEUR RELIER AU BACKEND
-=======
->>>>>>> 409903f62b160029752637c4ef8c8c26667415fa
+
   backend: {
     protocol: 'http',
     host: 'localhost',
     port: '9090',
     endpoints: {
-<<<<<<< HEAD
+
       allCompetences: 'rest/competence',
       specificCompetence: 'rest/competence/:id',
       addCompetence: 'rest/competence',
-      modifyCompetence: 'rest/competence'
-=======
+      modifyCompetence: 'rest/competence',
       addUser: '/rest/utilisateur/inscrire',
       getUser: '/rest/utilisateur/get/:email',
->>>>>>> 409903f62b160029752637c4ef8c8c26667415fa
     }
   }
 };
