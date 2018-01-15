@@ -41,8 +41,6 @@ public class ExperienceRest {
     @ApiOperation(value="Permet d'ajouter une expérience selon certains paramètres", notes="Retourne une réponse au client")
     @Consumes("application/json")
     public Response addExperience(Experience experience){
-        experience.setId(null);
-        experience.setCandidat(null);
         experienceBean.ajouterExperience(experience);
         return Response.ok(experience).build();
     }
@@ -51,7 +49,6 @@ public class ExperienceRest {
     @ApiOperation(value="Modifie l'expérience demandée", notes="Retourne une réponse au client")
     @Consumes("application/json")
     public Response modifierCompetence(Experience experience){
-        experience.setCandidat(null);
         experienceBean.updateExperience(experience);
         return Response.ok(experience).build();
     }

@@ -24,8 +24,6 @@ public class CompetenceRest {
     @ApiOperation(value = "Retourne toutes les compétences", notes= "Retourne du json au client")
     @Produces("application/json")
     public Response getAll(){
-        // PROBLEME RETOUR AVEC ok(competenceBean.getCompetences())
-        //System.out.println(competenceBean.getCompetences().get(0).getDescription());
         return Response.ok(competenceBean.getCompetences()).build();
     }
 
@@ -41,13 +39,6 @@ public class CompetenceRest {
     @ApiOperation(value="Permet d'ajouter une compétence selon certains paramètres", notes="Le client envoie du json et le serveur renvoie du json")
     @Consumes("application/json")
     public Response addCompetence(Competence competence){
-        /*
-        IL FAUT UTILISER LE TYPE COMPETENCE POUR EVITER DE SE FAIRE CHIER A TRAITER LE JSON
-        JSONObject json = new JSONObject(competence);
-        Competence c = new Competence(json.get("nom").toString(), json.get("description").toString());
-        */
-        // AVEC SWAGGER, IL FAUT METTRE L'ID A NULL
-        competence.setId(null);
         competenceBean.ajouterCompetence(competence);
         return Response.ok(competence).build();
     }
