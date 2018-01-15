@@ -5,6 +5,7 @@ import 'rxjs/add/observable/of';
 import {isNullOrUndefined} from 'util';
 import {CandidatModel} from '../../candidat/candidat.model';
 import {Router} from '@angular/router';
+import {UtilisateurModel} from '../../inscription/utilisateur.model';
 
 @Component({
   selector: 'app-modal-inscription-candidat',
@@ -19,7 +20,7 @@ export class ModalInscriptionCandidatComponent implements OnInit {
 
   ngOnInit() {
     if ( isNullOrUndefined(this._data)) {
-      this._data = new CandidatModel('', '', '', '', '', '');
+      this._data = new UtilisateurModel(2, '', '', '', 1000);
     }
   }
 

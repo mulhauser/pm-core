@@ -24,14 +24,8 @@ export class CandidatsComponent implements OnInit {
     this._candidats = candidats;
   }
 
-  private _getAll(): Observable<any[]> {
-    return this._candidatervice.getCandidats()
-      .filter(_ => !!_)
-      .defaultIfEmpty([]);
-  }
 
   ngOnInit() {
-    this._getAll().subscribe((candidats: any[]) => this._candidats = candidats);
   }
 
 }

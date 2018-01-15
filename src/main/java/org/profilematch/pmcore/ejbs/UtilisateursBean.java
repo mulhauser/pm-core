@@ -25,9 +25,11 @@ public class UtilisateursBean {
      * Persists a the given Utilisateur
      *
      * @param u
+     * @return the persisted Utilisateur
      */
-    public void inscrireUtilisateur(Utilisateur u) {
+    public boolean inscrireUtilisateur(Utilisateur u) {
         em.persist(u);
+        return true;
     }
 
     /**
@@ -36,64 +38,63 @@ public class UtilisateursBean {
      * @param u
      * @return the updated Utilisateur
      */
-    public Utilisateur modifierUtilisateur(Utilisateur u) {
-        //Utilisateur nouveauU = em.find(Utilisateur.class, u.getEmail());
-        //if (nouveauU != null) {
-        em.merge(u);
-        return u;
-        //return true;
-        //} else {
-        //return false;
-        //}
+    public boolean modifierUtilisateur(Utilisateur u) {
+        Utilisateur nouveauU = em.find(Utilisateur.class, u.getEmail());
+        if (nouveauU != null) {
+            em.merge(u);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
+     *
      * @param id
      * @return the Utilisateur corresponding to the given id
      */
-    public Utilisateur getUtilisateur(String id) {
-        return em.find(Utilisateur.class, id);
-        /*if (u != null) {
+    public Utilisateur getUtilisateur(String id){
+        Utilisateur u = em.find(Utilisateur.class, id);
+        if (u != null) {
             return u;
         } else {
             return new Utilisateur((long)-1, "", "", "");
-        }*/
+        }
     }
 
     /**
+     *
      * @param email
      * @return the Utilisateur corresponding to the given email
      */
-    public Utilisateur getUtilisateurByEmail(String email) {
-        return em.createNamedQuery("Utilisateur.findByEmail", Utilisateur.class).setParameter("email", email).getSingleResult();
+    public Utilisateur getUtilisateurByEmail(String email){
+        Utilisateur rep = new Utilisateur((long)-1, "", "", "");
 
-        //return u;
-        /*Utilisateur rep = new Utilisateur((long)-1, "", "", "");
-
-        Utilisateur u = em.find(Utilisateur.class, email);*/
+        Utilisateur u = em.find(Utilisateur.class, email);
         //  u = (Utilisateur) em.createQuery("Utilisateur.findByEmail")
         //      .setParameter("email", email).getSingleResult();
-        /*if (u != null) {
+        if (u != null) {
             rep = u;
         }
-        return rep;*/
+        return rep;
     }
 
     /**
+     *
      * @return all the Utilisateurs
      */
-    public List<Utilisateur> getUtilisateurs() {
+    public List<Utilisateur> getUtilisateurs(){
         return em.createNamedQuery("Utilisateur.findAll").getResultList();
     }
 
-    public Utilisateur connexion(String email, String hache) {
+    public Utilisateur connexion(String email, String hache){
         Utilisateur user = getUtilisateurByEmail(email);
-        Utilisateur u = new Utilisateur((long) -1, "", "", "");
-        if (user.getId() != -1) {
-            if (user.getMotdepasse() != null) {
-                if (!user.getMotdepasse().equals(hache)) {
-                    user = new Utilisateur((long) -1, "", "", "");
-                } else {
+        Utilisateur u = new Utilisateur((long)-1, "", "", "");
+        if(user.getId() != -1){
+            if(user.getMotdepasse() != null){
+                if(!user.getMotdepasse().equals(hache)){
+                    user = new Utilisateur((long)-1, "", "", "");
+                }else{
                     u = new Utilisateur(user);
                     u.setMotdepasse("");
                 }
