@@ -28,6 +28,8 @@ import { FormsModule } from '@angular/forms';
 import { ModalConnexionCandidatComponent } from './shared/modal-connexion-candidat/modal-connexion-candidat.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { FormConnexionCandidatComponent } from './shared/form-connexion-candidat/form-connexion-candidat.component';
+import { CandidatDetailComponent } from './candidat-detail/candidat-detail.component';
+import { CandidatModificationComponent } from './candidat-modification/candidat-modification.component';
 
 
 
@@ -52,6 +54,8 @@ import { FormConnexionCandidatComponent } from './shared/form-connexion-candidat
     ModalConnexionCandidatComponent,
     ConnexionComponent,
     FormConnexionCandidatComponent,
+    CandidatDetailComponent,
+    CandidatModificationComponent,
   ],
   imports: [
     BrowserModule,
