@@ -69,7 +69,7 @@ import { ExperienceComponent } from './experience/experience.component';
     NgbModule.forRoot(),
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
+    // HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],
   providers: [OffreService, CandidatService, RecruteurService, CompetencesService],
   bootstrap: [AppComponent],

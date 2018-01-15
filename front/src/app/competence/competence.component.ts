@@ -16,6 +16,7 @@ export class CompetenceComponent implements OnInit {
 
   ngOnInit() {
     this._getAll().subscribe((competences: any[]) => this._competences = competences);
+    console.log(this._competences);
   }
 
   get competences(): CompetenceModel[]{
