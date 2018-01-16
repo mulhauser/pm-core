@@ -20,6 +20,8 @@ export const environment = {
       modifyCompetence: '/rest/competence',
       addUser: '/rest/utilisateur/inscrire',
       getUser: '/rest/utilisateur/get/:email',
+      login: '/rest/utilisateur/login',
+      register: '/rest/utilisateur/register',
 
       allExperiences: '/rest/experience'
     }

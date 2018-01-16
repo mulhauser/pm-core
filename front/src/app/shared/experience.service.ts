@@ -21,7 +21,7 @@ export class ExperienceService {
   }
 
   getExperiences(): Observable<any> {
-    return this.http.get('http://localhost:9090/rest/experience', this._options())
+    return this.http.get(this._backendURL.allExperiences, this._options())
       .filter( _ => !!_)
       .defaultIfEmpty([]);
   }

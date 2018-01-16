@@ -34,6 +34,9 @@ import {CompetencesService} from './shared/competences.service';
 import { CompetenceComponent } from './competence/competence.component';
 import { ExperienceComponent } from './experience/experience.component';
 import {ExperienceService} from './shared/experience.service';
+import { LoginComponent } from './login/login.component';
+import {AuthService} from './shared/auth.service';
+import {HttpModule} from '@angular/http';
 
 
 
@@ -62,6 +65,7 @@ import {ExperienceService} from './shared/experience.service';
     CandidatModificationComponent,
     CompetenceComponent,
     ExperienceComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,9 +74,10 @@ import {ExperienceService} from './shared/experience.service';
     NgbModule.forRoot(),
     FormsModule,
     HttpClientModule,
+    HttpModule
     // HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],
-  providers: [OffreService, CandidatService, RecruteurService, CompetencesService, ExperienceService],
+  providers: [OffreService, CandidatService, RecruteurService, CompetencesService, ExperienceService, AuthService],
   bootstrap: [AppComponent],
   entryComponents: [ModalInscriptionCandidatComponent, ModalConnexionCandidatComponent]
 })
