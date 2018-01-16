@@ -66,6 +66,13 @@
             <artifactId>jaxrs-multipart</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
 
         <!-- Java EE 7 dependency -->
         <dependency>
