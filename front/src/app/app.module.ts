@@ -33,6 +33,7 @@ import { CandidatModificationComponent } from './candidat-modification/candidat-
 import {CompetencesService} from './shared/competences.service';
 import { CompetenceComponent } from './competence/competence.component';
 import { ExperienceComponent } from './experience/experience.component';
+import {ExperienceService} from './shared/experience.service';
 
 
 
@@ -71,7 +72,7 @@ import { ExperienceComponent } from './experience/experience.component';
     HttpClientModule,
     // HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],
-  providers: [OffreService, CandidatService, RecruteurService, CompetencesService],
+  providers: [OffreService, CandidatService, RecruteurService, CompetencesService, ExperienceService],
   bootstrap: [AppComponent],
   entryComponents: [ModalInscriptionCandidatComponent, ModalConnexionCandidatComponent]
 })

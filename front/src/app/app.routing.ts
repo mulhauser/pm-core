@@ -6,8 +6,9 @@ import {OffresComponent} from './offres/offres.component';
 import {OffreDetailComponent} from './shared/offre-detail/offre-detail.component';
 import {InscriptionComponent} from './inscription/inscription.component';
 import {CandidatsComponent} from './candidats/candidats.component';
-import {ConnexionComponent} from "./connexion/connexion.component";
+import {ConnexionComponent} from './connexion/connexion.component';
 import {CandidatModificationComponent} from './candidat-modification/candidat-modification.component';
+import {ExperienceComponent} from './experience/experience.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import {CandidatModificationComponent} from './candidat-modification/candidat-mo
       { path: 'inscription', component: InscriptionComponent, pathMatch: 'full'},
       { path: 'connexion', component: ConnexionComponent, pathMatch: 'full'},
       { path: 'test', component: TestComponent , pathMatch: 'full'},
+      { path: 'experience', component: ExperienceComponent , pathMatch: 'full'},
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ] , { preloadingStrategy: PreloadAllModules })
   ],
