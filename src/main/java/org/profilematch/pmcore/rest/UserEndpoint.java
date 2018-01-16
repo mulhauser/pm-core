@@ -3,6 +3,7 @@ package org.profilematch.pmcore.rest;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.swagger.annotations.Api;
 import org.profilematch.pmcore.entities.User;
 import org.profilematch.pmcore.utils.KeyGenerator;
 import org.profilematch.pmcore.utils.PasswordUtils;
@@ -35,6 +36,7 @@ import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
  *         --
  */
 @Path("/users")
+@Api(value = "user")
 @Produces(APPLICATION_JSON)
 @Consumes(APPLICATION_JSON)
 @Transactional
@@ -61,22 +63,21 @@ public class UserEndpoint {
 
     @POST
     @Path("/login")
-    @Consumes(APPLICATION_FORM_URLENCODED)
-    public Response authenticateUser(@FormParam("login") String login,
-                                     @FormParam("password") String password) {
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Response authenticateUser(User user) {
 
         try {
 
-            logger.info("#### login/password : " + login + "/" + password);
+            logger.info("#### login/password : " + user.getLogin() + "/" + user.getPassword());
 
             // Authenticate the user using the credentials provided
-            authenticate(login, password);
-
+            authenticate(user.getLogin(), user.getPassword());
             // Issue a token for the user
-            String token = issueToken(login);
-
+            String token = issueToken(user.getLogin());
             // Return the token on the response
-            return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
+            user.setToken(token);
+            return Response.ok(user).header(AUTHORIZATION, "Bearer " + token).build();
 
         } catch (Exception e) {
             return Response.status(UNAUTHORIZED).build();

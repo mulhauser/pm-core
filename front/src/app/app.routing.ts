@@ -10,6 +10,8 @@ import {ConnexionComponent} from './connexion/connexion.component';
 import {CandidatModificationComponent} from './candidat-modification/candidat-modification.component';
 import {ExperienceComponent} from './experience/experience.component';
 import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './_guards/auth.guard';
+import {RegisterComponent} from './register/register.component';
 
 @NgModule({
   imports: [
@@ -24,9 +26,12 @@ import {LoginComponent} from './login/login.component';
       { path: 'inscription', component: InscriptionComponent, pathMatch: 'full'},
       { path: 'connexion', component: ConnexionComponent, pathMatch: 'full'},
       { path: 'test', component: TestComponent , pathMatch: 'full'},
+      { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
       { path: 'experience', component: ExperienceComponent , pathMatch: 'full'},
-      { path: 'login', component: LoginComponent , pathMatch: 'full'},
-      { path: '**', redirectTo: '', pathMatch: 'full' }
+      { path: '**', redirectTo: '', pathMatch: 'full' },
+
     ] , { preloadingStrategy: PreloadAllModules })
   ],
   exports: [ RouterModule ]

@@ -10,7 +10,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { TestComponent } from './test/test.component';
 import {TestService} from './shared/test.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { OffresComponent } from './offres/offres.component';
 import {AppDataService} from './shared/app-data';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
@@ -35,9 +35,14 @@ import { CompetenceComponent } from './competence/competence.component';
 import { ExperienceComponent } from './experience/experience.component';
 import {ExperienceService} from './shared/experience.service';
 import { LoginComponent } from './login/login.component';
-import {AuthService} from './shared/auth.service';
 import {HttpModule} from '@angular/http';
-
+import {RegisterComponent} from './register/register.component';
+import {AlertComponent} from './_directives/alert.component';
+import {AuthGuard} from './_guards/auth.guard';
+import {AlertService} from './_services/alert.service';
+import {AuthenticationService} from './_services/authentication.service';
+import {UserService} from './_services/user.service';
+import {JwtInterceptor} from './_helpers/jwt.interceptor';
 
 
 @NgModule({
@@ -66,6 +71,8 @@ import {HttpModule} from '@angular/http';
     CompetenceComponent,
     ExperienceComponent,
     LoginComponent,
+    AlertComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +84,16 @@ import {HttpModule} from '@angular/http';
     HttpModule
     // HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],
-  providers: [OffreService, CandidatService, RecruteurService, CompetencesService, ExperienceService, AuthService],
+  providers: [OffreService, CandidatService, RecruteurService, CompetencesService, ExperienceService, AuthGuard,
+    AlertService,
+    AuthenticationService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+   ],
   bootstrap: [AppComponent],
   entryComponents: [ModalInscriptionCandidatComponent, ModalConnexionCandidatComponent]
 })

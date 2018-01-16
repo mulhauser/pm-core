@@ -1,31 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../shared/auth.service';
-import { User } from './user.model';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AlertService} from '../_services/alert.service';
+import {AuthenticationService} from '../_services/authentication.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit  {
+  model: any = {};
+  loading = false;
+  returnUrl: string;
 
-  user: User;
-  test = 'just a test';
-  constructor(private auth: AuthService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private alertService: AlertService) { }
 
-  onLogin(): void {
+  ngOnInit() {
+    // reset login status
+    this.authenticationService.logout();
 
-    const sampleUser: any = {
-      email: 'michael@realpython.com' as string,
-      password: 'michael' as string
-    };
-
-    this.auth.login(sampleUser).then((user) => {
-      console.log(user.json());
-    })
-      .catch((err) => {
-        console.log(err);
-      });
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
+  login() {
+    this.loading = true;
+    this.authenticationService.login(this.model.login, this.model.password)
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        });
+  }
 }

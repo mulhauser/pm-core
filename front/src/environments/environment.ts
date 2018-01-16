@@ -20,10 +20,11 @@ export const environment = {
       modifyCompetence: '/rest/competence',
       addUser: '/rest/utilisateur/inscrire',
       getUser: '/rest/utilisateur/get/:email',
-      login: '/rest/utilisateur/login',
+      login: '/rest/users/login',
       register: '/rest/utilisateur/register',
 
-      allExperiences: '/rest/experience'
+      allExperiences: '/rest/experience',
+      createUser: '/rest/users',
     }
   }
 };
