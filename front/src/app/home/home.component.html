@@ -46,12 +46,11 @@
   </div>
 </div>
 <div class="col-md-6 col-md-offset-3">
-  <h1>Hi {{currentUser.firstName}}!</h1>
-  <p>You're logged in with Angular 2/5 and Angular CLI!!</p>
+  <h1 *ngIf="currentUser != null" >Hi {{currentUser.firstName}}!</h1>
   <h3>All registered users:</h3>
   <ul>
     <li *ngFor="let user of users">
-      {{user.login}} ({{user.firstName}} {{user.lastName}})
+      {{user.email}} ({{user.firstName}} {{user.lastName}})
       - <a (click)="deleteUser(user.id)">Delete</a>
     </li>
   </ul>
