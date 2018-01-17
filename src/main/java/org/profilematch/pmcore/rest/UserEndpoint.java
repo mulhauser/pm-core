@@ -137,6 +137,17 @@ public class UserEndpoint {
         return Response.ok(allUsers).build();
     }
 
+     @PUT
+     public Response updateUser(User u){
+         User user = em.find(User.class, u.getId());
+
+         if (user == null)
+             return Response.status(NOT_FOUND).build();
+         else
+             em.merge(user);
+         return Response.ok(user).build();
+     }
+
     @DELETE
     @Path("/{id}")
     public Response remove(@PathParam("id") String id) {

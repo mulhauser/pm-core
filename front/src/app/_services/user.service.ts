@@ -23,11 +23,11 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put('/api/users/' + user.id, user);
+    return this.http.put('http://localhost:9090/rest/users' + user.id, user);
   }
 
   delete(id: number) {
-    return this.http.delete('/api/users/' + id);
+    return this.http.delete('http://localhost:9090/rest/users/' + id);
   }
 
   private _options(headerList: Object = {}): any {
