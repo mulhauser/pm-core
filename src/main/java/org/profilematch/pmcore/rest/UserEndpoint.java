@@ -69,12 +69,12 @@ public class UserEndpoint {
 
         try {
 
-            logger.info("#### login/password : " + user.getLogin() + "/" + user.getPassword());
+            logger.info("#### email/password : " + user.getEmail() + "/" + user.getPassword());
 
             // Authenticate the user using the credentials provided
-            authenticate(user.getLogin(), user.getPassword());
+            user = authenticate(user.getEmail(), user.getPassword());
             // Issue a token for the user
-            String token = issueToken(user.getLogin());
+            String token = issueToken(user.getFirstName());
             // Return the token on the response
             user.setToken(token);
             return Response.ok(user).header(AUTHORIZATION, "Bearer " + token).build();
@@ -84,14 +84,15 @@ public class UserEndpoint {
         }
     }
 
-    private void authenticate(String login, String password) throws Exception {
-        TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_LOGIN_PASSWORD, User.class);
-        query.setParameter("login", login);
+    private User authenticate(String email, String password) throws Exception {
+        TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_EMAIL_PASSWORD, User.class);
+        query.setParameter("email", email);
         query.setParameter("password", PasswordUtils.digestPassword(password));
         User user = query.getSingleResult();
 
         if (user == null)
             throw new SecurityException("Invalid user/password");
+        return user;
     }
 
     private String issueToken(String login) {

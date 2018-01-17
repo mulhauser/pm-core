@@ -19,6 +19,7 @@ import java.util.UUID;
 @NamedQueries({
         @NamedQuery(name = User.FIND_ALL, query = "SELECT u FROM User u ORDER BY u.lastName DESC"),
         @NamedQuery(name = User.FIND_BY_LOGIN_PASSWORD, query = "SELECT u FROM User u WHERE u.login = :login AND u.password = :password"),
+        @NamedQuery(name = User.FIND_BY_EMAIL_PASSWORD, query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password"),
         @NamedQuery(name = User.COUNT_ALL, query = "SELECT COUNT(u) FROM User u")
 })
 @XmlRootElement
@@ -32,6 +33,7 @@ public class User {
     public static final String FIND_ALL = "User.findAll";
     public static final String COUNT_ALL = "User.countAll";
     public static final String FIND_BY_LOGIN_PASSWORD = "User.findByLoginAndPassword";
+    public static final String FIND_BY_EMAIL_PASSWORD = "User.findByEmailAndPassword";
 
     // ======================================
     // =             Attributes             =
@@ -43,12 +45,16 @@ public class User {
     private String firstName;
     @Column(length = 10, nullable = false)
     private String login;
+    private String email;
     @Column(length = 256, nullable = false)
     private String password;
-    private String twitter;
-    private String avatarUrl;
+    private String ville;
+    @Column(name = "code_postal")
+    private String codePostal;
     private String token;
-    private String company;
+    private String titre;
+    private String apropos;
+    private String type;
 
     // ======================================
 
@@ -79,13 +85,28 @@ public class User {
         this.password = password;
     }
 
-    public User(String id, String lastName, String firstName, String twitter, String avatarUrl, String company) {
+    public User(String id, String lastName, String firstName, String ville, String codePostale, String email) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.twitter = twitter;
-        this.avatarUrl = avatarUrl;
-        this.company = company;
+        this.ville = ville;
+        this.codePostal = codePostale;
+        this.email = email;
+    }
+
+    public User(String id, String lastName, String firstName, String login, String email, String password, String ville, String codePostal, String token, String titre, String apropos, String type) {
+        this.id = id;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.login = login;
+        this.email = email;
+        this.password = password;
+        this.ville = ville;
+        this.codePostal = codePostal;
+        this.token = token;
+        this.titre = titre;
+        this.apropos = apropos;
+        this.type = type;
     }
 
     // ======================================
@@ -141,30 +162,54 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getTwitter() {
-        return twitter;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTwitter(String twitter) {
-        this.twitter = twitter;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getAvatarUrl() {
-        return avatarUrl;
+    public String getVille() {
+        return ville;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
+    public void setVille(String ville) {
+        this.ville = ville;
     }
 
-    public String getCompany() {
-        return company;
+    public String getCodePostal() {
+        return codePostal;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
     }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public String getApropos() {
+        return apropos;
+    }
+
+    public void setApropos(String apropos) {
+        this.apropos = apropos;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 
     // ======================================
     // =   Methods hash, equals, toString   =
@@ -189,9 +234,8 @@ public class User {
                 "id='" + id + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", twitter='" + twitter + '\'' +
-                ", avatarUrl='" + avatarUrl + '\'' +
-                ", company='" + company + '\'' +
+                ", codepostal='" + codePostal + '\'' +
+                ", ville='" + ville + '\'' +
                 '}';
     }
 }
