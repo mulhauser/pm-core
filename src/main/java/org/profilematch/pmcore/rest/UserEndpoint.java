@@ -4,6 +4,8 @@ package org.profilematch.pmcore.rest;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.swagger.annotations.Api;
+import org.hibernate.HibernateException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.profilematch.pmcore.entities.User;
 import org.profilematch.pmcore.utils.KeyGenerator;
 import org.profilematch.pmcore.utils.PasswordUtils;
@@ -11,6 +13,7 @@ import org.profilematch.pmcore.utils.PasswordUtils;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
@@ -18,6 +21,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.security.Key;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -112,9 +116,14 @@ public class UserEndpoint {
     }
 
     @POST
-    public Response create(User user){
-        em.persist(user);
-        return Response.created(uriInfo.getAbsolutePathBuilder().path(user.getEmail()).build()).build();
+    public Response create(User user) {
+        try {
+            em.persist(user);
+            em.flush();
+            return Response.created(uriInfo.getAbsolutePathBuilder().path(user.getEmail()).build()).build();
+        }catch(PersistenceException e){
+            return Response.status(Response.Status.CONFLICT).build();
+        }
     }
 
 
@@ -165,4 +174,6 @@ public class UserEndpoint {
     private Date toDate(LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
+
+
 }
