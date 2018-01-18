@@ -48,8 +48,8 @@ export class UserService {
     return this.http.put('http://localhost:9090/rest/users' + user.id, user);
   }
 
-  delete(id: number) {
-    return this.http.delete('http://localhost:9090/rest/users/' + id);
+  delete(email: string) {
+    return this.http.delete('http://localhost:9090/rest/users/' + email);
   }
 
   private _options(headerList: Object = {}): any {
