@@ -2,6 +2,7 @@ package org.profilematch.pmcore.ejbs;
 
 
 import org.profilematch.pmcore.entities.Candidat;
+import org.profilematch.pmcore.entities.Profil;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -20,20 +21,20 @@ public class CandidatBean {
         em.persist(c);
     }
 
-    public void modifierCandidat(Candidat c){
-        em.merge(c);
+    public Candidat modifierCandidat(Candidat c){
+        return em.merge(c);
     }
 
     public Candidat getCandidat(Long id){
        return em.find(Candidat.class, id);
     }
 
-    public List<Candidat> getCandidats(){
-        return em.createNamedQuery("Candidat.findAll", Candidat.class).getResultList();
+    public List<Profil> getCandidats(){
+        return em.createNamedQuery("Profil.findAllC", Profil.class).getResultList();
     }
 
-    public void supprimerCandidat(Candidat c){
-        em.remove(em.merge(c));
+    public void supprimerCandidat(Long id){
+        em.remove(em.getReference(Profil.class, id));
     }
 
 }

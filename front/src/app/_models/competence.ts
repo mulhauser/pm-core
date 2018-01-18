@@ -1,4 +1,4 @@
-export class CompetenceModel {
+export class Competence {
 
   constructor(
     public id: number,

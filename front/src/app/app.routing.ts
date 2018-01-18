@@ -24,8 +24,8 @@ import {CandidatDetailComponent} from './candidat-detail/candidat-detail.compone
       { path: 'candidat/:id/modification', component: CandidatModificationComponent, pathMatch: 'full'},
       { path: 'test', component: TestComponent , pathMatch: 'full'},
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent, pathMatch: 'full' },
+      { path: 'register', component: RegisterComponent, pathMatch: 'full' },
       { path: 'experience', component: ExperienceComponent , pathMatch: 'full'},
       { path: '**', redirectTo: '', pathMatch: 'full' },
 

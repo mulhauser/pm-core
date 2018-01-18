@@ -1,26 +1,29 @@
 package org.profilematch.pmcore.entities;
 
 
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Collection;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Candidat.findAll", query = "SELECT u FROM Candidat u")
-})
+
 @DiscriminatorValue("C")
 public class Candidat extends Profil{
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "candidat")
     private Collection<Experience> experiences;
 
-
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(mappedBy = "candidats")
     private Collection<Competence> competences;
 
-
     @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinTable(name="OFFRES_CANDIDATS",
             joinColumns = @JoinColumn(name="id_candidat"),
             inverseJoinColumns = @JoinColumn(name = "id_offre"))
@@ -48,6 +51,11 @@ public class Candidat extends Profil{
         super();
     }
 
+    public Candidat(String lastName, String firstName, String email) {
+        super(lastName, firstName, email);
+    }
+
+    @ApiModelProperty(hidden = true)
     public Collection<Experience> getExperiences() {
         return experiences;
     }
@@ -56,6 +64,7 @@ public class Candidat extends Profil{
         this.experiences = experiences;
     }
 
+    @ApiModelProperty(hidden = true)
     public Collection<Competence> getCompetences() {
         return competences;
     }
@@ -64,6 +73,7 @@ public class Candidat extends Profil{
         this.competences = competences;
     }
 
+    @ApiModelProperty(hidden = true)
     public Collection<Offre> getOffres() {
         return offres;
     }

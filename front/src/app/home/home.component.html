@@ -1,58 +1,63 @@
-<h1 class="text-center my-lg-4">
-  About iMatchProfil
-</h1>
-<div class="row">
-  <div class="col-sm-12">
-    <p>
-      Ceci est la description du site qui va permettre à des recruteurs et des candidats de communiquer entre eux. Ils pourront
-      s'envoyer les messages, rechercher des candidats ou des recruteurs.
-    </p>
-    <p>
-      Les candidats pourront postuler à un poste.
-    </p>
-    <p>
-      Les recruteurs pourront poster des offres d'emplois.
-    </p>
-  </div>
-  <div class="col-sm-4">
+<div *ngIf="currentUser == null">
+  <h1 class="text-center my-lg-4">
+    About iMatchProfil
+  </h1>
+  <div class="row">
     <div class="col-sm-12">
-      <img class="img-fluid" src="../../assets/visiteur.jpg" alt="logo">
+      <p>
+        Ceci est la description du site qui va permettre à des recruteurs et des candidats de communiquer entre eux. Ils
+        pourront
+        s'envoyer les messages, rechercher des candidats ou des recruteurs.
+      </p>
+      <p>
+        Les candidats pourront postuler à un poste.
+      </p>
+      <p>
+        Les recruteurs pourront poster des offres d'emplois.
+      </p>
     </div>
-    <div class="col-sm-12 text-center">
-      <h3>
-        Visiteur
-      </h3>
+    <div class="col-sm-4">
+      <div class="col-sm-12">
+        <img class="img-fluid" src="../../assets/visiteur.jpg" alt="logo">
+      </div>
+      <div class="col-sm-12 text-center">
+        <h3>
+          Visiteur
+        </h3>
+      </div>
     </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="col-sm-12">
-      <img class="img-fluid" src="../../assets/candidat.jpg" alt="logo">
+    <div class="col-sm-4">
+      <div class="col-sm-12">
+        <img class="img-fluid" src="../../assets/candidat.jpg" alt="logo">
+      </div>
+      <div class="col-sm-12 text-center">
+        <h3>
+          Candidat
+        </h3>
+      </div>
     </div>
-    <div class="col-sm-12 text-center">
-      <h3>
-        Candidat
-      </h3>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="col-sm-12">
-      <img class="img-fluid" src="../../assets/recruteur.jpg" alt="logo">
-    </div>
-    <div class="col-sm-12 text-center">
-      <h3>
-        Recruteur
-      </h3>
+    <div class="col-sm-4">
+      <div class="col-sm-12">
+        <img class="img-fluid" src="../../assets/recruteur.jpg" alt="logo">
+      </div>
+      <div class="col-sm-12 text-center">
+        <h3>
+          Recruteur
+        </h3>
+      </div>
     </div>
   </div>
 </div>
-<div class="col-md-6 col-md-offset-3">
-  <h1 *ngIf="currentUser != null" >Hi {{currentUser.firstName}}!</h1>
+<div class="col-md-6 col-md-offset-3" *ngIf="currentUser != null">
+  <app-candidat [candidatObj]="currentUser">
+  </app-candidat>
+  <!--<h1>Hi {{currentUser.firstName}}!</h1>
   <h3>All registered users:</h3>
   <ul>
     <li *ngFor="let user of users">
       {{user.email}} ({{user.firstName}} {{user.lastName}})
-      - <a (click)="deleteUser(user.id)">Delete</a>
+      - <a (click)="deleteUser(user.email)">Delete</a>
     </li>
   </ul>
-  <p><a [routerLink]="['/login']">Logout</a></p>
+  <p><a [routerLink]="['/login']">Logout</a></p>-->
 </div>

@@ -1,4 +1,4 @@
-export class ExperienceModel {
+export class Experience {
 
   constructor(
     public id: number,

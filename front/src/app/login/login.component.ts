@@ -35,8 +35,10 @@ export class LoginComponent implements OnInit  {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.alertService.error(error);
-          this.loading = false;
+          if(error.status === 401) {
+            this.alertService.error("Mauvais identifiants de connexion");
+            this.loading = false;
+          }
         });
   }
 }
