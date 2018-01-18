@@ -21,8 +21,10 @@ export class CandidatModificationComponent implements OnInit {
     this.candidatDetail = candidatDetail;
   }
 
-  updateCandidat(candidat: any) {
- //   console.log('update ' + candidat.firstname);
-   // return this._userService.update(candidat);
+  updateCandidat(candidat: any): any  {
+    // console.log('update ' + candidat.firstname);
+    console.log('coucou');
+    console.log(candidat.id);
+    return this._userService.update(candidat);
   }
 }
