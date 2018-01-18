@@ -2,6 +2,7 @@ package org.profilematch.pmcore.ejbs;
 
 
 import org.profilematch.pmcore.entities.Candidat;
+import org.profilematch.pmcore.entities.Experience;
 import org.profilematch.pmcore.entities.Profil;
 
 import javax.ejb.LocalBean;

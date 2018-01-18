@@ -1,6 +1,7 @@
 package org.profilematch.pmcore.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -70,6 +71,7 @@ public class Experience implements Serializable {
     public Experience() {
     }
 
+    @ApiModelProperty(hidden = true)
     public Long getId() {
         return id;
     }
@@ -118,7 +120,8 @@ public class Experience implements Serializable {
         this.posteOccuper = posteOccuper;
     }
 
-
+    @ApiModelProperty(hidden = true)
+    @JsonIgnore
     public Candidat getCandidat() {
         return candidat;
     }

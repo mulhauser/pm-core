@@ -1,6 +1,7 @@
 package org.profilematch.pmcore.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -55,7 +56,6 @@ public class Candidat extends Profil{
         super(lastName, firstName, email);
     }
 
-    @ApiModelProperty(hidden = true)
     public Collection<Experience> getExperiences() {
         return experiences;
     }

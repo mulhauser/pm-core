@@ -2,8 +2,11 @@ package org.profilematch.pmcore.rest;
 
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.profilematch.pmcore.ejbs.CandidatBean;
+import org.profilematch.pmcore.ejbs.ExperienceBean;
 import org.profilematch.pmcore.entities.Candidat;
+import org.profilematch.pmcore.entities.Experience;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -17,8 +20,12 @@ public class CandidatRest {
     @EJB
     private CandidatBean candidatBean;
 
+    @EJB
+    private ExperienceBean experienceBean;
+
     @GET
     @Produces("application/json")
+    @ApiOperation(value="Retourne tous les candidats")
     public Response getAll(){
         return Response.ok(candidatBean.getCandidats()).build();
     }
@@ -26,19 +33,48 @@ public class CandidatRest {
     @GET
     @Path("/{id}")
     @Produces("application/json")
+    @ApiOperation(value="Retourne le candidat avec l'id renseigné")
     public Response getById(@PathParam("id") String id){
         return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id))).build();
     }
 
+    @GET
+    @Path("/{id}/experiences")
+    @Produces("application/json")
+    @ApiOperation(value="Retourne les expériences du candidat renseigné")
+    public Response getExperiences(@PathParam("id") String id){
+        return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id)).getExperiences()).build();
+    }
+
+    @GET
+    @Path("/{id}/competences")
+    @Produces("application/json")
+    @ApiOperation(value="Retourne les compétences du candidat renseigné")
+    public Response getCompetences(@PathParam("id") String id){
+        return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id)).getCompetences()).build();
+    }
+
     @POST
     @Consumes("application/json")
+    @ApiOperation(value="Ajoute un candidat")
     public Response create(Candidat candidat){
         candidatBean.ajouterCandidat(candidat);
         return Response.ok().build();
     }
 
+    @POST
+    @Path("/{id}")
+    @Consumes("application/json")
+    @ApiOperation(value="Ajoute une experience au candidat renseigné")
+    public Response addExperience(@PathParam("id") String id, Experience experience){
+        experience.setCandidat(candidatBean.getCandidat((long) Integer.parseInt(id)));
+        experienceBean.ajouterExperience(experience);
+        return Response.ok().build();
+    }
+
     @PUT
     @Consumes("application/json")
+    @ApiOperation(value="Modifie un candidat")
     public Response update(Candidat candidat){
         return Response.ok(candidatBean.modifierCandidat(candidat)).build();
     }
@@ -46,6 +82,7 @@ public class CandidatRest {
     @DELETE
     @Path("/{id}")
     @Consumes("application/json")
+    @ApiOperation(value="Supprime un candidat")
     public Response delete(@PathParam("id") String id) {
         candidatBean.supprimerCandidat((long) Integer.parseInt(id));
         return Response.ok().build();
