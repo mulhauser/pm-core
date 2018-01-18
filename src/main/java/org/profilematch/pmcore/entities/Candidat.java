@@ -6,6 +6,9 @@ import java.util.Calendar;
 import java.util.Collection;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Candidat.findAll", query = "SELECT u FROM Candidat u")
+})
 @DiscriminatorValue("C")
 public class Candidat extends Profil{
 
