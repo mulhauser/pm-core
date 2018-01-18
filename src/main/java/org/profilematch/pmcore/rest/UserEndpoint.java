@@ -125,9 +125,10 @@ public class UserEndpoint {
     public Response create(User user) {
         try {
             em.persist(user);
-            if(user.getType() == "candidat") {
+            if(user.getType().equals("candidat")) {
                 candidatBean.ajouterCandidat(new Candidat(user.getLastName(), user.getFirstName(), user.getEmail()));
             }
+
             em.flush();
             return Response.created(uriInfo.getAbsolutePathBuilder().path(user.getEmail()).build()).build();
         }catch(PersistenceException e){
