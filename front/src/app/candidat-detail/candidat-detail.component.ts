@@ -15,8 +15,7 @@ export class CandidatDetailComponent implements OnInit {
   modeModification = false;
 
   constructor(private _userService: UserService,
-              private _route: ActivatedRoute)
-  {
+              private _route: ActivatedRoute) {
     this._candidatDetail = {};
   }
 

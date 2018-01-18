@@ -1,18 +1,22 @@
 
 
-<form>
-  <input type="text" name="nom" placeholder="nom">
-  <input type="text" name="location" placeholder="location">
-  <input type="text" name="date_naissance" placeholder="date_naissance">
-  <input type="text" name="email" placeholder="email">
-  <input type="text" name="prenom" placeholder="prenom">
-  <input type="text" name="password" placeholder="password">
-  <input type="text" name="statusActuel" placeholder="statusActuel">
-  <input type="text" name="bio" placeholder="bio">
-  <input type="text" name="photo" placeholder="photo">
+<form action="updateCandidat()">
+  <input type="text" name="email" placeholder="{{candidatDetail.email}}"><br>
+  <input type="text" name="nom" placeholder="{{candidatDetail.nom}}"><br>
+  <input type="text" name="prenom" placeholder="{{candidatDetail.prenom}}"><br>
+  <input type="text" name="ville" placeholder="{{candidatDetail.ville}}"><br>
+  <input type="text" name="codePostal" placeholder="{{candidatDetail.codePostal}}"><br>
+  <input type="text" name="telephone" placeholder="{{candidatDetail.telephone}}"><br>
+  <input type="text" name="dateNaissance" placeholder="{{candidatDetail.dateNaissance}}"><br>
+  <input type="text" name="titre" placeholder="{{candidatDetail.titre}}"><br>
+  <input type="text" name="status" placeholder="{{candidatDetail.status}}"><br>
+  <input type="text" name="statusActuel" placeholder="{{candidatDetail.statusActuel}}"><br>
+  <input type="text" name="apropos" placeholder="{{candidatDetail.apropos}}"><br>
+  <input type="text" name="experiences" placeholder="{{candidatDetail.experiences}}" disabled ><br>
+  <input type="text" name="competences" placeholder="{{candidatDetail.competences}}" disabled><br>
+  <input type="text" name="photo" placeholder="{{candidatDetail.photo}}" disabled><br>
+
+
   <input type="submit">
 </form>
-
-<app-experience></app-experience>
-<app-competence></app-competence>
 
