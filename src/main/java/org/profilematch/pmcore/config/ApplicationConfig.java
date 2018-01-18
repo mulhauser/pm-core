@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
         resources.add(org.profilematch.pmcore.rest.ExperienceRest.class);
         resources.add(org.profilematch.pmcore.rest.UserEndpoint.class);
         resources.add(org.profilematch.pmcore.rest.EchoEndpoint.class);
+        resources.add(org.profilematch.pmcore.rest.CandidatRest.class);
         resources.add(com.github.phillipkruger.apiee.ApieeService.class);
 
     }
