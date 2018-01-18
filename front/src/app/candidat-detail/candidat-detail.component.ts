@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {UserService} from '../_services/user.service';
@@ -13,8 +13,9 @@ import {Profil} from '../_models/profil';
 })
 export class CandidatDetailComponent implements OnInit {
 
+
   private currentUser: any;
-  private _candidat: any;
+  private candidat: any;
 
   @Input()
   modeModification = false;
@@ -28,18 +29,15 @@ export class CandidatDetailComponent implements OnInit {
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this._candidatService.getCandidatByEmail(this.currentUser.email)
-       .subscribe( data => {
-         this._candidat = data;
+       .subscribe( (data: any) => {
+         this.candidat =  JSON.parse(data);
        });
   }
 
-  get candidat(): Profil {
-    return this._candidat;
+  get candidatDetail(): any {
+    return this.candidat;
   }
 
-  get candidatDetail (): Profil {
-    return this.currentUser;
-  }
   get modeModificationOn (): boolean {
     return this.modeModification;
   }
