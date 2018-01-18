@@ -1,7 +1,6 @@
 
 
-<form #f="ngForm"
-    >
+<form #f="ngForm">
   <!-- <input type="text" name="email" placeholder="{{candidatDetail.email}}"><br>
    <input type="text" name="nom" placeholder="{{candidatDetail.nom}}"><br>
    <input type="text" name="prenom" placeholder="{{candidatDetail.prenom}}"><br>
@@ -18,11 +17,64 @@
    <input type="text" name="photo" placeholder="{{candidatDetail.photo}}" disabled><br>
 
  -->
-  <input type="text" name="firstname" value="{{candidatDetail.firstName}}"><br>
-  <input type="text" name="lastname" value="{{candidatDetail.lastName}}"><br>
-  <input type="text" name="email" value="{{candidatDetail.email}}"><br>
 
-
-  <input type="submit">
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
+    <div class="col-lg-9">
+      <input class="form-control" type="text" value="{{candidatDetail.firstName}}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Nom</label>
+    <div class="col-lg-9">
+      <input class="form-control" type="text" value="{{candidatDetail.lastName}}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Email</label>
+    <div class="col-lg-9">
+      <input class="form-control" type="email" value="{{candidatDetail.email}}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label" value="Adresse"></label>
+    <div class="col-lg-6">
+      <input class="form-control" type="text" value="" placeholder="Ville">
+    </div>
+    <div class="col-lg-3">
+      <input class="form-control" type="number" value="" placeholder="Code Postal" min="10000" max="99999" step="1">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">URL Photo</label>
+    <div class="col-lg-9">
+      <input class="form-control" type="text" value="https://www.atelierduloft.fr/wp-content/uploads/2017/05/artiste-johnny-halliday-portrait.jpg">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Mot de Passe</label>
+    <div class="col-lg-9">
+      <input class="form-control" type="password" value="11111122333">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Nouveau mdp</label>
+    <div class="col-lg-9">
+      <input class="form-control" type="password" value="11111122333">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Confirmation mdp</label>
+    <div class="col-lg-9">
+      <input class="form-control" type="password" value="11111122333">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label"></label>
+    <div class="col-lg-9">
+      <input type="reset" class="btn btn-secondary" value="Cancel">
+      <input type="button" class="btn btn-primary" value="Save Changes">
+    </div>
+  </div>
 </form>
 

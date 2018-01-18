@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {UserService} from '../_services/user.service';
+import { ErrorHandler } from '@angular/core';
 
 @Component({
   selector: 'app-candidat-detail',
@@ -16,7 +17,7 @@ export class CandidatDetailComponent implements OnInit {
 
   constructor(private _userService: UserService,
               private _route: ActivatedRoute) {
-    this._candidatDetail = {};
+    this._candidatDetail = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {

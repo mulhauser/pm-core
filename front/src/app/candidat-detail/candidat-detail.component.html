@@ -1,53 +1,158 @@
-<section class="bg-faded container-fluid">
-  <div class="row py-3 flex-items-sm-center">
-    <!--
-User Card
--->
-    <div class="col-xs-12 col-sm-3 py-2 clearfix">
-      <div class="card profile-card">
-        <!--
-        <figure>
+<!--<section class="bg-faded container-fluid">-->
+<!--<div class="row py-3 flex-items-sm-center">-->
 
-          <input id="fab" type="checkbox" (click)="modeModification=!modeModificationOn" class="fab"><label for="fab" class="toggle">+</label>
-          <img src="{{ candidatDetail.photo }}" class="img-fluid img-profile" alt="Card image">
-        </figure>
-        <div class="card-block text-xs-center">
-          <p class="h4 card-title font-weight-bold">{{candidatDetail.prenom}} <br>{{candidatDetail.nom}}</p>
-          <p class="h6 card-subtitle text-muted">  apropos:{{candidatDetail.apropos}}<br>email:{{candidatDetail.email}}
-            pays: {{candidatDetail.pays}}<br>
-            ville:{{candidatDetail.ville}}<br>
-            codePostal:{{candidatDetail.codePostal}}
-            dateNaissance: {{candidatDetail.dateNaissance}}<br>
-            telephone: {{candidatDetail.telephone}}<br>
-            titre: {{candidatDetail.titre}}<br>
-            status:  {{candidatDetail.status}}<br>
-            statusActuel:{{candidatDetail.statusActuel}}<br>
-            experiences:{{candidatDetail.experiences}}<br>
-            competences:{{candidatDetail.competences}}<br>
-            offre:{{candidatDetail.offre}}<br></p><br>
+
+<!---->
+<!---->
+<!--&lt;!&ndash;-->
+<!--User Card-->
+<!--&ndash;&gt;-->
+<!--<div class="col-xs-12 col-sm-3 py-2 clearfix">-->
+<!--<div class="card profile-card card-img-top">-->
+<!--&lt;!&ndash;-->
+<!--<figure>-->
+
+<!--<input id="fab" type="checkbox" (click)="modeModification=!modeModificationOn" class="fab"><label for="fab" class="toggle">+</label>-->
+<!--<img src="{{ candidatDetail.photo }}" class="img-fluid img-profile" alt="Card image">-->
+<!--</figure>-->
+<!--<div class="card-block text-xs-center">-->
+<!--<p class="h4 card-title font-weight-bold">{{candidatDetail.prenom}} <br>{{candidatDetail.nom}}</p>-->
+<!--<p class="h6 card-subtitle text-muted">  apropos:{{candidatDetail.apropos}}<br>email:{{candidatDetail.email}}-->
+<!--pays: {{candidatDetail.pays}}<br>-->
+<!--ville:{{candidatDetail.ville}}<br>-->
+<!--codePostal:{{candidatDetail.codePostal}}-->
+<!--dateNaissance: {{candidatDetail.dateNaissance}}<br>-->
+<!--telephone: {{candidatDetail.telephone}}<br>-->
+<!--titre: {{candidatDetail.titre}}<br>-->
+<!--status:  {{candidatDetail.status}}<br>-->
+<!--statusActuel:{{candidatDetail.statusActuel}}<br>-->
+<!--experiences:{{candidatDetail.experiences}}<br>-->
+<!--competences:{{candidatDetail.competences}}<br>-->
+<!--offre:{{candidatDetail.offre}}<br></p><br>-->
+<!--</div>-->
+<!--&ndash;&gt;-->
+
+<!--<figure>-->
+<!--<input id="fab" type="checkbox" (click)="modeModification=!modeModificationOn" class="fab">-->
+<!--<label for="fab" class="toggle">+</label>-->
+<!--<img src="{{ candidatDetail.photo }}" class="img-fluid img-profile" alt="Card image">-->
+<!--</figure>-->
+<!--<div class="card-block text-xs-center">-->
+<!--<p class="h4 card-title font-weight-bold">-->
+<!--{{candidatDetail.firstName}}<br>-->
+<!--{{candidatDetail.lastName}}-->
+<!--</p>-->
+<!--<p class="h6 card-subtitle text-muted"><br>-->
+<!--email:{{candidatDetail.email}}<br>-->
+<!--type: {{candidatDetail.type}}<br>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->
+
+
+
+<!--<div *ngIf="modeModification === true">-->
+<!--<app-candidat-modification  [candidatDetail]="candidatDetail"></app-candidat-modification>-->
+<!--</div>-->
+
+
+<div class="container">
+  <div class="row my-2">
+    <div class="col-lg-8 order-lg-2">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+        </li>
+        <li class="nav-item" >
+          <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Edit</a>
+        </li>
+      </ul>
+      <div class="tab-content py-4">
+        <div class="tab-pane active" id="profile">
+          <h3 class="mb-3">{{candidatDetail.firstName}} {{candidatDetail.lastName}}</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <h6>A propos de moi</h6>
+              <p>
+                Je suis timide
+              </p>
+              <h6>Hobbies</h6>
+              <p>
+                Indie games
+              </p>
+            </div>
+            <div class="col-md-6">
+              <h6>Mes badges</h6>
+              <a href="#" class="badge badge-success">html5</a>
+              <a href="#" class="badge badge-success">react</a>
+              <a href="#" class="badge badge-success">codeply</a>
+              <a href="#" class="badge badge-success">angularjs</a>
+              <a href="#" class="badge badge-success">css3</a>
+              <hr>
+            </div>
+            <div class="col-md-12">
+              <h5 class="mt-2">Activités récentes</h5>
+              <table class="table table-sm table-hover table-striped">
+                <tbody>
+                <tr>
+                  <td>
+                    <strong>Vous</strong> avez été invité à rejoindre <strong>`SFR`</strong>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!--/row-->
         </div>
-        -->
-
-        <figure>
-          <input id="fab" type="checkbox" (click)="modeModification=!modeModificationOn" class="fab"><label for="fab" class="toggle">+</label>
-          <img src="{{ candidatDetail.photo }}" class="img-fluid img-profile" alt="Card image">
-        </figure>
-        <div class="card-block text-xs-center">
-          <p class="h4 card-title font-weight-bold">{{candidatDetail.firstName}} <br>{{candidatDetail.lastName}}</p>
-          <p class="h6 card-subtitle text-muted">  <br>email:{{candidatDetail.email}}<br>
-            type: {{candidatDetail.type}}<br>
+        <div class="tab-pane" id="messages">
+          <div class="alert alert-info alert-dismissable">
+            <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
+          </div>
+          <table class="table table-hover table-striped">
+            <tbody>
+            <tr>
+              <td>
+                <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros.
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane" id="edit">
+          <form role="form">
+            <app-candidat-modification [candidatDetail]="candidatDetail"></app-candidat-modification>
+          </form>
         </div>
       </div>
     </div>
+    <div class="col-lg-4 order-lg-1 text-center">
+      <img src="https://www.atelierduloft.fr/wp-content/uploads/2017/05/artiste-johnny-halliday-portrait.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+    </div>
   </div>
-</section>
-
-
-
-<div *ngIf="modeModification === true">
-  <app-candidat-modification  [candidatDetail]="candidatDetail"> </app-candidat-modification>
 </div>
-
-
-<br>
-<br><br><br><br><br><br><br><br><br>
