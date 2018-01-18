@@ -1,63 +1,3 @@
-<!--<section class="bg-faded container-fluid">-->
-<!--<div class="row py-3 flex-items-sm-center">-->
-
-
-<!---->
-<!---->
-<!--&lt;!&ndash;-->
-<!--User Card-->
-<!--&ndash;&gt;-->
-<!--<div class="col-xs-12 col-sm-3 py-2 clearfix">-->
-<!--<div class="card profile-card card-img-top">-->
-<!--&lt;!&ndash;-->
-<!--<figure>-->
-
-<!--<input id="fab" type="checkbox" (click)="modeModification=!modeModificationOn" class="fab"><label for="fab" class="toggle">+</label>-->
-<!--<img src="{{ candidatDetail.photo }}" class="img-fluid img-profile" alt="Card image">-->
-<!--</figure>-->
-<!--<div class="card-block text-xs-center">-->
-<!--<p class="h4 card-title font-weight-bold">{{candidatDetail.prenom}} <br>{{candidatDetail.nom}}</p>-->
-<!--<p class="h6 card-subtitle text-muted">  apropos:{{candidatDetail.apropos}}<br>email:{{candidatDetail.email}}-->
-<!--pays: {{candidatDetail.pays}}<br>-->
-<!--ville:{{candidatDetail.ville}}<br>-->
-<!--codePostal:{{candidatDetail.codePostal}}-->
-<!--dateNaissance: {{candidatDetail.dateNaissance}}<br>-->
-<!--telephone: {{candidatDetail.telephone}}<br>-->
-<!--titre: {{candidatDetail.titre}}<br>-->
-<!--status:  {{candidatDetail.status}}<br>-->
-<!--statusActuel:{{candidatDetail.statusActuel}}<br>-->
-<!--experiences:{{candidatDetail.experiences}}<br>-->
-<!--competences:{{candidatDetail.competences}}<br>-->
-<!--offre:{{candidatDetail.offre}}<br></p><br>-->
-<!--</div>-->
-<!--&ndash;&gt;-->
-
-<!--<figure>-->
-<!--<input id="fab" type="checkbox" (click)="modeModification=!modeModificationOn" class="fab">-->
-<!--<label for="fab" class="toggle">+</label>-->
-<!--<img src="{{ candidatDetail.photo }}" class="img-fluid img-profile" alt="Card image">-->
-<!--</figure>-->
-<!--<div class="card-block text-xs-center">-->
-<!--<p class="h4 card-title font-weight-bold">-->
-<!--{{candidatDetail.firstName}}<br>-->
-<!--{{candidatDetail.lastName}}-->
-<!--</p>-->
-<!--<p class="h6 card-subtitle text-muted"><br>-->
-<!--email:{{candidatDetail.email}}<br>-->
-<!--type: {{candidatDetail.type}}<br>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</section>-->
-
-
-
-<!--<div *ngIf="modeModification === true">-->
-<!--<app-candidat-modification  [candidatDetail]="candidatDetail"></app-candidat-modification>-->
-<!--</div>-->
-
-
 <div class="container">
   <div class="row my-2">
     <div class="col-lg-8 order-lg-2">
@@ -77,22 +17,32 @@
           <h3 class="mb-3">{{candidatDetail.firstName}} {{candidatDetail.lastName}}</h3>
           <div class="row">
             <div class="col-md-6">
-              <h5>A propos de moi</h5>
+              <h5>Ma société</h5>
               <p>
-                Je suis timide
+                Minecraft
               </p>
-              <h5>Hobbies</h5>
+              <h5>A propos de nous</h5>
               <p>
-                Indie games
+              Je suis timide
+              </p>
+              <h5>Stage</h5>
+              <p>
+              Indie games
+              </p>
+              <p>
+              JEE Angular4 Agile
               </p>
             </div>
             <div class="col-md-6">
-              <h6>Mes badges</h6>
+              <h6>Compétences requises/souhaités</h6>
               <a href="https://www.google.fr/search?q=html5" class="badge badge-success">html5</a>
               <a href="https://www.google.fr/search?q=react" class="badge badge-success">react</a>
               <a href="https://www.google.fr/search?q=codeply" class="badge badge-success">codeply</a>
               <a href="https://www.google.fr/search?q=angularjs" class="badge badge-success">angularjs</a>
               <a href="https://www.google.fr/search?q=css3" class="badge badge-success">css3</a>
+              <a href="https://www.google.fr/search?q=JEE" class="badge badge-success">JEE</a>
+              <a href="https://www.google.fr/search?q=Cassandra" class="badge badge-success">Cassandra</a>
+              <a href="https://www.google.fr/search?q=humour" class="badge badge-success">humour</a>
               <hr>
             </div>
             <div class="col-md-12">
@@ -101,7 +51,7 @@
                 <tbody>
                 <tr>
                   <td>
-                    <strong>Vous</strong> avez été invité à rejoindre <strong>`SFR`</strong>
+                    Conférence aux Mines de <strong>`Nancy`</strong>
                   </td>
                 </tr>
                 </tbody>
@@ -146,13 +96,13 @@
         </div>
         <div class="tab-pane" id="edit">
           <form role="form">
-            <app-candidat-modification [candidatDetail]="candidatDetail"></app-candidat-modification>
+            <app-recruteur-modification></app-recruteur-modification>
           </form>
         </div>
       </div>
     </div>
     <div class="col-lg-4 order-lg-1 text-center">
-      <img src="../../assets/candidat.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+      <img src="../../assets/recruteur.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
     </div>
   </div>
 </div>

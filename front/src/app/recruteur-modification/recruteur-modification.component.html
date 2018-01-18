@@ -1,39 +1,45 @@
 
 
 <form #f="ngForm">
-  <!-- <input type="text" name="email" placeholder="{{candidatDetail.email}}"><br>
-   <input type="text" name="nom" placeholder="{{candidatDetail.nom}}"><br>
-   <input type="text" name="prenom" placeholder="{{candidatDetail.prenom}}"><br>
-   <input type="text" name="ville" placeholder="{{candidatDetail.ville}}"><br>
-   <input type="text" name="codePostal" placeholder="{{candidatDetail.codePostal}}"><br>
-   <input type="text" name="telephone" placeholder="{{candidatDetail.telephone}}"><br>
-   <input type="text" name="dateNaissance" placeholder="{{candidatDetail.dateNaissance}}"><br>
-   <input type="text" name="titre" placeholder="{{candidatDetail.titre}}"><br>
-   <input type="text" name="status" placeholder="{{candidatDetail.status}}"><br>
-   <input type="text" name="statusActuel" placeholder="{{candidatDetail.statusActuel}}"><br>
-   <input type="text" name="apropos" placeholder="{{candidatDetail.apropos}}"><br>
-   <input type="text" name="experiences" placeholder="{{candidatDetail.experiences}}" disabled ><br>
-   <input type="text" name="competences" placeholder="{{candidatDetail.competences}}" disabled><br>
-   <input type="text" name="photo" placeholder="{{candidatDetail.photo}}" disabled><br>
+  <!-- <input type="text" name="email" placeholder="{{recruteurDetail.email}}"><br>
+   <input type="text" name="nom" placeholder="{{recruteurDetail.nom}}"><br>
+   <input type="text" name="prenom" placeholder="{{recruteurDetail.prenom}}"><br>
+   <input type="text" name="ville" placeholder="{{recruteurDetail.ville}}"><br>
+   <input type="text" name="codePostal" placeholder="{{recruteurDetail.codePostal}}"><br>
+   <input type="text" name="telephone" placeholder="{{recruteurDetail.telephone}}"><br>
+   <input type="text" name="dateNaissance" placeholder="{{recruteurDetail.dateNaissance}}"><br>
+   <input type="text" name="titre" placeholder="{{recruteurDetail.titre}}"><br>
+   <input type="text" name="status" placeholder="{{recruteurDetail.status}}"><br>
+   <input type="text" name="statusActuel" placeholder="{{recruteurDetail.statusActuel}}"><br>
+   <input type="text" name="apropos" placeholder="{{recruteurDetail.apropos}}"><br>
+   <input type="text" name="experiences" placeholder="{{recruteurDetail.experiences}}" disabled ><br>
+   <input type="text" name="competences" placeholder="{{recruteurDetail.competences}}" disabled><br>
+   <input type="text" name="photo" placeholder="{{recruteurDetail.photo}}" disabled><br>
 
  -->
 
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
     <div class="col-lg-9">
-      <input class="form-control" type="text" value="{{candidatDetail.firstName}}">
+      <input class="form-control" type="text" value="FirstName">
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">Nom</label>
     <div class="col-lg-9">
-      <input class="form-control" type="text" value="{{candidatDetail.lastName}}">
+      <input class="form-control" type="text" value="LastName">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Entreprise</label>
+    <div class="col-lg-9">
+      <input class="form-control" type="text" value="enterprise">
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">Email</label>
     <div class="col-lg-9">
-      <input class="form-control" type="email" value="{{candidatDetail.email}}">
+      <input class="form-control" type="email" value="Email">
     </div>
   </div>
   <div class="form-group row">
@@ -46,7 +52,7 @@
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-lg-3 col-form-label form-control-label">URL Photo</label>
+    <label class="col-lg-3 col-form-label form-control-label">URL Logo</label>
     <div class="col-lg-9">
       <input class="form-control" type="text" value="https://www.atelierduloft.fr/wp-content/uploads/2017/05/artiste-johnny-halliday-portrait.jpg">
     </div>
@@ -72,7 +78,7 @@
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label"></label>
     <div class="col-lg-9">
-      <input type="reset" class="btn btn-secondary" value="Cancel">
+      <input (click)="redirect()" type="reset" class="btn btn-secondary" value="Cancel">
       <input type="button" class="btn btn-primary" value="Save Changes">
     </div>
   </div>
