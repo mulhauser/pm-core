@@ -5,27 +5,27 @@
       <!--  <a class="col-12" [routerLink]="['/candidat/', candidatObj.id]">
 
         </a>-->
-        <h3>{{candidatObj.prenom}} {{candidatObj.nom}}</h3>
-        <div class="col-12">
+        <h3>{{candidatObj.firstName}} {{candidatObj.lastName}}</h3>
+        <!--<div class="col-12">
           {{candidatObj.bio}}
-        </div>
+        </div>-->
       </div>
       <div class="col-2">
         <div class="col-12">
           {{candidatObj.email}}
         </div>
-        <div class="col-12">
+        <!--<div class="col-12">
           <img class="img-fluid"  *ngIf="candidatObj" src="{{ candidatObj.photo }}" alt="logo">
-        </div>
+        </div>-->
       </div>
     </div>
     <div class="row">
-      <div class="col-10">
+      <!--<div class="col-10">
         <span class="glyphicon glyphicon-map-marker"></span><i class="fa fa-map-marker" aria-hidden="true"></i> {{candidatObj.location}}
       </div>
       <div class="col-2">
         {{candidatObj.date_naissance}}
-      </div>
+      </div>-->
     </div>
   </td>
 </tr>

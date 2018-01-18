@@ -26,6 +26,7 @@ export class CandidatsComponent implements OnInit {
 
 
   ngOnInit() {
+    this._candidatervice.getCandidats().subscribe((candidats: any[]) => this._candidats = candidats);
   }
 
 }
