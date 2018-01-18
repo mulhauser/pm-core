@@ -19,6 +19,7 @@ import java.util.UUID;
 @NamedQueries({
         @NamedQuery(name = User.FIND_ALL, query = "SELECT u FROM User u ORDER BY u.lastName DESC"),
         @NamedQuery(name = User.FIND_BY_EMAIL_PASSWORD, query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password"),
+        @NamedQuery(name = User.FIND_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email"),
         @NamedQuery(name = User.COUNT_ALL, query = "SELECT COUNT(u) FROM User u")
 })
 @XmlRootElement
@@ -31,18 +32,17 @@ public class User {
 
     public static final String FIND_ALL = "User.findAll";
     public static final String COUNT_ALL = "User.countAll";
-    public static final String FIND_BY_LOGIN_PASSWORD = "User.findByLoginAndPassword";
     public static final String FIND_BY_EMAIL_PASSWORD = "User.findByEmailAndPassword";
+    public static final String FIND_BY_EMAIL = "User.findByEmail";
 
     // ======================================
     // =             Attributes             =
     // ======================================
 
     @Id
-    private String id;
+    private String email;
     private String lastName;
     private String firstName;
-    private String email;
     @Column(length = 256, nullable = false)
     private String password;
     private String token;
@@ -64,21 +64,18 @@ public class User {
     public User() {
     }
 
-    public User(String id, String lastName) {
-        this.id = id;
+    public User( String lastName) {
         this.lastName = lastName;
     }
 
-    public User(String id, String lastName, String firstName, String password) {
-        this.id = id;
+    public User(String lastName, String firstName, String password) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.password = password;
     }
 
 
-    public User(String id, String lastName, String firstName,  String email, String password, String token, String type) {
-        this.id = id;
+    public User(String lastName, String firstName,  String email, String password, String token, String type) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.email = email;
@@ -93,7 +90,6 @@ public class User {
 
     @PrePersist
     private void setUUID() {
-        id = UUID.randomUUID().toString().replace("-", "");
         password = PasswordUtils.digestPassword(password);
     }
 
@@ -101,13 +97,6 @@ public class User {
     // =          Getters & Setters         =
     // ======================================
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getLastName() {
         return lastName;
@@ -159,18 +148,14 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id);
+        return Objects.equals(email, user.email);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "email='" + email + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 '}';
