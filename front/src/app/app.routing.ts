@@ -11,6 +11,8 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './_guards/auth.guard';
 import {RegisterComponent} from './register/register.component';
 import {CandidatDetailComponent} from './candidat-detail/candidat-detail.component';
+import {RecruteurDetailComponent} from './recruteur-detail/recruteur-detail.component';
+import {RecruteurModificationComponent} from './recruteur-modification/recruteur-modification.component';
 
 @NgModule({
   imports: [
@@ -22,6 +24,8 @@ import {CandidatDetailComponent} from './candidat-detail/candidat-detail.compone
       { path: 'candidats', component: CandidatsComponent, pathMatch: 'full'},
       { path: 'candidat', component: CandidatDetailComponent, pathMatch: 'full'},
       { path: 'candidat/:id/modification', component: CandidatModificationComponent, pathMatch: 'full'},
+      { path: 'recruteur/:id', component: RecruteurDetailComponent, pathMatch: 'full'},
+      { path: 'recruteur/:id/modification', component: RecruteurModificationComponent, pathMatch: 'full'},
       { path: 'test', component: TestComponent , pathMatch: 'full'},
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent, pathMatch: 'full' },

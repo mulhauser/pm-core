@@ -1,4 +1,11 @@
 .container {
   position: fixed;
   bottom: 0;
+  background-color: #0275d8;
+  width: 100%;
 }
+
+.container-fluid {
+  color: #eeeeee;
+}
+

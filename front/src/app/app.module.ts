@@ -23,6 +23,8 @@ import { ModalConnexionCandidatComponent } from './shared/modal-connexion-candid
 import { FormConnexionCandidatComponent } from './shared/form-connexion-candidat/form-connexion-candidat.component';
 import { CandidatDetailComponent } from './candidat-detail/candidat-detail.component';
 import { CandidatModificationComponent } from './candidat-modification/candidat-modification.component';
+import { RecruteurDetailComponent } from './recruteur-detail/recruteur-detail.component';
+import { RecruteurModificationComponent } from './recruteur-modification/recruteur-modification.component';
 import {CompetencesService} from './shared/competences.service';
 import { CompetenceComponent } from './competence/competence.component';
 import { ExperienceComponent } from './experience/experience.component';
@@ -57,6 +59,8 @@ import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-
     FormConnexionCandidatComponent,
     CandidatDetailComponent,
     CandidatModificationComponent,
+    RecruteurDetailComponent,
+    RecruteurModificationComponent,
     CompetenceComponent,
     ExperienceComponent,
     LoginComponent,
