@@ -39,6 +39,14 @@ public class CandidatRest {
     }
 
     @GET
+    @Path("/findByEmail/{email}")
+    @Produces("application/json")
+    @ApiOperation(value="Retourne le candidat avec l'email renseigné")
+    public Response getByEmail(@PathParam("email") String email){
+        return Response.ok(candidatBean.getCandidatByEmail(email)).build();
+    }
+
+    @GET
     @Path("/{id}/experiences")
     @Produces("application/json")
     @ApiOperation(value="Retourne les expériences du candidat renseigné")
@@ -55,15 +63,7 @@ public class CandidatRest {
     }
 
     @POST
-    @Consumes("application/json")
-    @ApiOperation(value="Ajoute un candidat")
-    public Response create(Candidat candidat){
-        candidatBean.ajouterCandidat(candidat);
-        return Response.ok().build();
-    }
-
-    @POST
-    @Path("/{id}")
+    @Path("/{id}/experiences")
     @Consumes("application/json")
     @ApiOperation(value="Ajoute une experience au candidat renseigné")
     public Response addExperience(@PathParam("id") String id, Experience experience){

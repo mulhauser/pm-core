@@ -17,7 +17,8 @@ import java.util.List;
 @DiscriminatorColumn(name = "TYPE_PROFIL", discriminatorType = DiscriminatorType.STRING, length = 1)
 @NamedQueries({
         @NamedQuery(name = "Profil.findAllC", query = "SELECT u FROM Profil u WHERE u.class = 'C' "),
-        @NamedQuery(name = "Profil.findAllR", query = "SELECT u FROM Profil u WHERE u.class = 'R' ")
+        @NamedQuery(name = "Profil.findAllR", query = "SELECT u FROM Profil u WHERE u.class = 'R' "),
+        @NamedQuery(name = "Profil.findByEmail", query = "SELECT u FROM Profil u WHERE u.email = :email")
 })
 public abstract class Profil implements Serializable {
 

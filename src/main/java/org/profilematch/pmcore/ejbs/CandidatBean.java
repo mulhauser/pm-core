@@ -4,11 +4,14 @@ package org.profilematch.pmcore.ejbs;
 import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Experience;
 import org.profilematch.pmcore.entities.Profil;
+import org.profilematch.pmcore.entities.User;
+import org.profilematch.pmcore.utils.PasswordUtils;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless
@@ -36,6 +39,13 @@ public class CandidatBean {
 
     public void supprimerCandidat(Long id){
         em.remove(em.getReference(Profil.class, id));
+    }
+
+    public Profil getCandidatByEmail(String email){
+        TypedQuery<Profil> query = em.createNamedQuery("Profil.findByEmail", Profil.class);
+        query.setParameter("email", email);
+        Profil p = query.getSingleResult();
+        return p;
     }
 
 }

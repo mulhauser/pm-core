@@ -5,23 +5,40 @@ import {Observable} from "rxjs/Observable";
 import {HttpHeaders} from "@angular/common/http";
 import {AlertService} from "./alert.service";
 import {Response} from "@angular/http";
-
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class UserService {
+  private _backendURL: any;
+
   constructor(private http: HttpClient, private alertService: AlertService) {
+    this._backendURL = {};
+
+    // build backend base url
+    let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
+    if (environment.backend.port) {
+      baseUrl += `:${environment.backend.port}`;
+    }
+
+    // build all backend urls
+    Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
+
   }
 
-  getAll() {
-    return this.http.get<User[]>('http://localhost:9090/rest/users');
+  getAll(): Observable<any> {
+    return this.http.get<User[]>(this._backendURL.allUsers, this._options())
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);;
   }
 
-  getById(id: number) {
-    return this.http.get('http://localhost:9090/rest/users/' + id);
+  getByEmail(email: string) {
+    return this.http.get(this._backendURL.getUserByEmail.replace(':email', email), this._backendURL)
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
   }
 
   create(user: User): Observable<any> {
-    return this.http.post('http://localhost:9090/rest/users', user, this._options());
+    return this.http.post(this._backendURL.register, user, this._options());
       /*.map(response => {
         console.log(response);
         //if (response.status === 200) this.alertService.success('Registration successful', true);
@@ -45,11 +62,11 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put('http://localhost:9090/rest/users' + user.id, user);
+    return this.http.put(this._backendURL.updateUser, user);
   }
 
   delete(email: string) {
-    return this.http.delete('http://localhost:9090/rest/users/' + email);
+    return this.http.delete(this._backendURL.deleteUser.replace(':email', email), this._options());
   }
 
   private _options(headerList: Object = {}): any {

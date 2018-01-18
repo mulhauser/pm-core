@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {UserService} from '../_services/user.service';
 import { ErrorHandler } from '@angular/core';
+import {CandidatService} from '../shared/candidat.service';
+import {Profil} from '../_models/profil';
 
 @Component({
   selector: 'app-candidat-detail',
@@ -11,26 +13,32 @@ import { ErrorHandler } from '@angular/core';
 })
 export class CandidatDetailComponent implements OnInit {
 
-  private _candidatDetail: any;
+  private currentUser: any;
+  private _candidat: any;
+
   @Input()
   modeModification = false;
 
   constructor(private _userService: UserService,
-              private _route: ActivatedRoute) {
-    this._candidatDetail = JSON.parse(localStorage.getItem('currentUser'));
+              private _route: ActivatedRoute,
+              private _candidatService: CandidatService) {
+
   }
 
   ngOnInit() {
-    this._route.params
-      .map((params: any) => params.id)
-      .flatMap((id: number) => this._fetchOne(id))
-      .subscribe(
-        (candidat: any) => this._candidatDetail = candidat
-      );
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this._candidatService.getCandidatByEmail(this.currentUser.email)
+       .subscribe( data => {
+         this._candidat = data;
+       });
   }
 
-  get candidatDetail (): any {
-    return this._candidatDetail;
+  get candidat(): Profil {
+    return this._candidat;
+  }
+
+  get candidatDetail (): Profil {
+    return this.currentUser;
   }
   get modeModificationOn (): boolean {
     return this.modeModification;
@@ -39,8 +47,8 @@ export class CandidatDetailComponent implements OnInit {
     this.modeModification = a;
   }
 
-  private _fetchOne(id: number): Observable<any> {
-    return this._userService.getById(id);
+  private _fetchOne(email: string): Observable<any> {
+    return this._userService.getByEmail(email);
   }
 
 }

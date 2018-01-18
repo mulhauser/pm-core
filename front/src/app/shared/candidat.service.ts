@@ -4,6 +4,7 @@ import {CandidatModel} from '../candidat/candidat.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {forEach} from '@angular/router/src/utils/collection';
 import {CandidatComponent} from '../candidat/candidat.component';
+import {environment} from '../../environments/environment';
 
 const jSonOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
@@ -15,54 +16,69 @@ export class CandidatService {
    * ON POURRA APRES SI ON VEUT MAIS ON SE FAIT PAS CHIER AVEC LE TYPAGE COMME ÇA
    * @type {string}
    */
-  private candidatUrl = 'api/candidats';
-  private emailPotentiel: any;
-  private _candidats: any[];
+  private _backendURL: any;
 
   constructor(private http: HttpClient) {
-    this._candidats = [];
-  }
+    this._backendURL = {};
 
-  addCandidat(candidat: CandidatModel): Observable<any> {
-    return this.http.post<CandidatModel>(this.candidatUrl, candidat, jSonOptions);
-  }
-
-  getCandidatDetails(id: string): Observable<any> {
-    const url = `${this.candidatUrl}/${id}`;
-    return this.http.get<CandidatModel>(url)
-      .filter( _ => !!_)
-      .defaultIfEmpty([]);
-  }
-
-  deleteCandidat(candidat: CandidatModel ): Observable<any> {
-    const id = +candidat.id;
-    const url = `${this.candidatUrl}/${id}`;
-
-    return this.http.delete<CandidatModel>(url, jSonOptions)
-      .filter( _ => !!_)
-      .defaultIfEmpty([]);
-  }
-
-  updateCandidat (candidat: CandidatModel): Observable<any> {
-    return this.http.put(this.candidatUrl, event, jSonOptions);
-  }
-
-  getCandidats(): Observable<any> {
-    return this.http.get<CandidatModel[]>(this.candidatUrl)
-      .filter( _ => !!_)
-      .defaultIfEmpty([]);
-  }
-
-  getEmailPourVerification(infosMail: string): boolean {
-    this.getCandidats()
-      .subscribe((candidats: any[]) => this._candidats = candidats);
-    for (let i = 0; i < this._candidats.length; i++) {
-      if (this._candidats[i].email === infosMail) {
-        // console.log('Match fond email not valid');
-        return true;
-      }
+    // build backend base url
+    let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
+    if (environment.backend.port) {
+      baseUrl += `:${environment.backend.port}`;
     }
-    return false;
+
+    // build all backend urls
+    Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
+  }
+
+
+  getCandidatByEmail(email: string): Observable<any> {
+    return this.http.get(this._backendURL.getCandidatByEmail.replace(':email', email), this._options())
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
+  }
+
+  getCandidatById(id: number): Observable<any> {
+    return this.http.get(this._backendURL.getCandidatById.replace(':id', id), this._options())
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
+  }
+
+  getAll(): Observable<any> {
+    return this.http.get(this._backendURL.allCandidat, this._options())
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
+  }
+
+  getCandidatExperiences(id: number): Observable<any> {
+    return this.http.get(this._backendURL.getCandidatExperiences.replace(':id', id), this._options())
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
+  }
+
+  getCandidatCompetences(id: number): Observable<any> {
+    return this.http.get(this._backendURL.getCandidatCompetences.replace(':id', id), this._options())
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
+  }
+
+  addCandidatExperience(experience: any, id: number): Observable<any> {
+    return this.http.post(this._backendURL.addCandidatExperience.replace(':id', id), experience, this._options())
+  }
+
+  updateCandidat (candidat: any): Observable<any> {
+    return this.http.put(this._backendURL.updateUser, candidat, this._options());
+  }
+
+  deleteCandidat(candidat: any): Observable<any> {
+    return this.http.delete(this._backendURL.deleteCandidat, candidat);
+  }
+
+
+  private _options(headerList: Object = {}): any {
+    const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList));
+    return { headers,
+      responseType: 'text' };
   }
 }
 

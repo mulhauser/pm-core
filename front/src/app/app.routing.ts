@@ -20,7 +20,7 @@ import {CandidatDetailComponent} from './candidat-detail/candidat-detail.compone
       { path: 'offres', component: OffresComponent , pathMatch: 'full'},
       { path: 'offre/:id', component: OffreDetailComponent, pathMatch: 'full'},
       { path: 'candidats', component: CandidatsComponent, pathMatch: 'full'},
-      { path: 'candidat/:id', component: CandidatDetailComponent, pathMatch: 'full'},
+      { path: 'candidat', component: CandidatDetailComponent, pathMatch: 'full'},
       { path: 'candidat/:id/modification', component: CandidatModificationComponent, pathMatch: 'full'},
       { path: 'test', component: TestComponent , pathMatch: 'full'},
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },

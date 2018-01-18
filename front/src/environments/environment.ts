@@ -14,15 +14,26 @@ export const environment = {
     port: '9090',
     endpoints: {
 
+      allCandidat: '/rest/candidat',
+      getCandidatById: '/rest/candidat/:id',
+      getCandidatByEmail: '/rest/candidat/findByEmail/:email',
+      getCandidatExperiences: '/rest/candidat/:id/experiences',
+      getCandidatCompetences: '/rest/candidat/:id/competences',
+      addCandidatExperience: '/rest/candidat/:id/experiences',
+      updateCandidat: '/rest/candidat',
+      deleteCandidat: '/rest/candidat',
       allCompetences: '/rest/competence',
-      specificCompetence: '/rest/competence/:id',
+      getCompetence: '/rest/competence/:id',
       addCompetence: '/rest/competence',
-      modifyCompetence: '/rest/competence',
+      updateCompetence: '/rest/competence',
       login: '/rest/users/login',
-      register: '/rest/utilisateur/register',
+      register: '/rest/users',
+      getUserByEmail: '/rest/users/:email',
       getUserById: '/rest/users/:id',
+      updateUser: '/rest/users',
+      deleteUser: '/rest/users/:email',
+      allUsers: '/rest/users',
       allExperiences: '/rest/experience',
-      createUser: '/rest/users',
     }
   }
 };

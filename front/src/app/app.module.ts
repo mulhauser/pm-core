@@ -14,8 +14,6 @@ import { OffresComponent } from './offres/offres.component';
 import { OffreComponent } from './offre/offre.component';
 import {OffreService} from './shared/offre.service';
 import { OffreDetailComponent } from './shared/offre-detail/offre-detail.component';
-import { ModalInscriptionCandidatComponent } from './shared/modal-inscription-candidat/modal-inscription-candidat.component';
-import { FormInscriptionCandidatComponent } from './shared/form-inscription-candidat/form-inscription-candidat.component';
 import { CandidatComponent } from './candidat/candidat.component';
 import {CandidatService} from './shared/candidat.service';
 import {RecruteurService} from './shared/recruteur.service';
@@ -51,8 +49,6 @@ import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-
     OffresComponent,
     OffreComponent,
     OffreDetailComponent,
-    ModalInscriptionCandidatComponent,
-    FormInscriptionCandidatComponent,
     ModalConnexionCandidatComponent,
     FormConnexionCandidatComponent,
     CandidatComponent,
@@ -90,6 +86,6 @@ import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-
     },
    ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalInscriptionCandidatComponent, ModalConnexionCandidatComponent]
+  entryComponents: [ModalConnexionCandidatComponent]
 })
 export class AppModule { }
