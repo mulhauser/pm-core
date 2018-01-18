@@ -80,6 +80,12 @@ public abstract class Profil implements Serializable {
     public Profil() {
     }
 
+    public Profil(String lastName, String firstName, String email) {
+        this.nom = lastName;
+        this.prenom = firstName;
+        this.email = email;
+    }
+
     @ApiModelProperty(hidden = true)
     public Long getId() {
         return id;

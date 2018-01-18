@@ -51,6 +51,10 @@ public class Candidat extends Profil{
         super();
     }
 
+    public Candidat(String lastName, String firstName, String email) {
+        super(lastName, firstName, email);
+    }
+
     @ApiModelProperty(hidden = true)
     public Collection<Experience> getExperiences() {
         return experiences;

@@ -6,10 +6,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.swagger.annotations.Api;
 import org.hibernate.HibernateException;
 import org.hibernate.exception.ConstraintViolationException;
+import org.profilematch.pmcore.ejbs.CandidatBean;
+import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.User;
 import org.profilematch.pmcore.utils.KeyGenerator;
 import org.profilematch.pmcore.utils.PasswordUtils;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -60,6 +63,9 @@ public class UserEndpoint {
 
     @PersistenceContext
     private EntityManager em;
+
+    @EJB
+    private CandidatBean candidatBean;
 
     // ======================================
     // =          Business methods          =
@@ -119,6 +125,9 @@ public class UserEndpoint {
     public Response create(User user) {
         try {
             em.persist(user);
+            if(user.getType() == "candidat") {
+                candidatBean.ajouterCandidat(new Candidat(user.getLastName(), user.getFirstName(), user.getEmail()));
+            }
             em.flush();
             return Response.created(uriInfo.getAbsolutePathBuilder().path(user.getEmail()).build()).build();
         }catch(PersistenceException e){
