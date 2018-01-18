@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {UserService} from '../_services/user.service';
 
 @Component({
   selector: 'app-candidat-modification',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidatModificationComponent implements OnInit {
 
-  constructor() { }
+  private candidatDetail: any;
+
+  constructor(private _userService: UserService) { }
 
   ngOnInit() {
   }
 
+  @Input('candidatDetail')
+  set candidat (candidatDetail: any){
+    this.candidatDetail = candidatDetail;
+  }
+
+  updateCandidat(candidat: any): any  {
+    // console.log('update ' + candidat.firstname);
+    console.log('coucou');
+    console.log(candidat.id);
+    return this._userService.update(candidat);
+  }
 }

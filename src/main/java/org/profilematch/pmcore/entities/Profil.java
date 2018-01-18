@@ -1,6 +1,7 @@
 package org.profilematch.pmcore.entities;
 
 
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -14,6 +15,10 @@ import java.util.List;
 @Table(name = "profil")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE_PROFIL", discriminatorType = DiscriminatorType.STRING, length = 1)
+@NamedQueries({
+        @NamedQuery(name = "Profil.findAllC", query = "SELECT u FROM Profil u WHERE u.class = 'C' "),
+        @NamedQuery(name = "Profil.findAllR", query = "SELECT u FROM Profil u WHERE u.class = 'R' ")
+})
 public abstract class Profil implements Serializable {
 
     @Id
@@ -75,6 +80,7 @@ public abstract class Profil implements Serializable {
     public Profil() {
     }
 
+    @ApiModelProperty(hidden = true)
     public Long getId() {
         return id;
     }

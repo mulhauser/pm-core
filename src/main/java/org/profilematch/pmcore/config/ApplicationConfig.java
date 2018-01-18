@@ -25,11 +25,11 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(CorsFeature.class);
-        resources.add(org.profilematch.pmcore.rest.UtilisateurRest.class);
         resources.add(org.profilematch.pmcore.rest.CompetenceRest.class);
         resources.add(org.profilematch.pmcore.rest.ExperienceRest.class);
         resources.add(org.profilematch.pmcore.rest.UserEndpoint.class);
         resources.add(org.profilematch.pmcore.rest.EchoEndpoint.class);
+        resources.add(org.profilematch.pmcore.rest.CandidatRest.class);
         resources.add(com.github.phillipkruger.apiee.ApieeService.class);
 
     }

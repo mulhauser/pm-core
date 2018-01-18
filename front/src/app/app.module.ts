@@ -38,6 +38,7 @@ import {AlertService} from './_services/alert.service';
 import {AuthenticationService} from './_services/authentication.service';
 import {UserService} from './_services/user.service';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
+import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-update-candidat.component';
 
 
 @NgModule({
@@ -65,6 +66,8 @@ import {JwtInterceptor} from './_helpers/jwt.interceptor';
     LoginComponent,
     AlertComponent,
     RegisterComponent,
+    FormUpdateCandidatComponent,
+
   ],
   imports: [
     BrowserModule,
