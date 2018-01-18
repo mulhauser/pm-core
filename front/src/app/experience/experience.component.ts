@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {ExperienceModel} from './experience.model';
+import {Experience} from '../_models/experience';
 import {ExperienceService} from '../shared/experience.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -10,7 +10,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   styleUrls: ['./experience.component.css']
 })
 export class ExperienceComponent implements OnInit {
-  private _experiences: ExperienceModel[];
+  private _experiences: Experience[];
 
   constructor(private _experienceService: ExperienceService, private http: HttpClient) { }
 
@@ -27,7 +27,7 @@ export class ExperienceComponent implements OnInit {
     return { headers };
   }
 
-  get experiences(): ExperienceModel[]{
+  get experiences(): Experience[]{
     return this._experiences;
   }
 

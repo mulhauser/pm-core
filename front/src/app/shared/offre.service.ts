@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/Observable';
-import {OffreModel} from '../offre/offre.model';
+import {Offre} from '../_models/offre';
 
 @Injectable()
 export class OffreService {
@@ -54,7 +54,7 @@ export class OffreService {
 */
 
   getOffres(): Observable<any> {
-    return this.http.get<OffreModel[]>(this.offresUrl)
+    return this.http.get<Offre[]>(this.offresUrl)
       .filter( _ => !!_)
       .defaultIfEmpty([]);
   }
@@ -63,7 +63,7 @@ export class OffreService {
 
   getOffreDetails(id: string): Observable<any> {
         const url = `${this.offresUrl}/${id}`;
-        return this.http.get<OffreModel>(url)
+        return this.http.get<Offre>(url)
            .filter( _ => !!_)
           .defaultIfEmpty([]);
       }

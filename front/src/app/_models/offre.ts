@@ -1,4 +1,4 @@
-export class OffreModel {
+export class Offre {
   constructor(
     public id: number,
     public intitule: string,

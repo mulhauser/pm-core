@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CompetencesService} from '../shared/competences.service';
-import {CompetenceModel} from './competence.model';
 import {Observable} from 'rxjs/Observable';
+import {Competence} from "../_models/competence";
 
 @Component({
   selector: 'app-competence',
@@ -19,7 +19,7 @@ export class CompetenceComponent implements OnInit {
     console.log(this._competences);
   }
 
-  get competences(): CompetenceModel[]{
+  get competences(): Competence[]{
       return this._competences;
   }
 
