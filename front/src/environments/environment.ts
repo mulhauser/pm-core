@@ -18,11 +18,9 @@ export const environment = {
       specificCompetence: '/rest/competence/:id',
       addCompetence: '/rest/competence',
       modifyCompetence: '/rest/competence',
-      addUser: '/rest/utilisateur/inscrire',
-      getUser: '/rest/utilisateur/get/:email',
       login: '/rest/users/login',
       register: '/rest/utilisateur/register',
-
+      getUserById: '/rest/users/:id',
       allExperiences: '/rest/experience',
       createUser: '/rest/users',
     }
