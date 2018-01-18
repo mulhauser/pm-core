@@ -70,6 +70,7 @@ public class Experience implements Serializable {
     public Experience() {
     }
 
+    @ApiModelProperty(hidden = true)
     public Long getId() {
         return id;
     }
@@ -118,7 +119,7 @@ public class Experience implements Serializable {
         this.posteOccuper = posteOccuper;
     }
 
-
+    @ApiModelProperty(hidden = true)
     public Candidat getCandidat() {
         return candidat;
     }

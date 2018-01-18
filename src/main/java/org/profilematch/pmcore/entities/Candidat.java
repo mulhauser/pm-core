@@ -55,7 +55,6 @@ public class Candidat extends Profil{
         super(lastName, firstName, email);
     }
 
-    @ApiModelProperty(hidden = true)
     public Collection<Experience> getExperiences() {
         return experiences;
     }
