@@ -85,6 +85,8 @@ public class UserEndpoint {
     }
 
     private User authenticate(String email, String password) throws Exception {
+
+
         TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_EMAIL_PASSWORD, User.class);
         query.setParameter("email", email);
         query.setParameter("password", PasswordUtils.digestPassword(password));
@@ -110,15 +112,16 @@ public class UserEndpoint {
     }
 
     @POST
-    public Response create(User user) {
+    public Response create(User user){
         em.persist(user);
-        return Response.created(uriInfo.getAbsolutePathBuilder().path(user.getId()).build()).build();
+        return Response.created(uriInfo.getAbsolutePathBuilder().path(user.getEmail()).build()).build();
     }
 
+
     @GET
-    @Path("/{id}")
-    public Response findById(@PathParam("id") String id) {
-        User user = em.find(User.class, id);
+    @Path("/{email}")
+    public Response findById(@PathParam("email") String email) {
+        User user = em.find(User.class, email);
 
         if (user == null)
             return Response.status(NOT_FOUND).build();
@@ -139,7 +142,7 @@ public class UserEndpoint {
 
      @PUT
      public Response updateUser(User u){
-         User user = em.find(User.class, u.getId());
+         User user = em.find(User.class, u.getEmail());
 
          if (user == null)
              return Response.status(NOT_FOUND).build();
@@ -149,9 +152,9 @@ public class UserEndpoint {
      }
 
     @DELETE
-    @Path("/{id}")
-    public Response remove(@PathParam("id") String id) {
-        em.remove(em.getReference(User.class, id));
+    @Path("/{email}")
+    public Response remove(@PathParam("email") String email) {
+        em.remove(em.getReference(User.class, email));
         return Response.noContent().build();
     }
 
