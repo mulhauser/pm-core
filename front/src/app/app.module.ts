@@ -55,8 +55,6 @@ import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-
     FormConnexionCandidatComponent,
     CandidatComponent,
     CandidatsComponent,
-    ModalConnexionCandidatComponent,
-    FormConnexionCandidatComponent,
     CandidatDetailComponent,
     CandidatModificationComponent,
     RecruteurDetailComponent,

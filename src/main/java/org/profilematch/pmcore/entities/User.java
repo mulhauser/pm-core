@@ -20,7 +20,8 @@ import java.util.UUID;
         @NamedQuery(name = User.FIND_ALL, query = "SELECT u FROM User u ORDER BY u.lastName DESC"),
         @NamedQuery(name = User.FIND_BY_EMAIL_PASSWORD, query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password"),
         @NamedQuery(name = User.FIND_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email"),
-        @NamedQuery(name = User.COUNT_ALL, query = "SELECT COUNT(u) FROM User u")
+        @NamedQuery(name = User.COUNT_ALL, query = "SELECT COUNT(u) FROM User u"),
+        @NamedQuery(name = User.UPDATE_PHOTO, query = "UPDATE User u SET u.urlPhoto = :urlPhoto WHERE u.email = :email")
 })
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -34,6 +35,7 @@ public class User {
     public static final String COUNT_ALL = "User.countAll";
     public static final String FIND_BY_EMAIL_PASSWORD = "User.findByEmailAndPassword";
     public static final String FIND_BY_EMAIL = "User.findByEmail";
+    public static final String UPDATE_PHOTO = "User.updatePhoto";
 
     // ======================================
     // =             Attributes             =
@@ -45,6 +47,7 @@ public class User {
     private String firstName;
     @Column(length = 256, nullable = false)
     private String password;
+    private String urlPhoto;
     private String token;
     private String type;
 
@@ -96,7 +99,13 @@ public class User {
     // ======================================
     // =          Getters & Setters         =
     // ======================================
+    public String getUrlPhoto() {
+        return urlPhoto;
+    }
 
+    public void setUrlPhoto(String urlPhoto) {
+        this.urlPhoto = urlPhoto;
+    }
 
     public String getLastName() {
         return lastName;

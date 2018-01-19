@@ -31,6 +31,7 @@ export const environment = {
       getUserByEmail: '/rest/users/:email',
       getUserById: '/rest/users/:id',
       updateUser: '/rest/users',
+      updateUserPhoto: '/rest/users/updatePhoto/:email',
       deleteUser: '/rest/users/:email',
       allUsers: '/rest/users',
       allExperiences: '/rest/experience',

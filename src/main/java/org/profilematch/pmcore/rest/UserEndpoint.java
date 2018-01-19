@@ -148,6 +148,20 @@ public class UserEndpoint {
         return Response.ok(user).build();
     }
 
+    @POST
+    @Path("/updatePhoto/{email}")
+    public Response updatePhoto(@PathParam("email") String email, String url){
+        TypedQuery<User> query = em.createNamedQuery(User.UPDATE_PHOTO, User.class);
+        query.setParameter("urlPhoto", url);
+        query.setParameter("email", email);
+        User u  = query.getSingleResult();
+
+        if (u == null)
+            return Response.status(NOT_FOUND).build();
+
+        return Response.ok(u).build();
+    }
+
     @GET
     public Response findAllUsers() {
         TypedQuery<User> query = em.createNamedQuery(User.FIND_ALL, User.class);
