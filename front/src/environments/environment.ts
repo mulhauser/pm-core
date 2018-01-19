@@ -38,6 +38,7 @@ export const environment = {
       allExperiences: '/rest/experience',
       getExperiences: '/rest/experience/:id',
       updateExperience: '/rest/experience',
+      deleteExperience: '/rest/experience/:id',
     }
   }
 };

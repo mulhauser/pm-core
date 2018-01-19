@@ -44,6 +44,7 @@ import { ModalAjoutExperienceComponent } from './shared/modal-ajout-experience/m
 import { ExperiencesModificationComponent } from './experiences-modification/experiences-modification.component';
 import {ModalAjoutCompetenceComponent} from './shared/modal-ajout-competence/modal-ajout-competence.component';
 import {FormAjoutCompetenceComponent} from './shared/form-ajout-competence/form-ajout-competence.component';
+import {DatePipe} from '@angular/common';
 
 
 @NgModule({
@@ -87,8 +88,7 @@ import {FormAjoutCompetenceComponent} from './shared/form-ajout-competence/form-
     HttpModule
     // HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],
-  providers: [OffreService, CandidatService, RecruteurService, CompetencesService, ExperienceService, AuthGuard,
-    AlertService,
+  providers: [OffreService, CandidatService, RecruteurService, CompetencesService, ExperienceService, AuthGuard, DatePipe, AlertService,
     AuthenticationService,
     UserService,
     {

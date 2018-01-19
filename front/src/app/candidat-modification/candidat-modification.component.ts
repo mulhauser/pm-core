@@ -72,7 +72,7 @@ export class CandidatModificationComponent implements OnInit {
               this._infoExperience = infoExperience;
               },
             () => this._dialogStatus = 'inactive',
-            () => this._dialogStatus = 'inactive'
+            () => {this._dialogStatus = 'inactive'; window.location.reload();}
           );
       }, (reason) => {
         this._dialogStatus = 'inactive';
