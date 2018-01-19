@@ -1,0 +1,141 @@
+
+<form #f="ngForm">
+  <div class="modal-header header">
+    <h3>Inscris toi :)</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="container">
+      <div >
+
+
+
+        <div class="form-group">
+          <label for="typeContrat">typeContrat</label>
+          <input type="text" class="form-control" id="typeContrat"
+                 required
+                 minlength="2"
+                 [(ngModel)]="model.typeContrat"
+                 placeholder="Tell us more about you"
+                 name="bio"
+                 #typeContrat="ngModel">
+          <div *ngIf="typeContrat.invalid && (typeContrat.dirty || typeContrat.touched)"
+               class="alert alert-danger">
+            <div *ngIf="typeContrat.errors.required">
+              typeContrat is required.
+            </div>
+            <div *ngIf="typeContrat.errors.minlength">
+              typeContrat must be at least 20 character long.
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+          <label for="dateDebut">Date de début</label>
+          <div>
+            <input class="form-control"
+                   required
+                   type="date"
+                   value=""
+                   id="dateDebut"
+                   name="dateDebut"
+                   [ngModel]="model.dateDebut | date:'yyyy-MM-dd':'':'fr'"
+                   #dateDebut="ngModel"
+            >
+          </div>
+          <div *ngIf="dateDebut.invalid && (dateDebut.dirty || dateDebut.touched)"
+               class="alert alert-danger">
+            <div *ngIf="dateDebut.errors.required">
+              Date de début is required.
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="dateFin">Date de fin</label>
+          <div>
+            <input class="form-control"
+                   required
+                   type="date"
+                   value=""
+                   id="dateFin"
+                   name="dateFin"
+                   [ngModel]="model.dateFin | date:'yyyy-MM-dd':'':'fr'"
+                   #dateFin="ngModel"
+            >
+          </div>
+          <div *ngIf="dateFin.invalid && (dateFin.dirty || dateFin.touched)"
+               class="alert alert-danger">
+            <div *ngIf="dateFin.errors.required">
+              Date de fin is required.
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="form-group">
+          <label for="description">description</label>
+          <input type="text" class="form-control" id="description"
+                 required
+                 minlength="20"
+                 [(ngModel)]="model.description"
+                 placeholder="Tell us more about you"
+                 name="description"
+                 #description="ngModel">
+          <div *ngIf="description.invalid && (description.dirty || description.touched)"
+               class="alert alert-danger">
+            <div *ngIf="description.errors.required">
+              description is required.
+            </div>
+            <div *ngIf="description.errors.minlength">
+              description must be at least 20 character long.
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="!f.form.valid" (click)="submit()">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+  </div>
+</form>
+
+
+<!--
+
+typeContract
+dateDebut
+dateFin
+description
+
+-->

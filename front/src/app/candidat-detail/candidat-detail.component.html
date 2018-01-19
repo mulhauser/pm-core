@@ -100,8 +100,8 @@
               <h5 class="mt-2">Mes expériences</h5>
               <table class="table table-sm table-hover table-striped">
                 <tbody>
-                <tr>
-                  <td *ngFor="let experience of candidatDetail.experiences ">
+                <tr *ngFor="let experience of candidatDetail.experiences " >
+                  <td>
                     <strong>{{experience.typeContrat}}</strong> {{experience.description}} <strong>{{experience.posteOccuper}}</strong>
                   </td>
                 </tr>

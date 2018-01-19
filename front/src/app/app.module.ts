@@ -39,6 +39,8 @@ import {AuthenticationService} from './_services/authentication.service';
 import {UserService} from './_services/user.service';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-update-candidat.component';
+import { FormAjoutExperienceComponent } from './shared/form-ajout-experience/form-ajout-experience.component';
+import { ModalAjoutExperienceComponent } from './shared/modal-ajout-experience/modal-ajout-experience.component';
 
 
 @NgModule({
@@ -65,6 +67,8 @@ import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-
     AlertComponent,
     RegisterComponent,
     FormUpdateCandidatComponent,
+    FormAjoutExperienceComponent,
+    ModalAjoutExperienceComponent,
 
   ],
   imports: [
@@ -88,6 +92,6 @@ import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-
     },
    ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalConnexionCandidatComponent]
+  entryComponents: [ModalConnexionCandidatComponent, ModalAjoutExperienceComponent]
 })
 export class AppModule { }

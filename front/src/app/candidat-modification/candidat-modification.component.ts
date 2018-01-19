@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {AlertService} from '../_services/alert.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalConnexionCandidatComponent} from '../shared/modal-connexion-candidat/modal-connexion-candidat.component';
+import {ModalAjoutExperienceComponent} from '../shared/modal-ajout-experience/modal-ajout-experience.component';
 
 @Component({
   selector: 'app-candidat-modification',
@@ -20,6 +21,7 @@ export class CandidatModificationComponent implements OnInit {
   private _infoExperience: any = {};
 
   constructor(private candidatService: CandidatService,
+              private userService: UserService,
               private router: Router,
               private alertService: AlertService,
               private _experienceDialog: NgbModal) { }
@@ -49,9 +51,29 @@ export class CandidatModificationComponent implements OnInit {
 
 
   showModalExperience() {
-    this._dialogStatus = 'active';
+   /* this._dialogStatus = 'active';
     // open modal
     const dialogRef = this._experienceDialog.open(ModalConnexionCandidatComponent, {
+      size: 'lg',
+      keyboard: true,
+      backdrop: 'static'
+    });
+    dialogRef.result.then(
+      (result) => {
+        this._addExperience(result.value)
+          .subscribe(
+            (infoExperience: any) => this._infoExperience = infoExperience,
+            () => this._dialogStatus = 'inactive',
+            () => this._dialogStatus = 'inactive'
+          );
+      }, (reason) => {
+        this._dialogStatus = 'inactive';
+      }
+    );*/
+    // set dialog status
+    this._dialogStatus = 'active';
+    // open modal
+    const dialogRef = this._experienceDialog.open(ModalAjoutExperienceComponent, {
       size: 'lg',
       keyboard: true,
       backdrop: 'static'
@@ -71,8 +93,7 @@ export class CandidatModificationComponent implements OnInit {
   }
 
   private _addExperience (experience: any): Observable<any> {
-    console.log(experience);
-   return null;
+    return this.candidatService.addCandidatExperience(experience, this.candidatDetail.id).flatMap(_ => _); // this.candidatService.getCandidatDetails(candidat.id)
   }
 
   get dialogStatus(): string {
