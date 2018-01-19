@@ -1,8 +1,14 @@
 package org.profilematch.pmcore.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 @Entity
 @NamedQueries({
@@ -22,13 +28,13 @@ public class Competence implements Serializable {
     @JoinTable(name="OFFRES_COMPETENCES",
             joinColumns = @JoinColumn(name="id_competence"),
             inverseJoinColumns = @JoinColumn(name = "id_offre"))
-    private Collection<Offre> offres;
+    private Collection<Offre> offres = new LinkedHashSet<Offre>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name="CANDIDATS_COMPETENCES",
             joinColumns = @JoinColumn(name="id_competence"),
             inverseJoinColumns = @JoinColumn(name = "id_candidat"))
-    private Collection<Candidat> candidats;
+    private Collection<Candidat> candidats = new LinkedHashSet<Candidat>();
 
 
     public Competence() {
@@ -39,6 +45,7 @@ public class Competence implements Serializable {
         this.description = description;
     }
 
+    @ApiModelProperty(hidden = true)
     public Long getId() {
         return id;
     }
@@ -63,7 +70,7 @@ public class Competence implements Serializable {
         this.description = description;
     }
 
-
+    @JsonIgnore
     public Collection<Candidat> getCandidats() {
         return candidats;
     }
@@ -72,6 +79,7 @@ public class Competence implements Serializable {
         this.candidats = candidats;
     }
 
+    @JsonIgnore
     public Collection<Offre> getOffres() {
         return offres;
     }

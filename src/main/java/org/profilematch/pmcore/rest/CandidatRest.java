@@ -4,8 +4,10 @@ package org.profilematch.pmcore.rest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.profilematch.pmcore.ejbs.CandidatBean;
+import org.profilematch.pmcore.ejbs.CompetenceBean;
 import org.profilematch.pmcore.ejbs.ExperienceBean;
 import org.profilematch.pmcore.entities.Candidat;
+import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Experience;
 
 import javax.ejb.EJB;
@@ -22,6 +24,9 @@ public class CandidatRest {
 
     @EJB
     private ExperienceBean experienceBean;
+
+    @EJB
+    private CompetenceBean competenceBean;
 
     @GET
     @Produces("application/json")
@@ -69,6 +74,24 @@ public class CandidatRest {
     public Response addExperience(@PathParam("id") String id, Experience experience){
         experience.setCandidat(candidatBean.getCandidat((long) Integer.parseInt(id)));
         experienceBean.ajouterExperience(experience);
+        return Response.ok().build();
+    }
+
+    @POST
+    @Path("/{id}/competences/{idCompetence}")
+    @Consumes("application/json")
+    @ApiOperation(value="Ajoute une competence au candidat renseigné")
+    public Response addCompetence(@PathParam("id") String id, @PathParam("idCompetence") String idCompetence){
+        Competence competence = competenceBean.getCompetence((long) Integer.parseInt(idCompetence));
+        Candidat candidat = candidatBean.getCandidat((long) Integer.parseInt(id));
+
+        competence.getCandidats().add(candidat);
+        candidat.getCompetences().add(competence);
+
+        competenceBean.modifierCompetence(competence);
+        //candidatBean.getCandidat((long) Integer.parseInt(id)).getCompetences().add(competence);
+        // competence.setCandidat(candidatBean.getCandidat((long) Integer.parseInt(id)));
+        // competenceBean.ajouterExperience(competence);
         return Response.ok().build();
     }
 

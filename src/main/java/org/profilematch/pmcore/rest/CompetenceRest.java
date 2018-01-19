@@ -32,7 +32,7 @@ public class CompetenceRest {
     @Produces("application/json")
     @Path("{id}")
     public Response getOne(@PathParam("id") String id){
-        return Response.ok(competenceBean.getCompetence(id)).build();
+        return Response.ok(competenceBean.getCompetence((long) Integer.parseInt(id))).build();
     }
 
     @POST

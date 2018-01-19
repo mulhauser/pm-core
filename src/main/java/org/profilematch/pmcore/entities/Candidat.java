@@ -23,7 +23,7 @@ public class Candidat extends Profil{
     @ManyToMany(mappedBy = "candidats")
     private Collection<Competence> competences;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinTable(name="OFFRES_CANDIDATS",
             joinColumns = @JoinColumn(name="id_candidat"),
@@ -64,7 +64,6 @@ public class Candidat extends Profil{
         this.experiences = experiences;
     }
 
-    @ApiModelProperty(hidden = true)
     public Collection<Competence> getCompetences() {
         return competences;
     }
@@ -74,6 +73,7 @@ public class Candidat extends Profil{
     }
 
     @ApiModelProperty(hidden = true)
+    @JsonIgnore
     public Collection<Offre> getOffres() {
         return offres;
     }
