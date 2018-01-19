@@ -67,7 +67,7 @@ export class CandidatService {
   }
 
   updateCandidat (candidat: any): Observable<any> {
-    return this.http.put(this._backendURL.updateUser, candidat, this._options());
+    return this.http.put(this._backendURL.updateCandidat, candidat, this._options());
   }
 
   deleteCandidat(candidat: any): Observable<any> {

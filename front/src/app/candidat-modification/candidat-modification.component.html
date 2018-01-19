@@ -17,64 +17,101 @@
    <input type="text" name="photo" placeholder="{{candidatDetail.photo}}" disabled><br>
 
  -->
-  <form #f="ngForm">
+  <form name="form" (ngSubmit)="update()"  #f="ngForm">
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
     <div class="col-lg-9">
-      <input class="form-control" type="text" value="{{candidatDetail.prenom}}">
+      <input type="text" class="form-control" id="prenom"
+             disabled
+             minlength="1"
+             [(ngModel)]="candidatDetail.prenom"
+             name="prenom"
+             #prenom="ngModel">
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">Nom</label>
     <div class="col-lg-9">
-      <input class="form-control" type="text" value="{{candidatDetail.nom}}">
+      <input type="text" class="form-control" id="nom"
+             disabled
+             minlength="1"
+             [(ngModel)]="candidatDetail.nom"
+             name="nom"
+             #nom="ngModel">
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">Email</label>
     <div class="col-lg-9">
-      <input class="form-control" type="email" value="{{candidatDetail.email}}">
+      <input type="text" class="form-control" id="email"
+             disabled
+             minlength="1"
+             [(ngModel)]="candidatDetail.email"
+             name="email"
+             #email="ngModel">
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label" value="Adresse">Adresse</label>
     <div class="col-lg-6">
-      <input class="form-control" type="text" value="" placeholder="Ville">
+      <input type="text" class="form-control" id="ville"
+             required
+             minlength="1"
+             placeholder="ville"
+             [(ngModel)]="candidatDetail.ville"
+             name="ville"
+             #ville="ngModel">
     </div>
     <div class="col-lg-3">
-      <input class="form-control" type="number" value="" placeholder="Code Postal" min="10000" max="99999" step="1">
+      <input type="text" class="form-control" id="codePostal"
+             required
+             minlength="1"
+             placeholder="Code postal"
+             [(ngModel)]="candidatDetail.codePostal"
+             name="codePostal"
+             #codePostal="ngModel">
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">URL Photo</label>
     <div class="col-lg-9">
-      <input class="form-control" type="text" value="https://www.atelierduloft.fr/wp-content/uploads/2017/05/artiste-johnny-halliday-portrait.jpg">
+      <input class="form-control" type="text" value="">
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-lg-3 col-form-label form-control-label">Mot de Passe</label>
+    <label class="col-lg-3 col-form-label form-control-label">A propos de moi</label>
     <div class="col-lg-9">
-      <input class="form-control" type="password" value="11111122333">
+      <input type="text" class="form-control" id="apropos"
+             minlength="1"
+             [(ngModel)]="candidatDetail.apropos"
+             name="apropos"
+             #apropos="ngModel" >
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-lg-3 col-form-label form-control-label">Nouveau mdp</label>
+    <label class="col-lg-3 col-form-label form-control-label"  >Téléphone</label>
     <div class="col-lg-9">
-      <input class="form-control" type="password" value="11111122333">
+      <input type="number" class="form-control" id="telephone"
+             minlength="10"
+             [(ngModel)]="candidatDetail.telephone"
+             name="telephone"
+             #telephone="ngModel">
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-lg-3 col-form-label form-control-label">Confirmation mdp</label>
+    <label class="col-lg-3 col-form-label form-control-label" >Date de naissance</label>
     <div class="col-lg-9">
-      <input class="form-control" type="password" value="11111122333">
+      <input type="date" class="form-control" id="dateNaissance"
+             minlength="1"
+             [(ngModel)]="candidatDetail.dateNaissance"
+             name="dateNaissance"
+             #dateNaissance="ngModel" >
     </div>
   </div>
+
   <div class="form-group row">
-    <label class="col-lg-3 col-form-label form-control-label"></label>
-    <div class="col-lg-9">
-      <input type="reset" class="btn btn-secondary" value="Cancel">
-      <input type="button" class="btn btn-primary" value="Save Changes">
-    </div>
+    <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
+   <a (click)="cancel()" class="btn btn-link">Cancel</a>
   </div>
 </form>
 

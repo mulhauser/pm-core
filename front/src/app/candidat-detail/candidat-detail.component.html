@@ -57,7 +57,6 @@
 <!--<app-candidat-modification  [candidatDetail]="candidatDetail"></app-candidat-modification>-->
 <!--</div>-->
 
-
 <div class="container">
   <div class="row my-2">
     <div class="col-lg-8 order-lg-2">
@@ -79,9 +78,15 @@
             <div class="col-md-6">
               <h5>A propos de moi</h5>
               <p>
-                {{candidatDetail.prenom}}
+                {{candidatDetail.apropos}}
               </p>
+              <p>{{candidatDetail.email}}</p>
+              <p>{{candidatDetail.pays}}</p>
+              <p><strong>{{candidatDetail.ville}}</strong> {{candidatDetail.codePostal}}</p>
+              <p>{{candidatDetail.telephone}}</p>
+
             </div>
+
             <div class="col-md-6">
               <h6>Mes Compétances</h6>
               <i><a href="https://www.google.fr/search?q=html5" class="badge badge-success">html5</a></i>

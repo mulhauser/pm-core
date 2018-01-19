@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {UserService} from '../_services/user.service';
+import {CandidatService} from '../shared/candidat.service';
+import {Router} from '@angular/router';
+import {AlertService} from '../_services/alert.service';
 
 @Component({
   selector: 'app-candidat-modification',
@@ -9,9 +12,12 @@ import {UserService} from '../_services/user.service';
 })
 export class CandidatModificationComponent implements OnInit {
 
+
   private candidatDetail: any;
 
-  constructor(private _userService: UserService) { }
+  constructor(private candidatService: CandidatService,
+              private router: Router,
+              private alertService: AlertService) { }
 
   ngOnInit() {
   }
@@ -21,10 +27,18 @@ export class CandidatModificationComponent implements OnInit {
     this.candidatDetail = candidatDetail;
   }
 
-  updateCandidat(candidat: any): any  {
+
+  update()  {
     // console.log('update ' + candidat.firstname);
-    console.log('coucou');
-    console.log(candidat.id);
-    return this._userService.update(candidat);
+    this.candidatService.updateCandidat(this.candidatDetail)
+      .subscribe(data =>
+        this.alertService.success('Modifications effectuées', true)
+      );
+
+  }
+
+  cancel() {
+    this.alertService.clear();
+    this.router.navigate(['/home']);
   }
 }
