@@ -34,6 +34,13 @@ export class CandidatDetailComponent implements OnInit {
        });
   }
 
+  reload() {
+    this._candidatService.getCandidatByEmail(this.currentUser.email)
+      .subscribe( (data: any) => {
+        this.candidat =  JSON.parse(data);
+      });
+  }
+
   get candidatDetail(): any {
     return this.candidat;
   }

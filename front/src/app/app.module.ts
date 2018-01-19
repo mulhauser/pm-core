@@ -41,6 +41,7 @@ import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-update-candidat.component';
 import { FormAjoutExperienceComponent } from './shared/form-ajout-experience/form-ajout-experience.component';
 import { ModalAjoutExperienceComponent } from './shared/modal-ajout-experience/modal-ajout-experience.component';
+import { ExperiencesModificationComponent } from './experiences-modification/experiences-modification.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { ModalAjoutExperienceComponent } from './shared/modal-ajout-experience/m
     FormUpdateCandidatComponent,
     FormAjoutExperienceComponent,
     ModalAjoutExperienceComponent,
+    ExperiencesModificationComponent,
 
   ],
   imports: [
