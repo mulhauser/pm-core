@@ -39,6 +39,7 @@ export class FormAjoutCompetenceComponent implements OnInit {
 
   @Output('submit')
   get submit$(): EventEmitter<any> {
+    console.log('result' + this._submit$);
     return this._submit$;
   }
 

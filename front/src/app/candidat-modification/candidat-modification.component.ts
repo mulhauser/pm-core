@@ -115,7 +115,7 @@ export class CandidatModificationComponent implements OnInit {
   }
 
   private _addCompetence (competence: any): Observable<any> {
-    return this.candidatService.addCandidatCompetence(competence, this.candidatDetail.id, this._infoCompetence.id)
+    return this.candidatService.addCandidatCompetence(competence, this.candidatDetail.id, competence.idCompetence)
       .flatMap(_ => _);
   }
 
