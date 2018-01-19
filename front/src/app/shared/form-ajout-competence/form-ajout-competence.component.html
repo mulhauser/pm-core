@@ -8,14 +8,14 @@
     <div class="container">
       <div >
 
-
-        <select name="competence" ngModel>
+      <div class="from-group">
+        <select class="form-control" name="competence" [(ngModel)]="model.idCompetence" name="idCompetence">
           <option value="" disabled>Choisir une compétence</option>
-          <option *ngFor="let competence of competences" [ngValue]="competence">
+          <option *ngFor="let competence of competences" [ngValue]="competence.id">
             {{ competence.nom }}
           </option>
         </select>
-
+      </div>
   </div>
 
 
