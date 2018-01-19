@@ -12,7 +12,7 @@
 
         <div class="form-group">
           <label for="competence">competence</label>
-          <div *ngFor="let option of options">
+          <div *ngFor="let competence of competences">
           <input type="checkbox" class="form-control" id="competence"
                  required
                  [(ngModel)]="model.competence"

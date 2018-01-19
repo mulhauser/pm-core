@@ -17,6 +17,11 @@
    <input type="text" name="photo" placeholder="{{candidatDetail.photo}}" disabled><br>
 
  -->
+
+  <button class="btn btn-primary" (click)="showModalExperience()" >Ajouter une Experience</button>
+  <button class="btn btn-primary" (click)="showModalCompetence()" >Ajouter une Compétence</button>
+
+
   <form name="form" (ngSubmit)="update()"  #f="ngForm">
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
@@ -120,4 +125,3 @@
   </div>
 
 
-  <button class="btn btn-primary" (click)="showModalExperience()" >Ajouter une Experience</button>

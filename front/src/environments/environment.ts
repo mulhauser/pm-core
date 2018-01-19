@@ -20,6 +20,7 @@ export const environment = {
       getCandidatExperiences: '/rest/candidat/:id/experiences',
       getCandidatCompetences: '/rest/candidat/:id/competences',
       addCandidatExperience: '/rest/candidat/:id/experiences',
+      addCandidatCompetence: 'post /candidat/{id}/competences/{idCompetence}',
       updateCandidat: '/rest/candidat',
       deleteCandidat: '/rest/candidat',
       allCompetences: '/rest/competence',

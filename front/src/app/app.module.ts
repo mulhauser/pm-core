@@ -42,6 +42,8 @@ import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-
 import { FormAjoutExperienceComponent } from './shared/form-ajout-experience/form-ajout-experience.component';
 import { ModalAjoutExperienceComponent } from './shared/modal-ajout-experience/modal-ajout-experience.component';
 import { ExperiencesModificationComponent } from './experiences-modification/experiences-modification.component';
+import {ModalAjoutCompetenceComponent} from './shared/modal-ajout-competence/modal-ajout-competence.component';
+import {FormAjoutCompetenceComponent} from './shared/form-ajout-competence/form-ajout-competence.component';
 
 
 @NgModule({
@@ -71,6 +73,8 @@ import { ExperiencesModificationComponent } from './experiences-modification/exp
     FormAjoutExperienceComponent,
     ModalAjoutExperienceComponent,
     ExperiencesModificationComponent,
+    ModalAjoutCompetenceComponent,
+    FormAjoutCompetenceComponent
 
   ],
   imports: [
@@ -94,6 +98,8 @@ import { ExperiencesModificationComponent } from './experiences-modification/exp
     },
    ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalConnexionCandidatComponent, ModalAjoutExperienceComponent]
+  entryComponents: [ModalConnexionCandidatComponent,
+    ModalAjoutExperienceComponent,
+    ModalAjoutCompetenceComponent]
 })
 export class AppModule { }
