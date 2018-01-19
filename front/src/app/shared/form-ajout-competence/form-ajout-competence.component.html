@@ -9,23 +9,20 @@
       <div >
 
 
+        <select name="competence" ngModel>
+          <option value="" disabled>Choisir une compétence</option>
+          <option *ngFor="let competence of competences" [ngValue]="competence">
+            {{ competence.nom }}
+          </option>
+        </select>
 
-        <div class="form-group">
-          <label for="competence">competence</label>
-          <div *ngFor="let competence of competences">
-          <input type="checkbox" class="form-control" id="competence"
-                 required
-                 [(ngModel)]="model.competence"
-                 name="competence"
-                 #competence="ngModel">
-            {{competence.nom}}
-          </div>
-        </div>
-
-
-      </div>
-    </div>
   </div>
+
+
+
+        </div>
+    </div>
+
 
   <div class="modal-footer">
     <button type="button" class="btn btn-success" [disabled]="!f.form.valid" (click)="submit()">Submit</button>
@@ -34,11 +31,3 @@
 </form>
 
 
-<!--
-
-typeContract
-dateDebut
-dateFin
-description
-
--->
