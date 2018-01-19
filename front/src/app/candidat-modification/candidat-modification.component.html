@@ -115,4 +115,9 @@
   </div>
 </form>
 
-  <button class="btn btn-primary" (click)="showModalExperience()">Ajouter une Experience</button>
+  <div *ngFor="let experience of candidatDetail.experiences">
+    <app-experiences-modification [experienceUpdate]="experience"></app-experiences-modification>
+  </div>
+
+
+  <button class="btn btn-primary" (click)="showModalExperience()" >Ajouter une Experience</button>

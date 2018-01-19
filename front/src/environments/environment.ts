@@ -35,6 +35,8 @@ export const environment = {
       deleteUser: '/rest/users/:email',
       allUsers: '/rest/users',
       allExperiences: '/rest/experience',
+      getExperiences: '/rest/experience/:id',
+      updateExperience: '/rest/experience',
     }
   }
 };

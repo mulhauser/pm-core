@@ -1,0 +1,55 @@
+<form name="form" (ngSubmit)="update()"  #f="ngForm">
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Type de contrat</label>
+    <div class="col-lg-9">
+      <input type="text" class="form-control" id="typeContrat"
+             minlength="1"
+             [(ngModel)]="experience.typeContrat"
+             name="typeContrat"
+             #typeContrat="ngModel">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Date de debut</label>
+    <div class="col-lg-9">
+      <input type="date" class="form-control" id="nom"
+             [(ngModel)]="experience.dateDebut"
+             name="dateDebut"
+             #dateDebut="ngModel">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Dete de fin</label>
+    <div class="col-lg-9">
+      <input type="date" class="form-control" id="dateFin"
+             [(ngModel)]="experience.dateFin"
+             name="dateFin"
+             #dateFin="ngModel">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Description</label>
+    <div class="col-lg-9">
+      <input type="text" class="form-control" id="description"
+             minlength="1"
+             [(ngModel)]="experience.description"
+             name="description"
+             #description="ngModel" >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label"  >Poste occuper</label>
+    <div class="col-lg-9">
+      <input type="text" class="form-control" id="posteOccuper"
+             minlength="10"
+             [(ngModel)]="experience.posteOccuper"
+             name="posteOccuper"
+             #posteOccuper="ngModel">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
+  </div>
+</form>

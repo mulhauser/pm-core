@@ -24,7 +24,8 @@ export class CandidatModificationComponent implements OnInit {
               private userService: UserService,
               private router: Router,
               private alertService: AlertService,
-              private _experienceDialog: NgbModal) { }
+              private _experienceDialog: NgbModal) {
+  }
 
   ngOnInit() {
   }
@@ -51,25 +52,6 @@ export class CandidatModificationComponent implements OnInit {
 
 
   showModalExperience() {
-   /* this._dialogStatus = 'active';
-    // open modal
-    const dialogRef = this._experienceDialog.open(ModalConnexionCandidatComponent, {
-      size: 'lg',
-      keyboard: true,
-      backdrop: 'static'
-    });
-    dialogRef.result.then(
-      (result) => {
-        this._addExperience(result.value)
-          .subscribe(
-            (infoExperience: any) => this._infoExperience = infoExperience,
-            () => this._dialogStatus = 'inactive',
-            () => this._dialogStatus = 'inactive'
-          );
-      }, (reason) => {
-        this._dialogStatus = 'inactive';
-      }
-    );*/
     // set dialog status
     this._dialogStatus = 'active';
     // open modal
@@ -82,7 +64,9 @@ export class CandidatModificationComponent implements OnInit {
       (result) => {
         this._addExperience(result.value)
           .subscribe(
-            (infoExperience: any) => this._infoExperience = infoExperience,
+            (infoExperience: any) => {
+              this._infoExperience = infoExperience;
+              },
             () => this._dialogStatus = 'inactive',
             () => this._dialogStatus = 'inactive'
           );
@@ -93,10 +77,15 @@ export class CandidatModificationComponent implements OnInit {
   }
 
   private _addExperience (experience: any): Observable<any> {
-    return this.candidatService.addCandidatExperience(experience, this.candidatDetail.id).flatMap(_ => _); // this.candidatService.getCandidatDetails(candidat.id)
+    return this.candidatService.addCandidatExperience(experience, this.candidatDetail.id)
+      .flatMap(_ => _);
   }
 
   get dialogStatus(): string {
     return this._dialogStatus;
   }
+
+  updateExperiences(){
+  }
+
 }

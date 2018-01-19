@@ -26,6 +26,12 @@ export class ExperienceService {
       .defaultIfEmpty([]);
   }
 
+  updateExperience(experience: any): Observable<any> {
+    return this.http.put(this._backendURL.updateExperience, experience, this._options())
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
+  }
+
   private _options(headerList: Object = {}): any {
     const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList));
     return { headers };
