@@ -24,7 +24,8 @@ export class AuthenticationService {
           /*
           VOIR POUR LA VERIFICATION DU TOKEN
           console.log(user.token);
-          var isValid = KJUR.jws.JWS.verifyJWT(user.token, "616161", {alg: ['HS256']});
+          // la chaine "simplekey" est définie dans le back
+          var isValid = KJUR.jws.JWS.verifyJWT(user.token, "simplekey", {alg: ['HS256']});
           console.log("is valid");
           console.log(isValid);
           var payloadObj = KJUR.jws.JWS.readSafeJSONString(b64utoutf8(user.token.split(".")[1]));
