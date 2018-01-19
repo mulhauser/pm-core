@@ -2,16 +2,9 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-
-<<<<<<< HEAD
 import {KJUR, b64utoutf8} from 'jsrsasign';
-
-======
-=
 import {CookieService} from 'ngx-cookie-service';
 
->>>>>>>
-e5e699c39b9941b13b11279c12afd9a54aa5333a
 
 @Injectable()
 export class AuthenticationService {
