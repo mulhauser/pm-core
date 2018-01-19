@@ -114,9 +114,9 @@ public class UserEndpoint {
                 .setIssuer(uriInfo.getAbsolutePath().toString())
                 .setIssuedAt(new Date())
                 .setExpiration(toDate(LocalDateTime.now().plusMinutes(15L)))
-                .signWith(SignatureAlgorithm.HS512, key)
+                .signWith(SignatureAlgorithm.HS256, key)
                 .compact();
-        logger.info("#### generating token for a key : " + jwtToken + " - " + key);
+        logger.info("#### generating token for a key : " + jwtToken + " - " + key.getEncoded());
         return jwtToken;
 
     }
