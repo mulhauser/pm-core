@@ -23,13 +23,18 @@
                    [(ngModel)]="model.email"
                    #email="ngModel"
             >
-          </div>
-          <div *ngIf="email.invalid && (email.dirty || email.touched)"
-               class="alert alert-danger">
-            <div *ngIf="email.errors.required">
-              L'email est requis
+
+            <script>console.log(haaaaaaaaaaa);</script>
+            <div *ngIf="form.get('email').dirty && form.get('email').hasError('required')">
+              L'email est <strong>requis</strong>
             </div>
+            <div *ngIf="form.get('email').dirty && !form.get('email').hasError('required') && form.get('email').hasError('emailAddr')">
+              Email invalide <strong>(ex: name.prenom@gmail.com)</strong>
+            </div>
+
+
           </div>
+
         </div>
 
 

@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from './custom-validator';
 
 @Component({
   selector: 'app-form-connexion-candidat',
@@ -12,10 +14,12 @@ export class FormConnexionCandidatComponent implements OnInit {
   private _submit$: EventEmitter<any>;
   private _isUpdateMode: boolean;
   private _model: any = {};
+  private _form: FormGroup;
 
   constructor() {
     this._submit$ = new EventEmitter();
     this._cancel$ = new EventEmitter();
+    this._form = this._buildForm();
   }
 
 
@@ -58,6 +62,30 @@ export class FormConnexionCandidatComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  /**
+   * Returns private property _form
+   *
+   * @returns {FormGroup}
+   */
+  get form(): FormGroup {
+    return this._form;
+  }
+
+  /**
+   * Function to build our form
+   *
+   * @returns {FormGroup}
+   *
+   * @private
+   */
+  private _buildForm(): FormGroup {
+    return new FormGroup({
+      email: new FormControl('', Validators.compose([
+        Validators.required, CustomValidators.emailAddr
+      ]))
+    });
   }
 
 }

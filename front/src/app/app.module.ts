@@ -46,6 +46,7 @@ import {ModalAjoutCompetenceComponent} from './shared/modal-ajout-competence/mod
 import {FormAjoutCompetenceComponent} from './shared/form-ajout-competence/form-ajout-competence.component';
 import {DatePipe} from '@angular/common';
 import {CookieService} from 'ngx-cookie-service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import {CookieService} from 'ngx-cookie-service';
     AngularFontAwesomeModule,
     NgbModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     HttpModule
     // HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
