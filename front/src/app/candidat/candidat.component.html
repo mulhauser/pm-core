@@ -3,18 +3,19 @@
     <div class="row">
       <div class="col-10">
       <!--  <a class="col-12" [routerLink]="['/candidat/', candidatObj.id]">
+        <a [routerLink]="['/candidat']" ><h3>{{candidatObj.firstName}} {{candidatObj.lastName}}</h3></a>
 
         </a>-->
-        <a [routerLink]="['/candidat']" ><h3>{{candidatObj.firstName}} {{candidatObj.lastName}}</h3></a>
         <!--<div class="col-12">
           {{candidatObj.bio}}
         </div>-->
-      </div>
+
+        <!--<div class="col-12">
+          </div>
       <div class="col-2">
         <div class="col-12">
           {{candidatObj.email}}
         </div>
-        <!--<div class="col-12">
           <img class="img-fluid"  *ngIf="candidatObj" src="{{ candidatObj.photo }}" alt="logo">
         </div>-->
       </div>
@@ -27,5 +28,6 @@
         {{candidatObj.date_naissance}}
       </div>-->
     </div>
+    {{candidatObj.email}}
   </td>
 </tr>

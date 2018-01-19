@@ -25,7 +25,12 @@ export class CandidatsComponent implements OnInit {
   }
 
 
+  private _getAll(): Observable<any[]> {
+    return this._candidatervice.getAll();
+  }
+
   ngOnInit() {
+    this._getAll().subscribe((candidats: any) => this._candidats = JSON.parse(candidats));
   }
 
 }

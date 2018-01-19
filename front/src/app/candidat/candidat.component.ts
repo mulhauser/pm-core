@@ -12,6 +12,7 @@ export class CandidatComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('email' + this.candidatObj.email);
   }
 
   @Input('candidatObj')
