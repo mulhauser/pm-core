@@ -1,7 +1,7 @@
 
 <form #f="ngForm">
   <div class="modal-header header">
-    <h3>Inscris toi :)</h3>
+    <h3>Ajoute une expérience</h3>
   </div>
 
   <div class="modal-body">
@@ -36,66 +36,19 @@
 
 
         <div class="form-group">
-          <label for="dateDebut">Date de début</label>
-          <div>
-            <input class="form-control"
-                   required
-                   type="date"
-                   value=""
-                   id="dateDebut"
+          <label >Date de debut</label>
+            <input type="date" class="form-control" id="nom"
+                   [(ngModel)]="model.dateDebut"
                    name="dateDebut"
-                   [ngModel]="model.dateDebut | date:'yyyy-MM-dd':'':'fr'"
-                   #dateDebut="ngModel"
-            >
-          </div>
-          <div *ngIf="dateDebut.invalid && (dateDebut.dirty || dateDebut.touched)"
-               class="alert alert-danger">
-            <div *ngIf="dateDebut.errors.required">
-              Date de début is required.
-            </div>
-          </div>
+                   #dateDebut="ngModel">
         </div>
-
-
-        <div class="form-group">
-          <label for="dateFin">Date de fin</label>
-          <div>
-            <input class="form-control"
-                   required
-                   type="date"
-                   value=""
-                   id="dateFin"
+        <div class="form-group ">
+          <label >Dete de fin</label>
+            <input type="date" class="form-control" id="dateFin"
+                   [(ngModel)]="model.dateFin"
                    name="dateFin"
-                   [ngModel]="model.dateFin | date:'yyyy-MM-dd':'':'fr'"
-                   #dateFin="ngModel"
-            >
-          </div>
-          <div *ngIf="dateFin.invalid && (dateFin.dirty || dateFin.touched)"
-               class="alert alert-danger">
-            <div *ngIf="dateFin.errors.required">
-              Date de fin is required.
-            </div>
-          </div>
+                   #dateFin="ngModel">
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         <div class="form-group">

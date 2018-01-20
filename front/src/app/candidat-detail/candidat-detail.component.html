@@ -59,45 +59,65 @@
 
 <div class="container">
   <div class="row my-2">
-    <div class="col-lg-8 order-lg-2">
+    <div class="col-12">
       <ul class="nav nav-tabs" *ngIf="userProfil()">
         <li class="nav-item">
-          <a href="" data-target="#profile" (click)="reload()" data-toggle="tab" class="nav-link active">Profile</a>
+          <a href="" data-target="#profile" (click)="reload()" data-toggle="tab" class="nav-link active">Profil</a>
         </li>
        <!-- <li class="nav-item">
           <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
         </li>-->
         <li class="nav-item" >
-          <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Edit</a>
+          <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Modifier</a>
         </li>
       </ul>
       <div class="tab-content py-4">
         <div class="tab-pane active" id="profile">
-          <h3 class="mb-3">{{candidatDetail.prenom}} {{candidatDetail.nom}}</h3>
           <div class="row">
-            <div class="col-md-6">
-              <h5>A propos de moi</h5>
-              <p>
-                {{candidatDetail.apropos}}
-              </p>
-              <p>{{candidatDetail.email}}</p>
+            <div class="col-md-8">
+              <h3 class="mb-3">{{candidatDetail.prenom}} {{candidatDetail.nom}}</h3>
+              <h5 *ngIf="userProfil()">A propos de moi</h5>
+              <h5 *ngIf="!userProfil()">Résumé</h5>
+              <hr>
+              <p>{{candidatDetail.apropos}}</p>
+              <p><i class="fa fa-envelope" aria-hidden="true"></i> {{candidatDetail.email}}</p>
               <p>{{candidatDetail.pays}}</p>
-              <p><strong>{{candidatDetail.ville}}</strong> {{candidatDetail.codePostal}}</p>
-              <p>{{candidatDetail.telephone}}</p>
+              <p><i class="fa fa-map-marker" aria-hidden="true" *ngIf="candidatDetail.ville != NULL"></i> <strong>{{candidatDetail.ville}}</strong> {{candidatDetail.codePostal}}</p>
+              <p><i class="fa fa-phone" aria-hidden="true" *ngIf="candidatDetail.telephone != NULL"></i> {{candidatDetail.telephone}}</p>
 
             </div>
+            <div class="col-md-4 text-center">
+              <img src="../../assets/candidat.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            </div>
 
-            <div class="col-md-6">
-              <h6>Mes Compétances</h6>
+            <div class="col-12" *ngIf="candidatDetail.experiences.length > 0">
+
+              <!--
               <i><a href="https://www.google.fr/search?q=html5" class="badge badge-success">html5</a></i>
               <a href="https://www.google.fr/search?q=react" class="badge badge-success">react</a>
               <a href="https://www.google.fr/search?q=codeply" class="badge badge-success">codeply</a>
               <a href="https://www.google.fr/search?q=angularjs" class="badge badge-success">angularjs</a>
               <a href="https://www.google.fr/search?q=css3" class="badge badge-success">css3</a>
-              <hr>
+             -->
+
+                <h5 class="mt-2" *ngIf="userProfil()">Mes compétences</h5>
+                <h5 class="mt-2" *ngIf="!userProfil()">Compétences</h5>
+                <hr>
+                <table class="table table-sm table-hover table-striped">
+                  <tbody>
+                  <tr *ngFor="let competence of candidatDetail.competences">
+                    <td>
+                      <strong>{{competence.nom}}  </strong>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+
             </div>
-            <div class="col-md-12">
-              <h5 class="mt-2">Mes expériences</h5>
+            <div class="col-12" *ngIf="candidatDetail.experiences.length > 0">
+              <h5 class="mt-2" *ngIf="userProfil()">Mes expériences</h5>
+              <h5 class="mt-2" *ngIf="!userProfil()">Expériences</h5>
+              <hr>
               <table class="table table-sm table-hover table-striped">
                 <tbody>
                 <tr *ngFor="let experience of candidatDetail.experiences " >
@@ -110,7 +130,6 @@
             </div>
           </div>
           <!--/row-->
-        </div>
         <!--<div class="tab-pane" id="messages">
           <div class="alert alert-info alert-dismissable">
             <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
@@ -145,15 +164,13 @@
             </tbody>
           </table>
         </div> -->
+        </div>
         <div class="tab-pane" id="edit" *ngIf="userProfil()">
           <form role="form">
             <app-candidat-modification [candidatDetail]="candidat"></app-candidat-modification>
           </form>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4 order-lg-1 text-center">
-      <img src="../../assets/candidat.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
     </div>
   </div>
 </div>

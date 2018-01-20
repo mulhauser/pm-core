@@ -1,0 +1,33 @@
+
+<form #f="ngForm">
+  <div class="modal-header header">
+    <h3>Ajoute une compétence</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="container">
+      <div >
+
+      <div class="from-group">
+        <select class="form-control" name="competence" [(ngModel)]="model.idCompetence" name="idCompetence">
+          <option value="" disabled>Choisir une compétence</option>
+          <option *ngFor="let competence of competences" [ngValue]="competence.id">
+            {{ competence.nom }}
+          </option>
+        </select>
+      </div>
+  </div>
+
+
+
+        </div>
+    </div>
+
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="!f.form.valid" (click)="submit()">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+  </div>
+</form>
+
+

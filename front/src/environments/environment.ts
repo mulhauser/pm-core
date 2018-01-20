@@ -20,6 +20,7 @@ export const environment = {
       getCandidatExperiences: '/rest/candidat/:id/experiences',
       getCandidatCompetences: '/rest/candidat/:id/competences',
       addCandidatExperience: '/rest/candidat/:id/experiences',
+      addCandidatCompetence: '/rest/candidat/:id/competences/:idCompetence',
       updateCandidat: '/rest/candidat',
       deleteCandidat: '/rest/candidat',
       allCompetences: '/rest/competence',
@@ -37,6 +38,7 @@ export const environment = {
       allExperiences: '/rest/experience',
       getExperiences: '/rest/experience/:id',
       updateExperience: '/rest/experience',
+      deleteExperience: '/rest/experience/:id',
     }
   }
 };

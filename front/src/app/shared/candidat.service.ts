@@ -63,8 +63,13 @@ export class CandidatService {
   }
 
   addCandidatExperience(experience: any, id: number): Observable<any> {
-    return this.http.post(this._backendURL.addCandidatExperience.replace(':id', id), experience, this._options())
+    return this.http.post(this._backendURL.addCandidatExperience.replace(':id', id), experience, this._options());
   }
+
+  addCandidatCompetence(competence: any, id: string, idCompetence: string): Observable<any> {
+    return this.http.post(this._backendURL.addCandidatCompetence.replace(':id', id).replace(':idCompetence', idCompetence), this._options());
+  }
+
 
   updateCandidat (candidat: any): Observable<any> {
     return this.http.put(this._backendURL.updateCandidat, candidat, this._options());

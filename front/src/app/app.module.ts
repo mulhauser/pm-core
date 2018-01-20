@@ -42,6 +42,11 @@ import { FormUpdateCandidatComponent } from './shared/form-update-candidat/form-
 import { FormAjoutExperienceComponent } from './shared/form-ajout-experience/form-ajout-experience.component';
 import { ModalAjoutExperienceComponent } from './shared/modal-ajout-experience/modal-ajout-experience.component';
 import { ExperiencesModificationComponent } from './experiences-modification/experiences-modification.component';
+import {ModalAjoutCompetenceComponent} from './shared/modal-ajout-competence/modal-ajout-competence.component';
+import {FormAjoutCompetenceComponent} from './shared/form-ajout-competence/form-ajout-competence.component';
+import {DatePipe} from '@angular/common';
+import {CookieService} from 'ngx-cookie-service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -51,9 +56,9 @@ import { ExperiencesModificationComponent } from './experiences-modification/exp
     HomeComponent,
     FooterComponent,
     TestComponent,
-    OffresComponent,
-    OffreComponent,
-    OffreDetailComponent,
+    //OffresComponent,
+    //OffreComponent,
+    //OffreDetailComponent,
     ModalConnexionCandidatComponent,
     FormConnexionCandidatComponent,
     CandidatComponent,
@@ -71,6 +76,8 @@ import { ExperiencesModificationComponent } from './experiences-modification/exp
     FormAjoutExperienceComponent,
     ModalAjoutExperienceComponent,
     ExperiencesModificationComponent,
+    ModalAjoutCompetenceComponent,
+    FormAjoutCompetenceComponent
 
   ],
   imports: [
@@ -79,14 +86,21 @@ import { ExperiencesModificationComponent } from './experiences-modification/exp
     AngularFontAwesomeModule,
     NgbModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     HttpModule
     // HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],
-  providers: [OffreService, CandidatService, RecruteurService, CompetencesService, ExperienceService, AuthGuard,
+  providers: [OffreService,
+    CandidatService,
+    RecruteurService,
+    CompetencesService,
+    ExperienceService,
+    AuthGuard, DatePipe,
     AlertService,
     AuthenticationService,
     UserService,
+    CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
@@ -94,6 +108,8 @@ import { ExperiencesModificationComponent } from './experiences-modification/exp
     },
    ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalConnexionCandidatComponent, ModalAjoutExperienceComponent]
+  entryComponents: [ModalConnexionCandidatComponent,
+    ModalAjoutExperienceComponent,
+    ModalAjoutCompetenceComponent]
 })
 export class AppModule { }

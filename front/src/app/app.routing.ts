@@ -19,8 +19,8 @@ import {RecruteurModificationComponent} from './recruteur-modification/recruteur
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent , pathMatch: 'full'},
-      { path: 'offres', component: OffresComponent , pathMatch: 'full'},
-      { path: 'offre/:id', component: OffreDetailComponent, pathMatch: 'full'},
+      //{ path: 'offres', component: OffresComponent , pathMatch: 'full'},
+      //{ path: 'offre/:id', component: OffreDetailComponent, pathMatch: 'full'},
       { path: 'candidats', component: CandidatsComponent, pathMatch: 'full'},
       { path: 'candidat', component: CandidatDetailComponent, pathMatch: 'full'},
       { path: 'candidat/:id', component: CandidatDetailComponent, pathMatch: 'full'},

@@ -3,7 +3,7 @@ import {Component, Input, OnInit} from '@angular/core';
 @Component({
   selector: 'app-candidat',
   templateUrl: './candidat.component.html',
-  styleUrls: ['./candidat.component.css']
+  styleUrls: ['./candidat.component.css', '../../font-awesome-4.7.0/css/font-awesome.min.css']
 })
 export class CandidatComponent implements OnInit {
 

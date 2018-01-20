@@ -34,7 +34,7 @@ public class ExperienceBean {
         em.merge(e);
     }
 
-    public void deleteExperience(Experience e){
-        em.remove(em.merge(e));
+    public void deleteExperience(Long  id){
+        em.remove(em.getReference(Experience.class, id));
     }
 }

@@ -45,6 +45,13 @@ public class ExperienceRest {
         return Response.ok(experience).build();
     }
 
+    @DELETE
+    @Path("{id}")
+    public Response deleteExperience(@PathParam("id") Long id){
+        experienceBean.deleteExperience(id);
+        return Response.ok().build();
+    }
+
     @PUT
     @ApiOperation(value="Modifie l'expérience demandée", notes="Retourne une réponse au client")
     @Consumes("application/json")

@@ -6,7 +6,7 @@ import {CandidatService} from '../shared/candidat.service';
 @Component({
   selector: 'app-candidat-detail',
   templateUrl: './candidat-detail.component.html',
-  styleUrls: ['./candidat-detail.component.css']
+  styleUrls: ['./candidat-detail.component.css', '../../font-awesome-4.7.0/css/font-awesome.min.css']
 })
 export class CandidatDetailComponent implements OnInit {
 
@@ -47,10 +47,8 @@ export class CandidatDetailComponent implements OnInit {
     res = false;
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (this.candidat.email === this.currentUser.email) {
-      console.log('test1');
       res = true;
     }
-    console.log(res);
     return res;
   }
 

@@ -17,7 +17,14 @@
    <input type="text" name="photo" placeholder="{{candidatDetail.photo}}" disabled><br>
 
  -->
-  <form name="form" (ngSubmit)="update()"  #f="ngForm">
+<div class="col-12 text-center mb-2">
+  <button class="btn btn-primary mx-1" (click)="showModalExperience()" ><i class="fa fa-plus fa-md"></i> Ajouter une Expérience</button>
+  <button class="btn btn-primary mx-1" (click)="showModalCompetence()" ><i class="fa fa-plus fa-md"></i> Ajouter une Compétence</button>
+</div>
+
+<form name="form" (ngSubmit)="update()"  #f="ngForm">
+  <h5>A propos de moi</h5>
+  <hr>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
     <div class="col-lg-9">
@@ -111,13 +118,15 @@
 
   <div class="form-group row">
     <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
-   <a (click)="cancel()" class="btn btn-link">Cancel</a>
+  <!-- <a (click)="cancel()" class="btn btn-link">Cancel</a>-->
   </div>
 </form>
-
+<div *ngIf="candidatDetail.experiences.length > 0">
+  <h5 class="mt-2">Mes expériences</h5>
+  <hr>
+</div>
   <div *ngFor="let experience of candidatDetail.experiences">
     <app-experiences-modification [experienceUpdate]="experience"></app-experiences-modification>
   </div>
 
 
-  <button class="btn btn-primary" (click)="showModalExperience()" >Ajouter une Experience</button>

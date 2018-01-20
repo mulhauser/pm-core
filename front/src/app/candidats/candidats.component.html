@@ -1,22 +1,23 @@
 <h1 class="text-center my-lg-4">
   Liste des candidats
 </h1>
-<div class="row">
+<!--<div class="row">
   <div class="col-sm-12 text-center">
     <input placeholder="nom" />
     <input placeholder="lieu" />
     <button type="button" class="btn btn-primary">Rechercher</button>
   </div>
-</div>
+</div>-->
 <div class="row">
   <div class="table-responsive">
     <table class="table table-hover">
       <tbody>
-      <div *ngFor="let candidat of candidats">
-        <app-candidat [candidatObj]="candidat">
-        </app-candidat>
-      </div>
-
+        <div class="row mx-0">
+          <div class="col-6 col-md-4 px-0" *ngFor="let candidat of candidats">
+              <app-candidat [candidatObj]="candidat">
+              </app-candidat>
+          </div>
+        </div>
       </tbody>
     </table>
   </div>

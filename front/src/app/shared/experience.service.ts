@@ -32,6 +32,10 @@ export class ExperienceService {
       .defaultIfEmpty([]);
   }
 
+  deleteExperience(id: any): Observable<any> {
+    return this.http.delete(this._backendURL.deleteExperience.replace(':id', id), this._backendURL);
+  }
+
   private _options(headerList: Object = {}): any {
     const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList));
     return { headers };

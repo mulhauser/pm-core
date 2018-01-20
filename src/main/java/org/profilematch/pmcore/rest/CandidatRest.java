@@ -81,8 +81,8 @@ public class CandidatRest {
     @Path("/{id}/competences/{idCompetence}")
     @Consumes("application/json")
     @ApiOperation(value="Ajoute une competence au candidat renseigné")
-    public Response addCompetence(@PathParam("id") String id, @PathParam("idCompetence") String idCompetence){
-        Competence competence = competenceBean.getCompetence((long) Integer.parseInt(idCompetence));
+    public Response addCompetence(@PathParam("id") String id, @PathParam("idCompetence") int idCompetence){
+        Competence competence = competenceBean.getCompetence((long) idCompetence);
         Candidat candidat = candidatBean.getCandidat((long) Integer.parseInt(id));
 
         competence.getCandidats().add(candidat);
