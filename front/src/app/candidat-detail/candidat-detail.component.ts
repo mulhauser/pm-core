@@ -45,9 +45,11 @@ export class CandidatDetailComponent implements OnInit {
   userProfil(): boolean {
     let res: boolean;
     res = false;
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (this.candidat.email === this.currentUser.email) {
-      res = true;
+    if (localStorage.getItem('currentUser')) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (this.candidat.email === this.currentUser.email) {
+        res = true;
+      }
     }
     return res;
   }
