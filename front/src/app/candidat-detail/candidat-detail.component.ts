@@ -1,10 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import {ActivatedRoute } from '@angular/router';
 import {UserService} from '../_services/user.service';
-import { ErrorHandler } from '@angular/core';
 import {CandidatService} from '../shared/candidat.service';
-import {Profil} from '../_models/profil';
 
 @Component({
   selector: 'app-candidat-detail',
@@ -27,11 +24,34 @@ export class CandidatDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    let param: string;
+    this._route.paramMap.subscribe(
+      params => param = params.get('id')
+    );
+        if (param) {
+          this._candidatService.getCandidatById(parseInt(param, 10))
+            .subscribe( (data: any) => {
+              this.candidat =  JSON.parse(data);
+            });
+        } else {
+          this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+          this._candidatService.getCandidatByEmail(this.currentUser.email)
+            .subscribe( (data: any) => {
+              this.candidat =  JSON.parse(data);
+            });
+        }
+  }
+
+  userProfil(): boolean {
+    let res: boolean;
+    res = false;
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this._candidatService.getCandidatByEmail(this.currentUser.email)
-       .subscribe( (data: any) => {
-         this.candidat =  JSON.parse(data);
-       });
+    if (this.candidat.email === this.currentUser.email) {
+      console.log('test1');
+      res = true;
+    }
+    console.log(res);
+    return res;
   }
 
   reload() {
@@ -50,10 +70,6 @@ export class CandidatDetailComponent implements OnInit {
   }
   set modeModificationOn (a: boolean) {
     this.modeModification = a;
-  }
-
-  private _fetchOne(email: string): Observable<any> {
-    return this._userService.getByEmail(email);
   }
 
 }

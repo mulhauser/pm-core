@@ -60,7 +60,7 @@
 <div class="container">
   <div class="row my-2">
     <div class="col-lg-8 order-lg-2">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs" *ngIf="userProfil()">
         <li class="nav-item">
           <a href="" data-target="#profile" (click)="reload()" data-toggle="tab" class="nav-link active">Profile</a>
         </li>
@@ -145,7 +145,7 @@
             </tbody>
           </table>
         </div> -->
-        <div class="tab-pane" id="edit">
+        <div class="tab-pane" id="edit" *ngIf="userProfil()">
           <form role="form">
             <app-candidat-modification [candidatDetail]="candidat"></app-candidat-modification>
           </form>

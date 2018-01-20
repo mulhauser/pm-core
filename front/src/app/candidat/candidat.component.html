@@ -3,12 +3,12 @@
     <div class="col-sm-6 col-xs-6">
       <div class="list mb-2">
         <div class="list-header">
-          <a href="" class="list-header-image">
+          <a [routerLink]="['/candidat', candidatObj.id]" class="list-header-image">
             <img src="../../assets/candidat.jpg">
           </a>
         </div>
         <div class="list-content">
-          <h2><a href="" class="text-black">{{candidatObj.nom}} {{candidatObj.prenom}}</a></h2>
+          <h2><a [routerLink]="['/candidat', candidatObj.id]" class="text-black">{{candidatObj.nom}} {{candidatObj.prenom}}</a></h2>
           <span class="list-meta">
                     	<span class="list-meta-item"><i class="fa fa-envelope"></i> {{candidatObj.email}}</span>
                     </span>
