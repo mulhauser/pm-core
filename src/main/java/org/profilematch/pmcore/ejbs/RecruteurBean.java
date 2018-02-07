@@ -31,7 +31,7 @@ public class RecruteurBean {
     }
 
     public List<Profil> getRecruteurs(){
-        return em.createNamedQuery("Profil.findAllC", Profil.class).getResultList();
+        return em.createNamedQuery("Profil.findAllR", Profil.class).getResultList();
     }
 
     public void supprimerRecruteur(Long id){
