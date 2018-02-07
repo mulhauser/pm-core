@@ -40,23 +40,12 @@ export class RecruteurService {
       .defaultIfEmpty([]);
   }
 
-  getRecruteurExperiences(id: number): Observable<any> {
-    return this.http.get(this._backendURL.getRecruteurExperiences.replace(':id', id), this._options())
-      .filter( _ => !!_)
-      .defaultIfEmpty([]);
-  }
-
-  getRecruteurCompetences(id: number): Observable<any> {
-    return this.http.get(this._backendURL.getRecruteurCompetences.replace(':id', id), this._options())
-      .filter( _ => !!_)
-      .defaultIfEmpty([]);
-  }
 
   addRecruteurExperience(experience: any, id: number): Observable<any> {
     return this.http.post(this._backendURL.addRecruteurExperience.replace(':id', id), experience, this._options());
   }
 
-  addRecruteurCompetence(competence: any, id: string, idCompetence: string): Observable<any> {
+  addRecruteurOffre(competence: any, id: string, idCompetence: string): Observable<any> {
     return this.http.post(this._backendURL.addRecruteurCompetence.replace(':id', id).replace(':idCompetence', idCompetence), this._options());
   }
 

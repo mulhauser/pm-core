@@ -10,10 +10,9 @@ export class OffreService {
   private _backendURL: any;
   private offresUrl = 'api/offres';
 
-  constructor(private http: HttpClient) {
-    /** A utiliser pour le backend
-    this._backendURL = {};
 
+  constructor(private http: HttpClient) {
+    this._backendURL = {};
     // build backend base url
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
     if (environment.backend.port) {
@@ -21,14 +20,8 @@ export class OffreService {
     }
     // build all backend urls
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
-     */
   }
 
-  /**
-   * Function to return request options
-   *
-   * @returns {any}
-   */
   private _options(headerList: Object = {}): any {
     const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList));
     return { headers };
