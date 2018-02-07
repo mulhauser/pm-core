@@ -7,7 +7,9 @@ import io.swagger.annotations.Api;
 import org.hibernate.HibernateException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.profilematch.pmcore.ejbs.CandidatBean;
+import org.profilematch.pmcore.ejbs.RecruteurBean;
 import org.profilematch.pmcore.entities.Candidat;
+import org.profilematch.pmcore.entities.Recruteur;
 import org.profilematch.pmcore.entities.User;
 import org.profilematch.pmcore.utils.KeyGenerator;
 import org.profilematch.pmcore.utils.PasswordUtils;
@@ -66,6 +68,10 @@ public class UserEndpoint {
 
     @EJB
     private CandidatBean candidatBean;
+
+    @EJB
+    private RecruteurBean recruteurBean;
+
 
     // ======================================
     // =          Business methods          =
@@ -127,6 +133,9 @@ public class UserEndpoint {
             em.persist(user);
             if(user.getType().equals("candidat")) {
                 candidatBean.ajouterCandidat(new Candidat(user.getLastName(), user.getFirstName(), user.getEmail()));
+            }
+            if(user.getType().equals("recruteur")) {
+                recruteurBean.ajouterRecruteur(new Recruteur(user.getLastName(), user.getFirstName(), user.getEmail()));
             }
 
             em.flush();
