@@ -1,108 +1,50 @@
 <div class="container">
   <div class="row my-2">
-    <div class="col-lg-8 order-lg-2">
-      <ul class="nav nav-tabs">
+    <div class="col-12">
+      <ul class="nav nav-tabs" *ngIf="userProfil()">
         <li class="nav-item">
-          <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+          <a href="" data-target="#profile" (click)="reload()" data-toggle="tab" class="nav-link active">Profil</a>
         </li>
         <li class="nav-item" >
-          <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Edit</a>
+          <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Modifier</a>
         </li>
       </ul>
       <div class="tab-content py-4">
         <div class="tab-pane active" id="profile">
-          <h3 class="mb-3">{{candidatDetail.firstName}} {{candidatDetail.lastName}}</h3>
           <div class="row">
-            <div class="col-md-6">
-              <h5>Ma société</h5>
-              <p>
-                Minecraft
-              </p>
-              <h5>A propos de nous</h5>
-              <p>
-              Je suis timide
-              </p>
-              <h5>Stage</h5>
-              <p>
-              Indie games
-              </p>
-              <p>
-              JEE Angular4 Agile
-              </p>
+            <div class="col-md-8">
+              <h3 class="mb-3">{{recruteurDetail.prenom}} {{recruteurDetail.nom}}</h3>
+              <h5 *ngIf="userProfil()">A propos de moi</h5>
+              <h5 *ngIf="!userProfil()">Résumé</h5>
+              <hr>
+              <p>{{recruteurDetail.apropos}}</p>
+              <p><i class="fa fa-envelope" aria-hidden="true"></i> {{recruteurDetail.email}}</p>
+              <p>{{recruteurDetail.pays}}</p>
+              <p><i class="fa fa-map-marker" aria-hidden="true" *ngIf="recruteurDetail.ville != NULL"></i> <strong>{{recruteurDetail.ville}}</strong> {{recruteurDetail.codePostal}}</p>
+              <p><i class="fa fa-phone" aria-hidden="true" *ngIf="recruteurDetail.telephone != NULL"></i> {{recruteurDetail.telephone}}</p>
+
             </div>
-            <div class="col-md-6">
-              <h6>Compétences requises/souhaités</h6>
-              <a href="https://www.google.fr/search?q=html5" class="badge badge-success">html5</a>
+            <div class="col-md-4 text-center">
+              <img src="../../assets/recruteur.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            </div>
+
+              <!--
+              <i><a href="https://www.google.fr/search?q=html5" class="badge badge-success">html5</a></i>
               <a href="https://www.google.fr/search?q=react" class="badge badge-success">react</a>
               <a href="https://www.google.fr/search?q=codeply" class="badge badge-success">codeply</a>
               <a href="https://www.google.fr/search?q=angularjs" class="badge badge-success">angularjs</a>
               <a href="https://www.google.fr/search?q=css3" class="badge badge-success">css3</a>
-              <a href="https://www.google.fr/search?q=JEE" class="badge badge-success">JEE</a>
-              <a href="https://www.google.fr/search?q=Cassandra" class="badge badge-success">Cassandra</a>
-              <a href="https://www.google.fr/search?q=humour" class="badge badge-success">humour</a>
-              <hr>
-            </div>
-            <div class="col-md-12">
-              <h5 class="mt-2">Activités récentes</h5>
-              <table class="table table-sm table-hover table-striped">
-                <tbody>
-                <tr>
-                  <td>
-                    Conférence aux Mines de <strong>`Nancy`</strong>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
+             -->
+
+
           </div>
-          <!--/row-->
         </div>
-        <div class="tab-pane" id="messages">
-          <div class="alert alert-info alert-dismissable">
-            <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
-          </div>
-          <table class="table table-hover table-striped">
-            <tbody>
-            <tr>
-              <td>
-                <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros.
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="tab-pane" id="edit">
+        <div class="tab-pane" id="edit" *ngIf="userProfil()">
           <form role="form">
-            <app-recruteur-modification></app-recruteur-modification>
+            <app-recruteur-modification [recruteurDetail]="recruteur"></app-recruteur-modification>
           </form>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4 order-lg-1 text-center">
-      <img src="../../assets/recruteur.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
     </div>
   </div>
 </div>
