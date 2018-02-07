@@ -47,32 +47,21 @@ public class Offre implements Serializable{
     @ManyToMany(mappedBy = "offres")
     private Collection<Competence> competences;
 
-    /*@ManyToOne
-    @JoinColumn(name="id_employeur")
-    private Employeur employeur;
-
     @ManyToOne
     @JoinColumn(name="id_recruteur")
     private Recruteur recruteur;
 
+    @ManyToOne
+    @JoinColumn(name="id_employeur")
+    private Employeur employeur;
+
+
+
+    /*
+
     @OneToMany(mappedBy = "offre", fetch = FetchType.LAZY)
     private Collection<Commentaire> commentaires;
 
-    public Employeur getEmployeur() {
-        return employeur;
-    }
-
-    public void setEmployeur(Employeur employeur) {
-        this.employeur = employeur;
-    }
-
-    public Recruteur getRecruteur() {
-        return recruteur;
-    }
-
-    public void setRecruteur(Recruteur recruteur) {
-        this.recruteur = recruteur;
-    }
 
     public Collection<Commentaire> getCommentaires() {
         return commentaires;
@@ -192,6 +181,13 @@ public class Offre implements Serializable{
         this.competences = competences;
     }
 
+    public Recruteur getRecruteur() {  return recruteur;    }
+
+    public void setRecruteur(Recruteur recruteur) { this.recruteur = recruteur; }
+
+    public Employeur getEmployeur() { return employeur; }
+
+    public void setEmployeur(Employeur employeur) {this.employeur = employeur; }
 
 
     @Override

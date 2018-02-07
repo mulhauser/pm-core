@@ -40,13 +40,15 @@ public abstract class Profil implements Serializable {
     private String apropos;
     private String status;
 
-    /*
-    @OneToMany(mappedBy = "profil", fetch = FetchType.LAZY)
-    private Collection<Cursus> cursus;
+
 
     @ManyToOne
     @JoinColumn(name="id_employeur")
     private Employeur employeur;
+
+    /*
+    @OneToMany(mappedBy = "profil", fetch = FetchType.LAZY)
+    private Collection<Cursus> cursus;
 
     @OneToMany(mappedBy = "profil", fetch = FetchType.LAZY)
     private Collection<Notification> notifications;
@@ -68,13 +70,7 @@ public abstract class Profil implements Serializable {
         this.cursus = cursus;
     }
 
-    public Employeur getEmployeur() {
-        return employeur;
-    }
 
-    public void setEmployeur(Employeur employeur) {
-        this.employeur = employeur;
-    }
 
 */
 
@@ -197,6 +193,10 @@ public abstract class Profil implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public Employeur getEmployeur() { return employeur; }
+
+    public void setEmployeur(Employeur employeur) { this.employeur = employeur;  }
 
     @Override
     public boolean equals(Object object) {
