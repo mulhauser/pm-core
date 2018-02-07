@@ -3,13 +3,15 @@ package org.profilematch.pmcore.rest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.profilematch.pmcore.ejbs.OffreBean;
+import org.profilematch.pmcore.entities.Candidat;
+import org.profilematch.pmcore.entities.Competence;
+import org.profilematch.pmcore.entities.Offre;
 
 import javax.ejb.EJB;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 
 /**
  * @author remy
@@ -29,7 +31,17 @@ public class OffreRest {
         return Response.ok(offreBean.getOffres()).build();
     }
 
-
+    @GET
+    @ApiOperation(value="Retourne les utilisateurs dont les compétences correspondent à l'offre renseignée")
+    @Path("/{id}")
+    public Response getCandidatByCompetenceWithOffre(@PathParam("id") String id){
+        Offre o = offreBean.getOffre((long) Integer.parseInt(id));
+        Collection<Candidat> list = new LinkedHashSet<Candidat>();
+        for(Competence c : o.getCompetences()){
+            list.addAll(c.getCandidats());
+        }
+        return Response.ok(list).build();
+    }
 
 
 

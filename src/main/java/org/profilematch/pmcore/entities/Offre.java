@@ -16,6 +16,9 @@ import java.util.Date;
  * @author remy
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Offre.findAll", query = "SELECT u FROM Offre u")
+})
 public class Offre implements Serializable{
 
 
@@ -49,6 +52,7 @@ public class Offre implements Serializable{
     @ManyToMany(mappedBy = "offres")
     private Collection<Candidat> candidats;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(name="OFFRES_COMPETENCES",
             joinColumns = @JoinColumn(name="id_offre"),
