@@ -51,10 +51,6 @@ public class Offre implements Serializable{
     @JoinColumn(name="id_recruteur")
     private Recruteur recruteur;
 
-    @ManyToOne
-    @JoinColumn(name="id_employeur")
-    private Employeur employeur;
-
 
 
     /*
@@ -184,10 +180,6 @@ public class Offre implements Serializable{
     public Recruteur getRecruteur() {  return recruteur;    }
 
     public void setRecruteur(Recruteur recruteur) { this.recruteur = recruteur; }
-
-    public Employeur getEmployeur() { return employeur; }
-
-    public void setEmployeur(Employeur employeur) {this.employeur = employeur; }
 
 
     @Override
