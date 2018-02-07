@@ -7,17 +7,16 @@ import io.swagger.annotations.Api;
 import org.hibernate.HibernateException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.profilematch.pmcore.ejbs.CandidatBean;
+import org.profilematch.pmcore.ejbs.RecruteurBean;
 import org.profilematch.pmcore.entities.Candidat;
+import org.profilematch.pmcore.entities.Recruteur;
 import org.profilematch.pmcore.entities.User;
 import org.profilematch.pmcore.utils.KeyGenerator;
 import org.profilematch.pmcore.utils.PasswordUtils;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -61,11 +60,15 @@ public class UserEndpoint {
     @Inject
     private Logger logger;
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "IMP_PU")
     private EntityManager em;
 
     @EJB
     private CandidatBean candidatBean;
+
+    @EJB
+    private RecruteurBean recruteurBean;
+
 
     // ======================================
     // =          Business methods          =
@@ -128,6 +131,9 @@ public class UserEndpoint {
             if(user.getType().equals("candidat")) {
                 candidatBean.ajouterCandidat(new Candidat(user.getLastName(), user.getFirstName(), user.getEmail()));
             }
+            if(user.getType().equals("recruteur")) {
+                recruteurBean.ajouterRecruteur(new Recruteur(user.getLastName(), user.getFirstName(), user.getEmail()));
+            }
 
             em.flush();
             return Response.created(uriInfo.getAbsolutePathBuilder().path(user.getEmail()).build()).build();
@@ -150,14 +156,12 @@ public class UserEndpoint {
 
     @POST
     @Path("/updatePhoto/{email}")
-    public Response updatePhoto(@PathParam("email") String email, String url){
-        TypedQuery<User> query = em.createNamedQuery(User.UPDATE_PHOTO, User.class);
-        query.setParameter("urlPhoto", url);
+    @Consumes("text/plain")
+    public Response updatePhoto(@PathParam("email") String email, String urlPhoto){
+        Query query = em.createNamedQuery(User.UPDATE_PHOTO);
+        query.setParameter("urlPhoto", urlPhoto);
         query.setParameter("email", email);
-        User u  = query.getSingleResult();
-
-        if (u == null)
-            return Response.status(NOT_FOUND).build();
+        int u  = query.executeUpdate();
 
         return Response.ok(u).build();
     }

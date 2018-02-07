@@ -50,4 +50,11 @@ public class CompetenceRest {
         competenceBean.modifierCompetence(competence);
         return Response.ok(competence).build();
     }
+
+    @DELETE
+    @Path("{id}")
+    public Response deleteCompetence(@PathParam("id") Long id){
+        competenceBean.supprimerCompetence(id);
+        return Response.ok().build();
+    }
 }

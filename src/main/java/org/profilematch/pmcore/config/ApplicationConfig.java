@@ -27,6 +27,7 @@ public class ApplicationConfig extends Application {
         resources.add(CorsFeature.class);
         resources.add(org.profilematch.pmcore.rest.CompetenceRest.class);
         resources.add(org.profilematch.pmcore.rest.ExperienceRest.class);
+        resources.add(org.profilematch.pmcore.rest.RecruteurRest.class);
         resources.add(org.profilematch.pmcore.rest.UserEndpoint.class);
         resources.add(org.profilematch.pmcore.rest.EchoEndpoint.class);
         resources.add(org.profilematch.pmcore.rest.CandidatRest.class);

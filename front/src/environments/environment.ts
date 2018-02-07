@@ -25,6 +25,7 @@ export const environment = {
       deleteCandidat: '/rest/candidat',
       allCompetences: '/rest/competence',
       getCompetence: '/rest/competence/:id',
+      deleteCompetence: '/rest/competence/:id',
       addCompetence: '/rest/competence',
       updateCompetence: '/rest/competence',
       login: '/rest/users/login',
@@ -39,6 +40,11 @@ export const environment = {
       getExperiences: '/rest/experience/:id',
       updateExperience: '/rest/experience',
       deleteExperience: '/rest/experience/:id',
+      allRecruteur: '/rest/recruteur',
+      getRecruteurById: '/rest/recruteur/:id',
+      getRecruteurByEmail: '/rest/recruteur/findByEmail/:email',
+      updateRecruteur: '/rest/recruteur',
+      deleteRecruteur: '/rest/recruteur/:id',
     }
   }
 };
