@@ -1,5 +1,8 @@
 package org.profilematch.pmcore.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -144,7 +147,8 @@ public class Offre implements Serializable{
         this.dateLimite = dateLimite;
     }
 
-
+    @ApiModelProperty(hidden = true)
+    @JsonIgnore
     public Long getId() {
         return id;
     }
@@ -157,8 +161,8 @@ public class Offre implements Serializable{
         this.intitule = intitule;
     }
 
-
-
+    @ApiModelProperty(hidden = true)
+    @JsonIgnore
     public Collection<Candidat> getCandidats() {
         return candidats;
     }
@@ -167,6 +171,8 @@ public class Offre implements Serializable{
         this.candidats = candidats;
     }
 
+    @ApiModelProperty(hidden = true)
+    @JsonIgnore
     public Collection<Competence> getCompetences() {
         return competences;
     }
@@ -175,6 +181,8 @@ public class Offre implements Serializable{
         this.competences = competences;
     }
 
+    @ApiModelProperty(hidden = true)
+    @JsonIgnore
     public Recruteur getRecruteur() {  return recruteur;    }
 
     public void setRecruteur(Recruteur recruteur) { this.recruteur = recruteur; }

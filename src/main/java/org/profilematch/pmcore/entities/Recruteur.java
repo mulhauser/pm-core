@@ -1,17 +1,22 @@
 package org.profilematch.pmcore.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Collection;
-import org.hibernate.annotations.Cascade;
+import java.util.LinkedHashSet;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @DiscriminatorValue("R")
 public class Recruteur extends Profil {
 
-    @OneToMany(mappedBy = "recruteur", fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "recruteur")
     private Collection<Offre> offres;
 
    /* @OneToMany(mappedBy = "id.recruteur")
@@ -39,6 +44,8 @@ public class Recruteur extends Profil {
         super(lastName, firstName, email);
     }
 
+    @ApiModelProperty(hidden = true)
+    @JsonIgnore
     public Collection<Offre> getOffres() {
         return offres;
     }

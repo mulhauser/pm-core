@@ -17,6 +17,8 @@ import javax.ws.rs.core.Response;
 
 @Path("candidat")
 @Api(value = "Candidat")
+@Consumes("application/json")
+@Produces("application/json")
 public class CandidatRest {
 
     @EJB
@@ -29,7 +31,6 @@ public class CandidatRest {
     private CompetenceBean competenceBean;
 
     @GET
-    @Produces("application/json")
     @ApiOperation(value="Retourne tous les candidats")
     public Response getAll(){
         return Response.ok(candidatBean.getCandidats()).build();
@@ -37,7 +38,6 @@ public class CandidatRest {
 
     @GET
     @Path("/{id}")
-    @Produces("application/json")
     @ApiOperation(value="Retourne le candidat avec l'id renseigné")
     public Response getById(@PathParam("id") String id){
         return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id))).build();
@@ -45,7 +45,6 @@ public class CandidatRest {
 
     @GET
     @Path("/findByEmail/{email}")
-    @Produces("application/json")
     @ApiOperation(value="Retourne le candidat avec l'email renseigné")
     public Response getByEmail(@PathParam("email") String email){
         return Response.ok(candidatBean.getCandidatByEmail(email)).build();
@@ -53,7 +52,6 @@ public class CandidatRest {
 
     @GET
     @Path("/{id}/experiences")
-    @Produces("application/json")
     @ApiOperation(value="Retourne les expériences du candidat renseigné")
     public Response getExperiences(@PathParam("id") String id){
         return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id)).getExperiences()).build();
@@ -61,7 +59,6 @@ public class CandidatRest {
 
     @GET
     @Path("/{id}/competences")
-    @Produces("application/json")
     @ApiOperation(value="Retourne les compétences du candidat renseigné")
     public Response getCompetences(@PathParam("id") String id){
         return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id)).getCompetences()).build();
@@ -69,7 +66,6 @@ public class CandidatRest {
 
     @POST
     @Path("/{id}/experiences")
-    @Consumes("application/json")
     @ApiOperation(value="Ajoute une experience au candidat renseigné")
     public Response addExperience(@PathParam("id") String id, Experience experience){
         experience.setCandidat(candidatBean.getCandidat((long) Integer.parseInt(id)));
@@ -79,7 +75,6 @@ public class CandidatRest {
 
     @POST
     @Path("/{id}/competences/{idCompetence}")
-    @Consumes("application/json")
     @ApiOperation(value="Ajoute une competence au candidat renseigné")
     public Response addCompetence(@PathParam("id") String id, @PathParam("idCompetence") int idCompetence){
         Competence competence = competenceBean.getCompetence((long) idCompetence);
@@ -96,7 +91,6 @@ public class CandidatRest {
     }
 
     @PUT
-    @Consumes("application/json")
     @ApiOperation(value="Modifie un candidat")
     public Response update(Candidat candidat){
         return Response.ok(candidatBean.modifierCandidat(candidat)).build();
@@ -104,10 +98,16 @@ public class CandidatRest {
 
     @DELETE
     @Path("/{id}")
-    @Consumes("application/json")
     @ApiOperation(value="Supprime un candidat")
     public Response delete(@PathParam("id") String id) {
         candidatBean.supprimerCandidat((long) Integer.parseInt(id));
         return Response.ok().build();
+    }
+
+    @GET
+    @Path("/{id}/offres")
+    @ApiOperation(value="Retourne les offres où le candidat spécifié a postulé")
+    public Response getOffres(@PathParam("id") String id){
+        return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id)).getOffres()).build();
     }
 }

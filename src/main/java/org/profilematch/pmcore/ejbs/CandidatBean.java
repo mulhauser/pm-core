@@ -1,10 +1,7 @@
 package org.profilematch.pmcore.ejbs;
 
 
-import org.profilematch.pmcore.entities.Candidat;
-import org.profilematch.pmcore.entities.Experience;
-import org.profilematch.pmcore.entities.Profil;
-import org.profilematch.pmcore.entities.User;
+import org.profilematch.pmcore.entities.*;
 import org.profilematch.pmcore.utils.PasswordUtils;
 
 import javax.ejb.LocalBean;
