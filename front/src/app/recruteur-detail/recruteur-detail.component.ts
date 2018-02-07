@@ -12,6 +12,8 @@ export class RecruteurDetailComponent implements OnInit {
 
   private currentUser: any;
   private recruteur: any;
+  private _dialogStatus: string;
+
 
   @Input()
   modeModification = false;
@@ -20,6 +22,10 @@ export class RecruteurDetailComponent implements OnInit {
               private _route: ActivatedRoute,
               private _recruteurService: RecruteurService) {
 
+  }
+
+  get dialogStatus(): string {
+    return this._dialogStatus;
   }
 
   ngOnInit() {
@@ -71,5 +77,37 @@ export class RecruteurDetailComponent implements OnInit {
   set modeModificationOn (a: boolean) {
     this.modeModification = a;
   }
+
+
+
+/**
+  showModalAjoutPoste() {
+    // set dialog status
+    this._dialogStatus = 'active';
+    // open modal
+    const dialogRef = this._competenceDialog.open(ModalAjoutCompetenceComponent, {
+      size: 'lg',
+      keyboard: true,
+      backdrop: 'static'
+    });
+    dialogRef.result.then(
+      (result) => {
+        this._addCompetence(result.value)
+          .subscribe(
+            (infoCompetence: any) => {
+              this._infoCompetence = infoCompetence;
+            },
+            () => this._dialogStatus = 'inactive',
+            () => this._dialogStatus = 'inactive'
+          );
+      }, (reason) => {
+        this._dialogStatus = 'inactive';
+      }
+    );
+  }
+
+
+**/
+
 
 }
