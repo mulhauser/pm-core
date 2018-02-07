@@ -10,18 +10,21 @@ import {CookieService} from 'ngx-cookie-service';
 })
 export class NavComponent implements OnInit {
 
-  currentUser: User;
+  private _currentUser: User;
 
   constructor(private authService: AuthenticationService,
               private cookieService: CookieService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
   }
 
   ngOnInit() {
+    this._currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
 
-
+  get currentUser(): User {
+    return this._currentUser;
+  }
 
   getLogIn(): boolean {
     // console.log('a' + this.cookieService.check('isLogin'));
@@ -29,4 +32,7 @@ export class NavComponent implements OnInit {
 
   }
 
+  getTypecompte(): any {
+    return this.cookieService.get('typeCompte');
+  }
 }

@@ -25,7 +25,7 @@ import {RecruteurModificationComponent} from './recruteur-modification/recruteur
       { path: 'candidat', component: CandidatDetailComponent, pathMatch: 'full'},
       { path: 'candidat/:id', component: CandidatDetailComponent, pathMatch: 'full'},
       { path: 'candidat/:id/modification', component: CandidatModificationComponent, pathMatch: 'full'},
-      { path: 'recruteur/:id', component: RecruteurDetailComponent, pathMatch: 'full'},
+      { path: 'recruteur', component: RecruteurDetailComponent, pathMatch: 'full'},
       { path: 'recruteur/:id/modification', component: RecruteurModificationComponent, pathMatch: 'full'},
       { path: 'test', component: TestComponent , pathMatch: 'full'},
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },

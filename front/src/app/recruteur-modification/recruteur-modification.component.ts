@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {RecruteurService} from '../shared/recruteur.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-recruteur-modification',
@@ -8,13 +10,54 @@ import {Router} from '@angular/router';
 })
 export class RecruteurModificationComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  private _recruteur: any[];
 
-  ngOnInit() {
+  constructor(private _recruteurService: RecruteurService) {
+    this._recruteur = [];
   }
 
-  redirect() {
-    this.router.navigate(["/recruteur/:id"]);
+
+
+  get recruteur (): any[] {
+    return this._recruteur;
+  }
+
+  @Input()
+  set recruteur (recruteur: any[]){
+    this._recruteur = recruteur;
+  }
+
+
+ // private _getAll(): Observable<any[]> {
+ //   return this._recruteurService.getAll();
+ // }
+
+  ngOnInit() {
+  //  this._getAll().subscribe((recruteur: any) => this._recruteur = JSON.parse(recruteur));
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////
+

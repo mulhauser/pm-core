@@ -19,9 +19,28 @@
       <li class="nav-item ">
         <a class="nav-link" routerLink="/candidats">Candidats</a>
       </li>
+
+     <!--
       <li class="nav-item ">
-      <a class="nav-link" routerLink="/candidat" *ngIf="getLogIn()">Mon profil</a>
+      <a class="nav-link" routerLink="/candidat" *ngIf="getLogIn() && currentUser.type ==='candidat'">Mon profile candidat</a>
     </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/recruteur" *ngIf="getLogIn() && currentUser.type ==='recruteur'">Mon profile recruteur</a>
+      </li>
+-->
+
+      <div *ngIf="getLogIn()">
+        <div *ngIf="getTypecompte() ==='candidat'">
+          <a class="nav-link" routerLink="/candidat">Mon profile candidat</a>
+        </div>
+        <div *ngIf="getTypecompte() ==='recruteur'">
+        <a class="nav-link" routerLink="/recruteur">Mon profile recruteur</a>
+        </div>
+      </div>
+
+
+
+
 
     </ul>
 

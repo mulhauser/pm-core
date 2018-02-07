@@ -9,6 +9,7 @@ import {CookieService} from 'ngx-cookie-service';
 @Injectable()
 export class AuthenticationService {
 
+  currentUser: any;
 
   constructor(private http: HttpClient,
               private cookieService: CookieService) {
@@ -36,7 +37,9 @@ export class AuthenticationService {
           localStorage.setItem('currentUser', JSON.stringify(user));
         }
         // this._isLogIn = true;
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.cookieService.set('isLogin', '1');
+        this.cookieService.set('typeCompte', this.currentUser.type);
         return user;
       });
   }
@@ -46,6 +49,7 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     // this._isLogIn = false;
     this.cookieService.delete('isLogin');
+    this.cookieService.delete('typeCompte');
   }
 
 }
