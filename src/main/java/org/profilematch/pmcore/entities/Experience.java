@@ -22,7 +22,6 @@ public class Experience implements Serializable {
     private Long id;
 
 
-
     @Column(name = "type_contrat")
     private String typeContrat;
 
@@ -38,29 +37,18 @@ public class Experience implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name ="poste_occuper")
+    @Column(name = "poste_occuper")
     private String posteOccuper;
 
     @ManyToOne
     @JoinColumn(name = "id_candidat")
     private Candidat candidat;
 
-    /*
     @ManyToOne
     @JoinColumn(name = "id_employeur")
     private Employeur employeur;
 
-     public Employeur getEmployeur() {
-        return employeur;
-    }
-
-    public void setEmployeur(Employeur employeur) {
-        this.employeur = employeur;
-    }
-
-    */
-
-    public Experience(String typeContrat, Date dateDebut, Date dateFin, String description, String posteOccuper){
+    public Experience(String typeContrat, Date dateDebut, Date dateFin, String description, String posteOccuper) {
         this.typeContrat = typeContrat;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
@@ -130,7 +118,13 @@ public class Experience implements Serializable {
         this.candidat = candidat;
     }
 
+    public Employeur getEmployeur() {
+        return employeur;
+    }
 
+    public void setEmployeur(Employeur employeur) {
+        this.employeur = employeur;
+    }
 
     @Override
     public boolean equals(Object object) {

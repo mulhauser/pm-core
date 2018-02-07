@@ -39,9 +39,6 @@ public abstract class Profil implements Serializable {
     private String titre;
     private String apropos;
     private String status;
-
-
-
     @ManyToOne
     @JoinColumn(name="id_employeur")
     private Employeur employeur;
