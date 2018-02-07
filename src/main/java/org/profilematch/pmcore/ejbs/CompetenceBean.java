@@ -39,8 +39,8 @@ public class CompetenceBean {
         return em.createNamedQuery("Competence.findAll", Competence.class).getResultList();
     }
 
-    public void supprimerCompetence(Competence competence){
-        em.remove(em.merge(competence));
+    public void supprimerCompetence(Long id){
+        em.remove(em.getReference(Competence.class,id));
     }
 
     public EntityManager getEm() {

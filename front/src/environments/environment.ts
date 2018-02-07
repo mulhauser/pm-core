@@ -25,6 +25,7 @@ export const environment = {
       deleteCandidat: '/rest/candidat',
       allCompetences: '/rest/competence',
       getCompetence: '/rest/competence/:id',
+      deleteCompetence: '/rest/competence/:id',
       addCompetence: '/rest/competence',
       updateCompetence: '/rest/competence',
       login: '/rest/users/login',
