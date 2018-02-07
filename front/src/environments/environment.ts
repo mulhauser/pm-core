@@ -45,6 +45,8 @@ export const environment = {
       getRecruteurByEmail: '/rest/recruteur/findByEmail/:email',
       updateRecruteur: '/rest/recruteur',
       deleteRecruteur: '/rest/recruteur/:id',
+      addOffreToRecruteur: '/rest/recruteur/:id/offres',
+      getOffresByRecruteur: '/rest/recruteur/:id/offres'
     }
   }
 };
