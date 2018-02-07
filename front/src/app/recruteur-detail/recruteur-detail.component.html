@@ -41,7 +41,7 @@
         </div>
         <div class="tab-pane" id="edit" *ngIf="userProfil()">
           <form role="form">
-            <app-recruteur-modification></app-recruteur-modification>
+            <app-recruteur-modification [recruteurDetail]="recruteur"></app-recruteur-modification>
           </form>
         </div>
       </div>

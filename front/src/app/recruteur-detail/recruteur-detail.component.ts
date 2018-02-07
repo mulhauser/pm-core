@@ -11,7 +11,7 @@ import {RecruteurService} from '../shared/recruteur.service';
 export class RecruteurDetailComponent implements OnInit {
 
   private currentUser: any;
-  private _recruteur: any;
+  private recruteur: any;
 
   @Input()
   modeModification = false;
@@ -30,13 +30,13 @@ export class RecruteurDetailComponent implements OnInit {
     if (param) {
       this._recruteurService.getRecruteurById(parseInt(param, 10))
         .subscribe( (data: any) => {
-          this._recruteur =  JSON.parse(data);
+          this.recruteur =  JSON.parse(data);
         });
     } else {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       this._recruteurService.getRecruteurByEmail(this.currentUser.email)
         .subscribe( (data: any) => {
-          this._recruteur =  JSON.parse(data);
+          this.recruteur =  JSON.parse(data);
         });
     }
   }
@@ -46,7 +46,7 @@ export class RecruteurDetailComponent implements OnInit {
     res = false;
     if (localStorage.getItem('currentUser')) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      if (this._recruteur.email === this.currentUser.email) {
+      if (this.recruteur.email === this.currentUser.email) {
         res = true;
       }
     }
@@ -56,12 +56,12 @@ export class RecruteurDetailComponent implements OnInit {
   reload() {
     this._recruteurService.getRecruteurByEmail(this.currentUser.email)
       .subscribe( (data: any) => {
-        this._recruteur =  JSON.parse(data);
+        this.recruteur =  JSON.parse(data);
       });
   }
 
   get recruteurDetail(): any {
-    return this._recruteur;
+    return this.recruteur;
   }
 
 
