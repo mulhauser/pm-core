@@ -1,10 +1,10 @@
 ﻿import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../_models/user';
-import {Observable} from "rxjs/Observable";
-import {HttpHeaders} from "@angular/common/http";
-import {AlertService} from "./alert.service";
-import {Response} from "@angular/http";
+import {Observable} from 'rxjs/Observable';
+import {HttpHeaders} from '@angular/common/http';
+import {AlertService} from './alert.service';
+import {Response} from '@angular/http';
 import {environment} from '../../environments/environment';
 
 @Injectable()
@@ -28,7 +28,7 @@ export class UserService {
   getAll(): Observable<any> {
     return this.http.get<User[]>(this._backendURL.allUsers, this._options())
       .filter( _ => !!_)
-      .defaultIfEmpty([]);;
+      .defaultIfEmpty([]);
   }
 
   getByEmail(email: string) {
@@ -69,9 +69,15 @@ export class UserService {
     return this.http.delete(this._backendURL.deleteUser.replace(':email', email), this._options());
   }
 
+  updatePhoto(email: string, urlphoto: string) {
+    return this.http.post(this._backendURL.updateUserPhoto.replace(':email', email), urlphoto);
+  }
+
   private _options(headerList: Object = {}): any {
     const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList));
     return { headers,
       responseType: 'text' };
   }
+
+
 }

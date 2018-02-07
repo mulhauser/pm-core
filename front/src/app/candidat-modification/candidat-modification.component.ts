@@ -16,8 +16,8 @@ import {ModalAjoutCompetenceComponent} from '../shared/modal-ajout-competence/mo
 })
 export class CandidatModificationComponent implements OnInit {
 
-
   private candidatDetail: any;
+  private _urlPhoto: string;
   private _dialogStatus: string;
   private _infoExperience: any = {};
   private _infoCompetence: any = {};
@@ -39,6 +39,14 @@ export class CandidatModificationComponent implements OnInit {
     this.candidatDetail = candidatDetail;
   }
 
+  get urlPhoto(): string {
+    return this._urlPhoto;
+  }
+
+  set urlPhoto(value: string) {
+    this._urlPhoto = value;
+  }
+
 
   update()  {
     // console.log('update ' + candidat.firstname);
@@ -46,6 +54,10 @@ export class CandidatModificationComponent implements OnInit {
       .subscribe(data =>
         this.alertService.success('Modifications effectuées', true)
       );
+
+    if (this._urlPhoto != null || this._urlPhoto.length !== 0) {
+      this.userService.updatePhoto(this.candidatDetail.email, this._urlPhoto).subscribe();
+    }
 
   }
 /*
