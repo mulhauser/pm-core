@@ -45,7 +45,6 @@ public class Competence implements Serializable {
         this.description = description;
     }
 
-    @ApiModelProperty(hidden = true)
     public Long getId() {
         return id;
     }
@@ -54,6 +53,7 @@ public class Competence implements Serializable {
         this.id = id;
     }
 
+    @ApiModelProperty(hidden = true)
     public String getNom() {
         return nom;
     }
@@ -62,6 +62,7 @@ public class Competence implements Serializable {
         this.nom = nom;
     }
 
+    @ApiModelProperty(hidden = true)
     public String getDescription() {
         return description;
     }

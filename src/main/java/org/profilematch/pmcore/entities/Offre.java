@@ -2,6 +2,8 @@ package org.profilematch.pmcore.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -47,7 +49,10 @@ public class Offre implements Serializable{
     @ManyToMany(mappedBy = "offres")
     private Collection<Candidat> candidats;
 
-    @ManyToMany(mappedBy = "offres")
+    @ManyToMany
+    @JoinTable(name="OFFRES_COMPETENCES",
+            joinColumns = @JoinColumn(name="id_offre"),
+            inverseJoinColumns = @JoinColumn(name = "id_competence"))
     private Collection<Competence> competences;
 
     @ManyToOne
@@ -171,8 +176,6 @@ public class Offre implements Serializable{
         this.candidats = candidats;
     }
 
-    @ApiModelProperty(hidden = true)
-    @JsonIgnore
     public Collection<Competence> getCompetences() {
         return competences;
     }

@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.profilematch.pmcore.ejbs.OffreBean;
 import org.profilematch.pmcore.ejbs.RecruteurBean;
+import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Offre;
 import org.profilematch.pmcore.entities.Recruteur;
 
@@ -63,7 +64,6 @@ public class RecruteurRest {
     @Path("/{id}/offres")
     @ApiOperation(value="Retourne les offres que le recruteur a créé")
     public Response getOffres(@PathParam("id") String id){
-        System.out.println(recruteurBean.getRecruteur((long) Integer.parseInt(id)).getOffres());
         return Response.ok(recruteurBean.getRecruteur((long) Integer.parseInt(id)).getOffres()).build();
     }
 
