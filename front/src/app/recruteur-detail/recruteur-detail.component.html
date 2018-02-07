@@ -28,8 +28,6 @@
               <img src="../../assets/recruteur.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
             </div>
 
-            <div class="col-12" *ngIf="recruteurDetail.competences.length > 0">
-
               <!--
               <i><a href="https://www.google.fr/search?q=html5" class="badge badge-success">html5</a></i>
               <a href="https://www.google.fr/search?q=react" class="badge badge-success">react</a>
@@ -38,34 +36,7 @@
               <a href="https://www.google.fr/search?q=css3" class="badge badge-success">css3</a>
              -->
 
-              <h5 class="mt-2" *ngIf="userProfil()">Mes compétences</h5>
-              <h5 class="mt-2" *ngIf="!userProfil()">Compétences</h5>
-              <hr>
-              <table class="table table-sm table-hover table-striped">
-                <tbody>
-                <tr *ngFor="let competence of recruteurDetail.competences">
-                  <td>
-                    <strong>{{competence.nom}}  </strong>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
 
-            </div>
-            <div class="col-12" *ngIf="recruteurDetail.experiences.length > 0">
-              <h5 class="mt-2" *ngIf="userProfil()">Mes expériences</h5>
-              <h5 class="mt-2" *ngIf="!userProfil()">Expériences</h5>
-              <hr>
-              <table class="table table-sm table-hover table-striped">
-                <tbody>
-                <tr *ngFor="let experience of recruteurDetail.experiences " >
-                  <td>
-                    <strong>{{experience.typeContrat}}</strong> {{experience.description}} <strong>{{experience.posteOccuper}}</strong>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
           </div>
         </div>
         <div class="tab-pane" id="edit" *ngIf="userProfil()">
