@@ -48,7 +48,11 @@ public class Experience implements Serializable {
     @JoinColumn(name = "id_employeur")
     private Employeur employeur;
 
-    public Experience(String typeContrat, Date dateDebut, Date dateFin, String description, String posteOccuper) {
+
+
+
+
+    public Experience(String typeContrat, Date dateDebut, Date dateFin, String description, String posteOccuper){
         this.typeContrat = typeContrat;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
