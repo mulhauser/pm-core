@@ -132,4 +132,11 @@
     <app-experiences-modification [experienceUpdate]="experience"></app-experiences-modification>
   </div>
 
+  <div *ngIf="candidatDetail.competences.length > 0">
+    <h5 class="mt-2">Mes compétences</h5>
+    <hr>
+  </div>
+  <div *ngFor="let competence of candidatDetail.competences">
+    <app-competence-modification [competenceUpdate]="competence"></app-competence-modification>
+  </div>
 

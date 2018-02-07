@@ -47,6 +47,7 @@ import {FormAjoutCompetenceComponent} from './shared/form-ajout-competence/form-
 import {DatePipe} from '@angular/common';
 import {CookieService} from 'ngx-cookie-service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CompetenceModificationComponent } from './competence-modification/competence-modification.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ModalAjoutExperienceComponent,
     ExperiencesModificationComponent,
     ModalAjoutCompetenceComponent,
-    FormAjoutCompetenceComponent
+    FormAjoutCompetenceComponent,
+    CompetenceModificationComponent
 
   ],
   imports: [
