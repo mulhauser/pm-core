@@ -8,6 +8,9 @@ import java.util.Collection;
 import java.io.Serializable;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Employeur.findAll", query = "SELECT u FROM Employeur u")
+})
 public class Employeur implements Serializable {
 
 
@@ -75,4 +78,6 @@ public class Employeur implements Serializable {
     public Collection<Profil> getProfils() { return profils; }
 
     public void setProfils(Collection<Profil> profils) { this.profils = profils; }
+
+
 }

@@ -20,14 +20,6 @@
         <a class="nav-link" routerLink="/candidats">Candidats</a>
       </li>
 
-     <!--
-      <li class="nav-item ">
-      <a class="nav-link" routerLink="/candidat" *ngIf="getLogIn() && currentUser.type ==='candidat'">Mon profile candidat</a>
-    </li>
-      <li class="nav-item ">
-        <a class="nav-link" routerLink="/recruteur" *ngIf="getLogIn() && currentUser.type ==='recruteur'">Mon profile recruteur</a>
-      </li>
--->
 
       <div *ngIf="getLogIn()">
         <div *ngIf="getTypecompte() ==='candidat'">
