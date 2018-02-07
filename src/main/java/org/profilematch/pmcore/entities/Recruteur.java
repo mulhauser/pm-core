@@ -35,6 +35,10 @@ public class Recruteur extends Profil {
         super(nom, prenom, pays, ville, codePostal, email, telephone, dateNaissance, titre, apropos, status);
     }
 
+    public Recruteur(String lastName, String firstName, String email) {
+        super(lastName, firstName, email);
+    }
+
     public Collection<Offre> getOffres() {
         return offres;
     }
