@@ -188,7 +188,6 @@ public class Offre implements Serializable{
     }
 
     @ApiModelProperty(hidden = true)
-    @JsonIgnore
     public Recruteur getRecruteur() {  return recruteur;    }
 
     public void setRecruteur(Recruteur recruteur) { this.recruteur = recruteur; }
