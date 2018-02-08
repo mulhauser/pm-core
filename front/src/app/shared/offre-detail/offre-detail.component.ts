@@ -23,6 +23,7 @@ export class OffreDetailComponent implements OnInit {
       .subscribe(
         (offre: any) => this._offreDetail = offre
       );
+    console.log(this._offreDetail);
   }
 
   /**

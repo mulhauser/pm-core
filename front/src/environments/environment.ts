@@ -31,7 +31,7 @@ export const environment = {
       deleteCompetence: '/rest/competence/:id',
       addCompetence: '/rest/competence',
       updateCompetence: '/rest/competence',
-      // Login/Register
+      // User & Login/Register
       login: '/rest/users/login',
       register: '/rest/users',
       getUserByEmail: '/rest/users/:email',
@@ -45,6 +45,10 @@ export const environment = {
       getExperiences: '/rest/experience/:id',
       updateExperience: '/rest/experience',
       deleteExperience: '/rest/experience/:id',
+      // Offre
+      oneOffre: '/rest/offres/:id',
+      allOffres: '/rest/offres',
+      getUsersByCompetence: '/rest/offres/:id/utilisateurs',
       // Recruteur
       allRecruteur: '/rest/recruteur',
       getRecruteurById: '/rest/recruteur/:id',

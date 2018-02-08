@@ -61,6 +61,13 @@ export class CandidatDetailComponent implements OnInit {
       });
   }
 
+  offres() {
+    this._candidatService.getBestOffres(this.candidat.id)
+      .subscribe((data: any) => {
+        this.candidat.offre = JSON.parse(data);
+      });
+  }
+
   get candidatDetail(): any {
     return this.candidat;
   }

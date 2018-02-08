@@ -157,7 +157,6 @@ public class Offre implements Serializable{
     }
 
     @ApiModelProperty(hidden = true)
-    @JsonIgnore
     public Long getId() {
         return id;
     }
