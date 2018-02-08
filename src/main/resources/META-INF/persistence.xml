@@ -6,7 +6,7 @@
       <property name="hibernate.connection.username" value="root"/> <!-- valeur à changer selon la config mysql (voir avec Docker plus tard) -->
       <property name="hibernate.connection.password" value="root"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-      <property name="hibernate.hbm2ddl.auto" value="drop-create"/>
+      <property name="hibernate.hbm2ddl.auto" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>

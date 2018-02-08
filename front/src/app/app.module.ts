@@ -50,6 +50,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CompetenceModificationComponent } from './competence-modification/competence-modification.component';
 import { ModalAjoutPosteComponent } from './shared/modal-ajout-poste/modal-ajout-poste.component';
 import { FormAjoutPosteComponent } from './shared/form-ajout-poste/form-ajout-poste.component';
+import {CharAdapterComponent} from './char-adapter/char-adapter.component';
+import {NgChatModule} from 'ng-chat/ng-chat/ng-chat.module';
 
 
 @NgModule({
@@ -83,7 +85,8 @@ import { FormAjoutPosteComponent } from './shared/form-ajout-poste/form-ajout-po
     FormAjoutCompetenceComponent,
     CompetenceModificationComponent,
     ModalAjoutPosteComponent,
-    FormAjoutPosteComponent
+    FormAjoutPosteComponent,
+    CharAdapterComponent
 
   ],
   imports: [
@@ -94,7 +97,8 @@ import { FormAjoutPosteComponent } from './shared/form-ajout-poste/form-ajout-po
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    NgChatModule
     // HttpClientInMemoryWebApiModule.forRoot(AppDataService), // CETTE LIGNE C'EST POUR AVOIR UNE DB LOCALE en gros
   ],
   providers: [OffreService,
@@ -116,6 +120,8 @@ import { FormAjoutPosteComponent } from './shared/form-ajout-poste/form-ajout-po
   bootstrap: [AppComponent],
   entryComponents: [ModalConnexionCandidatComponent,
     ModalAjoutExperienceComponent,
-    ModalAjoutCompetenceComponent]
+    ModalAjoutCompetenceComponent,
+  ModalAjoutPosteComponent
+  ]
 })
 export class AppModule { }
