@@ -9,10 +9,13 @@ import org.profilematch.pmcore.ejbs.ExperienceBean;
 import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Experience;
+import org.profilematch.pmcore.entities.Offre;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 
 
 @Path("candidat")
@@ -109,5 +112,18 @@ public class CandidatRest {
     @ApiOperation(value="Retourne les offres où le candidat spécifié a postulé")
     public Response getOffres(@PathParam("id") String id){
         return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id)).getOffres()).build();
+    }
+
+    @GET
+    @Path("/{id}/bestOffres")
+    @ApiOperation(value = "Retourne les offres qui correspondent au candidat spécifié")
+    public Response getBestOffres(@PathParam("id") String id){
+        Candidat candidat = candidatBean.getCandidat((long) Integer.parseInt(id));
+        Collection<Competence> competences = candidat.getCompetences();
+        Collection<Offre> offres = new LinkedHashSet<Offre>();
+        for(Competence c : competences){
+            offres.addAll(c.getOffres());
+        }
+        return Response.ok(offres).build();
     }
 }

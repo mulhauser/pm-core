@@ -32,11 +32,18 @@ public class OffreRest {
     }
 
     @GET
-    @ApiOperation(value="Retourne les utilisateurs dont les compétences correspondent à l'offre renseignée")
+    @ApiOperation(value="Retourne l'offre spécifiée")
     @Path("/{id}")
+    public Response getOne(@PathParam("id") String id){
+        return Response.ok(offreBean.getOffre((long) Integer.parseInt(id))).build();
+    }
+
+    @GET
+    @ApiOperation(value="Retourne les utilisateurs dont les compétences correspondent à l'offre renseignée")
+    @Path("/{id}/utilisateurs")
     public Response getCandidatByCompetenceWithOffre(@PathParam("id") String id){
         Offre o = offreBean.getOffre((long) Integer.parseInt(id));
-        Collection<Candidat> list = new LinkedHashSet<Candidat>();
+        Collection<Candidat> list = new LinkedHashSet<Candidat>(); // Faire une hashmap et ensuite trier pour voir le candidat qui correspond le plus
         for(Competence c : o.getCompetences()){
             list.addAll(c.getCandidats());
         }
