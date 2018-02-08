@@ -12,6 +12,7 @@ export class OffreComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   /**

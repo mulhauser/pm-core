@@ -16,7 +16,7 @@ public class EmployeurBean {
     @PersistenceContext(unitName = "IMP_PU")
     EntityManager em;
 
-    public void addEmployeur(Employeur employeur){ em.persist(employeur); }
+    public void ajouterEmployeur(Employeur employeur){ em.persist(employeur); }
 
     public Employeur getEmployeur(Long id){return em.find(Employeur.class, id);}
 

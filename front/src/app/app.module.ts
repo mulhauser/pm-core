@@ -48,6 +48,8 @@ import {DatePipe} from '@angular/common';
 import {CookieService} from 'ngx-cookie-service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CompetenceModificationComponent } from './competence-modification/competence-modification.component';
+import { ModalAjoutPosteComponent } from './shared/modal-ajout-poste/modal-ajout-poste.component';
+import { FormAjoutPosteComponent } from './shared/form-ajout-poste/form-ajout-poste.component';
 
 
 @NgModule({
@@ -57,9 +59,9 @@ import { CompetenceModificationComponent } from './competence-modification/compe
     HomeComponent,
     FooterComponent,
     TestComponent,
-    //OffresComponent,
-    //OffreComponent,
-    //OffreDetailComponent,
+    OffresComponent,
+    OffreComponent,
+    OffreDetailComponent,
     ModalConnexionCandidatComponent,
     FormConnexionCandidatComponent,
     CandidatComponent,
@@ -79,7 +81,9 @@ import { CompetenceModificationComponent } from './competence-modification/compe
     ExperiencesModificationComponent,
     ModalAjoutCompetenceComponent,
     FormAjoutCompetenceComponent,
-    CompetenceModificationComponent
+    CompetenceModificationComponent,
+    ModalAjoutPosteComponent,
+    FormAjoutPosteComponent
 
   ],
   imports: [

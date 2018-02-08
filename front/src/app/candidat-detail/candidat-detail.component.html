@@ -9,6 +9,9 @@
         <li class="nav-item" >
           <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Modifier</a>
         </li>
+        <li class="nav-item">
+          <a href="" data-target="#offres" (click)="reload()" data-toggle="tab" class="nav-link">Offres</a>
+        </li>
       </ul>
       <div class="tab-content py-4">
         <div class="tab-pane active" id="profile">
@@ -65,6 +68,9 @@
           <form role="form">
             <app-candidat-modification [candidatDetail]="candidat"></app-candidat-modification>
           </form>
+        </div>
+        <div class="tab-pane" id="offres" *ngIf="userProfil()">
+          <app-offres [offres]="candidat"></app-offres>
         </div>
       </div>
     </div>

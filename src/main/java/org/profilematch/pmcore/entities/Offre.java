@@ -1,5 +1,10 @@
 package org.profilematch.pmcore.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,6 +16,9 @@ import java.util.Date;
  * @author remy
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Offre.findAll", query = "SELECT u FROM Offre u")
+})
 public class Offre implements Serializable{
 
 
@@ -44,7 +52,11 @@ public class Offre implements Serializable{
     @ManyToMany(mappedBy = "offres")
     private Collection<Candidat> candidats;
 
-    @ManyToMany(mappedBy = "offres")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany
+    @JoinTable(name="OFFRES_COMPETENCES",
+            joinColumns = @JoinColumn(name="id_offre"),
+            inverseJoinColumns = @JoinColumn(name = "id_competence"))
     private Collection<Competence> competences;
 
     @ManyToOne
@@ -144,7 +156,7 @@ public class Offre implements Serializable{
         this.dateLimite = dateLimite;
     }
 
-
+    @ApiModelProperty(hidden = true)
     public Long getId() {
         return id;
     }
@@ -157,8 +169,8 @@ public class Offre implements Serializable{
         this.intitule = intitule;
     }
 
-
-
+    @ApiModelProperty(hidden = true)
+    @JsonIgnore
     public Collection<Candidat> getCandidats() {
         return candidats;
     }
@@ -175,6 +187,8 @@ public class Offre implements Serializable{
         this.competences = competences;
     }
 
+    @ApiModelProperty(hidden = true)
+    @JsonIgnore
     public Recruteur getRecruteur() {  return recruteur;    }
 
     public void setRecruteur(Recruteur recruteur) { this.recruteur = recruteur; }

@@ -1,6 +1,7 @@
 package org.profilematch.pmcore.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
@@ -75,6 +76,8 @@ public class Employeur implements Serializable {
 
     public void setEmail(String email) {   this.email = email;  }
 
+    @ApiModelProperty(hidden = true)
+    @JsonIgnore
     public Collection<Profil> getProfils() { return profils; }
 
     public void setProfils(Collection<Profil> profils) { this.profils = profils; }

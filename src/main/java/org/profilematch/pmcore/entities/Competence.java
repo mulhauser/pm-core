@@ -3,6 +3,8 @@ package org.profilematch.pmcore.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,12 +26,14 @@ public class Competence implements Serializable {
     private String nom;
     private String description;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
     @JoinTable(name="OFFRES_COMPETENCES",
             joinColumns = @JoinColumn(name="id_competence"),
             inverseJoinColumns = @JoinColumn(name = "id_offre"))
     private Collection<Offre> offres = new LinkedHashSet<Offre>();
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name="CANDIDATS_COMPETENCES",
             joinColumns = @JoinColumn(name="id_competence"),
@@ -45,7 +49,6 @@ public class Competence implements Serializable {
         this.description = description;
     }
 
-    @ApiModelProperty(hidden = true)
     public Long getId() {
         return id;
     }
@@ -54,6 +57,7 @@ public class Competence implements Serializable {
         this.id = id;
     }
 
+    @ApiModelProperty(hidden = true)
     public String getNom() {
         return nom;
     }
@@ -62,6 +66,7 @@ public class Competence implements Serializable {
         this.nom = nom;
     }
 
+    @ApiModelProperty(hidden = true)
     public String getDescription() {
         return description;
     }

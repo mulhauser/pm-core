@@ -47,7 +47,7 @@ public class OffreBean {
      * @param id
      * @return the Offre corresponding to the given id
      */
-    public Offre getOffre(String id){
+    public Offre getOffre(long id){
         return em.find(Offre.class, id);
     }
 

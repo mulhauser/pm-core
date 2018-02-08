@@ -31,3 +31,4 @@ password.txt
 # IDEs and editors
 /.idea
 .project
+/.travis.yml

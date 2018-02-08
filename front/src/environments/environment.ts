@@ -13,7 +13,7 @@ export const environment = {
     host: 'localhost',
     port: '9090',
     endpoints: {
-
+      // Candidat
       allCandidat: '/rest/candidat',
       getCandidatById: '/rest/candidat/:id',
       getCandidatByEmail: '/rest/candidat/findByEmail/:email',
@@ -23,11 +23,15 @@ export const environment = {
       addCandidatCompetence: '/rest/candidat/:id/competences/:idCompetence',
       updateCandidat: '/rest/candidat',
       deleteCandidat: '/rest/candidat',
+      getOffresByCandidat: '/rest/candidat/:id/offres',
+      getBestOffresByCandidat: '/rest/candidat/:id/bestOffres',
+      // Competence
       allCompetences: '/rest/competence',
       getCompetence: '/rest/competence/:id',
       deleteCompetence: '/rest/competence/:id',
       addCompetence: '/rest/competence',
       updateCompetence: '/rest/competence',
+      // User & Login/Register
       login: '/rest/users/login',
       register: '/rest/users',
       getUserByEmail: '/rest/users/:email',
@@ -36,15 +40,23 @@ export const environment = {
       updateUserPhoto: '/rest/users/updatePhoto/:email',
       deleteUser: '/rest/users/:email',
       allUsers: '/rest/users',
+      // Experience
       allExperiences: '/rest/experience',
       getExperiences: '/rest/experience/:id',
       updateExperience: '/rest/experience',
       deleteExperience: '/rest/experience/:id',
+      // Offre
+      oneOffre: '/rest/offres/:id',
+      allOffres: '/rest/offres',
+      getUsersByCompetence: '/rest/offres/:id/utilisateurs',
+      // Recruteur
       allRecruteur: '/rest/recruteur',
       getRecruteurById: '/rest/recruteur/:id',
       getRecruteurByEmail: '/rest/recruteur/findByEmail/:email',
       updateRecruteur: '/rest/recruteur',
       deleteRecruteur: '/rest/recruteur/:id',
+      addOffreToRecruteur: '/rest/recruteur/:id/offres',
+      getOffresByRecruteur: '/rest/recruteur/:id/offres'
     }
   }
 };
