@@ -45,6 +45,7 @@ export class RecruteurDetailComponent implements OnInit {
           this.recruteur =  JSON.parse(data);
         });
     }
+    console.log(this.recruteur);
   }
 
   userProfil(): boolean {

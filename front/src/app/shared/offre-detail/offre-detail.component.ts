@@ -13,6 +13,7 @@ export class OffreDetailComponent implements OnInit {
 
   // private property to store eventDetail value
   private _offreDetail: any = {};
+  private currentUser: any;
 
   constructor(private _offreService: OffreService, private _route: ActivatedRoute) { }
 
@@ -32,6 +33,23 @@ export class OffreDetailComponent implements OnInit {
   get offreDetail(): any{
     return this._offreDetail;
   }
+
+  /**
+   * Vérifie si l'utilisateur est le recruteur qui a posté cette offre
+   * @returns {boolean}
+   */
+  userProfil(): boolean {
+    let res: boolean;
+    res = false;
+    if (localStorage.getItem('currentUser')) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (this._offreDetail.recruteur.email === this.currentUser.email) {
+        res = true;
+      }
+    }
+    return res;
+  }
+
 
   /**
    * Returns an observable fetchs one event by id
