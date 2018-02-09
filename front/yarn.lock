@@ -3500,6 +3500,10 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+ng-chat@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ng-chat/-/ng-chat-1.0.2.tgz#c7c28bcf2f19ed571322ab8404ebd9a2681c90fa"
+
 ng2-bootstrap@^1.1.16-11:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/ng2-bootstrap/-/ng2-bootstrap-1.6.3.tgz#8bef6179d7436ba547901447f18fee8fff4355c2"

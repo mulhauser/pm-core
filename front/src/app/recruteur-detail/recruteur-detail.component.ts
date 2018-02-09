@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import {ActivatedRoute } from '@angular/router';
 import {UserService} from '../_services/user.service';
 import {RecruteurService} from '../shared/recruteur.service';
+import {ModalAjoutPosteComponent} from '../shared/modal-ajout-poste/modal-ajout-poste.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-recruteur-detail',
@@ -13,20 +16,25 @@ export class RecruteurDetailComponent implements OnInit {
   private currentUser: any;
   private recruteur: any;
   private _dialogStatus: string;
+  private _infoOffre: any = {};
 
+   offreDuRecruteur: any = [];
 
   @Input()
   modeModification = false;
 
   constructor(private _userService: UserService,
               private _route: ActivatedRoute,
-              private _recruteurService: RecruteurService) {
+              private _recruteurService: RecruteurService,
+              private _offreDialogue: NgbModal) {
 
   }
 
   get dialogStatus(): string {
     return this._dialogStatus;
   }
+
+
 
   ngOnInit() {
     let param: string;
@@ -45,7 +53,25 @@ export class RecruteurDetailComponent implements OnInit {
           this.recruteur =  JSON.parse(data);
         });
     }
+    //  ON INSTANCIE LA LISTE D'OFFRES Du RECRUTEUR
+    this._offreDuRecruteurInit().subscribe((offres: any[]) => this.offreDuRecruteur = offres);
+    console.log('les offres' + this.offreDuRecruteur);
   }
+
+  private _offreDuRecruteurInit(): Observable<any[]> {
+   // console.log('lesoffres' + this._recruteurService.gerRecruteurOffres(this.currentUser.id).filter(_ => !!_).defaultIfEmpty([]));
+    return this._recruteurService
+      .gerRecruteurOffres(this.currentUser.id)
+      .filter(_ => !!_)
+      .defaultIfEmpty([]);
+  }
+
+
+
+
+
+
+
 
   userProfil(): boolean {
     let res: boolean;
@@ -80,22 +106,22 @@ export class RecruteurDetailComponent implements OnInit {
 
 
 
-/**
+
   showModalAjoutPoste() {
     // set dialog status
     this._dialogStatus = 'active';
     // open modal
-    const dialogRef = this._competenceDialog.open(ModalAjoutCompetenceComponent, {
+    const dialogRef = this._offreDialogue.open(ModalAjoutPosteComponent, {
       size: 'lg',
       keyboard: true,
       backdrop: 'static'
     });
     dialogRef.result.then(
       (result) => {
-        this._addCompetence(result.value)
+        this._addOffre(result.value)
           .subscribe(
-            (infoCompetence: any) => {
-              this._infoCompetence = infoCompetence;
+            (infoOffre: any) => {
+              this._infoOffre = infoOffre;
             },
             () => this._dialogStatus = 'inactive',
             () => this._dialogStatus = 'inactive'
@@ -107,7 +133,12 @@ export class RecruteurDetailComponent implements OnInit {
   }
 
 
-**/
+
+  private _addOffre (offre: any): Observable<any> {
+    return this._recruteurService.addRecruteurOffre(offre, this.recruteurDetail.id)
+      .flatMap(_ => _);
+  }
+
 
 
 }

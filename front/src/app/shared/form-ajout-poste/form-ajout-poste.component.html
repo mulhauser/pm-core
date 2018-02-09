@@ -1,3 +1,201 @@
-<p>
-  form-ajout-poste works!
-</p>
+
+<form #f="ngForm">
+  <div class="modal-header header">
+    <h3>Ajoute une offre</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="container">
+
+
+
+      <div class="form-group">
+        <label for="intitule">intitule</label>
+        <input type="text" class="form-control" id="typeContrat"
+               required
+               minlength="2"
+               [(ngModel)]="model.intitule"
+               placeholder="Intitulé de l'offre"
+               name="intitule"
+               #intitule="ngModel">
+        <div *ngIf="intitule.invalid && (intitule.dirty || intitule.touched)"
+             class="alert alert-danger">
+          <div *ngIf="intitule.errors.required">
+            intitule is required.
+          </div>
+          <div *ngIf="intitule.errors.minlength">
+            intitule must be at least 2 character long.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="niveauRequis">niveauRequis</label>
+        <input type="text" class="form-control" id="niveauRequis"
+               required
+               minlength="2"
+               [(ngModel)]="model.niveauRequis"
+               placeholder="niveauRequis de l'offre"
+               name="niveauRequis"
+               #niveauRequis="ngModel">
+        <div *ngIf="niveauRequis.invalid && (niveauRequis.dirty || niveauRequis.touched)"
+             class="alert alert-danger">
+          <div *ngIf="niveauRequis.errors.required">
+            niveauRequis is required.
+          </div>
+          <div *ngIf="niveauRequis.errors.minlength">
+            niveauRequis must be at least 2 character long.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="typeContrat">typeContrat</label>
+        <input type="text" class="form-control" id="typeContrat"
+               required
+               minlength="2"
+               [(ngModel)]="model.typeContrat"
+               placeholder="Type de contract"
+               name="typeContrat"
+               #typeContrat="ngModel">
+        <div *ngIf="typeContrat.invalid && (typeContrat.dirty || typeContrat.touched)"
+             class="alert alert-danger">
+          <div *ngIf="typeContrat.errors.required">
+            typeContrat is required.
+          </div>
+          <div *ngIf="typeContrat.errors.minlength">
+            typeContrat must be at least 20 character long.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="salaireMin">salaireMin</label>
+        <input type="text" class="form-control" id="salaireMin"
+               required
+               minlength="2"
+               [(ngModel)]="model.salaireMin"
+               placeholder="salaire minimum"
+               name="salaireMin"
+               #salaireMin="ngModel">
+        <div *ngIf="salaireMin.invalid && (salaireMin.dirty || salaireMin.touched)"
+             class="alert alert-danger">
+          <div *ngIf="salaireMin.errors.required">
+            salaireMin is required.
+          </div>
+          <div *ngIf="salaireMin.errors.minlength">
+            salaireMin must be at least 20 character long.
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="salaireMax">salaireMax</label>
+        <input type="text" class="form-control" id="salaireMax"
+               required
+               minlength="2"
+               [(ngModel)]="model.salaireMax"
+               placeholder="salaire maximum"
+               name="salaireMax"
+               #salaireMax="ngModel">
+        <div *ngIf="salaireMax.invalid && (salaireMax.dirty || salaireMax.touched)"
+             class="alert alert-danger">
+          <div *ngIf="salaireMax.errors.required">
+            salaireMax is required.
+          </div>
+          <div *ngIf="salaireMax.errors.minlength">
+            salaireMax must be at least 20 character long.
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="description">description</label>
+        <input type="text" class="form-control" id="description"
+               required
+               minlength="2"
+               [(ngModel)]="model.description"
+               placeholder="description"
+               name="description"
+               #description="ngModel">
+        <div *ngIf="description.invalid && (description.dirty || description.touched)"
+             class="alert alert-danger">
+          <div *ngIf="description.errors.required">
+            description is required.
+          </div>
+          <div *ngIf="description.errors.minlength">
+            description must be at least 20 character long.
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="mission">mission</label>
+        <input type="text" class="form-control" id="mission"
+               required
+               minlength="2"
+               [(ngModel)]="model.mission"
+               placeholder="mission"
+               name="mission"
+               #mission="ngModel">
+        <div *ngIf="mission.invalid && (mission.dirty || mission.touched)"
+             class="alert alert-danger">
+          <div *ngIf="mission.errors.required">
+            mission is required.
+          </div>
+          <div *ngIf="mission.errors.minlength">
+            mission must be at least 20 character long.
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label >Date limite</label>
+        <input type="date" class="form-control" id="dateLimite"
+               [(ngModel)]="model.dateLimite"
+               name="dateLimite"
+               #dateLimite="ngModel">
+      </div>
+
+
+      <div class="from-group">
+        <select class="form-control" name="competence" [(ngModel)]="model.idCompetence" name="idCompetence">
+          <option value="" disabled>Choisir une compétence</option>
+          <option *ngFor="let competence of competences" [ngValue]="competence.id">
+            {{ competence.nom }}
+          </option>
+        </select>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="!f.form.valid" (click)="submit()">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+  </div>
+</form>
+
+
+
+
+
+
+
+

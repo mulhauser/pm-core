@@ -1,61 +1,3 @@
-<!--<section class="bg-faded container-fluid">-->
-<!--<div class="row py-3 flex-items-sm-center">-->
-
-
-<!---->
-<!---->
-<!--&lt;!&ndash;-->
-<!--User Card-->
-<!--&ndash;&gt;-->
-<!--<div class="col-xs-12 col-sm-3 py-2 clearfix">-->
-<!--<div class="card profile-card card-img-top">-->
-<!--&lt;!&ndash;-->
-<!--<figure>-->
-
-<!--<input id="fab" type="checkbox" (click)="modeModification=!modeModificationOn" class="fab"><label for="fab" class="toggle">+</label>-->
-<!--<img src="{{ candidatDetail.photo }}" class="img-fluid img-profile" alt="Card image">-->
-<!--</figure>-->
-<!--<div class="card-block text-xs-center">-->
-<!--<p class="h4 card-title font-weight-bold">{{candidatDetail.prenom}} <br>{{candidatDetail.nom}}</p>-->
-<!--<p class="h6 card-subtitle text-muted">  apropos:{{candidatDetail.apropos}}<br>email:{{candidatDetail.email}}-->
-<!--pays: {{candidatDetail.pays}}<br>-->
-<!--ville:{{candidatDetail.ville}}<br>-->
-<!--codePostal:{{candidatDetail.codePostal}}-->
-<!--dateNaissance: {{candidatDetail.dateNaissance}}<br>-->
-<!--telephone: {{candidatDetail.telephone}}<br>-->
-<!--titre: {{candidatDetail.titre}}<br>-->
-<!--status:  {{candidatDetail.status}}<br>-->
-<!--statusActuel:{{candidatDetail.statusActuel}}<br>-->
-<!--experiences:{{candidatDetail.experiences}}<br>-->
-<!--competences:{{candidatDetail.competences}}<br>-->
-<!--offre:{{candidatDetail.offre}}<br></p><br>-->
-<!--</div>-->
-<!--&ndash;&gt;-->
-
-<!--<figure>-->
-<!--<input id="fab" type="checkbox" (click)="modeModification=!modeModificationOn" class="fab">-->
-<!--<label for="fab" class="toggle">+</label>-->
-<!--<img src="{{ candidatDetail.photo }}" class="img-fluid img-profile" alt="Card image">-->
-<!--</figure>-->
-<!--<div class="card-block text-xs-center">-->
-<!--<p class="h4 card-title font-weight-bold">-->
-<!--{{candidatDetail.firstName}}<br>-->
-<!--{{candidatDetail.lastName}}-->
-<!--</p>-->
-<!--<p class="h6 card-subtitle text-muted"><br>-->
-<!--email:{{candidatDetail.email}}<br>-->
-<!--type: {{candidatDetail.type}}<br>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</section>-->
-
-
-
-<!--<div *ngIf="modeModification === true">-->
-<!--<app-candidat-modification  [candidatDetail]="candidatDetail"></app-candidat-modification>-->
-<!--</div>-->
 
 <div class="container">
   <div class="row my-2">
@@ -64,9 +6,6 @@
         <li class="nav-item">
           <a href="" data-target="#profile" (click)="reload()" data-toggle="tab" class="nav-link active">Profil</a>
         </li>
-       <!-- <li class="nav-item">
-          <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
-        </li>-->
         <li class="nav-item" >
           <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Modifier</a>
         </li>
@@ -94,14 +33,6 @@
             </div>
 
             <div class="col-12" *ngIf="candidatDetail.competences.length > 0">
-
-              <!--
-              <i><a href="https://www.google.fr/search?q=html5" class="badge badge-success">html5</a></i>
-              <a href="https://www.google.fr/search?q=react" class="badge badge-success">react</a>
-              <a href="https://www.google.fr/search?q=codeply" class="badge badge-success">codeply</a>
-              <a href="https://www.google.fr/search?q=angularjs" class="badge badge-success">angularjs</a>
-              <a href="https://www.google.fr/search?q=css3" class="badge badge-success">css3</a>
-             -->
 
                 <h5 class="mt-2" *ngIf="userProfil()">Mes compétences</h5>
                 <h5 class="mt-2" *ngIf="!userProfil()">Compétences</h5>
@@ -132,41 +63,6 @@
               </table>
             </div>
           </div>
-          <!--/row-->
-        <!--<div class="tab-pane" id="messages">
-          <div class="alert alert-info alert-dismissable">
-            <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
-          </div>
-          <table class="table table-hover table-striped">
-            <tbody>
-            <tr>
-              <td>
-                <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros.
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div> -->
         </div>
         <div class="tab-pane" id="edit" *ngIf="userProfil()">
           <form role="form">

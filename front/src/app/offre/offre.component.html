@@ -14,7 +14,8 @@
           {{offreObj.typeContrat}}
         </div>
         <div class="col-12">
-          <img class="img-fluid"  *ngIf="offreObj" src="{{ offreObj.photo }}" alt="logo">
+          <img class="img-fluid"  *ngIf="offreObj.photo" src="{{ offreObj.photo }}" alt="logo">
+          <img class="img-fluid"  *ngIf="!offreObj.photo" src="../../assets/societe_anonyme.jpg" alt="logo">
         </div>
       </div>
     </div>
