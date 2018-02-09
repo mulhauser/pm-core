@@ -93,6 +93,23 @@ public class CandidatRest {
         return Response.ok().build();
     }
 
+    @DELETE
+    @Path("/{id}/competences/{idCompetence}")
+    @ApiOperation(value="Supprimer une competence au candidat renseigné")
+    public Response supprimerCompetence(@PathParam("id") String id, @PathParam("idCompetence") int idCompetence){
+        Competence competence = competenceBean.getCompetence((long) idCompetence);
+        Candidat candidat = candidatBean.getCandidat((long) Integer.parseInt(id));
+
+        competence.getCandidats().remove(candidat);
+        candidat.getCompetences().remove(competence);
+
+        competenceBean.modifierCompetence(competence);
+        //candidatBean.getCandidat((long) Integer.parseInt(id)).getCompetences().add(competence);
+        // competence.setCandidat(candidatBean.getCandidat((long) Integer.parseInt(id)));
+        // competenceBean.ajouterExperience(competence);
+        return Response.ok().build();
+    }
+
     @PUT
     @ApiOperation(value="Modifie un candidat")
     public Response update(Candidat candidat){

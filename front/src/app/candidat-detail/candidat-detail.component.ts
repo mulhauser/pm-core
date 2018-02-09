@@ -79,4 +79,5 @@ export class CandidatDetailComponent implements OnInit {
     this.modeModification = a;
   }
 
+
 }

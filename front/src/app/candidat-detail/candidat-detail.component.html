@@ -32,20 +32,20 @@
               <img src="../../assets/candidat.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
             </div>
 
+
             <div class="col-12" *ngIf="candidatDetail.competences.length > 0">
 
                 <h5 class="mt-2" *ngIf="userProfil()">Mes compétences</h5>
                 <h5 class="mt-2" *ngIf="!userProfil()">Compétences</h5>
                 <hr>
-                <table class="table table-sm table-hover table-striped">
-                  <tbody>
-                  <tr *ngFor="let competence of candidatDetail.competences">
-                    <td>
-                      <strong>{{competence.nom}}  </strong>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
+
+              <ul class="tags">
+                <li *ngFor="let competence of candidatDetail.competences" >
+                  <a>{{competence.nom}}</a><span></span>
+                </li>
+              </ul>
+
+
 
             </div>
             <div class="col-12" *ngIf="candidatDetail.experiences.length > 0">

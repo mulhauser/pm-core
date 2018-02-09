@@ -129,7 +129,7 @@
   <hr>
 </div>
   <div *ngFor="let experience of candidatDetail.experiences">
-    <app-experiences-modification [experienceUpdate]="experience"></app-experiences-modification>
+    <app-experiences-modification [currentCandidat]="candidatDetail" [experienceUpdate]="experience" ></app-experiences-modification>
   </div>
 
   <div *ngIf="candidatDetail.competences.length > 0">

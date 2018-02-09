@@ -17,6 +17,7 @@ import {ModalAjoutCompetenceComponent} from '../shared/modal-ajout-competence/mo
 export class CandidatModificationComponent implements OnInit {
 
   private candidatDetail: any;
+  private currentUser: any;
   private _urlPhoto: string;
   private _dialogStatus: string;
   private _infoExperience: any = {};
@@ -32,6 +33,7 @@ export class CandidatModificationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   @Input('candidatDetail')

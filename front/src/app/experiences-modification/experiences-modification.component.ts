@@ -27,7 +27,8 @@ export class ExperiencesModificationComponent implements OnInit {
     this._experience = value;
     this._experience.dateDebut = this.datePipe.transform(value.dateDebut, 'yyyy-MM-dd');
     this._experience.dateFin = this.datePipe.transform(value.dateFin, 'yyyy-MM-dd');
-    console.log(this._experience.dateDebut);
+
+
   }
 
   @Input('currentCandidat')

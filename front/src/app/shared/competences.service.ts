@@ -26,8 +26,8 @@ export class CompetencesService {
       .defaultIfEmpty([]);
   }
 
-  deleteCompetence(id: any): Observable<any> {
-    return this.http.delete(this._backendURL.deleteCompetence.replace(':id', id), this._backendURL);
+  deleteCompetence(idCand: any , id: any): Observable<any> {
+    return this.http.delete(this._backendURL.deleteCandidatCompetence.replace(':id', idCand).replace(':idCompetence', id), this._backendURL);
   }
 
   private _options(headerList: Object = {}): any {

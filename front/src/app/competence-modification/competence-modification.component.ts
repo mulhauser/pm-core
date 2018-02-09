@@ -42,7 +42,7 @@ export class CompetenceModificationComponent implements OnInit {
         .findIndex((competence: Competence) => competence.id === this._competence.id),
       1);
     this._candidatService.updateCandidat(this._currentCandidat);*/
-    this._competenceService.deleteCompetence(this._competence.id).subscribe( _ => {
+    this._competenceService.deleteCompetence(this._currentCandidat.id, this._competence.id).subscribe( _ => {
         this.alertService.success('Supprimer ! ', true); },
       error => window.location.reload()
     );
