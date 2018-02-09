@@ -70,8 +70,7 @@
           </form>
         </div>
         <div class="tab-pane" id="offres" *ngIf="userProfil()">
-          <h1>Les offrse succéptibles de m'intéresser</h1>
-          <app-offres [offres]="candidat.offre"></app-offres>
+          <app-offres [offres]="candidat.offre">Les offres susceptibles de m'intéresser</app-offres>
         </div>
       </div>
     </div>
