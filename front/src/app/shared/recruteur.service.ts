@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {Offre} from "../_models/offre";
 
 @Injectable()
 export class RecruteurService {
@@ -40,7 +41,8 @@ export class RecruteurService {
 
 
 
-  addRecruteurOffre( offre: any, id: number): Observable<any> {
+  addRecruteurOffre( offre: Offre, id: number): Observable<any> {
+    console.log(offre);
     return this.http.post(this._backendURL.addOffreToRecruteur.replace(':id', id), offre, this._options());
   }
 

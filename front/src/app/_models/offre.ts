@@ -1,3 +1,6 @@
+import {Competence} from "./competence";
+import {Candidat} from "./candidat";
+
 export class Offre {
   constructor(
     public id: number,
@@ -8,9 +11,10 @@ export class Offre {
     public description: string,
     public mission: string,
     public dateLimite: string,
-    public candidats: any,
-    public competences: any,
+    public candidats: Candidat[],
+    public competences: Competence[],
+    public suspendu: boolean,
     public salaireMin?: number,
-    public salaireMax?: number
+    public salaireMax?: number,
    ) {}
 }

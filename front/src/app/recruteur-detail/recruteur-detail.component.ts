@@ -5,6 +5,7 @@ import {RecruteurService} from '../shared/recruteur.service';
 import {ModalAjoutPosteComponent} from '../shared/modal-ajout-poste/modal-ajout-poste.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Observable} from 'rxjs/Observable';
+import {Offre} from "../_models/offre";
 
 @Component({
   selector: 'app-recruteur-detail',
@@ -134,7 +135,7 @@ export class RecruteurDetailComponent implements OnInit {
 
 
 
-  private _addOffre (offre: any): Observable<any> {
+  private _addOffre (offre: Offre): Observable<any> {
     return this._recruteurService.addRecruteurOffre(offre, this.recruteurDetail.id)
       .flatMap(_ => _);
   }

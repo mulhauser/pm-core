@@ -170,9 +170,9 @@
 
 
       <div class="from-group">
-        <select class="form-control" name="competence" [(ngModel)]="model.idCompetence" name="idCompetence">
+        <select class="form-control" name="competence" [(ngModel)]="model.competences" name="idCompetence" multiple>
           <option value="" disabled>Choisir une compétence</option>
-          <option *ngFor="let competence of competences" [ngValue]="competence.id">
+          <option *ngFor="let competence of competences" [ngValue]="competence">
             {{ competence.nom }}
           </option>
         </select>
