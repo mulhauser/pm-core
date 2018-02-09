@@ -18,7 +18,7 @@ export class RecruteurDetailComponent implements OnInit {
   private _dialogStatus: string;
   private _infoOffre: any = {};
 
-  private _offreDuRecruteur: any = [];
+   offreDuRecruteur: any = [];
 
   @Input()
   modeModification = false;
@@ -34,9 +34,7 @@ export class RecruteurDetailComponent implements OnInit {
     return this._dialogStatus;
   }
 
-  get offreDuRecruteur(){
-    return this._offreDuRecruteur;
-  }
+
 
   ngOnInit() {
     let param: string;
@@ -55,13 +53,25 @@ export class RecruteurDetailComponent implements OnInit {
           this.recruteur =  JSON.parse(data);
         });
     }
-    // ICI ON INSTANCIE LA LISTE D'OFFRES
-    //this._offreDuRecruteur = this._recruteurService.gerRecruteurOffres(this.currentUser.id)
-    //  .subscribe( (data: any) => {
-   //     this.recruteur =  JSON.parse(data);
-   //   });
-    // console.log('coucou' + this.offreDuRecruteur);
+    //  ON INSTANCIE LA LISTE D'OFFRES Du RECRUTEUR
+    this._offreDuRecruteurInit().subscribe((offres: any[]) => this.offreDuRecruteur = offres);
+    console.log('les offres' + this.offreDuRecruteur);
   }
+
+  private _offreDuRecruteurInit(): Observable<any[]> {
+   // console.log('lesoffres' + this._recruteurService.gerRecruteurOffres(this.currentUser.id).filter(_ => !!_).defaultIfEmpty([]));
+    return this._recruteurService
+      .gerRecruteurOffres(this.currentUser.id)
+      .filter(_ => !!_)
+      .defaultIfEmpty([]);
+  }
+
+
+
+
+
+
+
 
   userProfil(): boolean {
     let res: boolean;
@@ -125,7 +135,7 @@ export class RecruteurDetailComponent implements OnInit {
 
 
   private _addOffre (offre: any): Observable<any> {
-    return this._recruteurService.addRecruteurOffre(this.recruteurDetail.id, offre)
+    return this._recruteurService.addRecruteurOffre(offre, this.recruteurDetail.id)
       .flatMap(_ => _);
   }
 

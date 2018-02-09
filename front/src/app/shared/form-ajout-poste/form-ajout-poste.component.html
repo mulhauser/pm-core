@@ -31,21 +31,21 @@
 
 
       <div class="form-group">
-        <label for="niveau">niveau</label>
-        <input type="text" class="form-control" id="niveau"
+        <label for="niveauRequis">niveauRequis</label>
+        <input type="text" class="form-control" id="niveauRequis"
                required
                minlength="2"
-               [(ngModel)]="model.niveau"
-               placeholder="niveau de l'offre"
-               name="niveau"
-               #niveau="ngModel">
-        <div *ngIf="niveau.invalid && (niveau.dirty || niveau.touched)"
+               [(ngModel)]="model.niveauRequis"
+               placeholder="niveauRequis de l'offre"
+               name="niveauRequis"
+               #niveauRequis="ngModel">
+        <div *ngIf="niveauRequis.invalid && (niveauRequis.dirty || niveauRequis.touched)"
              class="alert alert-danger">
-          <div *ngIf="niveau.errors.required">
-            niveau is required.
+          <div *ngIf="niveauRequis.errors.required">
+            niveauRequis is required.
           </div>
-          <div *ngIf="niveau.errors.minlength">
-            niveau must be at least 2 character long.
+          <div *ngIf="niveauRequis.errors.minlength">
+            niveauRequis must be at least 2 character long.
           </div>
         </div>
       </div>

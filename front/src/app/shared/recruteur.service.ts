@@ -10,13 +10,11 @@ export class RecruteurService {
 
   constructor(private http: HttpClient) {
     this._backendURL = {};
-
     // build backend base url
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
     if (environment.backend.port) {
       baseUrl += `:${environment.backend.port}`;
     }
-
     // build all backend urls
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
   }
@@ -42,7 +40,7 @@ export class RecruteurService {
 
 
 
-  addRecruteurOffre(id: number, offre: any): Observable<any> {
+  addRecruteurOffre( offre: any, id: number): Observable<any> {
     return this.http.post(this._backendURL.addOffreToRecruteur.replace(':id', id), offre, this._options());
   }
 

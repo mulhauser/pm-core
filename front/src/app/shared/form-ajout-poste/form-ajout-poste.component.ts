@@ -47,7 +47,7 @@ export class FormAjoutPosteComponent implements OnInit {
 
   @Output('submit')
   get submit$(): EventEmitter<any> {
-    console.log('result' + this._submit$);
+    console.log('result' + this._submit$.toArray);
     return this._submit$;
   }
 
@@ -70,7 +70,7 @@ export class FormAjoutPosteComponent implements OnInit {
 
   ngOnInit() {
     this._getAllCompetences().subscribe((competences: any) => this.competences = competences);
-    console.log('competence' + this.competences);
+   // console.log('competence' + this.competences);
   }
 
   private _getAllCompetences(): Observable<any[]> {
