@@ -6,6 +6,8 @@ import {ModalAjoutPosteComponent} from '../shared/modal-ajout-poste/modal-ajout-
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Observable} from 'rxjs/Observable';
 import {Offre} from "../_models/offre";
+import {noUndefined} from "@angular/compiler/src/util";
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-recruteur-detail',
@@ -70,8 +72,10 @@ export class RecruteurDetailComponent implements OnInit {
     res = false;
     if (localStorage.getItem('currentUser')) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      if (this.recruteur.email === this.currentUser.email) {
-        res = true;
+      if (!isUndefined(this.recruteur)) {
+        if (this.recruteur.email === this.currentUser.email) {
+          res = true;
+        }
       }
     }
     return res;
