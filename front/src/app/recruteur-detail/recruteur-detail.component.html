@@ -12,7 +12,7 @@
           <a href="" data-target="#offre" data-toggle="tab" class="nav-link" (click)="offre()">Offre</a>
         </li>
       </ul>
-      <div class="tab-content py-4">
+      <div class="tab-content py-4" *ngIf="recruteurDetail !== undefined">
         <div class="tab-pane active" id="profile">
           <div class="row">
             <div class="col-md-8">
@@ -23,8 +23,8 @@
               <p>{{recruteurDetail.apropos}}</p>
               <p><i class="fa fa-envelope" aria-hidden="true"></i> {{recruteurDetail.email}}</p>
               <p>{{recruteurDetail.pays}}</p>
-              <p><i class="fa fa-map-marker" aria-hidden="true" *ngIf="recruteurDetail.ville !== undefined"></i> <strong>{{recruteurDetail.ville}}</strong> {{recruteurDetail.codePostal}}</p>
-              <p><i class="fa fa-phone" aria-hidden="true" *ngIf="recruteurDetail.telephone !== undefined"></i> {{recruteurDetail.telephone}}</p>
+              <p><i class="fa fa-map-marker" aria-hidden="true" ></i> <strong>{{recruteurDetail.ville}}</strong> {{recruteurDetail.codePostal}}</p>
+              <p><i class="fa fa-phone" aria-hidden="true" ></i> {{recruteurDetail.telephone}}</p>
 
             </div>
             <div class="col-md-4 text-center">
@@ -62,4 +62,3 @@
 
 
 <button class="btn btn-primary mx-1" (click)="showModalAjoutPoste()" ><i class="fa fa-plus fa-md"></i> Ajouter une poste</button>
-idRecrut:{{recruteurDetail.id}}

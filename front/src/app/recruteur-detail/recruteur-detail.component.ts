@@ -89,7 +89,7 @@ export class RecruteurDetailComponent implements OnInit {
   }
 
   get recruteurDetail(): any {
-    return this.recruteur;
+      return this.recruteur;
   }
 
 
