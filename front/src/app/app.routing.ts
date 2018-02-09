@@ -23,7 +23,7 @@ import {RecruteurModificationComponent} from './recruteur-modification/recruteur
       { path: 'offre/:id', component: OffreDetailComponent, pathMatch: 'full'},
 
       { path: 'candidats', component: CandidatsComponent, pathMatch: 'full'},
-      { path: 'candidat', component: CandidatDetailComponent, pathMatch: 'full'},
+      { path: 'candidat', component: CandidatDetailComponent, pathMatch: 'full', canActivate:[AuthGuard]},
       { path: 'candidat/:id', component: CandidatDetailComponent, pathMatch: 'full'},
       { path: 'candidat/:id/modification', component: CandidatModificationComponent, pathMatch: 'full'},
 
@@ -33,7 +33,7 @@ import {RecruteurModificationComponent} from './recruteur-modification/recruteur
       { path: 'register', component: RegisterComponent, pathMatch: 'full' },
       { path: 'experience', component: ExperienceComponent , pathMatch: 'full'},
 
-      { path: 'recruteur', component: RecruteurDetailComponent, pathMatch: 'full'},
+      { path: 'recruteur', component: RecruteurDetailComponent, pathMatch: 'full', canActivate:[AuthGuard]},
       { path: 'recruteur/:id', component: RecruteurDetailComponent, pathMatch: 'full'},
       { path: 'recruteur/:id/modification', component: RecruteurModificationComponent, pathMatch: 'full'},
 
