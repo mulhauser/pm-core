@@ -8,6 +8,10 @@
         <li class="nav-item" >
           <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Modifier</a>
         </li>
+
+        <li class="nav-item" >
+          <a href="" data-target="#offre" data-toggle="tab" class="nav-link" (click)="offre()">Offre</a>
+        </li>
       </ul>
       <div class="tab-content py-4">
         <div class="tab-pane active" id="profile">
@@ -44,25 +48,17 @@
             <app-recruteur-modification [recruteurDetail]="recruteur"></app-recruteur-modification>
           </form>
         </div>
+        <div class="tab-pane" id="offre" *ngIf="userProfil()">
+          <form role="form">
+            <app-offres [offres]="recruteur.offres"></app-offres>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-  <h5 class="mt-2" *ngIf="userProfil()">Mes offres</h5>
-  <h5 class="mt-2" *ngIf="userProfil()">offres</h5>
   <hr>
-  <table class="table table-sm table-hover table-striped">
-    <tbody>
-    <tr *ngFor="let offre of offreDuRecruteur " >
-      <td>
-        {{offre.intitule}}
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
 
 
 

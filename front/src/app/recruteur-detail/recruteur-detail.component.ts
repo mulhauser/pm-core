@@ -53,25 +53,16 @@ export class RecruteurDetailComponent implements OnInit {
         .subscribe( (data: any) => {
           this.recruteur =  JSON.parse(data);
           //  ON INSTANCIE LA LISTE D'OFFRES Du RECRUTEUR
-          this._offreDuRecruteurInit(this.recruteur.id).subscribe((offres: any[]) => this.offreDuRecruteur = offres);
-          console.log('OBJECT : ', this.offreDuRecruteur);
+         // this._offreDuRecruteurInit(this.recruteur.id).subscribe((offres: any[]) => this.offreDuRecruteur = offres);
+
         });
     }
   }
 
-  private _offreDuRecruteurInit(id: any): Observable<any[]> {
+  offre() {
    // console.log('lesoffres' + this._recruteurService.gerRecruteurOffres(this.currentUser.id).filter(_ => !!_).defaultIfEmpty([]));
-    return this._recruteurService
-      .gerRecruteurOffres(id)
-      .filter(_ => !!_)
-      .defaultIfEmpty([]);
+     this._recruteurService.gerRecruteurOffres(this.recruteur.id).subscribe((offres: any) => this.recruteur.offres = JSON.parse(offres));
   }
-
-
-
-
-
-
 
 
   userProfil(): boolean {
