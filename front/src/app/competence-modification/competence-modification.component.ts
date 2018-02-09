@@ -36,15 +36,15 @@ export class CompetenceModificationComponent implements OnInit {
   }
 
   supprimer() {
-    console.log(this._currentCandidat);
+    /*console.log(this._currentCandidat);
     this._currentCandidat.competences.splice(
       this._currentCandidat.competences
         .findIndex((competence: Competence) => competence.id === this._competence.id),
       1);
-    this._candidatService.updateCandidat(this._currentCandidat);
-    /*this._competenceService.deleteCompetence(this._competence.id).subscribe( _ => {
+    this._candidatService.updateCandidat(this._currentCandidat);*/
+    this._competenceService.deleteCompetence(this._competence.id).subscribe( _ => {
         this.alertService.success('Supprimer ! ', true); },
       error => window.location.reload()
-    );*/
+    );
   }
 }
