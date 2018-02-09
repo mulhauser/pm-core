@@ -52,17 +52,17 @@ export class RecruteurDetailComponent implements OnInit {
       this._recruteurService.getRecruteurByEmail(this.currentUser.email)
         .subscribe( (data: any) => {
           this.recruteur =  JSON.parse(data);
+          //  ON INSTANCIE LA LISTE D'OFFRES Du RECRUTEUR
+          this._offreDuRecruteurInit(this.recruteur.id).subscribe((offres: any[]) => this.offreDuRecruteur = offres);
+          console.log('OBJECT : ', this.offreDuRecruteur);
         });
     }
-    //  ON INSTANCIE LA LISTE D'OFFRES Du RECRUTEUR
-    this._offreDuRecruteurInit().subscribe((offres: any[]) => this.offreDuRecruteur = offres);
-    console.log('les offres' + this.offreDuRecruteur);
   }
 
-  private _offreDuRecruteurInit(): Observable<any[]> {
+  private _offreDuRecruteurInit(id: any): Observable<any[]> {
    // console.log('lesoffres' + this._recruteurService.gerRecruteurOffres(this.currentUser.id).filter(_ => !!_).defaultIfEmpty([]));
     return this._recruteurService
-      .gerRecruteurOffres(this.currentUser.id)
+      .gerRecruteurOffres(id)
       .filter(_ => !!_)
       .defaultIfEmpty([]);
   }

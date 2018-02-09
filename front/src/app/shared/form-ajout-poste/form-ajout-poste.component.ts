@@ -42,7 +42,7 @@ export class FormAjoutPosteComponent implements OnInit {
   @Output('cancel')
   get cancel$(): EventEmitter<any> {
     return this._cancel$;
-  }
+  }  
 
 
   @Output('submit')
