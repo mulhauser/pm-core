@@ -137,6 +137,6 @@
     <hr>
   </div>
   <div *ngFor="let competence of candidatDetail.competences">
-    <app-competence-modification [competenceUpdate]="competence"></app-competence-modification>
+    <app-competence-modification [competenceUpdate]="competence" [currentCandidat]="candidatDetail"></app-competence-modification>
   </div>
 

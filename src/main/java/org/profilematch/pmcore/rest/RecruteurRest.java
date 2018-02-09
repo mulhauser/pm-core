@@ -73,6 +73,17 @@ public class RecruteurRest {
     public Response addOffre(@PathParam("id") String id, Offre offre){
         offre.setRecruteur(recruteurBean.getRecruteur((long) Integer.parseInt(id)));
         offreBean.creerOffre(offre);
-        return Response.ok().build();
+        return Response.ok(offre).build();
+    }
+
+    @PUT
+    @Path("/{id}/offres")
+    @ApiOperation(value = "Permet au recruteur de modifier une offre")
+    public Response modifierOffre(@PathParam("id") String id, Offre offre){
+        Recruteur recruteur = recruteurBean.getRecruteur((long) Integer.parseInt(id));
+        if(offre.getRecruteur().equals(recruteur)){
+            offreBean.modifierOffre(offre);
+        }
+        return Response.ok(offre).build();
     }
 }

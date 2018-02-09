@@ -96,6 +96,7 @@ public class CandidatRest {
     @PUT
     @ApiOperation(value="Modifie un candidat")
     public Response update(Candidat candidat){
+        System.out.println(candidat.getCompetences());
         return Response.ok(candidatBean.modifierCandidat(candidat)).build();
     }
 

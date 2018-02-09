@@ -49,6 +49,8 @@ public class Offre implements Serializable{
     @Column(name = "date_limite")
     private Date dateLimite;
 
+    private Boolean suspendu = false;
+
     @ManyToMany(mappedBy = "offres")
     private Collection<Candidat> candidats;
 
@@ -167,6 +169,14 @@ public class Offre implements Serializable{
 
     public void setIntitule(String intitule) {
         this.intitule = intitule;
+    }
+
+    public Boolean getSuspendu() {
+        return suspendu;
+    }
+
+    public void setSuspendu(Boolean suspendu) {
+        this.suspendu = suspendu;
     }
 
     @ApiModelProperty(hidden = true)
