@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiOperation;
 import org.profilematch.pmcore.ejbs.CandidatBean;
 import org.profilematch.pmcore.ejbs.CompetenceBean;
 import org.profilematch.pmcore.ejbs.ExperienceBean;
+import org.profilematch.pmcore.ejbs.OffreBean;
 import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Experience;
@@ -32,6 +33,9 @@ public class CandidatRest {
 
     @EJB
     private CompetenceBean competenceBean;
+
+    @EJB
+    private OffreBean offreBean;
 
     @GET
     @ApiOperation(value="Retourne tous les candidats")
@@ -143,5 +147,17 @@ public class CandidatRest {
             offres.addAll(c.getOffres());
         }
         return Response.ok(offres).build();
+    }
+
+    @POST
+    @Path("/{id}/offres")
+    @ApiOperation(value="Le candidat postule à l'offre concernée")
+    public Response updateOffre(@PathParam("id") String id, Offre offre){
+        Candidat candidat = candidatBean.getCandidat((long) Integer.parseInt(id));
+        candidat.getOffres().add(offre);
+        offre.getCandidats().add(candidat);
+
+        candidatBean.modifierCandidat(candidat);
+        return Response.ok(candidat).build();
     }
 }

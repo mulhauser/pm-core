@@ -85,6 +85,10 @@ export class CandidatService {
     return this.http.delete(this._backendURL.deleteCandidat, candidat);
   }
 
+  postulerOffre(offre: any, id: string): Observable<any> {
+    return this.http.post(this._backendURL.postulerOffre.replace(':id', id), offre, this._options());
+  }
+
 
   private _options(headerList: Object = {}): any {
     const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList));

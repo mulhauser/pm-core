@@ -26,6 +26,7 @@ export const environment = {
       deleteCandidat: '/rest/candidat',
       getOffresByCandidat: '/rest/candidat/:id/offres',
       getBestOffresByCandidat: '/rest/candidat/:id/bestOffres',
+      postulerOffre: '/rest/candidat/:id/offres',
       // Competence
       allCompetences: '/rest/competence',
       getCompetence: '/rest/competence/:id',
@@ -50,7 +51,6 @@ export const environment = {
       oneOffre: '/rest/offres/:id',
       allOffres: '/rest/offres',
       getUsersByCompetence: '/rest/offres/:id/utilisateurs',
-      updateOffre: '/rest/offres',
       // Recruteur
       allRecruteur: '/rest/recruteur',
       getRecruteurById: '/rest/recruteur/:id',
