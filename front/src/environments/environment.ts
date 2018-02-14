@@ -50,6 +50,7 @@ export const environment = {
       oneOffre: '/rest/offres/:id',
       allOffres: '/rest/offres',
       getUsersByCompetence: '/rest/offres/:id/utilisateurs',
+      updateOffre: '/rest/offres',
       // Recruteur
       allRecruteur: '/rest/recruteur',
       getRecruteurById: '/rest/recruteur/:id',

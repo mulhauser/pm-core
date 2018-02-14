@@ -51,7 +51,12 @@ public class Offre implements Serializable{
 
     private Boolean suspendu = false;
 
+    @LaztCollection(LazyCollectionOption.FALSE)
     @ManyToMany(mappedBy = "offres")
+    @JoinTable(name="OFFRES_CANDIDATS",
+            joinColumns = @JoinColumn(name="id_offre"),
+            inverseJoinColumns = @JoinColumn(name = "id_candidat"))
+    )
     private Collection<Candidat> candidats;
 
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -180,7 +185,6 @@ public class Offre implements Serializable{
     }
 
     @ApiModelProperty(hidden = true)
-    @JsonIgnore
     public Collection<Candidat> getCandidats() {
         return candidats;
     }

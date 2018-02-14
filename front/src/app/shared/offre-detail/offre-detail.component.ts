@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {OffreService} from '../offre.service';
 import {Observable} from 'rxjs/Observable';
+import {CandidatService} from "../candidat.service";
 
 
 @Component({
@@ -14,8 +15,10 @@ export class OffreDetailComponent implements OnInit {
   // private property to store eventDetail value
   private _offreDetail: any = {};
   private currentUser: any;
+  private candidat: any;
 
-  constructor(private _offreService: OffreService, private _route: ActivatedRoute) { }
+
+  constructor(private _offreService: OffreService, private _route: ActivatedRoute, private _candidatService: CandidatService) { }
 
   ngOnInit() {
     this._route.params
@@ -62,5 +65,17 @@ export class OffreDetailComponent implements OnInit {
    */
   private _fetchOne(id: string): Observable<any> {
     return this._offreService.getOffreDetails(id);
+  }
+
+  postuler() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this._candidatService.getCandidatByEmail(this.currentUser.email)
+      .subscribe((data: any) => {
+        this.candidat = JSON.parse(data);
+        this._offreDetail.candidats = [];
+        this._offreDetail.candidats.push(this.candidat);
+        console.log(this._offreService.updateOffre(this._offreDetail));
+      });
+
   }
 }

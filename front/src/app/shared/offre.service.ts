@@ -37,7 +37,13 @@ export class OffreService {
 
 
   getOffreDetails(id: string): Observable<any> {
-    return this.http.get(this._backendURL.oneOffre.replace(':id', id), this._backendURL)
+    return this.http.get(this._backendURL.oneOffre.replace(':id', id), this._options())
+      .filter(_ => !!_)
+      .defaultIfEmpty([]);
+  }
+
+  updateOffre(offreDetail: any): Observable<any> {
+    return this.http.put(this._backendURL.updateOffre, offreDetail, this._options())
       .filter(_ => !!_)
       .defaultIfEmpty([]);
   }
@@ -59,4 +65,5 @@ export class OffreService {
             .defaultIfEmpty([]);
         }
   */
+
 }
