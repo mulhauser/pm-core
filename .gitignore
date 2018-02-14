@@ -32,3 +32,6 @@ password.txt
 /.idea
 .project
 /.travis.yml
+
+# Documentation
+/front/documentation/
