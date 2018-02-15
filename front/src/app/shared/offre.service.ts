@@ -42,12 +42,6 @@ export class OffreService {
       .defaultIfEmpty([]);
   }
 
-  updateOffre(offreDetail: any): Observable<any> {
-    return this.http.put(this._backendURL.updateOffre, offreDetail, this._options())
-      .filter(_ => !!_)
-      .defaultIfEmpty([]);
-  }
-
   /*
 
     getOffres(): Observable<any> {

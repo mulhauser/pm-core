@@ -72,9 +72,7 @@ export class OffreDetailComponent implements OnInit {
     this._candidatService.getCandidatByEmail(this.currentUser.email)
       .subscribe((data: any) => {
         this.candidat = JSON.parse(data);
-        this._offreDetail.candidats = [];
-        this._offreDetail.candidats.push(this.candidat);
-        console.log(this._offreService.updateOffre(this._offreDetail));
+        this._candidatService.postulerOffre(this._offreDetail, this.candidat.id).subscribe()
       });
 
   }

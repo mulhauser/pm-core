@@ -5,6 +5,7 @@ export class Profil {
   pays: string;
   ville: string;
   codePostal: string;
+  urlPhoto: string;
   email: string;
   telephone: string;
   dateNaissance: string;

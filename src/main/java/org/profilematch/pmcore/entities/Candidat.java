@@ -73,7 +73,6 @@ public class Candidat extends Profil{
     }
 
     @ApiModelProperty(hidden = true)
-    @JsonIgnore
     public Collection<Offre> getOffres() {
         return offres;
     }

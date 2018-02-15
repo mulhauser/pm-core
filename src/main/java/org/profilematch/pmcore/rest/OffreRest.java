@@ -50,16 +50,4 @@ public class OffreRest {
         return Response.ok(list).build();
     }
 
-    @PUT
-    @ApiOperation(value="Modifier l'offre concernée")
-    public Response updateOffre(Offre offre){
-        Collection<Candidat> candidats = offre.getCandidats();
-        for(Candidat c : candidats){
-            System.out.println(c.getNom());
-        }
-        return Response.ok().build();
-    }
-
-
-
 }

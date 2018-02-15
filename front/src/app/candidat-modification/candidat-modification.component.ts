@@ -18,7 +18,6 @@ export class CandidatModificationComponent implements OnInit {
 
   private candidatDetail: any;
   private currentUser: any;
-  private _urlPhoto: string;
   private _dialogStatus: string;
   private _infoExperience: any = {};
   private _infoCompetence: any = {};
@@ -42,11 +41,11 @@ export class CandidatModificationComponent implements OnInit {
   }
 
   get urlPhoto(): string {
-    return this._urlPhoto;
+    return this.currentUser.urlPhoto;
   }
 
   set urlPhoto(value: string) {
-    this._urlPhoto = value;
+    this.currentUser.urlPhoto = value;
   }
 
 
@@ -57,8 +56,8 @@ export class CandidatModificationComponent implements OnInit {
         this.alertService.success('Modifications effectuées', true)
       );
 
-    if (this._urlPhoto != null || this._urlPhoto.length !== 0) {
-      this.userService.updatePhoto(this.candidatDetail.email, this._urlPhoto).subscribe();
+    if (this.currentUser.urlPhoto != null || this.currentUser.urlPhoto.length !== 0) {
+      this.userService.updatePhoto(this.candidatDetail.email, this.currentUser.urlPhoto).subscribe();
     }
 
   }
