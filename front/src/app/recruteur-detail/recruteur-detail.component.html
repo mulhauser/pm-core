@@ -23,12 +23,13 @@
               <p>{{recruteurDetail.apropos}}</p>
               <p><i class="fa fa-envelope" aria-hidden="true"></i> {{recruteurDetail.email}}</p>
               <p>{{recruteurDetail.pays}}</p>
-              <p><i class="fa fa-map-marker" aria-hidden="true" ></i> <strong>{{recruteurDetail.ville}}</strong> {{recruteurDetail.codePostal}}</p>
-              <p><i class="fa fa-phone" aria-hidden="true" ></i> {{recruteurDetail.telephone}}</p>
+              <p><i class="fa fa-map-marker" aria-hidden="true" *ngIf="recruteurDetail.ville != NULL">></i> <strong>{{recruteurDetail.ville}}</strong> {{recruteurDetail.codePostal}}</p>
+              <p><i class="fa fa-phone" aria-hidden="true" *ngIf="recruteurDetail.ville != NULL"></i> {{recruteurDetail.telephone}}</p>
 
             </div>
             <div class="col-md-4 text-center">
-              <img src="../../assets/recruteur.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+              <img *ngIf="currentUser.urlPhoto != NULL" src="{{currentUser.urlPhoto}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+              <img *ngIf="currentUser.urlPhoto == NULL" src="../../assets/recruteur.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
             </div>
 
               <!--

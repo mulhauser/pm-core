@@ -13,10 +13,7 @@ import {AlertService} from '../_services/alert.service';
 export class RecruteurModificationComponent implements OnInit {
 
   private recruteurDetail: any;
-  private _urlPhoto: string;
-  private _dialogStatus: string;
-
-
+  private currentUser: any;
 
   constructor(private recruteurService: RecruteurService,
               private userService: UserService,
@@ -25,6 +22,7 @@ export class RecruteurModificationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   @Input('recruteurDetail')
@@ -33,11 +31,11 @@ export class RecruteurModificationComponent implements OnInit {
   }
 
   get urlPhoto(): string {
-    return this._urlPhoto;
+    return this.currentUser.urlPhoto;
   }
 
   set urlPhoto(value: string) {
-    this._urlPhoto = value;
+    this.currentUser.urlPhoto = value;
   }
 
 
@@ -48,8 +46,8 @@ export class RecruteurModificationComponent implements OnInit {
         this.alertService.success('Modifications effectuées', true)
       );
 
-    if (this._urlPhoto != null || this._urlPhoto.length !== 0) {
-      this.userService.updatePhoto(this.recruteurDetail.email, this._urlPhoto).subscribe();
+    if (this.currentUser.urlPhoto != null || this.currentUser.urlPhoto.length !== 0) {
+      this.userService.updatePhoto(this.recruteurDetail.email, this.currentUser.urlPhoto).subscribe();
     }
 
   }

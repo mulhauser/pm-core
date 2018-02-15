@@ -18,6 +18,6 @@ export class CandidatModel {
     public experiences?: any,
     public competences?: any, //type ARray pour les any mais pas encore certain de comment exactement
     public offre?: any,
-    public photo?: string
+    public urlPhoto?: string
   ) {}
 }
