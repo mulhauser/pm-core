@@ -59,6 +59,16 @@
     </div>
   </div>
   <div class="form-group row">
+    <label class="col-lg-3 col-form-label form-control-label">Titre</label>
+    <div class="col-lg-9">
+      <input type="text" class="form-control" id="titre"
+             minlength="1"
+             [(ngModel)]="candidatDetail.titre"
+             name="titre"
+             #titre="ngModel">
+    </div>
+  </div>
+  <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label" value="Adresse">Adresse</label>
     <div class="col-lg-6">
       <input type="text" class="form-control" id="ville"

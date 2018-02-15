@@ -1,4 +1,4 @@
-
+<!--
   <div class="list px-0 mb-0">
     <div class="list-header">
       <a [routerLink]="['/candidat', candidatObj.id]" class="list-header-image">
@@ -18,3 +18,55 @@
       </span>
     </div>
   </div>
+-->
+
+
+
+<!--
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-sm-6">
+
+      <div class="card hovercard">
+        <div class="cardheader">
+
+        </div>
+        <div class="avatar">
+          <img alt="" src="../../assets/candidat.jpg">
+        </div>
+        <div class="info">
+          <div class="title">
+            <a href="">{{candidatObj.nom}} {{candidatObj.prenom}}</a>
+          </div>
+          <div class="desc"  *ngIf="candidatObj.ville">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> {{candidatObj.ville}}
+          </div>
+          <div class="desc">
+            <i class="fa fa-envelope"></i> {{candidatObj.email}}
+          </div>
+          <div class="desc">
+            <div class="col-12" *ngIf="candidatObj.competences.length > 0">
+                <div class="desc" *ngFor="let competence of candidatObj.competences" >
+                  {{competence.nom}}
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer"  *ngIf="candidatObj.apropos">
+          {{candidatObj.apropos}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+-->
+<figure class="snip0061 red"  [routerLink]="['/candidat', candidatObj.id]">
+  <img src="../../assets/candidat.jpg" />
+  <figcaption>
+    <h2>{{candidatObj.nom}} <span>{{candidatObj.prenom}}</span> <h6 *ngIf="candidatObj.ville"> <i class="fa fa-map-marker" aria-hidden="true"></i>{{candidatObj.ville}}</h6></h2>
+    <p  *ngIf="candidatObj.apropos" >{{candidatObj.apropos}}</p>
+    <div class="icons"><a href="#"><i class="ion-ios-home"></i></a><a href="#"><i class="ion-email-unread"></i></a><a href="#"><i class="ion-ios-star"></i></a></div>
+  </figcaption>
+  <div class="position"  *ngIf="candidatObj.titre" >{{candidatObj.titre}}</div>
+</figure>

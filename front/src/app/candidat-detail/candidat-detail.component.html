@@ -18,10 +18,12 @@
           <div class="row">
             <div class="col-md-8">
               <h3 class="mb-3">{{candidatDetail.prenom}} {{candidatDetail.nom}}</h3>
+
               <h5 *ngIf="userProfil()">A propos de moi</h5>
               <h5 *ngIf="!userProfil()">Résumé</h5>
               <hr>
               <p>{{candidatDetail.apropos}}</p>
+              <h4>{{candidatDetail.titre}}</h4>
               <p><i class="fa fa-envelope" aria-hidden="true"></i> {{candidatDetail.email}}</p>
               <p>{{candidatDetail.pays}}</p>
               <p><i class="fa fa-map-marker" aria-hidden="true" *ngIf="candidatDetail.ville != NULL"></i> <strong>{{candidatDetail.ville}}</strong> {{candidatDetail.codePostal}}</p>
@@ -48,20 +50,7 @@
 
 
             </div>
-            <div class="col-12" *ngIf="candidatDetail.experiences.length > 0">
-              <h5 class="mt-2" *ngIf="userProfil()">Mes expériences</h5>
-              <h5 class="mt-2" *ngIf="!userProfil()">Expériences</h5>
-              <hr>
-              <table class="table table-sm table-hover table-striped">
-                <tbody>
-                <tr *ngFor="let experience of candidatDetail.experiences " >
-                  <td>
-                    <strong>{{experience.typeContrat}}</strong> {{experience.description}} <strong>{{experience.posteOccuper}}</strong>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
+            x
             <button class="btn btn-primary mx-1" (click)="pdfGenerate()" ><i class="fa fa-md"></i>PDF</button>
 
           </div>
