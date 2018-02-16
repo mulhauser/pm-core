@@ -45,7 +45,9 @@ export class CandidatModificationComponent implements OnInit {
   }
 
   set urlPhoto(value: string) {
+    console.log("yoloooooooo");
     this.currentUser.urlPhoto = value;
+    localStorage.setItem('urlPhoto', value);
   }
 
 

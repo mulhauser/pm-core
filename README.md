@@ -6,20 +6,13 @@ create database IMP;
 use IMP;
 ```
 
-### Modifier dans persistence.xml la config user/pwd
-```
-mvn package
-mvn wildfly-swarm:package
-```
-
 ### Lancer le backend
 ```
-java -Dswarm.ds.connection.url="jdbc:mysql://localhost:3306/IMP?useSSL=false" -Dswarm.http.port="9090" -jar target/pm-core-swarm.jar
--Dswarm.option.... pour propriétés
+./run.sh
 ```
 
 Après il faut aller sur [[Localhost]](http://localhost:8080/pm/rest/user) pour voir la réponse du serveur.
-Les dépendances jboss sont supprimées sinon on peut pas accéder aux routes, il faut voir si on en a vraiment besoin
+Les dépendances jboss sont supprimées sinon on peut pas accéder aux routes.
 
 ### Accès à la documentation du backend
 
