@@ -37,4 +37,11 @@ public class ExperienceBean {
     public void deleteExperience(Long  id){
         em.remove(em.getReference(Experience.class, id));
     }
+
+    public List<Experience> getExperiencesByCle(String cle){
+        return em.createNamedQuery("Experience.findByCle", Experience.class)
+                .setParameter("keyword", "%"+cle+"%")
+                .getResultList();
+    }
+
 }

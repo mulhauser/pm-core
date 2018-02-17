@@ -13,7 +13,8 @@ import java.util.Date;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Experience.findAll", query = "SELECT u FROM Experience u")
+        @NamedQuery(name = "Experience.findAll", query = "SELECT u FROM Experience u"),
+        @NamedQuery(name="Experience.findByCle", query = "SELECT u From Experience u WHERE LOWER( u.description) LIKE  LOWER(:keyword) ORDER BY u.candidat.id")
 })
 public class Experience implements Serializable {
 
