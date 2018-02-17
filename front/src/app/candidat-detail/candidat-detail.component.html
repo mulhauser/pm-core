@@ -13,7 +13,7 @@
           <a href="" data-target="#offres" (click)="offres()" data-toggle="tab" class="nav-link">Offres</a>
         </li>
       </ul>
-      <div class="tab-content py-4">
+      <div class="tab-content py-4" *ngIf="candidatDetail !== undefined">
         <div class="tab-pane active" id="profile">
           <div class="row">
             <div class="col-md-8">

@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {OffreService} from '../offre.service';
 import {Observable} from 'rxjs/Observable';
 import {CandidatService} from "../candidat.service";
+import {CookieService} from "ngx-cookie-service";
+import {isUndefined} from "util";
 
 
 @Component({
@@ -18,7 +20,7 @@ export class OffreDetailComponent implements OnInit {
   private candidat: any;
 
 
-  constructor(private _offreService: OffreService, private _route: ActivatedRoute, private _candidatService: CandidatService) { }
+  constructor(private _offreService: OffreService, private _route: ActivatedRoute, private _candidatService: CandidatService, private cookieService: CookieService) { }
 
   ngOnInit() {
     this._route.params
@@ -46,13 +48,14 @@ export class OffreDetailComponent implements OnInit {
     res = false;
     if (localStorage.getItem('currentUser')) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      if (this._offreDetail.recruteur.email === this.currentUser.email) {
-        res = true;
+      if (!isUndefined(this._offreDetail.recruteur)) {
+        if (this._offreDetail.recruteur.email === this.currentUser.email) {
+          res = true;
+        }
       }
     }
     return res;
   }
-
 
   /**
    * Returns an observable fetchs one event by id
@@ -75,5 +78,9 @@ export class OffreDetailComponent implements OnInit {
         this._candidatService.postulerOffre(this._offreDetail, this.candidat.id).subscribe()
       });
 
+  }
+
+  isCandidat(): boolean{
+    return this.cookieService.get('typeCompte') === 'candidat';
   }
 }

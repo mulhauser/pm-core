@@ -4,6 +4,7 @@ import {UserService} from '../_services/user.service';
 import {CandidatService} from '../shared/candidat.service';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-candidat-detail',
@@ -52,8 +53,10 @@ export class CandidatDetailComponent implements OnInit {
     res = false;
     if (localStorage.getItem('currentUser')) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      if (this.candidat.email === this.currentUser.email) {
-        res = true;
+      if (!isUndefined(this.candidat)) {
+        if (this.candidat.email === this.currentUser.email) {
+          res = true;
+        }
       }
     }
     return res;
