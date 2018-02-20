@@ -42,6 +42,8 @@ export class OffreService {
       .defaultIfEmpty([]);
   }
 
+
+
   /*
 
     getOffres(): Observable<any> {

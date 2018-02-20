@@ -51,6 +51,7 @@ export const environment = {
       oneOffre: '/rest/offres/:id',
       allOffres: '/rest/offres',
       getUsersByCompetence: '/rest/offres/:id/utilisateurs',
+      getCandidatMatch: '/rest/matcherOffre/:id/:bool',
       // Recruteur
       allRecruteur: '/rest/recruteur',
       getRecruteurById: '/rest/recruteur/:id',

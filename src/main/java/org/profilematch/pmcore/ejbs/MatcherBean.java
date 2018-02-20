@@ -1,6 +1,7 @@
 package org.profilematch.pmcore.ejbs;
 
 
+import com.mysql.cj.api.x.Collection;
 import org.profilematch.pmcore.entities.*;
 
 import javax.ejb.EJB;
@@ -36,7 +37,7 @@ public class MatcherBean {
         if(avecExperience){
             pourcentageExp = 70;
         }else{
-            pourcentageExp = 30;
+            pourcentageExp = 0;
         }
 
         this.listCandidats = new ArrayList<CandidatPondere>();
@@ -89,6 +90,8 @@ public class MatcherBean {
             }
         }//fin list offre.competence
 
+        Collections.sort(listCandidats, CandidatPondere.Comparators.POURCENTAGE);
+        Collections.reverse(listCandidats);
         return listCandidats;
     }
 

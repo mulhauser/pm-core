@@ -18,6 +18,7 @@ export class OffreDetailComponent implements OnInit {
   private _offreDetail: any = {};
   private currentUser: any;
   private candidat: any;
+  private _candidats: any[];
 
 
   constructor(private _offreService: OffreService, private _route: ActivatedRoute, private _candidatService: CandidatService, private cookieService: CookieService) { }
@@ -27,8 +28,15 @@ export class OffreDetailComponent implements OnInit {
       .map((params: any) => params.id)
       .flatMap((id: string) => this._fetchOne(id))
       .subscribe(
-        (offre: any) => this._offreDetail = offre
+        (offre: any) => {
+          this._offreDetail = offre;
+          this._candidatService.getCandidatMatch(this._offreDetail.id).subscribe((candidats: any) => {
+            this._candidats = JSON.parse(candidats);
+            //console.log(this._candidats);
+          })
+        }
       );
+
   }
 
   /**
@@ -55,6 +63,10 @@ export class OffreDetailComponent implements OnInit {
       }
     }
     return res;
+  }
+
+  get candidats (): any[] {
+    return this._candidats;
   }
 
   /**

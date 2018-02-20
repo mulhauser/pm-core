@@ -25,8 +25,9 @@
         <li class="nav-item">
           <a href="" data-target="#profile" (click)="reload()" data-toggle="tab" class="nav-link active">Offre</a>
         </li>
-        <li class="nav-item" >
-          <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Modifier</a>
+        <li class="nav-item">
+          <a href="" data-target="#edit" data-toggle="tab" class="nav-link"
+             (click)="modeModification=!modeModificationOn">Modifier</a>
         </li>
       </ul>
       <div class="tab-content py-4" *ngIf="offreDetail.recruteur !== undefined">
@@ -35,6 +36,10 @@
             <div class="col-md-8">
               <h3 class="mb-3">{{offreDetail.intitule}}</h3>
               <h5>Informations</h5>
+              <div class="col-md-4 text-center">
+                <img class="img-fluid" *ngIf="offreDetail.photo" src="{{ offreDetail.photo }}" alt="logo">
+                <img class="img-fluid" *ngIf="!offreDetail.photo" src="../../../assets/societe_anonyme.jpg" alt="logo">
+              </div>
               <hr>
               <p>
                 <i class="fa fa-user" aria-hidden="true"></i> Recruteur :
@@ -45,19 +50,24 @@
               <p><i class="fa fa-envelope" aria-hidden="true"></i> Email recruteur : {{offreDetail.recruteur.email}}</p>
               <p><i class="fa fa-users" aria-hidden="true"></i> Société : {{offreDetail.societe}}</p>
               <p><i class="fa fa-briefcase" aria-hidden="true"></i> Type de contrat : {{offreDetail.typeContrat}}</p>
-              <p><i class="fa fa-usd" aria-hidden="true"></i> {{offreDetail.salaireMin}} - {{offreDetail.salaireMax}}</p>
+              <p><i class="fa fa-usd" aria-hidden="true"></i> {{offreDetail.salaireMin}} - {{offreDetail.salaireMax}}
+              </p>
             </div>
-            <div class="col-md-4 text-center">
-              <img class="img-fluid"  *ngIf="offreDetail.photo" src="{{ offreDetail.photo }}" alt="logo">
-              <img class="img-fluid"  *ngIf="!offreDetail.photo" src="../../../assets/societe_anonyme.jpg" alt="logo">
+            <div class="col-md-4 text-center" *ngIf="userProfil() && candidats !== undefined">
+              <div *ngFor="let cand of candidats">
+                <a [routerLink]="['/candidat', cand.candidat.id]" class="text-black">
+                  {{cand.candidat.nom}} {{cand.candidat.prenom}}
+                </a>
+              </div>
             </div>
           </div>
-          <div class="col-12">
+          <div class="col-md-8">
             <h5>Description de l'offre</h5>
             <hr>
             <p> {{offreDetail.description}}</p>
           </div>
-          <button *ngIf="isCandidat()" class="btn btn-primary mx-1" (click)="postuler()" ><i class="fa fa-md"></i>Postuler</button>
+          <button *ngIf="isCandidat()" class="btn btn-primary mx-1" (click)="postuler()"><i class="fa fa-md"></i>Postuler
+          </button>
         </div>
       </div>
     </div>
