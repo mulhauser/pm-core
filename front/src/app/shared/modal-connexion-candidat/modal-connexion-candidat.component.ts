@@ -3,8 +3,6 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {isNullOrUndefined} from 'util';
-import {CandidatModel} from '../../candidat/candidat.model';
-import {Experience} from '../../_models/experience';
 
 @Component({
   selector: 'app-modal-connexion-candidat',

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {CandidatModel} from '../candidat/candidat.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {forEach} from '@angular/router/src/utils/collection';
 import {CandidatComponent} from '../candidat/candidat.component';

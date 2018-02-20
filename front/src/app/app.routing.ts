@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { TestComponent } from './test/test.component';
 import {OffresComponent} from './offres/offres.component';
 import {OffreDetailComponent} from './shared/offre-detail/offre-detail.component';
 import {CandidatsComponent} from './candidats/candidats.component';
@@ -27,7 +26,6 @@ import {RecruteurModificationComponent} from './recruteur-modification/recruteur
       { path: 'candidat/:id', component: CandidatDetailComponent, pathMatch: 'full'},
       { path: 'candidat/:id/modification', component: CandidatModificationComponent, pathMatch: 'full'},
 
-      { path: 'test', component: TestComponent , pathMatch: 'full'},
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent, pathMatch: 'full' },
       { path: 'register', component: RegisterComponent, pathMatch: 'full' },

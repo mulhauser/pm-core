@@ -8,7 +8,6 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {AppRoutingModule} from './app.routing';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
-import { TestComponent } from './test/test.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { OffresComponent } from './offres/offres.component';
 import { OffreComponent } from './offre/offre.component';
@@ -60,7 +59,6 @@ import {NgChatModule} from 'ng-chat/ng-chat/ng-chat.module';
     NavComponent,
     HomeComponent,
     FooterComponent,
-    TestComponent,
     OffresComponent,
     OffreComponent,
     OffreDetailComponent,

@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
 import {isNullOrUndefined} from 'util';
-import {CandidatModel} from '../../candidat/candidat.model';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
