@@ -1,13 +1,15 @@
+import {Candidat} from "./candidat";
+
 export class Experience {
 
   constructor(
-    public id?: number,
-    public typeContrat?: string,
-    public dateDebut?: Date,
-    public dateFin?: Date,
-    public description?: string,
-    public posteOccuper?: string,
-    public candidat?: any
+    public id: number,
+    public typeContrat: string,
+    public dateDebut: string,
+    public dateFin: string,
+    public description: string,
+    public posteOccuper: string,
+    public candidat: Candidat
   ) {}
 }
 
