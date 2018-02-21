@@ -52,7 +52,6 @@ import { FormAjoutPosteComponent } from './shared/form-ajout-poste/form-ajout-po
 import {CharAdapterComponent} from './char-adapter/char-adapter.component';
 import {NgChatModule} from 'ng-chat/ng-chat/ng-chat.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,

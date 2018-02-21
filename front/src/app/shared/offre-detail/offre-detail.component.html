@@ -54,10 +54,12 @@
               </p>
             </div>
             <div class="col-md-4 text-center" *ngIf="userProfil() && candidats !== undefined">
+
               <div *ngFor="let cand of candidats">
                 <a [routerLink]="['/candidat', cand.candidat.id]" class="text-black">
                   {{cand.candidat.nom}} {{cand.candidat.prenom}}
                 </a>
+                <ngb-progressbar type="success" value="{{cand.pourcentage}}" showValue="true"></ngb-progressbar>
               </div>
             </div>
           </div>
