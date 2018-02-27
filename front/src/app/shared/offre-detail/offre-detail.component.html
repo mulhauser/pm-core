@@ -54,12 +54,28 @@
               </p>
             </div>
             <div class="col-md-4 text-center" *ngIf="userProfil() && candidats !== undefined">
-
+              <h4>Liste de candidats potentiels</h4>
+              <h6>(IMatchProfile matching algorithm)</h6>
               <div *ngFor="let cand of candidats">
                 <a [routerLink]="['/candidat', cand.candidat.id]" class="text-black">
-                  {{cand.candidat.nom}} {{cand.candidat.prenom}}
+                  <figure class="snip0061 red"  [routerLink]="['/candidat', cand.candidat.id]">
+                    <img src="../../assets/candidat.jpg" />
+                    <figcaption>
+                      <h2>{{cand.candidat.nom}} <span>{{cand.candidat.prenom}}</span> <h6 *ngIf="cand.candidat.ville"> <i class="fa fa-map-marker" aria-hidden="true"></i>{{cand.candidat.ville}}</h6></h2>
+                      <p  *ngIf="cand.candidat.apropos" >{{cand.candidat.apropos}}</p>
+                      <div class="icons"><a href="#"><i class="ion-ios-home"></i></a><a href="#"><i class="ion-email-unread"></i></a><a href="#"><i class="ion-ios-star"></i></a></div>
+                    </figcaption>
+                    <div class="position"   >
+                      <div  *ngIf="cand.candidat.titre">
+                        {{cand.candidat.titre}}
+                      </div>
+                      <div>
+                        <ngb-progressbar type="success" value="{{cand.pourcentage}}" showValue="true"></ngb-progressbar>
+                      </div>
+                    </div>
+                  </figure>
                 </a>
-                <ngb-progressbar type="success" value="{{cand.pourcentage}}" showValue="true"></ngb-progressbar>
+
               </div>
             </div>
           </div>
