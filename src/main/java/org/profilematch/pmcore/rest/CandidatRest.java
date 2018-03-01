@@ -28,6 +28,7 @@ public class CandidatRest {
     @EJB
     private CandidatBean candidatBean;
 
+
     @EJB
     private ExperienceBean experienceBean;
 
@@ -158,6 +159,22 @@ public class CandidatRest {
         offre.getCandidats().add(candidat);
 
         candidatBean.modifierCandidat(candidat);
+        offreBean.modifierOffre(offre);
+        return Response.ok(candidat).build();
+    }
+
+
+    @DELETE
+    @Path("/{id}/offres/{idOffre}")
+    @ApiOperation(value="Le candidat supprime sa postulation")
+    public Response deleteOffre(@PathParam("id") String id, @PathParam("id") Long idOffre){
+        Candidat candidat = candidatBean.getCandidat((long) Integer.parseInt(id));
+        Offre o = offreBean.getOffre(idOffre);
+        candidat.getOffres().remove(o);
+        o.getCandidats().remove(candidat);
+
+        candidatBean.modifierCandidat(candidat);
+        offreBean.modifierOffre(o);
         return Response.ok(candidat).build();
     }
 }

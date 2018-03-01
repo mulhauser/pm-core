@@ -27,6 +27,7 @@ export const environment = {
       getOffresByCandidat: '/rest/candidat/:id/offres',
       getBestOffresByCandidat: '/rest/candidat/:id/bestOffres',
       postulerOffre: '/rest/candidat/:id/offres',
+      annulerOffre: 'rest/candidat/:id/offres/:idOffre',
       // Competence
       allCompetences: '/rest/competence',
       getCompetence: '/rest/competence/:id',
