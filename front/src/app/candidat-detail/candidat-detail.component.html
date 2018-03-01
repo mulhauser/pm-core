@@ -47,9 +47,24 @@
                 </li>
               </ul>
 
-
-
             </div>
+
+            <div class="col-12" *ngIf="candidatDetail.experiences.length > 0">
+              <h5 class="mt-2" *ngIf="userProfil()">Mes expériences</h5>
+              <h5 class="mt-2" *ngIf="!userProfil()">Expériences</h5>
+              <hr>
+              <table class="table table-sm table-hover table-striped">
+                <tbody>
+                <tr *ngFor="let experience of candidatDetail.experiences " >
+                  <td>
+                    <strong>{{experience.typeContrat}}</strong> {{experience.description}} <strong>{{experience.posteOccuper}}</strong>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+
             <button class="btn btn-primary mx-1" (click)="pdfGenerate()" ><i class="fa fa-md"></i>PDF</button>
             <a class="btn btn-primary mx-1" href="mailto:">Inviter</a>
 

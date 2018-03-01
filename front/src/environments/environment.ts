@@ -45,7 +45,7 @@ export const environment = {
       // Experience
       allExperiences: '/rest/experience',
       getExperiences: '/rest/experience/:id',
-      updateExperience: '/rest/experience',
+      updateExperience: '/rest/experience/:id',
       deleteExperience: '/rest/experience/:id',
       // Offre
       oneOffre: '/rest/offres/:id',

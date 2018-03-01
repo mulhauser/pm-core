@@ -26,8 +26,8 @@ export class ExperienceService {
       .defaultIfEmpty([]);
   }
 
-  updateExperience(experience: any): Observable<any> {
-    return this.http.put(this._backendURL.updateExperience, experience, this._options())
+  updateExperience(idCand: number, experience: any): Observable<any> {
+    return this.http.put(this._backendURL.updateExperience.replace(':id', idCand), experience, this._options())
       .filter( _ => !!_)
       .defaultIfEmpty([]);
   }

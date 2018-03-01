@@ -3,8 +3,10 @@ package org.profilematch.pmcore.rest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.json.JSONObject;
+import org.profilematch.pmcore.ejbs.CandidatBean;
 import org.profilematch.pmcore.ejbs.CompetenceBean;
 import org.profilematch.pmcore.ejbs.ExperienceBean;
+import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Experience;
 
@@ -21,6 +23,8 @@ public class ExperienceRest {
 
     @EJB
     private ExperienceBean experienceBean;
+    @EJB
+    private CandidatBean candidatBean;
 
     @GET
     @ApiOperation(value = "Retourne toutes les expériences", notes= "Retourne une réponse au client")
@@ -53,9 +57,12 @@ public class ExperienceRest {
     }
 
     @PUT
+    @Path("{idCand}")
     @ApiOperation(value="Modifie l'expérience demandée", notes="Retourne une réponse au client")
     @Consumes("application/json")
-    public Response modifierCompetence(Experience experience){
+    public Response modifierCompetence(@PathParam("idCand") Long id,Experience experience){
+        Candidat c = candidatBean.getCandidat(id);
+        experience.setCandidat(c);
         experienceBean.updateExperience(experience);
         return Response.ok(experience).build();
     }
