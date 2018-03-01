@@ -78,7 +78,7 @@ export class OffreDetailComponent implements OnInit {
    *
    * @private
    */
-  private _fetchOne(id: string): Observable<any> {
+  private _fetchOne (id: string): Observable<any> {
     return this._offreService.getOffreDetails(id);
   }
 
@@ -87,12 +87,23 @@ export class OffreDetailComponent implements OnInit {
     this._candidatService.getCandidatByEmail(this.currentUser.email)
       .subscribe((data: any) => {
         this.candidat = JSON.parse(data);
-        this._candidatService.postulerOffre(this._offreDetail, this.candidat.id).subscribe()
+        this._candidatService.postulerOffre(this._offreDetail, this.candidat.id).subscribe();
       });
 
   }
 
   isCandidat(): boolean{
     return this.cookieService.get('typeCompte') === 'candidat';
+  }
+
+  suspendre() {
+    this._offreService.setSuspendreOffre(this._offreDetail.id)
+      .subscribe((data: any) => {
+        this._offreDetail = data;
+      });
+  }
+
+  isSuspendu(): boolean{
+    return this._offreDetail.suspendu;
   }
 }

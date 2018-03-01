@@ -181,6 +181,11 @@ public class Offre implements Serializable{
         this.suspendu = suspendu;
     }
 
+    public void setSuspendre(){
+        if(this.suspendu == false)
+            this.suspendu = true;
+        else this.suspendu = false;
+    }
     @ApiModelProperty(hidden = true)
     @JsonIgnore
     public Collection<Candidat> getCandidats() {

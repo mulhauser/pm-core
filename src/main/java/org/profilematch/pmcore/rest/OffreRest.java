@@ -50,4 +50,15 @@ public class OffreRest {
         return Response.ok(list).build();
     }
 
+    @PUT
+    @Produces("application/json")
+    @Path("suspendre/{id}")
+    public Response suspendreOffre(@PathParam("id") long id){
+        Offre o = offreBean.getOffre(id);
+        o.setSuspendre();
+        offreBean.modifierOffre(o);
+        return Response.ok(o).build();
+    }
+
+
 }

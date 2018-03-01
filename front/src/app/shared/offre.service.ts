@@ -42,6 +42,12 @@ export class OffreService {
       .defaultIfEmpty([]);
   }
 
+  setSuspendreOffre(id: number): Observable<any> {
+    return this.http.put(this._backendURL.suspendreOffre.replace(':id', id),  this._options())
+      .filter(_ => !!_)
+      .defaultIfEmpty([]);
+  }
+
 
 
   /*
