@@ -54,6 +54,8 @@ export const environment = {
       getUsersByCompetence: '/rest/offres/:id/utilisateurs',
       getCandidatMatch: '/rest/matcherOffre/:id/:bool',
       suspendreOffre: '/rest/offres/suspendre/:id',
+      // ServiceMail
+      sendMail: '/rest/serviceMail/envoyer',
       // Recruteur
       allRecruteur: '/rest/recruteur',
       getRecruteurById: '/rest/recruteur/:id',
