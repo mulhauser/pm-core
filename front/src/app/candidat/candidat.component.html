@@ -62,7 +62,7 @@
 
 -->
 <figure class="snip0061 red"  [routerLink]="['/candidat', candidatObj.id]">
-  <img src="../../assets/candidat.jpg" />
+  <img *ngIf="candidatObj.urlPhoto != NULL" src="{{candidatObj.urlPhoto}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
   <figcaption>
     <h2>{{candidatObj.nom}} <span>{{candidatObj.prenom}}</span> <h6 *ngIf="candidatObj.ville"> <i class="fa fa-map-marker" aria-hidden="true"></i>{{candidatObj.ville}}</h6></h2>
     <p  *ngIf="candidatObj.apropos" >{{candidatObj.apropos}}</p>

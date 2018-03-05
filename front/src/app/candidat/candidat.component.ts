@@ -18,5 +18,6 @@ export class CandidatComponent implements OnInit {
   @Input('candidatObj')
   set candidat (candidatObj: any){
     this.candidatObj = candidatObj;
+    console.log(candidatObj);
   }
 }

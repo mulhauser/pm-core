@@ -1,22 +1,3 @@
-
-
-
-  <!-- <input type="text" name="email" placeholder="{{candidatDetail.email}}"><br>
-   <input type="text" name="nom" placeholder="{{candidatDetail.nom}}"><br>
-   <input type="text" name="prenom" placeholder="{{candidatDetail.prenom}}"><br>
-   <input type="text" name="ville" placeholder="{{candidatDetail.ville}}"><br>
-   <input type="text" name="codePostal" placeholder="{{candidatDetail.codePostal}}"><br>
-   <input type="text" name="telephone" placeholder="{{candidatDetail.telephone}}"><br>
-   <input type="text" name="dateNaissance" placeholder="{{candidatDetail.dateNaissance}}"><br>
-   <input type="text" name="titre" placeholder="{{candidatDetail.titre}}"><br>
-   <input type="text" name="status" placeholder="{{candidatDetail.status}}"><br>
-   <input type="text" name="statusActuel" placeholder="{{candidatDetail.statusActuel}}"><br>
-   <input type="text" name="apropos" placeholder="{{candidatDetail.apropos}}"><br>
-   <input type="text" name="experiences" placeholder="{{candidatDetail.experiences}}" disabled ><br>
-   <input type="text" name="competences" placeholder="{{candidatDetail.competences}}" disabled><br>
-   <input type="text" name="photo" placeholder="{{candidatDetail.photo}}" disabled><br>
-
- -->
 <div class="col-12 text-center mb-2">
   <button class="btn btn-primary mx-1" (click)="showModalExperience()" ><i class="fa fa-plus fa-md"></i> Ajouter une Expérience</button>
   <button class="btn btn-primary mx-1" (click)="showModalCompetence()" ><i class="fa fa-plus fa-md"></i> Ajouter une Compétence</button>
@@ -65,7 +46,9 @@
              minlength="1"
              [(ngModel)]="candidatDetail.titre"
              name="titre"
+             required
              #titre="ngModel">
+      
     </div>
   </div>
   <div class="form-group row">
@@ -132,7 +115,6 @@
 
   <div class="form-group row">
     <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
-  <!-- <a (click)="cancel()" class="btn btn-link">Cancel</a>-->
   </div>
 </form>
 <div *ngIf="candidatDetail.experiences.length > 0">
@@ -151,9 +133,9 @@
   <div class="row">
   <div *ngFor="let competence of candidatDetail.competences">
 
-      <div class="col">
-    <app-competence-modification [competenceUpdate]="competence" [currentCandidat]="candidatDetail"></app-competence-modification>
-      </div>
+    <div class="col">
+      <app-competence-modification [competenceUpdate]="competence" [currentCandidat]="candidatDetail"></app-competence-modification>
+    </div>
 
   </div>
   </div>
