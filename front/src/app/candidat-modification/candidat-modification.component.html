@@ -43,33 +43,53 @@
     <label class="col-lg-3 col-form-label form-control-label">Titre</label>
     <div class="col-lg-9">
       <input type="text" class="form-control" id="titre"
-             minlength="1"
+             minlength="4"
              [(ngModel)]="candidatDetail.titre"
              name="titre"
-             required
              #titre="ngModel">
-
+      <!-- validation formulaire -->
+      <div *ngIf="titre.invalid && (titre.dirty || titre.touched)"
+           class="warning alert-warning">
+        <div *ngIf="titre.errors.required">
+          Un titre est conseillé.
+        </div>
+        <div *ngIf="titre.errors.minlength">
+          Votre titre doit avoir au moins 4 charactères.
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label" value="Adresse">Adresse</label>
     <div class="col-lg-6">
       <input type="text" class="form-control" id="ville"
-             required
-             minlength="1"
-             placeholder="ville"
+             minlength="2"
+             placeholder="Ville"
              [(ngModel)]="candidatDetail.ville"
              name="ville"
              #ville="ngModel">
+      <!-- validation formulaire -->
+      <div *ngIf="ville.invalid && (titre.dirty || titre.touched)"
+           class="warning alert-warning">
+        <div *ngIf="ville.errors.minlength">
+          Votre ville doit avoir au moins 2 charactères.
+        </div>
+      </div>
     </div>
     <div class="col-lg-3">
       <input type="text" class="form-control" id="codePostal"
-             required
-             minlength="1"
+             pattern="[0-9]{5}"
              placeholder="Code postal"
              [(ngModel)]="candidatDetail.codePostal"
              name="codePostal"
              #codePostal="ngModel">
+      <!-- validation formulaire -->
+      <div *ngIf="codePostal.invalid && (titre.dirty || titre.touched)"
+           class="warning alert-warning">
+        <div *ngIf="codePostal.errors.pattern">
+          Votre code postal doit avoir 5 chiffres.
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group row">
@@ -120,16 +140,16 @@
   <h5 class="mt-2">Mes expériences</h5>
   <hr>
 </div>
-  <div *ngFor="let experience of candidatDetail.experiences">
-    <app-experiences-modification [currentCandidat]="candidatDetail" [experienceUpdate]="experience" ></app-experiences-modification>
-  </div>
+<div *ngFor="let experience of candidatDetail.experiences">
+  <app-experiences-modification [currentCandidat]="candidatDetail" [experienceUpdate]="experience" ></app-experiences-modification>
+</div>
 
-  <div *ngIf="candidatDetail.competences.length > 0">
-    <h5 class="mt-2">Mes compétences</h5>
-    <hr>
-  </div>
+<div *ngIf="candidatDetail.competences.length > 0">
+  <h5 class="mt-2">Mes compétences</h5>
+  <hr>
+</div>
 
-  <div class="row">
+<div class="row">
   <div *ngFor="let competence of candidatDetail.competences">
 
     <div class="col">
@@ -137,5 +157,5 @@
     </div>
 
   </div>
-  </div>
+</div>
 

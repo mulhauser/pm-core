@@ -141,10 +141,6 @@ export class CandidatModificationComponent implements OnInit {
 
 
 
-
-
-
-
   get dialogStatus(): string {
     return this._dialogStatus;
   }
