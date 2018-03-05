@@ -9,6 +9,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.profilematch.pmcore.ejbs.CandidatBean;
 import org.profilematch.pmcore.ejbs.RecruteurBean;
 import org.profilematch.pmcore.entities.Candidat;
+import org.profilematch.pmcore.entities.Profil;
 import org.profilematch.pmcore.entities.Recruteur;
 import org.profilematch.pmcore.entities.User;
 import org.profilematch.pmcore.utils.KeyGenerator;
@@ -158,12 +159,12 @@ public class UserEndpoint {
     @Path("/updatePhoto/{email}")
     @Consumes("text/plain")
     public Response updatePhoto(@PathParam("email") String email, String urlPhoto){
-        Query query = em.createNamedQuery(User.UPDATE_PHOTO);
-        query.setParameter("urlPhoto", urlPhoto);
-        query.setParameter("email", email);
-        int u  = query.executeUpdate();
+        Query query2 = em.createNamedQuery(Profil.UPDATE_PHOTO);
+        query2.setParameter("urlPhoto", urlPhoto);
+        query2.setParameter("email", email);
+        int u2  = query2.executeUpdate();
 
-        return Response.ok(u).build();
+        return Response.ok(u2).build();
     }
 
     @GET

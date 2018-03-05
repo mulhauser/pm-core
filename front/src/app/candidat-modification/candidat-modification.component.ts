@@ -45,7 +45,6 @@ export class CandidatModificationComponent implements OnInit {
   }
 
   set urlPhoto(value: string) {
-    console.log("yoloooooooo");
     this.currentUser.urlPhoto = value;
     localStorage.setItem('urlPhoto', value);
   }
@@ -58,8 +57,9 @@ export class CandidatModificationComponent implements OnInit {
         this.alertService.success('Modifications effectuées', true)
       );
 
-    if (this.currentUser.urlPhoto != null || this.currentUser.urlPhoto.length !== 0) {
-      this.userService.updatePhoto(this.candidatDetail.email, this.currentUser.urlPhoto).subscribe();
+    if (this.currentUser.urlPhoto != null) {
+      this.userService.updatePhoto(this.candidatDetail.email, this.currentUser.urlPhoto)
+        .subscribe((data: any) => this.candidatDetail = data);
     }
 
   }

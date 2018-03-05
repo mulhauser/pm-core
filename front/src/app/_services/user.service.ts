@@ -69,8 +69,10 @@ export class UserService {
     return this.http.delete(this._backendURL.deleteUser.replace(':email', email), this._options());
   }
 
-  updatePhoto(email: string, urlphoto: string) {
-    return this.http.post(this._backendURL.updateUserPhoto.replace(':email', email), urlphoto);
+  updatePhoto(email: string, urlphoto: string): Observable<any> {
+    return this.http.post(this._backendURL.updateUserPhoto.replace(':email', email), urlphoto)
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
   }
 
   private _options(headerList: Object = {}): any {

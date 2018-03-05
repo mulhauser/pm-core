@@ -123,7 +123,6 @@
     <label class="col-lg-3 col-form-label form-control-label" >Date de naissance</label>
     <div class="col-lg-9">
       <input type="date" class="form-control" id="dateNaissance"
-             minlength="1"
              [(ngModel)]="candidatDetail.dateNaissance"
              name="dateNaissance"
              #dateNaissance="ngModel" >
@@ -135,7 +134,7 @@
   <!-- <a (click)="cancel()" class="btn btn-link">Cancel</a>-->
   </div>
 </form>
-<div *ngIf="candidatDetail.experiences.length > 0">
+<div *ngIf="candidatDetail.experiences.lenght > 0">
   <h5 class="mt-2">Mes expériences</h5>
   <hr>
 </div>

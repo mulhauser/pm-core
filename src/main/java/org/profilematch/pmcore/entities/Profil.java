@@ -18,9 +18,13 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Profil.findAllC", query = "SELECT u FROM Profil u WHERE u.class = 'C' "),
         @NamedQuery(name = "Profil.findAllR", query = "SELECT u FROM Profil u WHERE u.class = 'R' "),
-        @NamedQuery(name = "Profil.findByEmail", query = "SELECT u FROM Profil u WHERE u.email = :email")
+        @NamedQuery(name = "Profil.findByEmail", query = "SELECT u FROM Profil u WHERE u.email = :email"),
+        @NamedQuery(name = Profil.UPDATE_PHOTO, query = "UPDATE Profil u SET u.urlPhoto = :urlPhoto WHERE u.email = :email")
 })
 public abstract class Profil implements Serializable {
+
+    public static final String UPDATE_PHOTO = "Profil.updatePhoto";
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +43,7 @@ public abstract class Profil implements Serializable {
     private String titre;
     private String apropos;
     private String status;
+    private String urlPhoto;
     @ManyToOne
     @JoinColumn(name="id_employeur")
     private Employeur employeur;
@@ -185,6 +190,14 @@ public abstract class Profil implements Serializable {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getUrlPhoto() {
+        return urlPhoto;
+    }
+
+    public void setUrlPhoto(String urlPhoto) {
+        this.urlPhoto = urlPhoto;
     }
 
     public void setStatus(String status) {
