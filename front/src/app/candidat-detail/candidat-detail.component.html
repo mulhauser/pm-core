@@ -31,8 +31,8 @@
 
             </div>
             <div class="col-md-4 text-center">
-              <img *ngIf="currentUser.urlPhoto != NULL" src="{{currentUser.urlPhoto}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-              <img *ngIf="currentUser.urlPhoto == NULL" src="../../assets/candidat.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+              <img *ngIf="candidatDetail.urlPhoto != NULL" src="{{candidatDetail.urlPhoto}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+              <img *ngIf="candidatDetail.urlPhoto == NULL" src="../../assets/candidat.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
             </div>
 
             <div class="col-12" *ngIf="candidatDetail.competences.length > 0">
