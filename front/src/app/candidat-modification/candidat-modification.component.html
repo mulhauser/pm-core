@@ -54,7 +54,7 @@
           Un titre est conseillé.
         </div>
         <div *ngIf="titre.errors.minlength">
-          Votre titre doit avoir au moins 4 charactères.
+          Votre titre doit avoir au moins 4 caractères.
         </div>
       </div>
     </div>
@@ -69,10 +69,10 @@
              name="ville"
              #ville="ngModel">
       <!-- validation formulaire -->
-      <div *ngIf="ville.invalid && (titre.dirty || titre.touched)"
+      <div *ngIf="ville.invalid && (ville.dirty || ville.touched)"
            class="warning alert-warning">
         <div *ngIf="ville.errors.minlength">
-          Votre ville doit avoir au moins 2 charactères.
+          Votre ville doit avoir au moins 2 caractères.
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@
              name="codePostal"
              #codePostal="ngModel">
       <!-- validation formulaire -->
-      <div *ngIf="codePostal.invalid && (titre.dirty || titre.touched)"
+      <div *ngIf="codePostal.invalid && (codePostal.dirty || codePostal.touched)"
            class="warning alert-warning">
         <div *ngIf="codePostal.errors.pattern">
           Votre code postal doit avoir 5 chiffres.
@@ -95,31 +95,55 @@
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">URL Photo</label>
     <div class="col-lg-9">
-      <input class="form-control" type="text"
-             minlength="16"
+      <input class="form-control" type="url"
              [(ngModel)]="candidatDetail.urlPhoto"
+             placeholder="www.a.com/b.png"
              name="urlPhoto"
              #urlPhoto="ngModel">
+      <!-- validation formulaire -->
+      <div *ngIf="urlPhoto.invalid && (urlPhoto.dirty || urlPhoto.touched)"
+           class="warning alert-warning">
+        <div *ngIf="urlPhoto.errors.pattern">
+          Une URL a au minimum 15 caractères du style : www.a.com/b.png
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">A propos de moi</label>
     <div class="col-lg-9">
-      <input type="text" class="form-control" id="apropos"
-             minlength="1"
+      <textarea type="text" class="form-control" id="apropos"
+             minlength="200"
+             placeholder="Une petite description de vous ?"
              [(ngModel)]="candidatDetail.apropos"
              name="apropos"
              #apropos="ngModel" >
+      </textarea>
+      <!-- validation formulaire -->
+      <div *ngIf="apropos.invalid && (apropos.dirty || apropos.touched)"
+           class="warning alert-warning">
+        <div *ngIf="apropos.errors.minlength">
+          Votre description est trop courte !
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">Téléphone</label>
     <div class="col-lg-9">
-      <input type="text" class="form-control" id="telephone"
+      <input type="tel" class="form-control" id="telephone"
              minlength="10"
+             maxlength="10"
              [(ngModel)]="candidatDetail.telephone"
              name="telephone"
              #telephone="ngModel">
+      <!-- validation formulaire -->
+      <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)"
+           class="warning alert-warning">
+        <div *ngIf="telephone.errors.minlength">
+          Votre numéro est trop court.
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group row">
@@ -133,7 +157,7 @@
   </div>
 
   <div class="form-group row">
-    <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
+    <button [disabled]="!f.valid" class="btn btn-primary">Enregistrer</button>
   </div>
 </form>
 <div *ngIf="candidatDetail.experiences.lenght > 0">
