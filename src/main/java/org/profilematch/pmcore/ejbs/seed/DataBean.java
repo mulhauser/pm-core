@@ -1,8 +1,16 @@
 package org.profilematch.pmcore.ejbs.seed;
 
+import org.profilematch.pmcore.ejbs.CandidatBean;
+import org.profilematch.pmcore.ejbs.CompetenceBean;
+import org.profilematch.pmcore.ejbs.ExperienceBean;
+import org.profilematch.pmcore.ejbs.RecruteurBean;
+import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Competence;
+import org.profilematch.pmcore.entities.Recruteur;
+import org.profilematch.pmcore.entities.User;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.persistence.EntityManager;
@@ -17,6 +25,14 @@ public class DataBean {
 
     @PersistenceContext(unitName = "IMP_PU")
     EntityManager em;
+    @EJB
+    private CandidatBean candidatBean;
+    @EJB
+    private RecruteurBean recruteurBean;
+    @EJB
+    private ExperienceBean experienceBean;
+    @EJB
+    private CompetenceBean competenceBean;
 
     @PostConstruct
     public void init(){
@@ -50,6 +66,30 @@ public class DataBean {
         em.persist(c4);
         em.persist(c5);
         em.persist(c6);
+
+        User c = new User();
+        c.setEmail("candidat@gmail.com");
+        c.setFirstName("PrenomCand");
+        c.setLastName("NomCand");
+        c.setPassword("test");
+        c.setType("candidat");
+        em.persist(c);
+        candidatBean.ajouterCandidat(new Candidat(c.getLastName(), c.getFirstName(), c.getEmail()));
+
+
+        User r = new User();
+        r.setEmail("recruteur@gmail.com");
+        r.setFirstName("PrenomRecru");
+        r.setLastName("NomRecru");
+        r.setPassword("test");
+        r.setType("recruteur");
+        em.persist(r);
+        recruteurBean.ajouterRecruteur(new Recruteur(r.getLastName(), r.getFirstName(), r.getEmail()));
+
+        em.flush();
+
+
+
     }
 
 }
