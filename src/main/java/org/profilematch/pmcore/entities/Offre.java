@@ -50,7 +50,7 @@ public class Offre implements Serializable{
     @Column(name = "date_limite")
     private Date dateLimite;
 
-    private Boolean suspendu = false;
+    private Boolean suspendu = true;
 
     @ManyToMany(mappedBy = "offres")
     @LazyCollection(LazyCollectionOption.FALSE)
