@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.profilematch.pmcore.ejbs.OffreBean;
 import org.profilematch.pmcore.ejbs.RecruteurBean;
+import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Offre;
 import org.profilematch.pmcore.entities.Recruteur;
@@ -74,6 +75,16 @@ public class RecruteurRest {
         offre.setRecruteur(recruteurBean.getRecruteur((long) Integer.parseInt(id)));
         offreBean.creerOffre(offre);
         return Response.ok(offre).build();
+    }
+
+    @PUT
+    @Produces("application/json")
+    @Path("suspendre/{id}")
+    public Response suspendreCandidat(@PathParam("id") long id){
+        Recruteur r = recruteurBean.getRecruteur(id);
+        r.setSuspendre();
+        recruteurBean.modifierRecruteur(r);
+        return Response.ok(r).build();
     }
 
     @PUT
