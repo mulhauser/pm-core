@@ -17,7 +17,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE_PROFIL", discriminatorType = DiscriminatorType.STRING, length = 1)
 @NamedQueries({
-        @NamedQuery(name = "Profil.findAllC", query = "SELECT u FROM Profil u WHERE u.class = 'C' "),
+        @NamedQuery(name = "Profil.findAllC", query = "SELECT u FROM Profil u WHERE u.class = 'C' AND u.suspendu = false "),
         @NamedQuery(name = "Profil.findAllR", query = "SELECT u FROM Profil u WHERE u.class = 'R' "),
         @NamedQuery(name = "Profil.findByEmail", query = "SELECT u FROM Profil u WHERE u.email = :email"),
         @NamedQuery(name = Profil.UPDATE_PHOTO, query = "UPDATE Profil u SET u.urlPhoto = :urlPhoto WHERE u.email = :email")
