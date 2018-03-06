@@ -160,11 +160,11 @@
     <button [disabled]="!f.valid" class="btn btn-primary">Enregistrer</button>
   </div>
 </form>
-<div *ngIf="candidatDetail.experiences.lenght > 0">
+<div *ngIf="candidatDetail.experiences.length > 0">
   <h5 class="mt-2">Mes expériences</h5>
-  <hr>
 </div>
 <div *ngFor="let experience of candidatDetail.experiences">
+  <hr>
   <app-experiences-modification [currentCandidat]="candidatDetail" [experienceUpdate]="experience" ></app-experiences-modification>
 </div>
 

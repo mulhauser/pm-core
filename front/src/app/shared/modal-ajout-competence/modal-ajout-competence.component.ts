@@ -52,7 +52,7 @@ export class ModalAjoutCompetenceComponent implements OnInit {
    */
   onSave(event: any) {
     this._activeModal.close(Observable.of(event));
-    this._router.navigate(['candidat']);
+    window.location.reload();
   }
 
 }
