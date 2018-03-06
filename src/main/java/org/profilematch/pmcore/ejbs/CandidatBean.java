@@ -9,6 +9,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 @Stateless
@@ -42,6 +45,15 @@ public class CandidatBean {
         TypedQuery<Profil> query = em.createNamedQuery("Profil.findByEmail", Profil.class);
         query.setParameter("email", email);
         Profil p = query.getSingleResult();
+
+        Collections.sort((List)((Candidat) p).getExperiences(), new Comparator<Experience>(){
+            @Override
+            public int compare(Experience o1, Experience o2) {
+                return o2.getDateDebut().compareTo(o1.getDateDebut());
+            }
+        });
+
+
         return p;
     }
 
