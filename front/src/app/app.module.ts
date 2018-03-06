@@ -51,6 +51,9 @@ import { ModalAjoutPosteComponent } from './shared/modal-ajout-poste/modal-ajout
 import { FormAjoutPosteComponent } from './shared/form-ajout-poste/form-ajout-poste.component';
 import {CharAdapterComponent} from './char-adapter/char-adapter.component';
 import {NgChatModule} from 'ng-chat/ng-chat/ng-chat.module';
+import { ModalInviterAmisComponent } from './shared/modal-inviter-amis/modal-inviter-amis.component';
+import { FormInviterAmisComponent } from './shared/form-inviter-amis/form-inviter-amis.component';
+import {MailService} from './shared/mail.service';
 
 @NgModule({
   declarations: [
@@ -83,7 +86,9 @@ import {NgChatModule} from 'ng-chat/ng-chat/ng-chat.module';
     CompetenceModificationComponent,
     ModalAjoutPosteComponent,
     FormAjoutPosteComponent,
-    CharAdapterComponent
+    CharAdapterComponent,
+    ModalInviterAmisComponent,
+    FormInviterAmisComponent,
 
   ],
   imports: [
@@ -108,6 +113,7 @@ import {NgChatModule} from 'ng-chat/ng-chat/ng-chat.module';
     AuthenticationService,
     UserService,
     CookieService,
+    MailService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
@@ -118,7 +124,8 @@ import {NgChatModule} from 'ng-chat/ng-chat/ng-chat.module';
   entryComponents: [ModalConnexionCandidatComponent,
     ModalAjoutExperienceComponent,
     ModalAjoutCompetenceComponent,
-  ModalAjoutPosteComponent
+  ModalAjoutPosteComponent,
+    ModalInviterAmisComponent
   ]
 })
 export class AppModule { }

@@ -4,7 +4,11 @@ import {UserService} from '../_services/user.service';
 import {CandidatService} from '../shared/candidat.service';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import {isUndefined} from "util";
+import {isUndefined} from 'util';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalInviterAmisComponent} from '../shared/modal-inviter-amis/modal-inviter-amis.component';
+import {Observable} from 'rxjs/Observable';
+import {MailService} from '../shared/mail.service';
 
 @Component({
   selector: 'app-candidat-detail',
@@ -18,6 +22,10 @@ export class CandidatDetailComponent implements OnInit {
   private candidat: any;
   private experiences: any;
   private competences: any;
+  private _dialogStatus: string;
+  private _infoMail: any;
+
+
 
 
   @Input()
@@ -25,7 +33,9 @@ export class CandidatDetailComponent implements OnInit {
 
   constructor(private _userService: UserService,
               private _route: ActivatedRoute,
-              private _candidatService: CandidatService) {
+              private _candidatService: CandidatService,
+              private _inviterAmisDialog: NgbModal,
+              private _mailService: MailService) {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
@@ -77,7 +87,7 @@ export class CandidatDetailComponent implements OnInit {
   }
 
   get candidatDetail(): any {
-    console.log(this.candidat);
+   // console.log(this.candidat);
     return this.candidat;
   }
 
@@ -87,6 +97,39 @@ export class CandidatDetailComponent implements OnInit {
 
   set modeModificationOn(a: boolean) {
     this.modeModification = a;
+  }
+
+
+  showModalInviterAmis() {
+    // set dialog status
+    this._dialogStatus = 'active';
+    // open modal
+    const dialogRef = this._inviterAmisDialog.open(ModalInviterAmisComponent, {
+      size: 'sm',
+      keyboard: true,
+      backdrop: 'static'
+    });
+    dialogRef.result.then(
+      (result) => {
+        this._inviterAmis(result.value)
+          .subscribe(
+            (infoMail: any) => {
+              this._infoMail = infoMail; console.log(infoMail);
+            },
+            () => this._dialogStatus = 'inactive',
+            () => {this._dialogStatus = 'inactive';
+            }
+          );
+      }, (reason) => {
+        this._dialogStatus = 'inactive';
+      }
+    );
+  }
+
+
+  private _inviterAmis (email: any): Observable<any> {
+    return this._mailService.envoyerInviationEmail(email)
+      .flatMap(_ => _);
   }
 
   /**
@@ -167,3 +210,4 @@ export class CandidatDetailComponent implements OnInit {
     pdfMake.createPdf(docDefinition).download(this.candidat.prenom + this.candidat.nom + 'CV.pdf');
   }
 }
+
