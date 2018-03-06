@@ -77,7 +77,6 @@ export class CandidatDetailComponent implements OnInit {
   }
 
   get candidatDetail(): any {
-    console.log(this.candidat);
     return this.candidat;
   }
 

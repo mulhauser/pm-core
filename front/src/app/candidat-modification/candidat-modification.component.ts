@@ -37,6 +37,7 @@ export class CandidatModificationComponent implements OnInit {
 
   @Input('candidatDetail')
   set candidat (candidatDetail: any){
+    console.log(candidatDetail);
     this.candidatDetail = candidatDetail;
   }
 
@@ -51,7 +52,6 @@ export class CandidatModificationComponent implements OnInit {
 
 
   update()  {
-    // console.log('update ' + candidat.firstname);
     this.candidatService.updateCandidat(this.candidatDetail)
       .subscribe(data =>
         this.alertService.success('Modifications effectuées', true)
