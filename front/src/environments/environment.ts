@@ -66,7 +66,8 @@ export const environment = {
       deleteRecruteur: '/rest/recruteur/:id',
       susprendreRecruteur: '/rest/recruteur/suspendre/:id',
       addOffreToRecruteur: '/rest/recruteur/:id/offres',
-      getOffresByRecruteur: '/rest/recruteur/:id/offres'
+      getOffresByRecruteur: '/rest/recruteur/:id/offres',
+      updateOffresByRecruteur: '/rest/recruteur/:id/offres' // à faire côté back
     }
   }
 };

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {OffresComponent} from './offres/offres.component';
-import {OffreDetailComponent} from './shared/offre-detail/offre-detail.component';
+import {OffreDetailComponent} from './offre-detail/offre-detail.component';
 import {CandidatsComponent} from './candidats/candidats.component';
 import {CandidatModificationComponent} from './candidat-modification/candidat-modification.component';
 import {ExperienceComponent} from './experience/experience.component';

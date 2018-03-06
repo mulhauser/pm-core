@@ -12,7 +12,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { OffresComponent } from './offres/offres.component';
 import { OffreComponent } from './offre/offre.component';
 import {OffreService} from './shared/offre.service';
-import { OffreDetailComponent } from './shared/offre-detail/offre-detail.component';
+import { OffreDetailComponent } from './offre-detail/offre-detail.component';
 import { CandidatComponent } from './candidat/candidat.component';
 import {CandidatService} from './shared/candidat.service';
 import {RecruteurService} from './shared/recruteur.service';
@@ -54,6 +54,7 @@ import {NgChatModule} from 'ng-chat/ng-chat/ng-chat.module';
 import { ModalInviterAmisComponent } from './shared/modal-inviter-amis/modal-inviter-amis.component';
 import { FormInviterAmisComponent } from './shared/form-inviter-amis/form-inviter-amis.component';
 import {MailService} from './shared/mail.service';
+import { OffreModificationComponent } from './offre-modification/offre-modification.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import {MailService} from './shared/mail.service';
     CharAdapterComponent,
     ModalInviterAmisComponent,
     FormInviterAmisComponent,
+    OffreModificationComponent,
 
   ],
   imports: [

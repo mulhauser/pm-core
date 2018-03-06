@@ -23,11 +23,10 @@
     <div class="col-12">
       <ul class="nav nav-tabs" *ngIf="userProfil()">
         <li class="nav-item">
-          <a href="" data-target="#profile" (click)="reload()" data-toggle="tab" class="nav-link active">Offre</a>
+          <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Offre</a>
         </li>
-        <li class="nav-item">
-          <a href="" data-target="#edit" data-toggle="tab" class="nav-link"
-             (click)="modeModification=!modeModificationOn">Modifier</a>
+        <li class="nav-item" >
+          <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Modifier</a>
         </li>
       </ul>
       <div class="tab-content py-4" *ngIf="offreDetail.recruteur !== undefined">
@@ -39,7 +38,7 @@
               <h5>Informations</h5>
               <div class="col-md-4 text-center">
                 <img class="img-fluid" *ngIf="offreDetail.photo" src="{{ offreDetail.photo }}" alt="logo">
-                <img class="img-fluid" *ngIf="!offreDetail.photo" src="../../../assets/societe_anonyme.jpg" alt="logo">
+                <img class="img-fluid" *ngIf="!offreDetail.photo" src="../../assets/societe_anonyme.jpg" alt="logo">
               </div>
               <hr>
               <p>
@@ -88,6 +87,12 @@
 
           <button *ngIf="isCandidat()" class="btn btn-primary mx-1" (click)="postuler()"><i class="fa fa-md"></i>Postuler
           </button>
+        </div>
+        <div class="tab-pane" id="edit" *ngIf="userProfil()">
+          <form role="form">
+            <!-- <app-recruteur-modification [recruteurDetail]="recruteur"></app-recruteur-modification> -->
+            <app-offre-modification [offreDetail]="offreDetail" ></app-offre-modification>
+          </form>
         </div>
       </div>
     </div>

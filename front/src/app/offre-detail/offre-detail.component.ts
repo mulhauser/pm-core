@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {OffreService} from '../offre.service';
+import {OffreService} from '../shared/offre.service';
 import {Observable} from 'rxjs/Observable';
-import {CandidatService} from "../candidat.service";
+import {CandidatService} from "../shared/candidat.service";
 import {CookieService} from "ngx-cookie-service";
 import {isUndefined} from "util";
 
@@ -20,8 +20,14 @@ export class OffreDetailComponent implements OnInit {
   private candidat: any;
   private _candidats: any[];
 
+  @Input()
+  modeModification = false;
 
-  constructor(private _offreService: OffreService, private _route: ActivatedRoute, private _candidatService: CandidatService, private cookieService: CookieService) { }
+
+  constructor(private _offreService: OffreService,
+              private _route: ActivatedRoute,
+              private _candidatService: CandidatService,
+              private cookieService: CookieService) { }
 
   ngOnInit() {
     this._route.params
@@ -32,8 +38,8 @@ export class OffreDetailComponent implements OnInit {
           this._offreDetail = offre;
           this._candidatService.getCandidatMatch(this._offreDetail.id).subscribe((candidats: any) => {
             this._candidats = JSON.parse(candidats);
-            //console.log(this._candidats);
-          })
+            // console.log(this._candidats);
+          });
         }
       );
 
@@ -105,5 +111,12 @@ export class OffreDetailComponent implements OnInit {
 
   isSuspendu(): boolean{
     return this._offreDetail.suspendu;
+  }
+
+  get modeModificationOn (): boolean {
+    return this.modeModification;
+  }
+  set modeModificationOn (a: boolean) {
+    this.modeModification = a;
   }
 }
