@@ -9,6 +9,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalInviterAmisComponent} from '../shared/modal-inviter-amis/modal-inviter-amis.component';
 import {Observable} from 'rxjs/Observable';
 import {MailService} from '../shared/mail.service';
+import {AlertService} from "../_services/alert.service";
 
 @Component({
   selector: 'app-candidat-detail',
@@ -34,6 +35,7 @@ export class CandidatDetailComponent implements OnInit {
   constructor(private _userService: UserService,
               private _route: ActivatedRoute,
               private _candidatService: CandidatService,
+              private alertService: AlertService,
               private _inviterAmisDialog: NgbModal,
               private _mailService: MailService) {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -73,6 +75,7 @@ export class CandidatDetailComponent implements OnInit {
   }
 
   reload() {
+    this.alertService.clear();
     this._candidatService.getCandidatByEmail(this.currentUser.email)
       .subscribe((data: any) => {
         this.candidat = JSON.parse(data);
@@ -80,6 +83,7 @@ export class CandidatDetailComponent implements OnInit {
   }
 
   offres() {
+    this.alertService.clear();
     this._candidatService.getBestOffres(this.candidat.id)
       .subscribe((data: any) => {
         this.candidat.offre = JSON.parse(data);
@@ -92,6 +96,7 @@ export class CandidatDetailComponent implements OnInit {
   }
 
   get modeModificationOn(): boolean {
+    this.alertService.clear();
     return this.modeModification;
   }
 

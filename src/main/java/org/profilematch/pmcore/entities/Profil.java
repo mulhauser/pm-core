@@ -6,6 +6,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Collection;
@@ -41,6 +42,7 @@ public abstract class Profil implements Serializable {
     @Column(name = "date_naissance")
     private Calendar dateNaissance;
     private String titre;
+    @Size(max = 1024)
     private String apropos;
     private String status;
     private String urlPhoto;

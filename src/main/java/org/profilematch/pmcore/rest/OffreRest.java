@@ -2,6 +2,7 @@ package org.profilematch.pmcore.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.jaxrs.PATCH;
 import org.profilematch.pmcore.ejbs.OffreBean;
 import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Competence;
@@ -48,6 +49,12 @@ public class OffreRest {
             list.addAll(c.getCandidats());
         }
         return Response.ok(list).build();
+    }
+
+    @GET
+    @Path("{id}/postulants")
+    public Response getPostulants(@PathParam("id") Long id){
+        return Response.ok(offreBean.getOffre(id).getCandidats()).build();
     }
 
     @PUT

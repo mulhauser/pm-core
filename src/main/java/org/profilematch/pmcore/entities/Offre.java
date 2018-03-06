@@ -43,6 +43,7 @@ public class Offre implements Serializable{
     @Column(name = "salaire_max")
     private int salaireMax;
 
+    @Size(max = 1024)
     private String description;
 
     private String mission;
