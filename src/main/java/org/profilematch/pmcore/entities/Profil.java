@@ -46,6 +46,7 @@ public abstract class Profil implements Serializable {
     private String apropos;
     private String status;
     private String urlPhoto;
+    private Boolean suspendu = false;
     @ManyToOne
     @JoinColumn(name="id_employeur")
     private Employeur employeur;
@@ -170,6 +171,16 @@ public abstract class Profil implements Serializable {
 
     public String getApropos() {
         return apropos;
+    }
+
+    public Boolean getSuspendu() {
+        return suspendu;
+    }
+
+    public void setSuspendre(){
+        if(this.suspendu == false)
+            this.suspendu = true;
+        else this.suspendu = false;
     }
 
     public void setApropos(String apropos) {

@@ -27,6 +27,7 @@ export const environment = {
       getOffresByCandidat: '/rest/candidat/:id/offres',
       getBestOffresByCandidat: '/rest/candidat/:id/bestOffres',
       postulerOffre: '/rest/candidat/:id/offres',
+      suspendreCandidat: '/rest/candidat/suspendre/:id',
       annulerOffre: 'rest/candidat/:id/offres/:idOffre',
       // Competence
       allCompetences: '/rest/competence',
@@ -63,6 +64,7 @@ export const environment = {
       getRecruteurByEmail: '/rest/recruteur/findByEmail/:email',
       updateRecruteur: '/rest/recruteur',
       deleteRecruteur: '/rest/recruteur/:id',
+      susprendreRecruteur: '/rest/recruteur/suspendre/:id',
       addOffreToRecruteur: '/rest/recruteur/:id/offres',
       getOffresByRecruteur: '/rest/recruteur/:id/offres'
     }

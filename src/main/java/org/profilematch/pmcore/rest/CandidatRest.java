@@ -163,6 +163,16 @@ public class CandidatRest {
         return Response.ok(candidat).build();
     }
 
+    @PUT
+    @Produces("application/json")
+    @Path("suspendre/{id}")
+    public Response suspendreCandidat(@PathParam("id") long id){
+        Candidat candidat = candidatBean.getCandidat(id);
+        candidat.setSuspendre();
+        candidatBean.modifierCandidat(candidat);
+        return Response.ok(candidat).build();
+    }
+
 
     @DELETE
     @Path("/{id}/offres/{idOffre}")
