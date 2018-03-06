@@ -48,8 +48,8 @@ export class OffreService {
       .defaultIfEmpty([]);
   }
 
-  updateOffre(id: number): Observable<any> {
-    return this.http.put(this._backendURL.updateOffresByRecruteur.replace(':id', id), this._options());
+  updateOffre(offre: any): Observable<any> {
+    return this.http.put(this._backendURL.updateOffresByRecruteur.replace(':id', offre.recruteur.id), offre, this._options());
   }
 
 

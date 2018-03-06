@@ -40,8 +40,7 @@ export class OffreModificationComponent implements OnInit {
 
   update()  {
     // console.log('update ' + candidat.firstname);
-    console.log(this.offreDetail);
-    this._offreService.updateOffre(this.offreDetail.id)
+    this._offreService.updateOffre(this.offreDetail)
       .subscribe(data =>
         this._alertService.success('Modifications effectuées', true)
       );
