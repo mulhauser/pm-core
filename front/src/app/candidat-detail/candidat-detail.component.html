@@ -53,15 +53,20 @@
               <h5 class="mt-2" *ngIf="userProfil()">Mes expériences</h5>
               <h5 class="mt-2" *ngIf="!userProfil()">Expériences</h5>
               <hr>
-              <table class="table table-sm table-hover table-striped">
-                <tbody>
-                <tr *ngFor="let experience of candidatDetail.experiences " >
-                  <td>
-                    <strong>{{experience.typeContrat}}</strong> {{experience.description}} <strong>{{experience.posteOccuper}}</strong>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
+
+              <div class="row">
+                <div class="col-sm-6  cardExperience" *ngFor="let experience of candidatDetail.experiences">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">{{experience.posteOccuper}}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">{{experience.dateDebut}} / {{experience.dateFin}}</h6>
+                      <h6 class="card-subtitle mb-2 text-muted">{{experience.typeContrat}}</h6>
+                      <p class="card-text">{{experience.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
 
