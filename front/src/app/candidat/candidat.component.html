@@ -2,11 +2,11 @@
   <img *ngIf="candidatObj.urlPhoto == NULL" src="../../assets/candidat.jpg" />
   <img *ngIf="candidatObj.urlPhoto != NULL" src="{{candidatObj.urlPhoto}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
   <figcaption>
-    <h2>{{candidatObj.nom}} <span>{{candidatObj.prenom}}</span> <h6 *ngIf="candidatObj.ville"> <i class="fa fa-map-marker" aria-hidden="true"></i>{{candidatObj.ville}}</h6></h2>
-    <p  *ngIf="candidatObj.apropos" >{{candidatObj.apropos}}</p>
+    <h2><div *ngIf="candidatObj.titre; else message_default" >{{candidatObj.titre}}</div><h6 *ngIf="candidatObj.ville"> <i class="fa fa-map-marker" aria-hidden="true"></i>{{candidatObj.ville}}</h6></h2>
+    <ng-template #message_default>Informations non renseignées</ng-template>
     <div class="icons"><a href="#"><i class="ion-ios-home"></i></a><a href="#"><i class="ion-email-unread"></i></a><a href="#"><i class="ion-ios-star"></i></a></div>
   </figcaption>
-  <div class="position"  *ngIf="candidatObj.titre" >{{candidatObj.titre}}</div>
+  <div class="position" >{{candidatObj.nom}} {{candidatObj.prenom}}</div>
 </figure>
 
 
