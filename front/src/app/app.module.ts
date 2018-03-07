@@ -55,6 +55,8 @@ import { ModalInviterAmisComponent } from './shared/modal-inviter-amis/modal-inv
 import { FormInviterAmisComponent } from './shared/form-inviter-amis/form-inviter-amis.component';
 import {MailService} from './shared/mail.service';
 import { OffreModificationComponent } from './offre-modification/offre-modification.component';
+import { OffresDuRecruteurComponent } from './offres-du-recruteur/offres-du-recruteur.component';
+import { OffreDuRecruteurComponent } from './offre-du-recruteur/offre-du-recruteur.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +93,8 @@ import { OffreModificationComponent } from './offre-modification/offre-modificat
     ModalInviterAmisComponent,
     FormInviterAmisComponent,
     OffreModificationComponent,
+    OffresDuRecruteurComponent,
+    OffreDuRecruteurComponent,
 
   ],
   imports: [

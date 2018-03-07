@@ -52,7 +52,7 @@
         </div>
         <div class="tab-pane" id="offre" *ngIf="userProfil()">
           <form role="form">
-            <app-offres [offres]="recruteur.offres"></app-offres>
+            <app-offres-du-recruteur [offres]="recruteur.offres"></app-offres-du-recruteur>
           </form>
           <button class="btn btn-primary mx-1" (click)="showModalAjoutPoste()" ><i class="fa fa-plus fa-md"></i> Ajouter un poste</button>
         </div>

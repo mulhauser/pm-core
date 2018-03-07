@@ -1,11 +1,12 @@
 
-<tr *ngIf="offreObj.suspendu">
+<tr>
   <td>
     <div class="row">
       <div class="col-10">
         <a class="col-12" [routerLink]="['/offre/', offreObj.id]">
           <h3>{{offreObj.intitule}}</h3>
         </a>
+        <h4 *ngIf="offreObj.suspendu" style="color: red"> offre suspendue</h4>
         <div class="col-12">
           {{offreObj.description}}
         </div>
@@ -30,7 +31,6 @@
     </div>
   </td>
 </tr>
-
 
 
 

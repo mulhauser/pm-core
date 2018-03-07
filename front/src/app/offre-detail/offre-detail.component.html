@@ -34,12 +34,20 @@
           <div class="row">
             <div class="col-md-8">
               <i *ngIf="userProfil()" style="color: red">(Visible : {{offreDetail.suspendu}})</i>
+
               <h3 class="mb-3">{{offreDetail.intitule}}</h3>
+
               <h5>Informations</h5>
               <div class="col-md-4 text-center">
                 <img class="img-fluid" *ngIf="offreDetail.photo" src="{{ offreDetail.photo }}" alt="logo">
                 <img class="img-fluid" *ngIf="!offreDetail.photo" src="../../assets/societe_anonyme.jpg" alt="logo">
               </div>
+              <button *ngIf="isCandidat()" class="btn btn-primary mx-1" (click)="postuler()"><i class="fa fa-md"></i>Postuler
+              </button>
+              <button *ngIf="userProfil() && isSuspendu()" class="btn btn-primary mx-1" (click)="suspendre()"><i class="fa fa-md"></i>Suspendre</button>
+              <button *ngIf="userProfil() && !isSuspendu()" class="btn btn-primary mx-1" (click)="suspendre()"><i class="fa fa-md"></i>Rendre Visible
+              </button>
+
               <hr>
               <p>
                 <i class="fa fa-user" aria-hidden="true"></i> Recruteur :
@@ -94,8 +102,7 @@
               </li>
             </ul>
           </div>
-          <button *ngIf="isCandidat()" class="btn btn-primary mx-1" (click)="postuler()"><i class="fa fa-md"></i>Postuler
-          </button>
+
         </div>
         <div class="tab-pane" id="edit" *ngIf="userProfil()">
           <form role="form">
@@ -107,6 +114,3 @@
     </div>
   </div>
 </div>
-<button *ngIf="userProfil() && isSuspendu()" class="btn btn-primary mx-1" (click)="suspendre()"><i class="fa fa-md"></i>Suspendre</button>
-  <button *ngIf="userProfil() && !isSuspendu()" class="btn btn-primary mx-1" (click)="suspendre()"><i class="fa fa-md"></i>Rendre Visible
-</button>
