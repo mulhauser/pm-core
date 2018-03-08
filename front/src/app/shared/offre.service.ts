@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/Observable';
-import {Offre} from '../_models/offre';
 
 @Injectable()
 export class OffreService {
@@ -21,7 +20,8 @@ export class OffreService {
   }
 
   private _options(headerList: Object = {}): any {
-    const headers = new HttpHeaders(Object.assign({'Content-Type': 'application/json'}, headerList));
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const headers = new HttpHeaders(Object.assign({'Content-Type': 'application/json'}, {'Authorization': 'Bearer '+currentUser.token}, headerList));
     return {headers};
   }
 
