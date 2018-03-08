@@ -13,11 +13,6 @@ import java.util.logging.Logger;
 
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 
-/**
- * @author Antonio Goncalves
- *         http://www.antoniogoncalves.org
- *         --
- */
 @Path("/echo")
 @Produces(TEXT_PLAIN)
 public class EchoEndpoint {

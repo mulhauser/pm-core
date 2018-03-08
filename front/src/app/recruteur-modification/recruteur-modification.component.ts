@@ -46,8 +46,10 @@ export class RecruteurModificationComponent implements OnInit {
         this.alertService.success('Modifications effectuées', true)
       );
 
-    if (this.currentUser.urlPhoto != null || this.currentUser.urlPhoto.length !== 0) {
-      this.userService.updatePhoto(this.recruteurDetail.email, this.currentUser.urlPhoto).subscribe();
+    if (this.currentUser.urlPhoto != null) {
+      if (this.currentUser.urlPhoto.length !== 0) {
+        this.userService.updatePhoto(this.recruteurDetail.email, this.currentUser.urlPhoto).subscribe();
+      }
     }
 
   }

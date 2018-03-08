@@ -8,6 +8,7 @@ import {Observable} from 'rxjs/Observable';
 import {Offre} from "../_models/offre";
 import {noUndefined} from "@angular/compiler/src/util";
 import {isUndefined} from "util";
+import {AlertService} from "../_services/alert.service";
 
 @Component({
   selector: 'app-recruteur-detail',
@@ -28,6 +29,7 @@ export class RecruteurDetailComponent implements OnInit {
 
   constructor(private _userService: UserService,
               private _route: ActivatedRoute,
+              private alertService: AlertService,
               private _recruteurService: RecruteurService,
               private _offreDialogue: NgbModal) {
 
@@ -86,6 +88,7 @@ export class RecruteurDetailComponent implements OnInit {
       .subscribe( (data: any) => {
         this.recruteur =  JSON.parse(data);
       });
+    this.alertService.clear();
   }
 
   get recruteurDetail(): any {

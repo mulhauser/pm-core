@@ -7,6 +7,7 @@ import org.profilematch.pmcore.ejbs.OffreBean;
 import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Offre;
+import org.profilematch.pmcore.jwt.JWTTokenNeeded;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -40,6 +41,7 @@ public class OffreRest {
     }
 
     @GET
+    @JWTTokenNeeded
     @ApiOperation(value="Retourne les utilisateurs dont les compétences correspondent à l'offre renseignée")
     @Path("/{id}/utilisateurs")
     public Response getCandidatByCompetenceWithOffre(@PathParam("id") String id){
@@ -52,12 +54,14 @@ public class OffreRest {
     }
 
     @GET
+    @JWTTokenNeeded
     @Path("{id}/postulants")
     public Response getPostulants(@PathParam("id") Long id){
         return Response.ok(offreBean.getOffre(id).getCandidats()).build();
     }
 
     @PUT
+    @JWTTokenNeeded
     @Produces("application/json")
     @Path("suspendre/{id}")
     public Response suspendreOffre(@PathParam("id") long id){

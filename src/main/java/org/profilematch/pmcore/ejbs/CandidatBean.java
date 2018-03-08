@@ -57,4 +57,7 @@ public class CandidatBean {
         return p;
     }
 
+    public EntityManager getEm() {
+        return em;
+    }
 }

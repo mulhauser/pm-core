@@ -37,7 +37,6 @@ export class CandidatModificationComponent implements OnInit {
 
   @Input('candidatDetail')
   set candidat (candidatDetail: any){
-    console.log(candidatDetail);
     this.candidatDetail = candidatDetail;
   }
 
@@ -51,15 +50,22 @@ export class CandidatModificationComponent implements OnInit {
   }
 
 
-  update()  {
+  update() {
     this.candidatService.updateCandidat(this.candidatDetail)
-      .subscribe(data =>
-        this.alertService.success('Modifications effectuées', true)
+      .subscribe((data: Response) => {
+          if (localStorage.getItem('currentUser')) {
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            var token = data.headers.get('Authorization');
+            this.currentUser.token = token.split(' ')[1];
+            localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
+          }
+          this.alertService.success('Modifications effectuées', true);
+        }
       );
 
     if (this.currentUser.urlPhoto != null) {
       this.userService.updatePhoto(this.candidatDetail.email, this.currentUser.urlPhoto)
-        .subscribe((data: any) => this.candidatDetail = data);
+        .subscribe((data: any) => this.candidatDetail = data.body);
 
     }
 
@@ -68,7 +74,13 @@ export class CandidatModificationComponent implements OnInit {
   suspendre() {
      this.candidatService.suspendreCandidat(this.candidatDetail.id)
        .subscribe((data: any) => {
-         this.candidatDetail = data;
+         this.candidatDetail = data.body;
+         if (localStorage.getItem('currentUser')) {
+           this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+           var token = data.headers.get('Authorization');
+           this.currentUser.token = token.split(' ')[1];
+           localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
+         }
          this.alertService.warn('Votre compte à bien été suspendu', true);
          }
        );
@@ -77,7 +89,7 @@ export class CandidatModificationComponent implements OnInit {
   supprimer() {
     this.candidatService.supprimerCandidat(this.candidatDetail.id).subscribe();
     this.userService.delete(this.currentUser.email)
-      .subscribe(any => this.alertService.warn('Votre compte à bien été supprimer ', true));
+      .subscribe(any => this.alertService.warn('Votre compte à bien été supprimé', true));
     this.router.navigate(['/login']);
   }
 /*

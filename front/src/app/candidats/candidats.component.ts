@@ -30,7 +30,7 @@ export class CandidatsComponent implements OnInit {
   }
 
   ngOnInit() {
-      this._getAll().subscribe((candidats: any) => this._candidats = JSON.parse(candidats));
+      this._getAll().subscribe((candidats: any) => this._candidats = JSON.parse(candidats.body));
   }
 
 }

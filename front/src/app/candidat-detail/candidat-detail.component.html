@@ -36,38 +36,42 @@
               <img *ngIf="candidatDetail.urlPhoto == NULL" src="../../assets/candidat.jpg" class="mx-auto img-fluid img-circle d-block" alt="avatar">
             </div>
 
-            <div class="col-12" *ngIf="candidatDetail.competences.length > 0">
+            <div *ngIf="candidatDetail.competences !== undefined">
+              <div class="col-12" *ngIf="candidatDetail.competences.length > 0">
 
-                <h5 class="mt-2" *ngIf="userProfil()">Mes compétences</h5>
-                <h5 class="mt-2" *ngIf="!userProfil()">Compétences</h5>
-                <hr>
+                  <h5 class="mt-2" *ngIf="userProfil()">Mes compétences</h5>
+                  <h5 class="mt-2" *ngIf="!userProfil()">Compétences</h5>
+                  <hr>
 
-              <ul class="tags">
-                <li *ngFor="let competence of candidatDetail.competences" >
-                  <a>{{competence.nom}}</a><span></span>
-                </li>
-              </ul>
+                <ul class="tags">
+                  <li *ngFor="let competence of candidatDetail.competences" >
+                    <a>{{competence.nom}}</a><span></span>
+                  </li>
+                </ul>
 
+              </div>
             </div>
 
-            <div class="col-12" *ngIf="candidatDetail.experiences.length > 0">
-              <h5 class="mt-2" *ngIf="userProfil()">Mes expériences</h5>
-              <h5 class="mt-2" *ngIf="!userProfil()">Expériences</h5>
-              <hr>
+            <div *ngIf="candidatDetail.experiences !== undefined">
+              <div class="col-12" *ngIf="candidatDetail.experiences.length > 0">
+                <h5 class="mt-2" *ngIf="userProfil()">Mes expériences</h5>
+                <h5 class="mt-2" *ngIf="!userProfil()">Expériences</h5>
+                <hr>
 
-              <div class="row">
-                <div class="col-sm-6  cardExperience" *ngFor="let experience of candidatDetail.experiences">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">{{experience.posteOccuper}}</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Du {{experience.dateDebut}} au {{experience.dateFin}}</h6>
-                      <h6 class="card-subtitle mb-2 text-muted">{{experience.typeContrat}}</h6>
-                      <p class="card-text">{{experience.description}}</p>
+                <div class="row">
+                  <div class="col-sm-6  cardExperience" *ngFor="let experience of candidatDetail.experiences">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">{{experience.posteOccuper}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Du {{experience.dateDebut}} au {{experience.dateFin}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{experience.typeContrat}}</h6>
+                        <p class="card-text">{{experience.description}}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
+              </div>
             </div>
 
 

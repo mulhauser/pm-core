@@ -37,7 +37,7 @@ export class OffreDetailComponent implements OnInit {
         (offre: any) => {
           this._offreDetail = offre;
           this._candidatService.getCandidatMatch(this._offreDetail.id).subscribe((candidats: any) => {
-            this._candidats = JSON.parse(candidats);
+            this._candidats = JSON.parse(candidats.body);
             // console.log(this._candidats);
           });
         }

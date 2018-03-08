@@ -2,6 +2,7 @@ package org.profilematch.pmcore.rest;
 
 import io.swagger.annotations.Api;
 import org.profilematch.pmcore.ejbs.Mail;
+import org.profilematch.pmcore.jwt.JWTTokenNeeded;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -18,6 +19,7 @@ public class MailRest {
     private Mail mail;
 
     @POST
+    @JWTTokenNeeded
     @Path("envoyer")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response envoyerMail(String mails) {

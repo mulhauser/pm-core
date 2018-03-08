@@ -1,6 +1,7 @@
 package org.profilematch.pmcore.jwt;
 
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.profilematch.pmcore.utils.KeyGenerator;
 
@@ -15,13 +16,11 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.security.Key;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.logging.Logger;
 
-/**
- * @author Antonio Goncalves
- *         http://www.antoniogoncalves.org
- *         --
- */
 @Provider
 @JWTTokenNeeded
 @Priority(Priorities.AUTHENTICATION)
@@ -46,11 +45,11 @@ public class JWTTokenNeededFilter implements ContainerRequestFilter {
 
         // Get the HTTP Authorization header from the request
         String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
-        logger.info("#### authorizationHeader : " + authorizationHeader);
+        //logger.info("#### authorizationHeader : " + authorizationHeader);
 
         // Check if the HTTP Authorization header is present and formatted correctly
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
-            logger.severe("#### invalid authorizationHeader : " + authorizationHeader);
+            //logger.severe("#### invalid authorizationHeader : " + authorizationHeader);
             throw new NotAuthorizedException("Authorization header must be provided");
         }
 
@@ -62,11 +61,18 @@ public class JWTTokenNeededFilter implements ContainerRequestFilter {
             // Validate the token
             Key key = keyGenerator.generateKey();
             Jwts.parser().setSigningKey(key).parseClaimsJws(token);
-            logger.info("#### valid token : " + token);
+            Claims claims = Jwts.parser()
+                    .setSigningKey(key)
+                    .parseClaimsJws(token).getBody();
+            //logger.info("#### valid token : " + token);
 
         } catch (Exception e) {
-            logger.severe("#### invalid token : " + token);
+            //logger.severe("#### invalid token : " + token);
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         }
+    }
+
+    private static Date toDate(LocalDateTime localDateTime) {
+        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 }

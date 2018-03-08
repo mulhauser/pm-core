@@ -8,6 +8,7 @@ import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.CandidatPondere;
 import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Offre;
+import org.profilematch.pmcore.jwt.JWTTokenNeeded;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -30,6 +31,7 @@ public class MatcherOffreRest {
     MatcherBean matcherBean;
 
     @GET
+    @JWTTokenNeeded
     @ApiOperation(value="Retourne la liste des candidats avec pondération de leur correspondance à l'offre", notes="Retourne une réponse au client")
     @Path("/{id}/{avecExperience}")
     public Response getCandidatByOffre(@PathParam("id") String id,@PathParam("avecExperience") Boolean exp){

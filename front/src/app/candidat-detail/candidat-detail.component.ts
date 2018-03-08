@@ -49,13 +49,13 @@ export class CandidatDetailComponent implements OnInit {
     if (param) {
       this._candidatService.getCandidatById(parseInt(param, 10))
         .subscribe((data: any) => {
-          this.candidat = JSON.parse(data);
+          this.candidat = JSON.parse(data.body);
         });
     } else {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       this._candidatService.getCandidatByEmail(this.currentUser.email)
         .subscribe((data: any) => {
-          this.candidat = JSON.parse(data);
+          this.candidat = JSON.parse(data.body);
         });
     }
   }
@@ -78,7 +78,7 @@ export class CandidatDetailComponent implements OnInit {
     this.alertService.clear();
     this._candidatService.getCandidatByEmail(this.currentUser.email)
       .subscribe((data: any) => {
-        this.candidat = JSON.parse(data);
+        this.candidat = JSON.parse(data.body);
       });
   }
 
@@ -86,7 +86,7 @@ export class CandidatDetailComponent implements OnInit {
     this.alertService.clear();
     this._candidatService.getBestOffres(this.candidat.id)
       .subscribe((data: any) => {
-        this.candidat.offre = JSON.parse(data);
+        this.candidat.offre = JSON.parse(data.body);
       });
   }
 

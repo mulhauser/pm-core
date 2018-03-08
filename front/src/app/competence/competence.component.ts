@@ -16,7 +16,6 @@ export class CompetenceComponent implements OnInit {
 
   ngOnInit() {
     this._getAll().subscribe((competences: any[]) => this._competences = competences);
-    console.log(this._competences);
   }
 
   get competences(): Competence[]{
@@ -28,9 +27,6 @@ export class CompetenceComponent implements OnInit {
  // }
 
   private _getAll(): Observable<any[]> {
-    console.log(this._competenceService.getCompetences()
-      .filter(_ => !!_)
-      .defaultIfEmpty([]));
     return this._competenceService.getCompetences()
       .filter(_ => !!_)
       .defaultIfEmpty([]);

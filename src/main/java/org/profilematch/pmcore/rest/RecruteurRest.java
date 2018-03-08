@@ -9,6 +9,7 @@ import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Offre;
 import org.profilematch.pmcore.entities.Recruteur;
+import org.profilematch.pmcore.jwt.JWTTokenNeeded;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -48,12 +49,14 @@ public class RecruteurRest {
 
 
     @PUT
+    @JWTTokenNeeded
     @ApiOperation(value="Modifie un recruteur")
     public Response update(Recruteur recruteur){
         return Response.ok(recruteurBean.modifierRecruteur(recruteur)).build();
     }
 
     @DELETE
+    @JWTTokenNeeded
     @Path("/{id}")
     @ApiOperation(value="Supprime un recruteur")
     public Response delete(@PathParam("id") long id) {
@@ -69,6 +72,7 @@ public class RecruteurRest {
     }
 
     @POST
+    @JWTTokenNeeded
     @Path("/{id}/offres")
     @ApiOperation(value="Permet au recruteur de créer une offre")
     public Response addOffre(@PathParam("id") String id, Offre offre){
@@ -88,6 +92,7 @@ public class RecruteurRest {
     }
 
     @PUT
+    @JWTTokenNeeded
     @Path("/{id}/offres")
     @ApiOperation(value = "Permet au recruteur de modifier une offre")
     public Response modifierOffre(@PathParam("id") String id, Offre offre){

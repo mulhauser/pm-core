@@ -12,6 +12,7 @@ import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Profil;
 import org.profilematch.pmcore.entities.Recruteur;
 import org.profilematch.pmcore.entities.User;
+import org.profilematch.pmcore.utils.JwtUtil;
 import org.profilematch.pmcore.utils.KeyGenerator;
 import org.profilematch.pmcore.utils.PasswordUtils;
 
@@ -71,6 +72,7 @@ public class UserEndpoint {
     private RecruteurBean recruteurBean;
 
 
+
     // ======================================
     // =          Business methods          =
     // ======================================
@@ -83,12 +85,12 @@ public class UserEndpoint {
 
         try {
 
-            logger.info("#### email/password : " + user.getEmail() + "/" + user.getPassword());
+            //logger.info("#### email/password : " + user.getEmail() + "/" + user.getPassword());
 
             // Authenticate the user using the credentials provided
             user = authenticate(user.getEmail(), user.getPassword());
             // Issue a token for the user
-            String token = issueToken(user.getFirstName());
+            String token = JwtUtil.issueToken(keyGenerator, uriInfo, user.getFirstName());
             // Return the token on the response
             user.setToken(token);
             return Response.ok(user).header(AUTHORIZATION, "Bearer " + token).build();
@@ -109,20 +111,6 @@ public class UserEndpoint {
         if (user == null)
             throw new SecurityException("Invalid user/password");
         return user;
-    }
-
-    private String issueToken(String login) {
-        Key key = keyGenerator.generateKey();
-        String jwtToken = Jwts.builder()
-                .setSubject(login)
-                .setIssuer(uriInfo.getAbsolutePath().toString())
-                .setIssuedAt(new Date())
-                .setExpiration(toDate(LocalDateTime.now().plusMinutes(15L)))
-                .signWith(SignatureAlgorithm.HS256, key)
-                .compact();
-        logger.info("#### generating token for a key : " + jwtToken + " - " + key.getEncoded());
-        return jwtToken;
-
     }
 
     @POST
@@ -200,9 +188,7 @@ public class UserEndpoint {
     // =          Private methods           =
     // ======================================
 
-    private Date toDate(LocalDateTime localDateTime) {
-        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
-    }
+
 
 
 }

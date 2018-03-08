@@ -1,20 +1,23 @@
 package org.profilematch.pmcore.rest;
 
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.profilematch.pmcore.ejbs.CandidatBean;
-import org.profilematch.pmcore.ejbs.CompetenceBean;
-import org.profilematch.pmcore.ejbs.ExperienceBean;
-import org.profilematch.pmcore.ejbs.OffreBean;
-import org.profilematch.pmcore.entities.Candidat;
-import org.profilematch.pmcore.entities.Competence;
-import org.profilematch.pmcore.entities.Experience;
-import org.profilematch.pmcore.entities.Offre;
+import org.profilematch.pmcore.ejbs.*;
+import org.profilematch.pmcore.entities.*;
+import org.profilematch.pmcore.jwt.JWTTokenNeeded;
+import org.profilematch.pmcore.utils.JwtUtil;
+import org.profilematch.pmcore.utils.KeyGenerator;
+import org.profilematch.pmcore.utils.PasswordUtils;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
@@ -24,6 +27,9 @@ import java.util.LinkedHashSet;
 @Consumes("application/json")
 @Produces("application/json")
 public class CandidatRest {
+
+    @Inject
+    private KeyGenerator keyGenerator;
 
     @EJB
     private CandidatBean candidatBean;
@@ -38,6 +44,12 @@ public class CandidatRest {
     @EJB
     private OffreBean offreBean;
 
+    @EJB
+    private UserBean userBean;
+
+    @Context
+    private UriInfo uriInfo;
+
     @GET
     @ApiOperation(value="Retourne tous les candidats")
     public Response getAll(){
@@ -48,14 +60,25 @@ public class CandidatRest {
     @Path("/{id}")
     @ApiOperation(value="Retourne le candidat avec l'id renseigné")
     public Response getById(@PathParam("id") String id){
-        return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id))).build();
+        return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id)).getExperiences()).build();
+
     }
 
     @GET
     @Path("/findByEmail/{email}")
     @ApiOperation(value="Retourne le candidat avec l'email renseigné")
     public Response getByEmail(@PathParam("email") String email){
-        return Response.ok(candidatBean.getCandidatByEmail(email)).build();
+        Profil c = candidatBean.getCandidatByEmail(email);
+        TypedQuery<User> query = candidatBean.getEm().createNamedQuery(User.FIND_BY_EMAIL, User.class);
+        query.setParameter("email", c.getEmail());
+        User user = query.getSingleResult();
+        //System.out.println(user.getToken());
+        String token = JwtUtil.issueToken(keyGenerator, uriInfo, c.getPrenom());
+        user.setToken(token);
+        //System.out.println(user.getToken());
+        //System.out.println(user);
+        userBean.modifierUser(user);
+        return Response.ok(c).header("Authorization", "Bearer "+token).build();
     }
 
     @GET
@@ -73,15 +96,26 @@ public class CandidatRest {
     }
 
     @POST
+    @JWTTokenNeeded
     @Path("/{id}/experiences")
     @ApiOperation(value="Ajoute une experience au candidat renseigné")
     public Response addExperience(@PathParam("id") String id, Experience experience){
-        experience.setCandidat(candidatBean.getCandidat((long) Integer.parseInt(id)));
+        Candidat c = candidatBean.getCandidat((long) Integer.parseInt(id));
+        experience.setCandidat(c);
+
+        TypedQuery<User> query = candidatBean.getEm().createNamedQuery(User.FIND_BY_EMAIL, User.class);
+        query.setParameter("email", c.getEmail());
+        User user = query.getSingleResult();
+        String token = JwtUtil.issueToken(keyGenerator, uriInfo, c.getPrenom());
+        user.setToken(token);
+        userBean.modifierUser(user);
+
         experienceBean.ajouterExperience(experience);
-        return Response.ok().build();
+        return Response.ok().header("Authorization", "Bearer "+token).build();
     }
 
     @POST
+    @JWTTokenNeeded
     @Path("/{id}/competences/{idCompetence}")
     @ApiOperation(value="Ajoute une competence au candidat renseigné")
     public Response addCompetence(@PathParam("id") String id, @PathParam("idCompetence") int idCompetence){
@@ -90,15 +124,19 @@ public class CandidatRest {
 
         competence.getCandidats().add(candidat);
         candidat.getCompetences().add(competence);
+        TypedQuery<User> query = candidatBean.getEm().createNamedQuery(User.FIND_BY_EMAIL, User.class);
+        query.setParameter("email", candidat.getEmail());
+        User user = query.getSingleResult();
+        String token = JwtUtil.issueToken(keyGenerator, uriInfo, candidat.getPrenom());
+        user.setToken(token);
+        userBean.modifierUser(user);
 
         competenceBean.modifierCompetence(competence);
-        //candidatBean.getCandidat((long) Integer.parseInt(id)).getCompetences().add(competence);
-        // competence.setCandidat(candidatBean.getCandidat((long) Integer.parseInt(id)));
-        // competenceBean.ajouterExperience(competence);
-        return Response.ok().build();
+        return Response.ok().header("Authorization", "Bearer "+token).build();
     }
 
     @DELETE
+    @JWTTokenNeeded
     @Path("/{id}/competences/{idCompetence}")
     @ApiOperation(value="Supprimer une competence au candidat renseigné")
     public Response supprimerCompetence(@PathParam("id") String id, @PathParam("idCompetence") int idCompetence){
@@ -108,21 +146,35 @@ public class CandidatRest {
         competence.getCandidats().remove(candidat);
         candidat.getCompetences().remove(competence);
 
+        TypedQuery<User> query = candidatBean.getEm().createNamedQuery(User.FIND_BY_EMAIL, User.class);
+        query.setParameter("email", candidat.getEmail());
+        User user = query.getSingleResult();
+        String token = JwtUtil.issueToken(keyGenerator, uriInfo, candidat.getPrenom());
+        user.setToken(token);
+        userBean.modifierUser(user);
+
         competenceBean.modifierCompetence(competence);
-        //candidatBean.getCandidat((long) Integer.parseInt(id)).getCompetences().add(competence);
-        // competence.setCandidat(candidatBean.getCandidat((long) Integer.parseInt(id)));
-        // competenceBean.ajouterExperience(competence);
-        return Response.ok().build();
+        return Response.ok().header("Authorization", "Bearer "+token).build();
     }
 
     @PUT
+    @JWTTokenNeeded
     @ApiOperation(value="Modifie un candidat")
     public Response update(Candidat candidat){
-        System.out.println(candidat.getCompetences());
-        return Response.ok(candidatBean.modifierCandidat(candidat)).build();
+        TypedQuery<User> query = candidatBean.getEm().createNamedQuery(User.FIND_BY_EMAIL, User.class);
+        query.setParameter("email", candidat.getEmail());
+        User user = query.getSingleResult();
+        String token = JwtUtil.issueToken(keyGenerator, uriInfo, candidat.getPrenom());
+        user.setToken(token);
+        userBean.modifierUser(user);
+
+        Candidat c = candidatBean.modifierCandidat(candidat);
+
+        return Response.ok(c).header("Authorization", "Bearer "+token).build();
     }
 
     @DELETE
+    @JWTTokenNeeded
     @Path("/{id}")
     @ApiOperation(value="Supprime un candidat")
     public Response delete(@PathParam("id") Long id) {
@@ -156,6 +208,7 @@ public class CandidatRest {
     }
 
     @POST
+    @JWTTokenNeeded
     @Path("/{id}/offres")
     @ApiOperation(value="Le candidat postule à l'offre concernée")
     public Response updateOffre(@PathParam("id") String id, Offre offre){
@@ -169,6 +222,7 @@ public class CandidatRest {
     }
 
     @PUT
+    @JWTTokenNeeded
     @Produces("application/json")
     @Path("suspendre/{id}")
     public Response suspendreCandidat(@PathParam("id") long id){
@@ -180,6 +234,7 @@ public class CandidatRest {
 
 
     @DELETE
+    @JWTTokenNeeded
     @Path("/{id}/offres/{idOffre}")
     @ApiOperation(value="Le candidat supprime sa postulation")
     public Response deleteOffre(@PathParam("id") String id, @PathParam("id") Long idOffre){

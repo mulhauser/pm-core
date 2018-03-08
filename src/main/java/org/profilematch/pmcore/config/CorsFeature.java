@@ -12,6 +12,7 @@ public class CorsFeature implements Feature {
     public boolean configure(FeatureContext context) {
         CorsFilter corsFilter = new CorsFilter();
         corsFilter.getAllowedOrigins().add("*");
+        corsFilter.setExposedHeaders("Authorization");
         context.register(corsFilter);
         return true;
     }  

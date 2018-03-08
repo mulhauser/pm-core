@@ -12,7 +12,6 @@ export class CandidatComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.candidatObj);
   }
 
   @Input('candidatObj')
