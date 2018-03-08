@@ -75,9 +75,9 @@ export class CandidatModificationComponent implements OnInit {
   }
 
   supprimer() {
-    this.userService.delete(this.candidatDetail.email)
+    this.candidatService.supprimerCandidat(this.candidatDetail.id).subscribe();
+    this.userService.delete(this.currentUser.email)
       .subscribe(any => this.alertService.warn('Votre compte à bien été supprimer ', true));
-
     this.router.navigate(['/login']);
   }
 /*
