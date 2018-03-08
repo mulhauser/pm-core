@@ -61,6 +61,22 @@
               <p><i class="fa fa-usd" aria-hidden="true"></i> {{offreDetail.salaireMin}} - {{offreDetail.salaireMax}}
               </p>
 
+
+                <h5>Description de l'offre</h5>
+                <hr>
+                <p> {{offreDetail.description}}</p>
+
+              <div  *ngIf="offreDetail.competences.length > 0">
+                <h5 class="mt-2" *ngIf="userProfil()">Compétences demandées</h5>
+                <h5 class="mt-2" *ngIf="!userProfil()">Compétences</h5>
+                <hr>
+                <ul class="tags">
+                  <li *ngFor="let competence of offreDetail.competences" >
+                    <a>{{competence.nom}}</a><span></span>
+                  </li>
+                </ul>
+              </div>
+
             </div>
             <div class="col-md-4 text-center" *ngIf="userProfil() && candidats !== undefined">
               <h4>Liste de candidats potentiels</h4>
@@ -87,21 +103,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-8">
-            <h5>Description de l'offre</h5>
-            <hr>
-            <p> {{offreDetail.description}}</p>
-          </div>
-          <div class="col-12" *ngIf="offreDetail.competences.length > 0">
-            <h5 class="mt-2" *ngIf="userProfil()">Compétences demandées</h5>
-            <h5 class="mt-2" *ngIf="!userProfil()">Compétences</h5>
-            <hr>
-            <ul class="tags">
-              <li *ngFor="let competence of offreDetail.competences" >
-                <a>{{competence.nom}}</a><span></span>
-              </li>
-            </ul>
-          </div>
+
 
         </div>
         <div class="tab-pane" id="edit" *ngIf="userProfil()">
