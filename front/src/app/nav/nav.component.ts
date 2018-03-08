@@ -34,7 +34,7 @@ export class NavComponent implements OnInit {
     var test = new Date().getTime();
 
     console.log(test);
-    return this.cookieService.check('isLogin') && test < payloadObj.exp;
+    return this.cookieService.check('isLogin');
 
   }
 
