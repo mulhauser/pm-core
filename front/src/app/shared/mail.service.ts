@@ -22,13 +22,13 @@ export class MailService {
 
 
   envoyerInviationEmail(email: string): Observable<any> {
-    console.log('coucou');
     return this.http.post(this._backendURL.sendMail, email, this._options());
   }
 
 
   private _options(headerList: Object = {}): any {
-    const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList));
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, {'Authorization': 'Bearer '+currentUser.token}, headerList));
     return { headers,
       responseType: 'text' };
   }

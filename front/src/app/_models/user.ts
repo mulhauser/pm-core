@@ -7,4 +7,5 @@
     urlPhoto: string;
     lastName: string;
     type: string;
+    token: string;
 }

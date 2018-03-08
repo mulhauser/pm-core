@@ -6,6 +6,7 @@ import {HttpHeaders} from '@angular/common/http';
 import {AlertService} from './alert.service';
 import {Response} from '@angular/http';
 import {environment} from '../../environments/environment';
+import {AuthenticationService} from "./authentication.service";
 
 @Injectable()
 export class UserService {
@@ -76,7 +77,8 @@ export class UserService {
   }
 
   private _options(headerList: Object = {}): any {
-    const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList));
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, {'Authorization': 'Bearer '+currentUser.token}, headerList));
     return { headers,
       responseType: 'text' };
   }

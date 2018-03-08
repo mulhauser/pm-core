@@ -2,6 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {User} from '../_models/user';
 import {AuthenticationService} from '../_services/authentication.service';
 import {CookieService} from 'ngx-cookie-service';
+import {KJUR, b64utoutf8} from 'jsrsasign';
 
 @Component({
   selector: 'app-nav',
@@ -27,8 +28,13 @@ export class NavComponent implements OnInit {
   }
 
   getLogIn(): boolean {
-    // console.log('a' + this.cookieService.check('isLogin'));
-    return this.cookieService.check('isLogin');
+    var payloadObj = KJUR.jws.JWS.readSafeJSONString(b64utoutf8(this._currentUser.token.split(".")[1]));
+    console.log("payload");
+    console.log(payloadObj);
+    var test = new Date().getTime();
+
+    console.log(test);
+    return this.cookieService.check('isLogin') && test < payloadObj.exp;
 
   }
 
