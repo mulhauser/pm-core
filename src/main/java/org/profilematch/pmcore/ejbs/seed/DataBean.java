@@ -1,13 +1,7 @@
 package org.profilematch.pmcore.ejbs.seed;
 
-import org.profilematch.pmcore.ejbs.CandidatBean;
-import org.profilematch.pmcore.ejbs.CompetenceBean;
-import org.profilematch.pmcore.ejbs.ExperienceBean;
-import org.profilematch.pmcore.ejbs.RecruteurBean;
-import org.profilematch.pmcore.entities.Candidat;
-import org.profilematch.pmcore.entities.Competence;
-import org.profilematch.pmcore.entities.Recruteur;
-import org.profilematch.pmcore.entities.User;
+import org.profilematch.pmcore.ejbs.*;
+import org.profilematch.pmcore.entities.*;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -15,6 +9,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Date;
 
 /**
  * @author remy
@@ -33,6 +28,8 @@ public class DataBean {
     private ExperienceBean experienceBean;
     @EJB
     private CompetenceBean competenceBean;
+    @EJB
+    private OffreBean offreBean;
 
     @PostConstruct
     public void init(){
@@ -74,8 +71,27 @@ public class DataBean {
         c.setPassword("test");
         c.setType("candidat");
         em.persist(c);
-        candidatBean.ajouterCandidat(new Candidat(c.getLastName(), c.getFirstName(), c.getEmail()));
+        Candidat cand = new Candidat(c.getLastName(), c.getFirstName(), c.getEmail());
+        candidatBean.ajouterCandidat(cand);
+        c1.getCandidats().add(cand);
+        c2.getCandidats().add(cand);
 
+        Experience e = new Experience();
+        e.setTypeContrat("Stage");
+        e.setPosteOccuper("Développeur junior");
+        e.setDateDebut(new Date(117,00,10));
+        e.setDateFin(new Date(117,11,12));
+        e.setCandidat(cand);
+        e.setDescription("Développement d'une application de gestion d'une bibliothèque");
+        experienceBean.ajouterExperience(e);
+        Experience e2 = new Experience();
+        e2.setTypeContrat("CDD");
+        e2.setPosteOccuper("Développeur junior");
+        e2.setDateDebut(new Date(118,01,10));
+        e2.setDateFin(new Date(118,03,12));
+        e2.setCandidat(cand);
+        e2.setDescription("Développement d'une application Web avec Laravel");
+        experienceBean.ajouterExperience(e2);
 
         User r = new User();
         r.setEmail("recruteur@gmail.com");
@@ -84,7 +100,21 @@ public class DataBean {
         r.setPassword("test");
         r.setType("recruteur");
         em.persist(r);
-        recruteurBean.ajouterRecruteur(new Recruteur(r.getLastName(), r.getFirstName(), r.getEmail()));
+        Recruteur recru = new Recruteur(r.getLastName(), r.getFirstName(), r.getEmail()) ;
+        recruteurBean.ajouterRecruteur(recru);
+        Offre o = new Offre();
+        o.setDateLimite(new Date(118,12,10));
+        o.setDescription("Stage dan le développement java avec une équipe de 5 personnes");
+        c1.getOffres().add(o);
+        c2.getOffres().add(o);
+        o.setTypeContrat("Stage");
+        o.setIntitule("Recherche stagiaire Développement JAVA");
+        o.setNiveauRequis("Master Informatique");
+        o.setSalaireMin(1000);
+        o.setSalaireMax(1000);
+        o.setMission("Developpement de module supplémentaire sur un application de gestion de personnes");
+        o.setRecruteur(recru);
+        offreBean.creerOffre(o);
 
         em.flush();
 
