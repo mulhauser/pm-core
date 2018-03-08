@@ -4,12 +4,6 @@ package org.profilematch.pmcore.utils;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 
-/**
- * @author Antonio Goncalves
- *         http://www.antoniogoncalves.org
- *         --
- */
-
 public class SimpleKeyGenerator implements KeyGenerator {
 
     // ======================================
