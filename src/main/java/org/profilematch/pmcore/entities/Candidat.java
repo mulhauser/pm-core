@@ -16,7 +16,7 @@ import java.util.Collection;
 public class Candidat extends Profil{
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "candidat")
+    @OneToMany(mappedBy = "candidat", cascade = {CascadeType.REMOVE})
     private Collection<Experience> experiences;
 
     @LazyCollection(LazyCollectionOption.FALSE)

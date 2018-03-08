@@ -125,8 +125,13 @@ public class CandidatRest {
     @DELETE
     @Path("/{id}")
     @ApiOperation(value="Supprime un candidat")
-    public Response delete(@PathParam("id") String id) {
-        candidatBean.supprimerCandidat((long) Integer.parseInt(id));
+    public Response delete(@PathParam("id") Long id) {
+        Candidat c = candidatBean.getCandidat(id);
+        for(Competence comp : c.getCompetences()) {
+            comp.getCandidats().remove(c);
+            competenceBean.modifierCompetence(comp);
+        }
+        candidatBean.supprimerCandidat(id);
         return Response.ok().build();
     }
 
