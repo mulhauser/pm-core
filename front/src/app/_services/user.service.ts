@@ -39,7 +39,7 @@ export class UserService {
   }
 
   create(user: User): Observable<any> {
-    return this.http.post(this._backendURL.register, user, this._options());
+    return this.http.post(this._backendURL.register, user, this._options2());
       /*.map(response => {
         console.log(response);
         //if (response.status === 200) this.alertService.success('Registration successful', true);
@@ -78,7 +78,13 @@ export class UserService {
 
   private _options(headerList: Object = {}): any {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, {'Authorization': 'Bearer '+currentUser.token}, headerList));
+    const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, {'Authorization': 'Bearer ' + currentUser.token}, headerList));
+    return { headers,
+      responseType: 'text' };
+  }
+
+  private _options2(headerList: Object = {}): any {
+    const headers = new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList));
     return { headers,
       responseType: 'text' };
   }
