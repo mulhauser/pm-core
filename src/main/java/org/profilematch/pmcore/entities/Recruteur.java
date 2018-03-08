@@ -16,7 +16,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 public class Recruteur extends Profil {
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "recruteur")
+    @OneToMany(mappedBy = "recruteur", cascade = {javax.persistence.CascadeType.REMOVE})
     private Collection<Offre> offres;
 
    /* @OneToMany(mappedBy = "id.recruteur")

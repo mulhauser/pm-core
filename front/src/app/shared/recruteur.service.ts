@@ -39,7 +39,13 @@ export class RecruteurService {
       .defaultIfEmpty([]);
   }
 
+  supprimerRecruteur(id: number) {
+    return this.http.delete(this._backendURL.deleteRecruteur.replace(':id', id));
+  }
 
+  suspendreRecruteur(id: number): Observable<any> {
+    return this.http.put(this._backendURL.susprendreRecruteur.replace(':id', id), this._options());
+  }
 
   addRecruteurOffre( offre: Offre, id: number): Observable<any> {
     console.log(offre);

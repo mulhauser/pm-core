@@ -52,6 +52,22 @@ export class RecruteurModificationComponent implements OnInit {
 
   }
 
+  suspendre() {
+    this.recruteurService.suspendreRecruteur(this.recruteurDetail.id)
+      .subscribe((data: any) => {
+          this.recruteurDetail = data;
+          this.alertService.warn('Votre compte à bien été suspendu', true);
+        }
+      );
+  }
+
+  supprimer() {
+    this.recruteurService.supprimerRecruteur(this.recruteurDetail.id).subscribe();
+    this.userService.delete(this.currentUser.email)
+      .subscribe(any => this.alertService.warn('Votre compte à bien été supprimer ', true));
+    this.router.navigate(['/login']);
+  }
+
 }
 
 

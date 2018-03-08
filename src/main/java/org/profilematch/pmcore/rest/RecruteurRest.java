@@ -56,8 +56,8 @@ public class RecruteurRest {
     @DELETE
     @Path("/{id}")
     @ApiOperation(value="Supprime un recruteur")
-    public Response delete(@PathParam("id") String id) {
-        recruteurBean.supprimerRecruteur((long) Integer.parseInt(id));
+    public Response delete(@PathParam("id") long id) {
+        recruteurBean.supprimerRecruteur(id);
         return Response.ok().build();
     }
 
@@ -80,7 +80,7 @@ public class RecruteurRest {
     @PUT
     @Produces("application/json")
     @Path("suspendre/{id}")
-    public Response suspendreCandidat(@PathParam("id") long id){
+    public Response suspendreRecruteur(@PathParam("id") long id){
         Recruteur r = recruteurBean.getRecruteur(id);
         r.setSuspendre();
         recruteurBean.modifierRecruteur(r);
