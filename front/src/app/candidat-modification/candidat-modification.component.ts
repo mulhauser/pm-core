@@ -60,8 +60,25 @@ export class CandidatModificationComponent implements OnInit {
     if (this.currentUser.urlPhoto != null) {
       this.userService.updatePhoto(this.candidatDetail.email, this.currentUser.urlPhoto)
         .subscribe((data: any) => this.candidatDetail = data);
+
     }
 
+  }
+
+  suspendre() {
+     this.candidatService.suspendreCandidat(this.candidatDetail.id)
+       .subscribe((data: any) => {
+         this.candidatDetail = data;
+         this.alertService.warn('Votre compte à bien été suspendu', true);
+         }
+       );
+  }
+
+  supprimer() {
+    this.userService.delete(this.candidatDetail.email)
+      .subscribe(any => this.alertService.warn('Votre compte à bien été supprimer ', true));
+
+    this.router.navigate(['/login']);
   }
 /*
   cancel() {
@@ -134,12 +151,6 @@ export class CandidatModificationComponent implements OnInit {
     return this.candidatService.addCandidatCompetence(competence, this.candidatDetail.id, competence.idCompetence)
       .flatMap(_ => _);
   }
-
-
-
-
-
-
 
   get dialogStatus(): string {
     return this._dialogStatus;
