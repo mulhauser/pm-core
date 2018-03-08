@@ -23,7 +23,7 @@ export const environment = {
       addCandidatCompetence: '/rest/candidat/:id/competences/:idCompetence',
       deleteCandidatCompetence: '/rest/candidat/:id/competences/:idCompetence',
       updateCandidat: '/rest/candidat',
-      deleteCandidat: '/rest/candidat',
+      deleteCandidat: '/rest/candidat/:id',
       getOffresByCandidat: '/rest/candidat/:id/offres',
       getBestOffresByCandidat: '/rest/candidat/:id/bestOffres',
       postulerOffre: '/rest/candidat/:id/offres',

@@ -17,6 +17,7 @@
         <div class="tab-pane active" id="profile">
           <div class="row">
             <div class="col-md-8">
+              <i *ngIf="userProfil()" style="color: red">(Visible : {{candidatDetail.suspendu}})</i>
               <h3 class="mb-3">{{candidatDetail.prenom}} {{candidatDetail.nom}}</h3>
 
               <h5 *ngIf="userProfil()">A propos de moi</h5>

@@ -75,6 +75,16 @@ export class CandidatService {
     return this.http.post(this._backendURL.addCandidatCompetence.replace(':id', id).replace(':idCompetence', idCompetence), this._options());
   }
 
+  suspendreCandidat(id: number): Observable<any> {
+    return this.http.put(this._backendURL.suspendreCandidat.replace(':id', id), this._options())
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
+  }
+
+  supprimerCandidat(id: number) {
+    return this.http.delete(this._backendURL.deleteCandidat.replace(':id', id));
+  }
+
 
   updateCandidat (candidat: any): Observable<any> {
     return this.http.put(this._backendURL.updateCandidat, candidat, this._options());
