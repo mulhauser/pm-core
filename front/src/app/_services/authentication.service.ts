@@ -4,20 +4,33 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {KJUR, b64utoutf8} from 'jsrsasign';
 import {CookieService} from 'ngx-cookie-service';
+import {environment} from "../../environments/environment";
 
 
 @Injectable()
 export class AuthenticationService {
 
   currentUser: any;
+  private _backendURL: any;
 
   constructor(private http: HttpClient,
               private cookieService: CookieService) {
+    this._backendURL = {};
+
+    // build backend base url
+    let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
+    if (environment.backend.port) {
+      baseUrl += `:${environment.backend.port}`;
+    }
+
+    // build all backend urls
+    Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
+
   }
 
 
   login(email: string, password: string) {
-    return this.http.post<any>('http://localhost:9090/rest/users/login', {email: email, password: password})
+    return this.http.post<any>(this._backendURL.login, {email: email, password: password})
       .map(user => {
 
         // login successful if there's a jwt token in the response

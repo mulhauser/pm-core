@@ -44,7 +44,7 @@
 
           </div>
 
-          <a class="btn btn-primary mx-1" href="mailto:">Inviter</a>
+          <button class="btn btn-primary mx-1" (click)="showModalInviterAmis()" *ngIf="userProfil()">Inviter un amis</button>
         </div>
         <div class="tab-pane" id="edit" *ngIf="userProfil()">
           <form role="form">
