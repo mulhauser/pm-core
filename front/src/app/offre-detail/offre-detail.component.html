@@ -33,10 +33,13 @@
         <div class="tab-pane active" id="profile">
           <div class="row">
             <div class="col-md-8">
-              <i *ngIf="userProfil()" style="color: red">(Visible : {{offreDetail.suspendu}})</i>
-
               <h3 class="mb-3">{{offreDetail.intitule}}</h3>
-
+              <div *ngIf="userProfil()" >
+                <div *ngIf="!offreDetail.suspendu; else offreTjLa" style="color: red">
+                  Offre suspendue
+                </div>
+              </div>
+              <ng-template #offreTjLa ><div style="color: green">Offre en ligne</div></ng-template>
               <h5>Informations</h5>
               <div class="col-md-4 text-center">
                 <img class="img-fluid" *ngIf="offreDetail.photo" src="{{ offreDetail.photo }}" alt="logo">
