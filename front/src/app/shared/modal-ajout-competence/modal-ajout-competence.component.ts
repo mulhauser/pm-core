@@ -52,7 +52,6 @@ export class ModalAjoutCompetenceComponent implements OnInit {
    */
   onSave(event: any) {
     this._activeModal.close(Observable.of(event));
-    window.location.reload();
   }
 
 }

@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.swagger.annotations.Api;
 import org.hibernate.HibernateException;
 import org.hibernate.exception.ConstraintViolationException;
+import org.json.JSONObject;
 import org.profilematch.pmcore.ejbs.CandidatBean;
 import org.profilematch.pmcore.ejbs.RecruteurBean;
 import org.profilematch.pmcore.entities.Candidat;
@@ -188,7 +189,23 @@ public class UserEndpoint {
     // =          Private methods           =
     // ======================================
 
-
+    @GET
+    @Path("statistique")
+    @Produces("application/json")
+    public String statistique() {
+        Query query = em.createNamedQuery(User.COUNT_ALL);
+        int allUsers = ((Number)query.getSingleResult()).intValue();
+        Query query2 = em.createNamedQuery(Profil.COUNT_C);
+        int allC = ((Number)query2.getSingleResult()).intValue();
+        Query query3 = em.createNamedQuery(Profil.COUNT_R);
+        int allR = ((Number)query3.getSingleResult()).intValue();
+        String json = "{\r\n" +
+                "\"allUsers\": \""+allUsers+"\",\r\n" +
+                "\"allC\": \""+allC+"\",\r\n" +
+                "\"allR\": \""+allR+"\"\r\n" +
+                "}";
+        return json;
+    }
 
 
 }

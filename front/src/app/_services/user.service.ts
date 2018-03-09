@@ -27,7 +27,7 @@ export class UserService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get<User[]>(this._backendURL.allUsers, this._options())
+    return this.http.get<User[]>(this._backendURL.allUsers, this._options2())
       .filter( _ => !!_)
       .defaultIfEmpty([]);
   }
@@ -68,6 +68,12 @@ export class UserService {
 
   delete(email: string) {
     return this.http.delete(this._backendURL.deleteUser.replace(':email', email), this._options());
+  }
+
+  statistique(): Observable<any> {
+    return this.http.get(this._backendURL.statistiques, this._options2())
+      .filter( _ => !!_)
+      .defaultIfEmpty([]);
   }
 
   updatePhoto(email: string, urlphoto: string): Observable<any> {

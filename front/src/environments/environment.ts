@@ -44,6 +44,7 @@ export const environment = {
       updateUserPhoto: '/rest/users/updatePhoto/:email',
       deleteUser: '/rest/users/:email',
       allUsers: '/rest/users',
+      statistiques: '/rest/users/statistique',
       // Experience
       allExperiences: '/rest/experience',
       getExperiences: '/rest/experience/:id',
