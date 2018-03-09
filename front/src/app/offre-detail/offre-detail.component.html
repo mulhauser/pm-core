@@ -81,6 +81,16 @@
             <div class="col-md-4 text-center" *ngIf="userProfil() && candidats !== undefined">
               <h4>Liste de candidats potentiels</h4>
               <h6>(IMatchProfile matching algorithm)</h6>
+              <form [formGroup]="checkBoxGroupForm">
+                <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" formControlName="exp" >
+                  <label ngbButtonLabel class="btn-primary" (click)="updateMatch()">
+                    <input ngbButton type="radio" [value]="false"> Sans Experience
+                  </label>
+                  <label ngbButtonLabel class="btn-primary" (click)="updateMatch()">
+                    <input ngbButton type="radio" value="true"> Avec Experience
+                  </label>
+                </div>
+              </form>
               <div *ngFor="let cand of candidats">
                 <a [routerLink]="['/candidat', cand.candidat.id]" class="text-black">
                   <figure class="snip0061 red"  [routerLink]="['/candidat',cand.candidat.id]">

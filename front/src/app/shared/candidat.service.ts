@@ -96,8 +96,8 @@ export class CandidatService {
     return this.http.post(this._backendURL.postulerOffre.replace(':id', id), offre, this._options());
   }
 
-  getCandidatMatch(id: string): Observable<any> {
-    return this.http.get(this._backendURL.getCandidatMatch.replace(':id', id).replace(':bool','false'), this._options());
+  getCandidatMatch(id: string,exp: boolean): Observable<any> {
+    return this.http.get(this._backendURL.getCandidatMatch.replace(':id', id).replace(':bool',exp), this._options());
   }
 
   private _options(headerList: Object = {}): any {

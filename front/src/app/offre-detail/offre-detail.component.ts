@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {CandidatService} from "../shared/candidat.service";
 import {CookieService} from "ngx-cookie-service";
 import {isUndefined} from "util";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -19,6 +20,7 @@ export class OffreDetailComponent implements OnInit {
   private currentUser: any;
   private candidat: any;
   private _candidats: any[];
+  public checkBoxGroupForm: FormGroup;
 
   @Input()
   modeModification = false;
@@ -27,18 +29,21 @@ export class OffreDetailComponent implements OnInit {
   constructor(private _offreService: OffreService,
               private _route: ActivatedRoute,
               private _candidatService: CandidatService,
-              private cookieService: CookieService) { }
+              private cookieService: CookieService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.checkBoxGroupForm = this.formBuilder.group({
+      'exp': false
+    });
     this._route.params
       .map((params: any) => params.id)
       .flatMap((id: string) => this._fetchOne(id))
       .subscribe(
         (offre: any) => {
           this._offreDetail = offre;
-          this._candidatService.getCandidatMatch(this._offreDetail.id).subscribe((candidats: any) => {
+          this._candidatService.getCandidatMatch(this._offreDetail.id, this.checkBoxGroupForm.value['exp']).subscribe((candidats: any) => {
             this._candidats = JSON.parse(candidats.body);
-            // console.log(this._candidats);
           });
         }
       );
@@ -51,6 +56,14 @@ export class OffreDetailComponent implements OnInit {
    */
   get offreDetail(): any{
     return this._offreDetail;
+  }
+
+  updateMatch(){
+    console.log(this.checkBoxGroupForm.value['exp']);
+    this._candidatService.getCandidatMatch(this._offreDetail.id, this.checkBoxGroupForm.value['exp']).subscribe((candidats: any) => {
+      this._candidats = JSON.parse(candidats.body);
+      console.log(this._candidats);
+    });
   }
 
   /**
