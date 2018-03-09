@@ -1,3 +1,5 @@
+<!--
+
 <figure class="snip0061 red"  [routerLink]="['/candidat', candidatObj.id]">
   <img *ngIf="candidatObj.urlPhoto == NULL" src="../../assets/candidat.jpg" />
   <img *ngIf="candidatObj.urlPhoto != NULL" src="{{candidatObj.urlPhoto}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
@@ -10,3 +12,15 @@
 </figure>
 
 
+-->
+<br>
+<div class="card">
+  <img *ngIf="candidatObj.urlPhoto == NULL" src="../../assets/candidat.jpg" style="width:100%"/>
+  <img *ngIf="candidatObj.urlPhoto != NULL" src="{{candidatObj.urlPhoto}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+  <h1>{{candidatObj.nom}} <br>{{candidatObj.prenom}}</h1>
+  <p class="title" *ngIf="candidatObj.titre; else message_default_titre" >{{candidatObj.titre}}</p>
+  <ng-template #message_default_titre><p>Information non renseignée</p></ng-template>
+  <p *ngIf="candidatObj.ville; else message_default_ville"> <i class="fa fa-map-marker" aria-hidden="true"></i>{{candidatObj.ville}}</p>
+  <ng-template #message_default_ville><p>Information non renseignée</p></ng-template>
+  <p><button [routerLink]="['/candidat', candidatObj.id]" >Voir le profile</button></p>
+</div>
