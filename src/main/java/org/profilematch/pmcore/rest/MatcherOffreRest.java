@@ -38,16 +38,46 @@ public class MatcherOffreRest {
     @EJB
     MatcherBean matcherBean;
 
+    @Inject
+    private KeyGenerator keyGenerator;
+
+    @EJB
+    private UserBean userBean;
+
+    @Context
+    private UriInfo uriInfo;
+
+    @EJB
+    private CandidatBean candidatBean;
+
     @GET
     @JWTTokenNeeded
     @ApiOperation(value="Retourne la liste des candidats avec pondération de leur correspondance à l'offre", notes="Retourne une réponse au client")
     @Path("/{id}/{avecExperience}")
     public Response getCandidatByOffre(@PathParam("id") String id,@PathParam("avecExperience") Boolean exp,
                                        @HeaderParam("Authorization") String header){
-        String token = JwtUtil.refreshToken(header);
+        String token = refreshToken(header);
 
         List<CandidatPondere> list = matcherBean.matcherCandidatExperimentes((long) Integer.parseInt(id), exp);
         return Response.ok(list).header("Authorization", "Bearer "+token).build();
+    }
+
+    public String refreshToken(String tok){
+        String token = tok.substring("Bearer".length()).trim();
+
+        Key key = keyGenerator.generateKey();
+        Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+        Claims claims = Jwts.parser()
+                .setSigningKey(key)
+                .parseClaimsJws(token).getBody();
+
+        TypedQuery<User> query = candidatBean.getEm().createNamedQuery(User.FIND_BY_EMAIL, User.class);
+        query.setParameter("email", claims.getSubject());
+        User user = query.getSingleResult();
+        String newToken = JwtUtil.issueToken(keyGenerator, uriInfo, claims.getSubject());
+        user.setToken(newToken);
+        userBean.modifierUser(user);
+        return newToken;
     }
 
 }

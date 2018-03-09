@@ -39,6 +39,18 @@ public class OffreRest {
     @EJB
     private OffreBean offreBean;
 
+    @Inject
+    private KeyGenerator keyGenerator;
+
+    @EJB
+    private UserBean userBean;
+
+    @Context
+    private UriInfo uriInfo;
+
+    @EJB
+    private CandidatBean candidatBean;
+
     @GET
     @ApiOperation(value="Retourne toutes les offres", notes="Retourne une réponse au client")
     public Response getAll(){
@@ -58,7 +70,7 @@ public class OffreRest {
     @Path("/{id}/utilisateurs")
     public Response getCandidatByCompetenceWithOffre(@PathParam("id") String id,
                                                      @HeaderParam("Authorization") String header){
-        String token = JwtUtil.refreshToken(header);
+        String token = refreshToken(header);
 
         Offre o = offreBean.getOffre((long) Integer.parseInt(id));
         Collection<Candidat> list = new LinkedHashSet<Candidat>(); // Faire une hashmap et ensuite trier pour voir le candidat qui correspond le plus
@@ -73,7 +85,7 @@ public class OffreRest {
     @Path("{id}/postulants")
     public Response getPostulants(@PathParam("id") Long id,
                                   @HeaderParam("Authorization") String header){
-        String token = JwtUtil.refreshToken(header);
+        String token = refreshToken(header);
         return Response.ok(offreBean.getOffre(id).getCandidats()).header("Authorization", "Bearer "+token).build();
     }
 
@@ -83,11 +95,29 @@ public class OffreRest {
     @Path("suspendre/{id}")
     public Response suspendreOffre(@PathParam("id") long id,
                                    @HeaderParam("Authorization") String header){
-        String token = JwtUtil.refreshToken(header);
+        String token = refreshToken(header);
         Offre o = offreBean.getOffre(id);
         o.setSuspendre();
         offreBean.modifierOffre(o);
         return Response.ok(o).header("Authorization", "Bearer "+token).build();
+    }
+
+    public String refreshToken(String tok){
+        String token = tok.substring("Bearer".length()).trim();
+
+        Key key = keyGenerator.generateKey();
+        Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+        Claims claims = Jwts.parser()
+                .setSigningKey(key)
+                .parseClaimsJws(token).getBody();
+
+        TypedQuery<User> query = candidatBean.getEm().createNamedQuery(User.FIND_BY_EMAIL, User.class);
+        query.setParameter("email", claims.getSubject());
+        User user = query.getSingleResult();
+        String newToken = JwtUtil.issueToken(keyGenerator, uriInfo, claims.getSubject());
+        user.setToken(newToken);
+        userBean.modifierUser(user);
+        return newToken;
     }
 
 }
