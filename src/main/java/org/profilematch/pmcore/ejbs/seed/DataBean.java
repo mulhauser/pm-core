@@ -76,6 +76,18 @@ public class DataBean {
         c1.getCandidats().add(cand);
         c2.getCandidats().add(cand);
 
+        User u2 = new User();
+        u2.setEmail("candidat2@gmail.com");
+        u2.setFirstName("PrenomCand2");
+        u2.setLastName("NomCand2");
+        u2.setPassword("test");
+        u2.setType("candidat");
+        em.persist(u2);
+        Candidat cand2 = new Candidat(c.getLastName(), c.getFirstName(), c.getEmail());
+        candidatBean.ajouterCandidat(cand2);
+        c5.getCandidats().add(cand2);
+        c4.getCandidats().add(cand2);
+
         Experience e = new Experience();
         e.setTypeContrat("Stage");
         e.setPosteOccuper("Développeur junior");
@@ -114,6 +126,20 @@ public class DataBean {
         o.setSalaireMax(1000);
         o.setMission("Developpement de module supplémentaire sur un application de gestion de personnes");
         o.setRecruteur(recru);
+        offreBean.creerOffre(o);
+
+        Offre o2 = new Offre();
+        o2.setDateLimite(new Date(118,12,10));
+        o2.setDescription("Recherhe développeur dans le développement informatique C++");
+        c3.getOffres().add(o);
+        c1.getOffres().add(o);
+        o2.setTypeContrat("CDD");
+        o2.setIntitule("Recherche d'un développeur informatique");
+        o2.setNiveauRequis("Master Informatique");
+        o2.setSalaireMin(2600);
+        o2.setSalaireMax(3200);
+        o2.setMission("Developpement de module supplémentaire sur un application de gestion de personnes");
+        o2.setRecruteur(recru);
         offreBean.creerOffre(o);
 
         em.flush();
