@@ -348,6 +348,7 @@ public class DataBean {
 
 
 
+
         User r = new User();
         r.setEmail("recruteur@gmail.com");
         r.setFirstName("Elon");
@@ -356,9 +357,7 @@ public class DataBean {
         r.setType("recruteur");
         em.persist(r);
         Recruteur recru = new Recruteur(r.getLastName(), r.getFirstName(), r.getEmail()) ;
-        recru.setUrlPhoto("https://www.sciencesetavenir.fr/assets/img/2016/09/02/cover-r4x3w1000-5834b11017175-elon-musk.jpg");
         recruteurBean.ajouterRecruteur(recru);
-
         Offre o = new Offre();
         o.setDateLimite(new Date(118,12,10));
         o.setDescription("Stage dan le développement java avec une équipe de 5 personnes chez spaceX");
@@ -390,6 +389,21 @@ public class DataBean {
         offreBean.creerOffre(o2);
 
         em.flush();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

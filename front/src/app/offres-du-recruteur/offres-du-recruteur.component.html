@@ -1,18 +1,16 @@
 
-<h1 #ref class="text-center my-lg-4">
-  <ng-content></ng-content>
-</h1>
-<h1 *ngIf="ref.children.length == 0" class="text-center my-lg-4">Liste des offres</h1>
-<div class="row">
-  <div>
-    <table class="table table-hover col-12">
-      <tbody>
-      <div *ngFor="let offre of offres">
-        <app-offre-du-recruteur [offreObj]="offre">
-        </app-offre-du-recruteur>
-      </div>
 
-      </tbody>
-    </table>
+<h1 class="text-center my-lg-4">
+  Liste de vos offres
+</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 " *ngFor="let offre of offres">
+      <app-offre-du-recruteur [offreObj]="offre">
+      </app-offre-du-recruteur><br>
+    </div>
   </div>
 </div>
+
+
