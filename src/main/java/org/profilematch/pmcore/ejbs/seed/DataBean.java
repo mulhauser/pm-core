@@ -116,6 +116,20 @@ public class DataBean {
         o.setRecruteur(recru);
         offreBean.creerOffre(o);
 
+        Offre o2 = new Offre();
+        o2.setDateLimite(new Date(118,12,10));
+        o2.setDescription("Recherhe développeur dans le développement informatique C++");
+        c3.getOffres().add(o);
+        c1.getOffres().add(o);
+        o2.setTypeContrat("CDD");
+        o2.setIntitule("Recherche d'un développeur informatique");
+        o2.setNiveauRequis("Master Informatique");
+        o2.setSalaireMin(2600);
+        o2.setSalaireMax(3200);
+        o2.setMission("Developpement de module supplémentaire sur un application de gestion de personnes");
+        o2.setRecruteur(recru);
+        offreBean.creerOffre(o2);
+
         em.flush();
 
 
