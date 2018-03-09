@@ -27,6 +27,8 @@
               <h3 class="mb-3">{{candidatDetail.prenom}} {{candidatDetail.nom}}</h3>
 
               <h5 *ngIf="userProfil()">A propos de moi</h5>
+              <button class="btn btn-primary mx-1" (click)="pdfGenerate()" *ngIf="userProfil()"><i class="fa fa-md"></i>PDF</button>
+              <button class="btn btn-primary mx-1" (click)="showModalInviterAmis()" *ngIf="userProfil()">Inviter un amis</button>
               <h5 *ngIf="!userProfil()">Résumé</h5>
               <hr>
               <p>{{candidatDetail.apropos}}</p>
@@ -77,8 +79,7 @@
             </div>
 
 
-            <button class="btn btn-primary mx-1" (click)="pdfGenerate()" *ngIf="userProfil()"><i class="fa fa-md"></i>PDF</button>
-            <button class="btn btn-primary mx-1" (click)="showModalInviterAmis()" *ngIf="userProfil()">Inviter un amis</button>
+
 
           </div>
         </div>

@@ -155,7 +155,9 @@ figure.snip0061.hover:before {
   max-width: 300px;
   margin: auto;
   text-align: center;
+  border-radius: 10px;
 }
+
 
 .title {
   color: grey;

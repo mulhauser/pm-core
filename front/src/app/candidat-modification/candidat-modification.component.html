@@ -2,6 +2,8 @@
 <div class="col-12 text-center mb-2">
   <button class="btn btn-primary mx-1" (click)="showModalExperience()" ><i class="fa fa-plus fa-md"></i> Ajouter une Expérience</button>
   <button class="btn btn-primary mx-1" (click)="showModalCompetence()" ><i class="fa fa-plus fa-md"></i> Ajouter une Compétence</button>
+  <button class="btn btn-primary" (click)="suspendre()">Suspendre mon compte</button>
+  <button class="btn btn-primary" (click)="supprimer()">Supprimer mon compte</button>
 </div>
 
 <form name="form" (ngSubmit)="update()"  #f="ngForm">
@@ -186,5 +188,4 @@
 
 <h5 class="mt-2">Paramètres supplémentaires</h5>
 <hr>
-<button class="btn btn-primary" (click)="suspendre()">Suspendre mon compte</button>
-<button class="btn btn-primary" (click)="supprimer()">Supprimer mon compte</button>
+
