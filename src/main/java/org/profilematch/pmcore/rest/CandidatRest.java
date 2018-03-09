@@ -60,7 +60,7 @@ public class CandidatRest {
     @Path("/{id}")
     @ApiOperation(value="Retourne le candidat avec l'id renseigné")
     public Response getById(@PathParam("id") String id){
-        return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id)).getExperiences()).build();
+        return Response.ok(candidatBean.getCandidat((long) Integer.parseInt(id))).build();
 
     }
 
