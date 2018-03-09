@@ -9,7 +9,7 @@
     <img src="../../assets/logo.png" height="35" alt="logo"> iMatchProfile
   </a>
   <div class="navbar-collapse collapse justify-content-center" id="navbar">
-    <ul class="navbar-nav nav-fill w-100">
+    <ul class="navbar-nav nav-fill ">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/home">Accueil</a>
       </li>
@@ -20,15 +20,9 @@
         <a class="nav-link" routerLink="/candidats">Candidats</a>
       </li>
 
-      <div *ngIf="getLogIn()">
-        <div *ngIf="getTypecompte() ==='candidat'">
-          <a class="nav-link" routerLink="/candidat">Mon profile candidat</a>
-        </div>
-        <div *ngIf="getTypecompte() ==='recruteur'">
-          <a class="nav-link" routerLink="/recruteur">Mon profile recruteur</a>
-        </div>
-      </div>
+
     </ul>
+
 
     <ul  class="navbar-nav ml-auto" *ngIf="!getLogIn()" >
       <li class="nav-item">
@@ -40,6 +34,14 @@
     </ul>
 
     <ul  class="navbar-nav ml-auto" *ngIf="getLogIn()" >
+      <div *ngIf="getLogIn()">
+        <div *ngIf="getTypecompte() ==='candidat'">
+          <a class="nav-link " routerLink="/candidat">Mon profile candidat</a>
+        </div>
+        <div *ngIf="getTypecompte() ==='recruteur'">
+          <a class="nav-link" routerLink="/recruteur">Mon profile recruteur</a>
+        </div>
+      </div>
       <li class="nav-item">
         <a class="nav-link"  [routerLink]="['/login']">Logout</a>
       </li>
