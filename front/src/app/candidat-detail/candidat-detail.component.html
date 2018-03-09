@@ -9,7 +9,14 @@
           <a href="" data-target="#edit" data-toggle="tab" class="nav-link" (click)="modeModification=!modeModificationOn">Modifier</a>
         </li>
         <li class="nav-item">
-          <a href="" data-target="#offres" (click)="offres()" data-toggle="tab" class="nav-link">Offres</a>
+          <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+            <button class="btn btn-outline-primary" ngbDropdownToggle>Offres</button>
+            <div class="dropdown-menu" ngbDropdownMenu>
+              <a class="dropdown-item" href="" data-target="#offres" (click)="offres()" data-toggle="tab">Offres intéressantes</a>
+              <a class="dropdown-item" href="" data-target="#offres" (click)="offresPost()" data-toggle="tab">Offres postulées</a>
+            </div>
+          </div>
+          <!--<a href="" data-target="#offres" (click)="offres()" data-toggle="tab" class="nav-link">Offres</a>-->
         </li>
       </ul>
       <div class="tab-content py-4" *ngIf="candidatDetail !== undefined">

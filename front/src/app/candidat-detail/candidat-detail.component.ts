@@ -90,6 +90,14 @@ export class CandidatDetailComponent implements OnInit {
       });
   }
 
+  offresPost(){
+    this.alertService.clear();
+    this._candidatService.getOffresByCandidat(this.candidat.id)
+      .subscribe((data: any) => {
+        this.candidat.offre = JSON.parse(data.body);
+      });
+  }
+
   get candidatDetail(): any {
     return this.candidat;
   }

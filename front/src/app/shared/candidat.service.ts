@@ -53,6 +53,12 @@ export class CandidatService {
       .defaultIfEmpty([])
   }
 
+  getOffresByCandidat(email: string){
+    return this.http.get(this._backendURL.getOffresByCandidat.replace(':id', email), this._options())
+      .filter( _ => !!_)
+      .defaultIfEmpty([])
+  }
+
   getCandidatExperiences(id: number): Observable<any> {
     return this.http.get(this._backendURL.getCandidatExperiences.replace(':id', id), this._options())
       .filter( _ => !!_)
