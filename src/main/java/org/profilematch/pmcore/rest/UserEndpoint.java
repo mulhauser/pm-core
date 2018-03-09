@@ -90,7 +90,7 @@ public class UserEndpoint {
             // Authenticate the user using the credentials provided
             user = authenticate(user.getEmail(), user.getPassword());
             // Issue a token for the user
-            String token = JwtUtil.issueToken(keyGenerator, uriInfo, user.getFirstName());
+            String token = JwtUtil.issueToken(keyGenerator, uriInfo, user.getEmail());
             // Return the token on the response
             user.setToken(token);
             return Response.ok(user).header(AUTHORIZATION, "Bearer " + token).build();

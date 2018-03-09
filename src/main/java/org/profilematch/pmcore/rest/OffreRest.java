@@ -1,17 +1,29 @@
 package org.profilematch.pmcore.rest;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.jaxrs.PATCH;
+import org.profilematch.pmcore.ejbs.CandidatBean;
 import org.profilematch.pmcore.ejbs.OffreBean;
+import org.profilematch.pmcore.ejbs.UserBean;
 import org.profilematch.pmcore.entities.Candidat;
 import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Offre;
+import org.profilematch.pmcore.entities.User;
 import org.profilematch.pmcore.jwt.JWTTokenNeeded;
+import org.profilematch.pmcore.utils.JwtUtil;
+import org.profilematch.pmcore.utils.KeyGenerator;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import java.security.Key;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
@@ -44,32 +56,38 @@ public class OffreRest {
     @JWTTokenNeeded
     @ApiOperation(value="Retourne les utilisateurs dont les compétences correspondent à l'offre renseignée")
     @Path("/{id}/utilisateurs")
-    public Response getCandidatByCompetenceWithOffre(@PathParam("id") String id){
+    public Response getCandidatByCompetenceWithOffre(@PathParam("id") String id,
+                                                     @HeaderParam("Authorization") String header){
+        String token = JwtUtil.refreshToken(header);
+
         Offre o = offreBean.getOffre((long) Integer.parseInt(id));
         Collection<Candidat> list = new LinkedHashSet<Candidat>(); // Faire une hashmap et ensuite trier pour voir le candidat qui correspond le plus
         for(Competence c : o.getCompetences()){
             list.addAll(c.getCandidats());
         }
-        return Response.ok(list).build();
+        return Response.ok(list).header("Authorization", "Bearer "+token).build();
     }
 
     @GET
     @JWTTokenNeeded
     @Path("{id}/postulants")
-    public Response getPostulants(@PathParam("id") Long id){
-        return Response.ok(offreBean.getOffre(id).getCandidats()).build();
+    public Response getPostulants(@PathParam("id") Long id,
+                                  @HeaderParam("Authorization") String header){
+        String token = JwtUtil.refreshToken(header);
+        return Response.ok(offreBean.getOffre(id).getCandidats()).header("Authorization", "Bearer "+token).build();
     }
 
     @PUT
     @JWTTokenNeeded
     @Produces("application/json")
     @Path("suspendre/{id}")
-    public Response suspendreOffre(@PathParam("id") long id){
+    public Response suspendreOffre(@PathParam("id") long id,
+                                   @HeaderParam("Authorization") String header){
+        String token = JwtUtil.refreshToken(header);
         Offre o = offreBean.getOffre(id);
         o.setSuspendre();
         offreBean.modifierOffre(o);
-        return Response.ok(o).build();
+        return Response.ok(o).header("Authorization", "Bearer "+token).build();
     }
-
 
 }

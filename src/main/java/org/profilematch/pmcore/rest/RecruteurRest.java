@@ -10,6 +10,7 @@ import org.profilematch.pmcore.entities.Competence;
 import org.profilematch.pmcore.entities.Offre;
 import org.profilematch.pmcore.entities.Recruteur;
 import org.profilematch.pmcore.jwt.JWTTokenNeeded;
+import org.profilematch.pmcore.utils.JwtUtil;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -51,17 +52,23 @@ public class RecruteurRest {
     @PUT
     @JWTTokenNeeded
     @ApiOperation(value="Modifie un recruteur")
-    public Response update(Recruteur recruteur){
-        return Response.ok(recruteurBean.modifierRecruteur(recruteur)).build();
+    public Response update(Recruteur recruteur,
+                           @HeaderParam("Authorization") String header){
+        String token = JwtUtil.refreshToken(header);
+
+        return Response.ok(recruteurBean.modifierRecruteur(recruteur)).header("Authorization", "Bearer "+token).build();
     }
 
     @DELETE
     @JWTTokenNeeded
     @Path("/{id}")
     @ApiOperation(value="Supprime un recruteur")
-    public Response delete(@PathParam("id") long id) {
+    public Response delete(@PathParam("id") long id,
+                           @HeaderParam("Authorization") String header){
+        String token = JwtUtil.refreshToken(header);
+
         recruteurBean.supprimerRecruteur(id);
-        return Response.ok().build();
+        return Response.ok().header("Authorization", "Bearer "+token).build();
     }
 
     @GET
@@ -75,10 +82,13 @@ public class RecruteurRest {
     @JWTTokenNeeded
     @Path("/{id}/offres")
     @ApiOperation(value="Permet au recruteur de créer une offre")
-    public Response addOffre(@PathParam("id") String id, Offre offre){
+    public Response addOffre(@PathParam("id") String id, Offre offre,
+                             @HeaderParam("Authorization") String header){
+        String token = JwtUtil.refreshToken(header);
+
         offre.setRecruteur(recruteurBean.getRecruteur((long) Integer.parseInt(id)));
         offreBean.creerOffre(offre);
-        return Response.ok(offre).build();
+        return Response.ok(offre).header("Authorization", "Bearer "+token).build();
     }
 
     @PUT
@@ -95,11 +105,14 @@ public class RecruteurRest {
     @JWTTokenNeeded
     @Path("/{id}/offres")
     @ApiOperation(value = "Permet au recruteur de modifier une offre")
-    public Response modifierOffre(@PathParam("id") String id, Offre offre){
+    public Response modifierOffre(@PathParam("id") String id, Offre offre,
+                                  @HeaderParam("Authorization") String header){
+        String token = JwtUtil.refreshToken(header);
+
         Recruteur recruteur = recruteurBean.getRecruteur((long) Integer.parseInt(id));
         if(offre.getRecruteur().equals(recruteur)){
             offreBean.modifierOffre(offre);
         }
-        return Response.ok(offre).build();
+        return Response.ok(offre).header("Authorization", "Bearer "+token).build();
     }
 }
