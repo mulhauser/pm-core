@@ -58,8 +58,18 @@ export class OffreDetailComponent implements OnInit {
     return this._offreDetail;
   }
 
-  updateMatch(){
+  updateMatch() {
+    if (this.checkBoxGroupForm.value['exp'] === false) {
+      this.checkBoxGroupForm = this.formBuilder.group({
+        'exp': true
+      });
+    } else {
+      this.checkBoxGroupForm = this.formBuilder.group({
+        'exp': false
+      }); }
+
     console.log(this.checkBoxGroupForm.value['exp']);
+
     this._candidatService.getCandidatMatch(this._offreDetail.id, this.checkBoxGroupForm.value['exp']).subscribe((candidats: any) => {
       this._candidats = JSON.parse(candidats.body);
       console.log(this._candidats);
