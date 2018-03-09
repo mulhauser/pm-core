@@ -92,26 +92,26 @@
                 </div>
               </form>
 
-              <div *ngFor="let cand of candidats">
-                <a [routerLink]="['/candidat', cand.candidat.id]" class="text-black">
-                  <figure class="snip0061 red"  [routerLink]="['/candidat',cand.candidat.id]">
-                    <img *ngIf="cand.candidat.urlPhoto == NULL" src="../../assets/candidat.jpg" />
-                    <img *ngIf="cand.candidat.urlPhoto != NULL" src="{{cand.candidat.urlPhoto}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-                    <figcaption>
-                      <h2><div *ngIf="cand.candidat.titre; else message_default" >{{cand.candidat.titre}}</div><h6 *ngIf="cand.candidat.ville"> <i class="fa fa-map-marker" aria-hidden="true"></i>{{cand.candidat.ville}}</h6></h2>
-                      <ng-template #message_default>Informations non renseignées</ng-template>
-                      <div class="icons"><a href="#"><i class="ion-ios-home"></i></a><a href="#"><i class="ion-email-unread"></i></a><a href="#"><i class="ion-ios-star"></i></a></div>
-                    </figcaption>
-                    <div class="position" >
-                      {{cand.candidat.nom}} {{cand.candidat.prenom}}
-                      <div>
-                        <ngb-progressbar type="success" value="{{cand.pourcentage}}" showValue="true"></ngb-progressbar>
-                      </div>
-                    </div>
-                  </figure>
-                </a>
 
+
+
+              <div *ngFor="let cand of candidats">
+                <br>
+                <div class="card">
+                  <h1>{{cand.candidat.nom}} <br>{{cand.candidat.prenom}}</h1>
+                  <p class="title" *ngIf="cand.candidat.titre; else message_default_titre" >{{cand.candidat.titre}}</p>
+                  <ng-template #message_default_titre><p>Information non renseignée</p></ng-template>
+                  <p *ngIf="cand.candidat.ville; else message_default_ville"> <i class="fa fa-map-marker" aria-hidden="true"></i>{{cand.candidat.ville}}</p>
+                  <ng-template #message_default_ville><p>Information non renseignée</p></ng-template>
+                  <p><button [routerLink]="['/candidat', cand.candidat.id]" >Voir le profile</button></p>
+                  <ngb-progressbar type="success" value="{{cand.pourcentage}}" showValue="true"></ngb-progressbar>
+                </div>
               </div>
+
+
+
+
+
             </div>
           </div>
 

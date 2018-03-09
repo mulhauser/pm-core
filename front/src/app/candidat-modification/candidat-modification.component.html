@@ -2,7 +2,10 @@
 <div class="col-12 text-center mb-2">
   <button class="btn btn-primary mx-1" (click)="showModalExperience()" ><i class="fa fa-plus fa-md"></i> Ajouter une Expérience</button>
   <button class="btn btn-primary mx-1" (click)="showModalCompetence()" ><i class="fa fa-plus fa-md"></i> Ajouter une Compétence</button>
-  <button class="btn btn-primary" (click)="suspendre()">Suspendre mon compte</button>
+  <button class="btn btn-primary" (click)="suspendre()" *ngIf="!candidatDetail.suspendu; else compte_suspendu">Suspendre mon compte</button>
+  <ng-template #compte_suspendu>
+    <button class="btn btn-primary" (click)="suspendre()">Activer mon compte</button>
+  </ng-template>
   <button class="btn btn-primary" (click)="supprimer()">Supprimer mon compte</button>
 </div>
 

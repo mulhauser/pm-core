@@ -23,7 +23,10 @@
         <div class="tab-pane active" id="profile">
           <div class="row">
             <div class="col-md-8">
-              <i *ngIf="userProfil()" style="color: red">(Suspendu : {{candidatDetail.suspendu}})</i>
+              <div *ngIf="candidatDetail.suspendu; else compteActif" style="color: red">
+                Compte suspendue
+              </div>
+              <ng-template #compteActif ><div style="color: green">Compte actif</div></ng-template>
               <h3 class="mb-3">{{candidatDetail.prenom}} {{candidatDetail.nom}}</h3>
 
               <h5 *ngIf="userProfil()">A propos de moi</h5>

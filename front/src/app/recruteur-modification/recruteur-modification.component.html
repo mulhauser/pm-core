@@ -106,5 +106,8 @@
 
 <h5 class="mt-2">Paramètres supplémentaires</h5>
 <hr>
-<button class="btn btn-primary" (click)="suspendre()">Suspendre mon compte</button>
+<button class="btn btn-primary" (click)="suspendre()" *ngIf="!recruteurDetail.suspendu; else compte_suspendu">Suspendre mon compte</button>
+<ng-template #compte_suspendu>
+  <button class="btn btn-primary" (click)="suspendre()">Activer mon compte</button>
+</ng-template>
 <button class="btn btn-primary" (click)="supprimer()">Supprimer mon compte</button>
