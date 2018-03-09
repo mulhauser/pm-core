@@ -1,36 +1,23 @@
 
-<tr>
-  <td>
-    <div class="row">
-      <div class="col-10">
-        <a class="col-12" [routerLink]="['/offre/', offreObj.id]">
-          <h3>{{offreObj.intitule}}</h3>
-        </a>
-        <h4 *ngIf="!offreObj.suspendu" style="color: red"> offre suspendue</h4>
-        <div class="col-12">
-          {{offreObj.description}}
-        </div>
-      </div>
-      <div class="col-2">
-        <div class="col-12">
-          {{offreObj.typeContrat}}
-        </div>
-        <div class="col-12">
-          <img class="img-fluid"  *ngIf="offreObj.photo" src="{{ offreObj.photo }}" alt="logo">
-          <img class="img-fluid"  *ngIf="!offreObj.photo" src="../../assets/societe_anonyme.jpg" alt="logo">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-10">
-        <span class="glyphicon glyphicon-map-marker"></span><i class="fa fa-map-marker" aria-hidden="true"></i> {{offreObj.location}}
-      </div>
-      <div class="col-2">
-        {{offreObj.date}}
-      </div>
-    </div>
-  </td>
-</tr>
+
+
+
+<br>
+<div class="card">
+  <img class="img-fluid"  *ngIf="offreObj.photo" src="{{ offreObj.photo }}" alt="logo">
+  <img class="img-fluid"  *ngIf="!offreObj.photo" src="../../assets/societe_anonyme.jpg" alt="logo">
+  <div class="intitule"><h4>{{offreObj.intitule}}</h4></div>
+  <h4 *ngIf="!offreObj.suspendu" style="color: red"> offre suspendue</h4>
+  <p class="title">{{offreObj.typeContrat}}<br>
+    <i class="fa fa-graduation-cap" aria-hidden="true"></i> {{offreObj.niveauRequis}}<br>
+    <i class="fa fa-usd" aria-hidden="true"></i> {{offreObj.salaireMin}} - {{offreObj.salaireMax}}<br>
+
+  <p><button [routerLink]="['/offre/', offreObj.id]">Voir l'offre</button></p>
+
+</div>
+
+
+
 
 
 
