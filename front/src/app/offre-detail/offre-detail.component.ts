@@ -20,6 +20,7 @@ export class OffreDetailComponent implements OnInit {
   private currentUser: any;
   private candidat: any;
   private _candidats: any[];
+  private valueinputCheck: any;
   public checkBoxGroupForm: FormGroup;
 
   @Input()
@@ -36,6 +37,7 @@ export class OffreDetailComponent implements OnInit {
     this.checkBoxGroupForm = this.formBuilder.group({
       'exp': false
     });
+    this.valueinputCheck = 'Avec Expériences ';
     this._route.params
       .map((params: any) => params.id)
       .flatMap((id: string) => this._fetchOne(id))
@@ -63,10 +65,13 @@ export class OffreDetailComponent implements OnInit {
       this.checkBoxGroupForm = this.formBuilder.group({
         'exp': true
       });
+      this.valueinputCheck = 'Sans Expériences ';
     } else {
       this.checkBoxGroupForm = this.formBuilder.group({
         'exp': false
-      }); }
+      });
+      this.valueinputCheck = 'Avec Expériences ';
+    }
 
     console.log(this.checkBoxGroupForm.value['exp']);
 
@@ -115,7 +120,7 @@ export class OffreDetailComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this._candidatService.getCandidatByEmail(this.currentUser.email)
       .subscribe((data: any) => {
-        this.candidat = JSON.parse(data);
+        this.candidat = JSON.parse(data.body);
         this._candidatService.postulerOffre(this._offreDetail, this.candidat.id).subscribe();
       });
 

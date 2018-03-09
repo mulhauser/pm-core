@@ -15,6 +15,7 @@ import {UserService} from '../_services/user.service';
 export class HomeComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
+  private statistiques: any ={}
 
   constructor(private userService: UserService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -22,6 +23,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.loadAllUsers();
+    this.userService.statistique().subscribe(
+      (data: any) => this.statistiques = JSON.parse(data)
+    );
   }
 
   deleteUser(email: string) {

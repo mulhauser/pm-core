@@ -130,7 +130,7 @@ public class CandidatRest {
         String token = JwtUtil.issueToken(keyGenerator, uriInfo, candidat.getPrenom());
         user.setToken(token);
         userBean.modifierUser(user);
-
+    
         competenceBean.modifierCompetence(competence);
         return Response.ok().header("Authorization", "Bearer "+token).build();
     }

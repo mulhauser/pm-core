@@ -19,12 +19,17 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Profil.findAllC", query = "SELECT u FROM Profil u WHERE u.class = 'C' AND u.suspendu = false "),
         @NamedQuery(name = "Profil.findAllR", query = "SELECT u FROM Profil u WHERE u.class = 'R' "),
+        @NamedQuery(name = Profil.COUNT_C, query = "SELECT COUNT(u) FROM Profil u WHERE u.class = 'C' "),
+        @NamedQuery(name = Profil.COUNT_R, query = "SELECT COUNT(u) FROM Profil u WHERE u.class = 'R' "),
         @NamedQuery(name = "Profil.findByEmail", query = "SELECT u FROM Profil u WHERE u.email = :email"),
         @NamedQuery(name = Profil.UPDATE_PHOTO, query = "UPDATE Profil u SET u.urlPhoto = :urlPhoto WHERE u.email = :email")
 })
 public abstract class Profil implements Serializable {
 
     public static final String UPDATE_PHOTO = "Profil.updatePhoto";
+    public static final String COUNT_C = "Profil.count_c";
+    public static final String COUNT_R = "Profil.count_r";
+
 
 
     @Id
