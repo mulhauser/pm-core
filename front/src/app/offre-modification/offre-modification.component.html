@@ -10,84 +10,85 @@
 
 
       <div class="form-group">
-        <label for="intitule">intitule</label>
-        <input type="text" class="form-control" id="intitule"
+        <label>Intitulé</label>
+        <input type="text" class="form-control" id="intituleContrat"
                required
                minlength="2"
-               [(ngModel)]="offreDetail.intitule"
+               [(ngModel)]="model.intitule"
                placeholder="Intitulé de l'offre"
                name="intitule"
                #intitule="ngModel">
         <div *ngIf="intitule.invalid && (intitule.dirty || intitule.touched)"
              class="alert alert-danger">
           <div *ngIf="intitule.errors.required">
-            intitule is required.
+            Vous devez fournir un intitulé.
           </div>
           <div *ngIf="intitule.errors.minlength">
-            intitule must be at least 2 character long.
+            Votre intitulé est trop court.
           </div>
         </div>
       </div>
 
 
       <div class="form-group">
-        <label for="niveauRequis">niveauRequis</label>
+        <label for="niveauRequis">Niveau requis</label>
         <input type="text" class="form-control" id="niveauRequis"
                required
                minlength="2"
-               [(ngModel)]="offreDetail.niveauRequis"
-               placeholder="niveauRequis de l'offre"
+               [(ngModel)]="model.niveauRequis"
+               placeholder="Niveau requis pour l'offre"
                name="niveauRequis"
                #niveauRequis="ngModel">
         <div *ngIf="niveauRequis.invalid && (niveauRequis.dirty || niveauRequis.touched)"
              class="alert alert-danger">
           <div *ngIf="niveauRequis.errors.required">
-            niveauRequis is required.
+            Vous devez renseigner le niveau requis pour postuler à l'offre.
           </div>
           <div *ngIf="niveauRequis.errors.minlength">
-            niveauRequis must be at least 2 character long.
+            Le niveau requis est trop court.
           </div>
         </div>
       </div>
 
 
       <div class="form-group">
-        <label for="typeContrat">typeContrat</label>
+        <label for="typeContrat">Type de contrat</label>
         <input type="text" class="form-control" id="typeContrat"
                required
                minlength="2"
-               [(ngModel)]="offreDetail.typeContrat"
+               [(ngModel)]="model.typeContrat"
                placeholder="Type de contract"
                name="typeContrat"
                #typeContrat="ngModel">
         <div *ngIf="typeContrat.invalid && (typeContrat.dirty || typeContrat.touched)"
              class="alert alert-danger">
           <div *ngIf="typeContrat.errors.required">
-            typeContrat is required.
+            Vous devez renseigner le type de contrat.
           </div>
           <div *ngIf="typeContrat.errors.minlength">
-            typeContrat must be at least 20 character long.
+            Le type de contrat est trop court.
           </div>
         </div>
       </div>
 
 
       <div class="form-group">
-        <label for="salaireMin">salaireMin</label>
-        <input type="text" class="form-control" id="salaireMin"
+        <label for="salaireMin">Salaire minimum</label>
+        <input type="number" class="form-control" id="salaireMin"
                required
-               minlength="2"
-               [(ngModel)]="offreDetail.salaireMin"
-               placeholder="salaire minimum"
+               minlength="1"
+               min="0"
+               [(ngModel)]="model.salaireMin"
+               placeholder="Salaire minimum"
                name="salaireMin"
                #salaireMin="ngModel">
         <div *ngIf="salaireMin.invalid && (salaireMin.dirty || salaireMin.touched)"
              class="alert alert-danger">
           <div *ngIf="salaireMin.errors.required">
-            salaireMin is required.
+            Quel est le salaire minimum ?
           </div>
           <div *ngIf="salaireMin.errors.minlength">
-            salaireMin must be at least 20 character long.
+            Si vous payez aussi peu, vous ne trouverez personne !
           </div>
         </div>
       </div>
@@ -95,21 +96,22 @@
 
 
       <div class="form-group">
-        <label for="salaireMax">salaireMax</label>
-        <input type="text" class="form-control" id="salaireMax"
+        <label for="salaireMax">Salaire maximum</label>
+        <input type="number" class="form-control" id="salaireMax"
                required
-               minlength="2"
-               [(ngModel)]="offreDetail.salaireMax"
-               placeholder="salaire maximum"
+               minlength="1"
+               min="0"
+               [(ngModel)]="model.salaireMax"
+               placeholder="Salaire maximum"
                name="salaireMax"
                #salaireMax="ngModel">
         <div *ngIf="salaireMax.invalid && (salaireMax.dirty || salaireMax.touched)"
              class="alert alert-danger">
           <div *ngIf="salaireMax.errors.required">
-            salaireMax is required.
+            Quel est le salaire maximum ?
           </div>
           <div *ngIf="salaireMax.errors.minlength">
-            salaireMax must be at least 20 character long.
+            Si vous payez aussi peu, vous ne trouverez personne !
           </div>
         </div>
       </div>
@@ -117,21 +119,21 @@
 
 
       <div class="form-group">
-        <label for="description">description</label>
+        <label for="description">Description</label>
         <input type="text" class="form-control" id="description"
                required
-               minlength="2"
-               [(ngModel)]="offreDetail.description"
-               placeholder="description"
+               minlength="12"
+               [(ngModel)]="model.description"
+               placeholder="Description de votre offre"
                name="description"
                #description="ngModel">
         <div *ngIf="description.invalid && (description.dirty || description.touched)"
              class="alert alert-danger">
           <div *ngIf="description.errors.required">
-            description is required.
+            Vous devez fournir une description d'offre.
           </div>
           <div *ngIf="description.errors.minlength">
-            description must be at least 20 character long.
+            Votre description est trop courte.
           </div>
         </div>
       </div>
@@ -139,21 +141,21 @@
 
 
       <div class="form-group">
-        <label for="mission">mission</label>
+        <label for="mission">Mission</label>
         <input type="text" class="form-control" id="mission"
                required
                minlength="2"
-               [(ngModel)]="offreDetail.mission"
-               placeholder="mission"
+               [(ngModel)]="model.mission"
+               placeholder="Mission"
                name="mission"
                #mission="ngModel">
         <div *ngIf="mission.invalid && (mission.dirty || mission.touched)"
              class="alert alert-danger">
           <div *ngIf="mission.errors.required">
-            mission is required.
+            Quel sera la mission de vos candidats ?
           </div>
           <div *ngIf="mission.errors.minlength">
-            mission must be at least 20 character long.
+            Votre mission est bien courte...
           </div>
         </div>
       </div>

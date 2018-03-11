@@ -26,7 +26,6 @@ export class OffreModificationComponent implements OnInit {
   ngOnInit() {
     this._getAllCompetences().subscribe((competences: any) => this.competences = competences);
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    // console.log('competence' + this.competences);
   }
 
   private _getAllCompetences(): Observable<any[]> {

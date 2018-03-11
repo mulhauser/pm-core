@@ -1,13 +1,9 @@
-
-
-
-
 <br>
 <div class="card">
   <img class="img-fluid"  *ngIf="offreObj.photo" src="{{ offreObj.photo }}" alt="logo">
   <img class="img-fluid"  *ngIf="!offreObj.photo" src="../../assets/societe_anonyme.jpg" alt="logo">
   <div class="intitule"><h4>{{offreObj.intitule}}</h4></div>
-  <h4 *ngIf="!offreObj.suspendu" style="color: red"> offre suspendue</h4>
+  <h4 *ngIf="!offreObj.suspendu" style="color: red"> Offre suspendue</h4>
   <p class="title">{{offreObj.typeContrat}}<br>
     <i class="fa fa-graduation-cap" aria-hidden="true"></i> {{offreObj.niveauRequis}}<br>
     <i class="fa fa-usd" aria-hidden="true"></i> {{offreObj.salaireMin}} - {{offreObj.salaireMax}}<br>

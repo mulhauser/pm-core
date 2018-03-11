@@ -40,58 +40,93 @@
     <label class="col-lg-3 col-form-label form-control-label" value="Adresse">Adresse</label>
     <div class="col-lg-6">
       <input type="text" class="form-control" id="ville"
-             required
-             minlength="1"
-             placeholder="ville"
+             minlength="2"
+             placeholder="Ville"
              [(ngModel)]="recruteurDetail.ville"
              name="ville"
              #ville="ngModel">
+      <!-- validation formulaire -->
+      <div *ngIf="ville.invalid && (ville.dirty || ville.touched)"
+           class="warning alert-warning">
+        <div *ngIf="ville.errors.minlength">
+          Votre ville doit avoir au moins 2 caractères.
+        </div>
+      </div>
     </div>
     <div class="col-lg-3">
       <input type="text" class="form-control" id="codePostal"
-             required
-             minlength="1"
+             pattern="[0-9]{5}"
              placeholder="Code postal"
              [(ngModel)]="recruteurDetail.codePostal"
              name="codePostal"
              #codePostal="ngModel">
+      <!-- validation formulaire -->
+      <div *ngIf="codePostal.invalid && (codePostal.dirty || codePostal.touched)"
+           class="warning alert-warning">
+        <div *ngIf="codePostal.errors.pattern">
+          Votre code postal doit avoir 5 chiffres.
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">URL Photo</label>
     <div class="col-lg-9">
-      <input class="form-control" type="text"
-             minlength="16"
+      <input class="form-control" type="url"
              [(ngModel)]="recruteurDetail.urlPhoto"
+             placeholder="www.a.com/b.png"
              name="urlPhoto"
              #urlPhoto="ngModel">
+      <!-- validation formulaire -->
+      <div *ngIf="urlPhoto.invalid && (urlPhoto.dirty || urlPhoto.touched)"
+           class="warning alert-warning">
+        <div *ngIf="urlPhoto.errors.pattern">
+          Une URL a au minimum 15 caractères du style : www.a.com/b.png
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">A propos de moi</label>
     <div class="col-lg-9">
-      <input type="text" class="form-control" id="apropos"
-             minlength="1"
-             [(ngModel)]="recruteurDetail.apropos"
-             name="apropos"
-             #apropos="ngModel" >
+      <textarea type="text" class="form-control" id="apropos"
+                minlength="12"
+                placeholder="Une petite description de vous ?"
+                [(ngModel)]="recruteurDetail.apropos"
+                name="apropos"
+                #apropos="ngModel" >
+      </textarea>
+      <!-- validation formulaire -->
+      <div *ngIf="apropos.invalid && (apropos.dirty || apropos.touched)"
+           class="warning alert-warning">
+        <div *ngIf="apropos.errors.minlength">
+          Votre description est trop courte !
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">Téléphone</label>
     <div class="col-lg-9">
-      <input type="text" class="form-control" id="telephone"
+      <input type="tel" class="form-control" id="telephone"
              minlength="10"
+             maxlength="10"
              [(ngModel)]="recruteurDetail.telephone"
              name="telephone"
              #telephone="ngModel">
+      <!-- validation formulaire -->
+      <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)"
+           class="warning alert-warning">
+        <div *ngIf="telephone.errors.minlength">
+          Votre numéro est trop court.
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label" >Date de naissance</label>
     <div class="col-lg-9">
       <input type="date" class="form-control" id="dateNaissance"
-             minlength="1"
              [(ngModel)]="recruteurDetail.dateNaissance"
              name="dateNaissance"
              #dateNaissance="ngModel" >
@@ -99,8 +134,7 @@
   </div>
 
   <div class="form-group row">
-    <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
-    <!-- <a (click)="cancel()" class="btn btn-link">Cancel</a>-->
+    <button [disabled]="!f.valid" class="btn btn-primary">Enregistrer</button>
   </div>
 </form>
 
