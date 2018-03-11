@@ -98,7 +98,7 @@ public class DataBean {
         cand.setPays("France");
         cand.setVille("Nancy");
         cand.setCodePostal("54000");
-        cand.setTelephone("+33612190347");
+        cand.setTelephone("0612190347");
         cand.setTitre("Développeur Front End");
         cand.setApropos("Je me nomme Michel Wolkowicz et je suis étudiant en mater informatique à l'Université de Lorraine");
         cand.setUrlPhoto("http://www.ucgl.net/public/style_images/aktolia/profile/default_large.png");
@@ -142,7 +142,7 @@ public class DataBean {
         cand2.setPays("France");
         cand2.setVille("Nancy");
         cand2.setCodePostal("54000");
-        cand2.setTelephone("+33612191234");
+        cand2.setTelephone("+0612190347");
         cand2.setTitre("Développeur Full Stack");
         cand2.setApropos("Je me nomme Flavien Mondy et je suis étudiant en mater informatique à l'Université de Lorraine");
         cand2.setUrlPhoto("https://avatarfiles.alphacoders.com/849/84930.png");
@@ -188,7 +188,7 @@ public class DataBean {
         cand3.setPays("France");
         cand3.setVille("Nancy");
         cand3.setCodePostal("54000");
-        cand3.setTelephone("+33612195555");
+        cand3.setTelephone("+0612190347");
         cand3.setTitre("Développeur Front End");
         cand3.setApropos("Je me nomme Thomas Denis et je suis étudiant en mater informatique à l'Université de Lorraine");
         cand3.setUrlPhoto("http://logo.pizza/img/dog-profile/dog-profile.png");
@@ -230,7 +230,7 @@ public class DataBean {
         cand4.setPays("France");
         cand4.setVille("Nancy");
         cand4.setCodePostal("54000");
-        cand4.setTelephone("+33612196666");
+        cand4.setTelephone("+0612190347");
         cand4.setTitre("Développeur Full Stack");
         cand4.setApropos("Je me nomme Remy Mulhauser et je suis étudiant en mater informatique à l'Université de Lorraine");
         cand4.setUrlPhoto("https://lh3.googleusercontent.com/-ElFqsB8ag4g/VuyDE_HKkzI/AAAAAAAAAUs/9JjtPtmS4Yw/w500-h500/gamingxrk_profile_clash_royale_francais_youtube.jpg");
@@ -274,7 +274,7 @@ public class DataBean {
         cand5.setPays("France");
         cand5.setVille("Nancy");
         cand5.setCodePostal("54000");
-        cand5.setTelephone("+33612190347");
+        cand5.setTelephone("+0612190347");
         cand5.setTitre("Développeur Front End");
         cand5.setApropos("Je me nomme Nicloas BLin et je suis étudiant en mater informatique à l'Université de Lorraine");
         cand5.setUrlPhoto("http://s9.favim.com/orig/130815/paris-pretty-sky-beautiful-Favim.com-854842.jpg");
@@ -318,7 +318,7 @@ public class DataBean {
         cand6.setPays("France");
         cand6.setVille("Nancy");
         cand6.setCodePostal("54000");
-        cand6.setTelephone("+33612179847");
+        cand6.setTelephone("+0612190347");
         cand6.setTitre("Développeur Back End");
         cand6.setApropos("Je me nomme Titem Lehamel et je suis étudiante en mater informatique à l'Université de Lorraine");
         cand6.setUrlPhoto("http://s2.favim.ru/orig/151213/avatar-dzhoker-profil-Favim.ru-3761170.jpg");
