@@ -62,7 +62,7 @@ export class FormAjoutCompetenceComponent implements OnInit {
 
   ngOnInit() {
     this._getAllCompetences().subscribe((competences: any) => this.competences = competences);
-    console.log('competence' + this.competences);
+    // console.log('competence' + this.competences);
   }
 
   private _getAllCompetences(): Observable<any[]> {

@@ -53,7 +53,9 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3">
+    <div class="form-group row">
+      <label class="col-lg-3 col-form-label form-control-label">Code postal</label>
+      <div class="col-lg-3">
       <input type="text" class="form-control" id="codePostal"
              pattern="[0-9]{5}"
              placeholder="Code postal"
@@ -68,6 +70,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
   <div class="form-group row">
     <label class="col-lg-3 col-form-label form-control-label">URL Photo</label>
@@ -94,6 +97,7 @@
                 placeholder="Une petite description de vous ?"
                 [(ngModel)]="recruteurDetail.apropos"
                 name="apropos"
+                #apropos="ngModel" >
                 #apropos="ngModel" >
       </textarea>
       <!-- validation formulaire -->

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {CompetencesService} from '../shared/competences.service';
 import {Observable} from 'rxjs/Observable';
 import {RecruteurService} from '../shared/recruteur.service';
@@ -15,6 +15,10 @@ export class OffreModificationComponent implements OnInit {
   competences = [];
   private currentUser: any;
   private offreDetail: any;
+  valeurMax: any;
+  valeurMin: any;
+  salaireIncorect: boolean;
+
 
 
   constructor(private _competenceService: CompetencesService,
@@ -43,6 +47,33 @@ export class OffreModificationComponent implements OnInit {
       .subscribe(data =>
         this._alertService.success('Modifications effectuées', true)
       );
+  }
+
+
+  updateSalaireMax(a) {
+    this.valeurMax = a;
+    console.log('max' + this.valeurMax);
+  }
+
+  updateSalaireMin(a) {
+    this.valeurMin = a;
+    console.log('min' + this.valeurMin);
+  }
+
+  verificationSalaireMax() {
+    if (this.valeurMax <= this.valeurMin) {
+      this.salaireIncorect = false; // c'est pas bon
+    } else {
+      this.salaireIncorect = true; // c'est bon
+    }
+  }
+
+  verificationSalaireMin() {
+    if (this.valeurMax >= this.valeurMin) {
+      this.salaireIncorect = true; // c'est pas bon
+    } else {
+      this.salaireIncorect = false; // c'est bon
+    }
   }
 
 }

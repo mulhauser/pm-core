@@ -13,6 +13,9 @@ export class FormAjoutPosteComponent implements OnInit {
 
   offre = {};
   competences = [];
+  valeurMax: any;
+  valeurMin: any;
+  salaireIncorect: boolean;
 
 
   private _cancel$: EventEmitter<any>;
@@ -42,7 +45,7 @@ export class FormAjoutPosteComponent implements OnInit {
   @Output('cancel')
   get cancel$(): EventEmitter<any> {
     return this._cancel$;
-  }  
+  }
 
 
   @Output('submit')
@@ -77,5 +80,29 @@ export class FormAjoutPosteComponent implements OnInit {
     return this._competenceService.getCompetences();
   }
 
+  updateSalaireMax(a) {
+    this.valeurMax = a;
+    console.log('max' + this.valeurMax);
+  }
 
+  updateSalaireMin(a) {
+    this.valeurMin = a;
+    console.log('min' + this.valeurMin);
+  }
+
+  verificationSalaireMax() {
+    if (this.valeurMax <= this.valeurMin) {
+      this.salaireIncorect = false; // c'est pas bon
+    } else {
+      this.salaireIncorect = true; // c'est bon
+    }
+  }
+
+  verificationSalaireMin() {
+    if (this.valeurMax >= this.valeurMin) {
+      this.salaireIncorect = true; // c'est pas bon
+    } else {
+      this.salaireIncorect = false; // c'est bon
+    }
+  }
 }

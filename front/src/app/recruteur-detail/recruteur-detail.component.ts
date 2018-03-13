@@ -9,6 +9,8 @@ import {Offre} from "../_models/offre";
 import {noUndefined} from "@angular/compiler/src/util";
 import {isUndefined} from "util";
 import {AlertService} from "../_services/alert.service";
+import {ModalInviterAmisComponent} from '../shared/modal-inviter-amis/modal-inviter-amis.component';
+import {MailService} from '../shared/mail.service';
 
 @Component({
   selector: 'app-recruteur-detail',
@@ -21,8 +23,10 @@ export class RecruteurDetailComponent implements OnInit {
   private recruteur: any;
   private _dialogStatus: string;
   private _infoOffre: any = {};
+  private _infoMail: any;
 
-   offreDuRecruteur: any = [];
+
+  offreDuRecruteur: any = [];
 
   @Input()
   modeModification = false;
@@ -31,7 +35,9 @@ export class RecruteurDetailComponent implements OnInit {
               private _route: ActivatedRoute,
               private alertService: AlertService,
               private _recruteurService: RecruteurService,
-              private _offreDialogue: NgbModal) {
+              private _inviterAmisDialog: NgbModal,
+              private _offreDialogue: NgbModal,
+              private _mailService: MailService) {
 
   }
 
@@ -129,6 +135,38 @@ export class RecruteurDetailComponent implements OnInit {
         this._dialogStatus = 'inactive';
       }
     );
+  }
+
+
+  showModalInviterAmis() {
+    // set dialog status
+    this._dialogStatus = 'active';
+    // open modal
+    const dialogRef = this._inviterAmisDialog.open(ModalInviterAmisComponent, {
+      size: 'sm',
+      keyboard: true,
+      backdrop: 'static'
+    });
+    dialogRef.result.then(
+      (result) => {
+        this._inviterAmis(result.value)
+          .subscribe(
+            (infoMail: any) => {
+              this._infoMail = infoMail; console.log(infoMail);
+            },
+            () => this._dialogStatus = 'inactive',
+            () => {this._dialogStatus = 'inactive';
+            }
+          );
+      }, (reason) => {
+        this._dialogStatus = 'inactive';
+      }
+    );
+  }
+
+  private _inviterAmis (email: any): Observable<any> {
+    return this._mailService.envoyerInviationEmail(email)
+      .flatMap(_ => _);
   }
 
 

@@ -80,7 +80,11 @@
                [(ngModel)]="model.salaireMin"
                placeholder="Salaire minimum"
                name="salaireMin"
+               (keyup)="updateSalaireMin(model.salaireMin);verificationSalaireMin()"
                #salaireMin="ngModel">
+        <div *ngIf="!salaireIncorect" class="alert alert-danger">
+          Le salaire minimum doit être inférieur au salaire maximum
+        </div>
         <div *ngIf="salaireMin.invalid && (salaireMin.dirty || salaireMin.touched)"
              class="alert alert-danger">
           <div *ngIf="salaireMin.errors.required">
@@ -100,7 +104,11 @@
                [(ngModel)]="model.salaireMax"
                placeholder="Salaire maximum"
                name="salaireMax"
+               (keyup)="updateSalaireMax(model.salaireMax);verificationSalaireMax()"
                #salaireMax="ngModel">
+        <div *ngIf="!salaireIncorect" class="alert alert-danger">
+          Le salaire maximum doit être supérieur au salaire minimum
+        </div>
         <div *ngIf="salaireMax.invalid && (salaireMax.dirty || salaireMax.touched)"
              class="alert alert-danger">
           <div *ngIf="salaireMax.errors.required">
