@@ -76,7 +76,7 @@
         <input type="number" class="form-control" id="salaireMin"
                required
                minlength="1"
-               min="0"
+               min="1"
                [(ngModel)]="model.salaireMin"
                placeholder="Salaire minimum"
                name="salaireMin"
@@ -85,9 +85,6 @@
              class="alert alert-danger">
           <div *ngIf="salaireMin.errors.required">
             Quel est le salaire minimum ?
-          </div>
-          <div *ngIf="salaireMin.errors.minlength">
-            Si vous payez aussi peu, vous ne trouverez personne !
           </div>
         </div>
       </div>
@@ -99,7 +96,7 @@
         <input type="number" class="form-control" id="salaireMax"
                required
                minlength="1"
-               min="0"
+               min="2"
                [(ngModel)]="model.salaireMax"
                placeholder="Salaire maximum"
                name="salaireMax"
@@ -108,9 +105,6 @@
              class="alert alert-danger">
           <div *ngIf="salaireMax.errors.required">
             Quel est le salaire maximum ?
-          </div>
-          <div *ngIf="salaireMax.errors.minlength">
-            Si vous payez aussi peu, vous ne trouverez personne !
           </div>
         </div>
       </div>

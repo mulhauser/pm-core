@@ -100,7 +100,7 @@ public class DataBean {
         cand.setCodePostal("54000");
         cand.setTelephone("0612190347");
         cand.setTitre("Développeur Front End");
-        cand.setApropos("Je me nomme Michel Wolkowicz et je suis étudiant en mater informatique à l'Université de Lorraine");
+        cand.setApropos("Je me nomme Michel Wolkowicz et je suis étudiant en master informatique à l'Université de Lorraine.");
         cand.setUrlPhoto("http://www.ucgl.net/public/style_images/aktolia/profile/default_large.png");
 
         candidatBean.ajouterCandidat(cand);
@@ -142,9 +142,9 @@ public class DataBean {
         cand2.setPays("France");
         cand2.setVille("Nancy");
         cand2.setCodePostal("54000");
-        cand2.setTelephone("+0612190347");
+        cand2.setTelephone("0612190347");
         cand2.setTitre("Développeur Full Stack");
-        cand2.setApropos("Je me nomme Flavien Mondy et je suis étudiant en mater informatique à l'Université de Lorraine");
+        cand2.setApropos("Je me nomme Flavien Mondy et je suis étudiant en master informatique à l'Université de Lorraine.");
         cand2.setUrlPhoto("https://avatarfiles.alphacoders.com/849/84930.png");
 
         candidatBean.ajouterCandidat(cand2);
@@ -167,7 +167,7 @@ public class DataBean {
         e22.setDateDebut(new Date(118,01,10));
         e22.setDateFin(new Date(118,03,12));
         e22.setCandidat(cand2);
-        e22.setDescription("Développement d'une application pour les annimaux");
+        e22.setDescription("Développement d'une application pour les animaux");
         experienceBean.ajouterExperience(e22);
 
 
@@ -188,9 +188,9 @@ public class DataBean {
         cand3.setPays("France");
         cand3.setVille("Nancy");
         cand3.setCodePostal("54000");
-        cand3.setTelephone("+0612190347");
+        cand3.setTelephone("0612190347");
         cand3.setTitre("Développeur Front End");
-        cand3.setApropos("Je me nomme Thomas Denis et je suis étudiant en mater informatique à l'Université de Lorraine");
+        cand3.setApropos("Je me nomme Thomas Denis et je suis étudiant en master informatique à l'Université de Lorraine.");
         cand3.setUrlPhoto("http://logo.pizza/img/dog-profile/dog-profile.png");
 
         candidatBean.ajouterCandidat(cand3);
@@ -221,7 +221,7 @@ public class DataBean {
 
         User c44 = new User();
         c44.setEmail("remy@gmail.com");
-        c44.setFirstName("Remy");
+        c44.setFirstName("Rémy");
         c44.setLastName("Mulhauser");
         c44.setPassword("test");
         c44.setType("candidat");
@@ -230,9 +230,9 @@ public class DataBean {
         cand4.setPays("France");
         cand4.setVille("Nancy");
         cand4.setCodePostal("54000");
-        cand4.setTelephone("+0612190347");
+        cand4.setTelephone("0612190347");
         cand4.setTitre("Développeur Full Stack");
-        cand4.setApropos("Je me nomme Remy Mulhauser et je suis étudiant en mater informatique à l'Université de Lorraine");
+        cand4.setApropos("Je me nomme Rémy Mulhauser et je suis étudiant en master informatique à l'Université de Lorraine.");
         cand4.setUrlPhoto("https://lh3.googleusercontent.com/-ElFqsB8ag4g/VuyDE_HKkzI/AAAAAAAAAUs/9JjtPtmS4Yw/w500-h500/gamingxrk_profile_clash_royale_francais_youtube.jpg");
 
         candidatBean.ajouterCandidat(cand4);
@@ -265,7 +265,7 @@ public class DataBean {
 
         User c55 = new User();
         c55.setEmail("nicolas@gmail.com");
-        c55.setFirstName("Nicloas");
+        c55.setFirstName("Nicolas");
         c55.setLastName("Blin");
         c55.setPassword("test");
         c55.setType("candidat");
@@ -274,10 +274,10 @@ public class DataBean {
         cand5.setPays("France");
         cand5.setVille("Nancy");
         cand5.setCodePostal("54000");
-        cand5.setTelephone("+0612190347");
+        cand5.setTelephone("0612190347");
         cand5.setTitre("Développeur Front End");
-        cand5.setApropos("Je me nomme Nicloas BLin et je suis étudiant en mater informatique à l'Université de Lorraine");
-        cand5.setUrlPhoto("https://static.fnac-static.com/multimedia/Images/FR/NR/07/d1/8d/9294087/1520-1/tsp20180129094108/Supreme-NTM-Double-Picture-Disc-Gatefold-Edition-Collector.jpg");
+        cand5.setApropos("Je me nomme Nicolas Blin et je suis étudiant en master informatique à l'Université de Lorraine.");
+        cand5.setUrlPhoto("https://img.cinemablend.com/quill/0/1/9/5/8/a/01958a8621304b9fca0c2c6420f925b8503e68e2.jpg");
 
         candidatBean.ajouterCandidat(cand5);
         c4.getCandidats().add(cand5);
@@ -318,9 +318,9 @@ public class DataBean {
         cand6.setPays("France");
         cand6.setVille("Nancy");
         cand6.setCodePostal("54000");
-        cand6.setTelephone("+0612190347");
+        cand6.setTelephone("0612190347");
         cand6.setTitre("Développeur Back End");
-        cand6.setApropos("Je me nomme Titem Lehamel et je suis étudiante en mater informatique à l'Université de Lorraine");
+        cand6.setApropos("Je me nomme Titem Lehamel et je suis étudiante en master informatique à l'Université de Lorraine.");
         cand6.setUrlPhoto("http://s2.favim.ru/orig/151213/avatar-dzhoker-profil-Favim.ru-3761170.jpg");
         candidatBean.ajouterCandidat(cand6);
         c1.getCandidats().add(cand6);
@@ -360,7 +360,7 @@ public class DataBean {
         recruteurBean.ajouterRecruteur(recru);
         Offre o = new Offre();
         o.setDateLimite(new Date(118,12,10));
-        o.setDescription("Stage dan le développement java avec une équipe de 5 personnes chez spaceX");
+        o.setDescription("Stage dans le développement java avec une équipe de 5 personnes chez spaceX.");
         c1.getOffres().add(o);
         c2.getOffres().add(o);
         o.setTypeContrat("Stage");
@@ -374,7 +374,7 @@ public class DataBean {
 
         Offre o2 = new Offre();
         o2.setDateLimite(new Date(118,12,10));
-        o2.setDescription("Recherhe développeur dans le développement informatique C++ afin de faire une voiture Tesla encore plus rapide pour pouvoir aller sur la lune avec tout ça depuis un simulateur en fait");
+        o2.setDescription("Recherche développeur dans le développement informatique C++ afin de faire une voiture Tesla encore plus rapide pour pouvoir aller sur la Lune avec tout ça depuis un simulateur en fait");
         c3.getOffres().add(o);
         c1.getOffres().add(o);
         o2.setTypeContrat("CDD");
