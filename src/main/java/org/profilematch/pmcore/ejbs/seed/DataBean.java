@@ -277,7 +277,7 @@ public class DataBean {
         cand5.setTelephone("0612190347");
         cand5.setTitre("Développeur Front End");
         cand5.setApropos("Je me nomme Nicolas Blin et je suis étudiant en master informatique à l'Université de Lorraine.");
-        cand5.setUrlPhoto("https://img.cinemablend.com/quill/0/1/9/5/8/a/01958a8621304b9fca0c2c6420f925b8503e68e2.jpg");
+        cand5.setUrlPhoto("http://www.moviezone.cz/image/212842.jpg");
 
         candidatBean.ajouterCandidat(cand5);
         c4.getCandidats().add(cand5);
