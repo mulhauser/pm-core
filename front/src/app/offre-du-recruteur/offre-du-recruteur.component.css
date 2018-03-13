@@ -35,3 +35,15 @@ a {
 button:hover, a:hover {
   opacity: 0.7;
 }
+
+
+.zoom {
+  transition: transform .3s;
+  margin-bottom: 15px;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
+}

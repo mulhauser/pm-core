@@ -1,4 +1,4 @@
-<br>
+<div class="zoom">
 <div class="card" *ngIf="offreObj.suspendu">
   <img class="img-fluid"  *ngIf="offreObj.photo" src="{{ offreObj.photo }}" alt="logo">
   <img class="img-fluid"  *ngIf="!offreObj.photo" src="../../assets/societe_anonyme.jpg" alt="logo">
@@ -10,7 +10,7 @@
   <p><button [routerLink]="['/offre/', offreObj.id]">Voir l'offre</button></p>
 
 </div>
-
+</div>
 
 
 
