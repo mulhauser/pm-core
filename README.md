@@ -17,7 +17,7 @@ En accédant à cette url : http://localhost:9090/rest/apiee, nous pouvons voir 
 ### Présentation live de l'évolution du projet
 Installer Gource et taper la commande suivante :
 ```
-gource --logo ./front/src/assets/logo_small.png --title "iMatchProfil - Croissants" --background 565656 --font-size 20 --font-colour 000000 --hide filenames --bloom-intensity 0.6 --camera-mode overview --background-image bg_pres.jpg
+gource --logo ./front/src/assets/logo_small.png --title "iMatchProfile - Croissants" --background 565656 --font-size 20 --font-colour 000000 -s 0.5 --hide filenames --bloom-intensity 0.6 --camera-mode overview --background-image bg_pres.jpg
 ```
 
 ### Documentation
